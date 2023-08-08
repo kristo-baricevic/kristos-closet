@@ -1,20 +1,45 @@
+// reducer.js
+
 const initialState = {
-    // Initial state properties
+    isAuthenticated: false,
+    user: null,
+    isRegistrationModalVisible: false,
+    isLoginModalVisible: false,
   };
   
-  const yourReducer = (state = initialState, action) => {
+  const reducer = (state = initialState, action) => {
     switch (action.type) {
-      case 'SOME_ACTION_TYPE':
-        // Update the state based on the action
+      case 'SET_AUTHENTICATION':
         return {
           ...state,
-          // Update properties
+          isAuthenticated: action.payload,
         };
-      // ...add more cases for different action types
+      case 'SET_USER':
+        return {
+          ...state,
+          user: action.payload,
+        };
+      case 'CLEAR_AUTHENTICATION':
+        return {
+          ...state,
+          isAuthenticated: false,
+          user: null,
+        };
+      case 'SET_REGISTRATION_MODAL_VISIBLE':
+        return {
+          ...state,
+          isRegistrationModalVisible: action.payload,
+        };
+      case 'SET_LOGIN_MODAL_VISIBLE':
+        return {
+          ...state,
+          isLoginModalVisible: action.payload,
+        };
+  
       default:
-        return state;
+        return state; 
     }
   };
   
-  export default yourReducer;
+  export default reducer;
   

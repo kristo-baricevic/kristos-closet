@@ -3,10 +3,10 @@ import { configureStore, combineReducers } from 'redux';
 import Reducer from './reducer.js';
 
 const rootReducer = combineReducers({
-  yourReducer,
+  Reducer,
   // ...add more reducers if needed
 });
 
-const store = createStore(rootReducer);
+const store = configureStore(rootReducer);
 
 export default store;
