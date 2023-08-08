@@ -4,15 +4,12 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { combineReducers } from 'redux';
-import configureStore from './store';
+import store from './store/store';
+import reducer from './store/reducers';
 
 const rootReducer = combineReducers({
-
-
-})
-
-const store = configureStore(rootReducer);
-
+  app: reducer,
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,4 +19,6 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
+export default rootReducer;
 

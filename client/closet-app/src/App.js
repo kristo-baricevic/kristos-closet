@@ -10,7 +10,7 @@ import {
   setLoginModalVisible,
   logoutUser,
   loginAnonymous,
-} from './store'; // Update these import paths accordingly
+} from './store/actions.js'; 
 
 const App = ({ images }) => {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -88,9 +88,16 @@ const App = ({ images }) => {
     dispatch(loginAnonymous());
   };
 
-  const refreshPhotostream = () => {
-    photostreamRef.value.fetchImages();
-    console.log("refreshPhotostream has run");
+  const refreshPhotostream = async () => {
+    try {
+      // Perform the fetch operation or any data refreshing logic here
+      const response = await fetch('/backend/Images');
+      const data = await response.json();
+      // Update state or perform other necessary actions with the data
+      console.log("refreshPhotostream has run with updated data:", data);
+    } catch (error) {
+      console.error("Error refreshing photostream:", error);
+    }
   };  
 
   return (

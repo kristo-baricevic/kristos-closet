@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { registerUser } from '../store'; 
+import { registerUser } from '../store/actions'; 
 
 const RegistrationModal = () => {
   const [username, setUsername] = useState('');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../store'; // Import your Redux action
+import { loginUser } from '../store/actions';
 
 const LoginModal = () => {
   const dispatch = useDispatch();

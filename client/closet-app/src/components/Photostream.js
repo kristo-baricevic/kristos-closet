@@ -6,7 +6,6 @@ const PhotoStream = ({ isAuthenticated }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [editedCategory, setEditedCategory] = useState(null);
   const [editingImageId, setEditingImageId] = useState(null);
-  const [isFetched, setIsFetched] = useState(false);
 
   useEffect(() => {
     fetchImages();
