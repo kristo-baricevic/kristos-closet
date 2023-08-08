@@ -113,15 +113,15 @@ const PhotoStream = ({ isAuthenticated }) => {
     setEditedCategory(image.category);
   };
 
-  const isUserClothingItem = async (imageId) => {
-    try {
-      const image = images.find((img) => img.id === imageId);
-      return image && image.isUserImage;
-    } catch (error) {
-      console.error('Error checking if the image belongs to UserClothingItem:', error);
-      return false;
-    }
-  };
+  // const isUserClothingItem = async (imageId) => {
+  //   try {
+  //     const image = images.find((img) => img.id === imageId);
+  //     return image && image.isUserImage;
+  //   } catch (error) {
+  //     console.error('Error checking if the image belongs to UserClothingItem:', error);
+  //     return false;
+  //   }
+  // };
 
   const isEditing = (image) => {
     return editingImageId === image.id && image.isUserImage;
@@ -180,11 +180,103 @@ const PhotoStream = ({ isAuthenticated }) => {
     <div>
       {isDesktop ? (
         <div>
-          {/* Desktop layout code */}
+          <div className="sticky-container">
+            <div className="category-buttons-container">
+              <button className="category-button" onClick={() => filterByCategory(null)}>All</button>
+              {uniqueCategories.map(category => (
+                <button key={category} className="category-button" onClick={() => filterByCategory(category)}>
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="photo-stream">
+            {filteredImages.map(image => (
+              <div key={image.id} className="card" onClick={() => openImage(image)}>
+                <img className="card-image" src={getImageUrl(image.data)} alt="Photo" />
+                <div className="card-info">
+                  <div className="card-buttons-container">
+                    <button className="delete-button" onClick={() => deleteImage(image)}>Delete</button>
+                    <button className="select-button" onClick={() => handleSelectImage(image)}>Select</button>
+                    <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
+                  </div>
+                  <div className="category-container">
+                    {isEditing(image) ? (
+                      <div className="edit-category">
+                        <select
+                          value={editedCategory}
+                          onChange={event => setEditedCategory(event.target.value)}
+                          onKeyUp={event => {
+                            if (event.key === 'Enter') {
+                              saveImageEdit(image);
+                            }
+                          }}
+                        >
+                          {uniqueCategories.map(category => (
+                            <option key={category} value={category}>{category}</option>
+                          ))}
+                        </select>
+                        <button onClick={() => saveImageEdit(image)}>Save</button>
+                        <button onClick={() => cancelImageEdit()}>Cancel</button>
+                      </div>
+                    ) : (
+                      <div className="image-category">{image.category}</div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       ) : (
         <div>
-          {/* Mobile layout code */}
+          <div className="sticky-container">
+            <div className="category-buttons-container">
+              <button className="category-button" onClick={() => filterByCategory(null)}>All</button>
+              {uniqueCategories.map(category => (
+                <button key={category} className="category-button" onClick={() => filterByCategory(category)}>
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="photo-stream">
+            {filteredImages.map(image => (
+              <div key={image.id} className="card" onClick={() => openImage(image)}>
+                <img className="card-image" src={getImageUrl(image.data)} alt="Photo" />
+                <div className="card-info">
+                  <div className="card-buttons-container">
+                    <button className="delete-button" onClick={() => deleteImage(image)}>Delete</button>
+                    <button className="select-button" onClick={() => handleSelectImage(image)}>Select</button>
+                    <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
+                  </div>
+                  <div className="category-container">
+                    {isEditing(image) ? (
+                      <div className="edit-category">
+                        <select
+                          value={editedCategory}
+                          onChange={event => setEditedCategory(event.target.value)}
+                          onKeyUp={event => {
+                            if (event.key === 'Enter') {
+                              saveImageEdit(image);
+                            }
+                          }}
+                        >
+                          {uniqueCategories.map(category => (
+                            <option key={category} value={category}>{category}</option>
+                          ))}
+                        </select>
+                        <button onClick={() => saveImageEdit(image)}>Save</button>
+                        <button onClick={() => cancelImageEdit()}>Cancel</button>
+                      </div>
+                    ) : (
+                      <div className="image-category">{image.category}</div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
