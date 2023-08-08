@@ -12,6 +12,10 @@ import {
   loginAnonymous,
 } from './store/actions.js'; 
 
+const mongoose = require('mongoose');
+const ClothingItem = require('./models/ClothingItem'); 
+
+
 const App = ({ images }) => {
   const [isDesktop, setIsDesktop] = useState(false);
   const isRegistrationModalVisible = useSelector(state => state.isRegistrationModalVisible);
