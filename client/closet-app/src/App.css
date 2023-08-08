@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
+/* */
+
+.body-container {
+  background-color: #e9ff96;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.desktop-layout {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.mobile-layout {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+/* navbar design */
+
+.navbar {
+  background-color: #a4e333;
+  height: 80px; 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-menu {
+  list-style-type: none;
+  padding: 0;
+  height: 100%; 
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  line-height: 80px; 
+}
+
+/* button design */
+
+.registration-button {
+  margin: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 83px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registration-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+.login-button {
+  margin: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 83px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+.logout-button {
+  margin: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 83px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover{
+  background-color: #228B22;
+  color: black;
+}
+
+.demo-button {
+  margin: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 83px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.demo-button:hover{
+  background-color: #228B22;
+  color: black;
+}
+
+/* component containers */
+
+.image-uploader-container {
+  margin-left:20px;
+}
+
+.photostream-container {
+  flex-grow: 1;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  max-width: 60%;
+}
+
+.photostream-container-mobile {
+  flex-grow: 1;
+  resize: vertical;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  max-width: 90%;
+}
+
+.outfit-view-container {
+  flex-grow: 1;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  min-width: 40%;
+}
+
+.outfit-view-container-mobile {
+  flex-grow: 1;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  min-width: 90%;
 }

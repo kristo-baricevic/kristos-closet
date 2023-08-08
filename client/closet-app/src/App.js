@@ -10,7 +10,8 @@ import {
   setLoginModalVisible,
   logoutUser,
   loginAnonymous,
-} from './store/actions.js'; 
+} from './store/actions.js';
+import './App.css';
 
 const mongoose = require('mongoose');
 const ClothingItem = require('./models/ClothingItem'); 
