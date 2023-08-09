@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ImageUploader from './components/ImageUploader';
-import PhotoStream from './components/Photostream';
+import PhotoStream from './components/PhotoStream';
 import OutfitView from './components/OutfitView';
 import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
