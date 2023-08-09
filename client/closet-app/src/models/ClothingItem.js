@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const clothingItemSchema = new mongoose.Schema({
   image: {
-    data: Buffer, 
-    contentType: String, 
+    data: mongoose.Schema.Types.Buffer, 
+    contentType: mongoose.Schema.Types.String, 
   },
   category: String,
   isUserImage: Boolean,
