@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 export const setAuthentication = (isAuthenticated) => ({
     type: 'SET_AUTHENTICATION',
     payload: isAuthenticated,
