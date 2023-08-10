@@ -40,6 +40,9 @@ exports.registerUser = async (req, res) => {
       hashedPassword, 
     });
 
+    // Save the new user to the database
+    await newUser.save();
+
     // Send a success response
     res.status(201).json({ message: 'User registered successfully', user: newUser });
 
