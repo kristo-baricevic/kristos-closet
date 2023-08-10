@@ -52,13 +52,13 @@ export const setAuthentication = (isAuthenticated) => ({
         if (response.status === 200) {
           dispatch({
             type: 'LOGIN_USER_SUCCESS',
-            payload: response.userData,
+            payload: response.data,
           });
         }
       } catch (error) {
         dispatch({
           type: 'LOGIN_USER_ERROR',
-          payload: response.data,
+          payload: error.message,
         });        
       }
     };
@@ -93,7 +93,7 @@ export const setAuthentication = (isAuthenticated) => ({
     };
   };
   
-  
+
   export const loginAnonymous = () => ({
     type: 'LOGIN_ANONYMOUS', 
   });

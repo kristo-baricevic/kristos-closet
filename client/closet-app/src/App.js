@@ -1,28 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ImageUploader from './components/ImageUploader';
 import PhotoStream from './components/PhotoStream';
 import OutfitView from './components/OutfitView';
+import NavBar from './components/NavBar';
 import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
-import {
-  setRegistrationModalVisible,
-  setLoginModalVisible,
-  logoutUser,
-  loginAnonymous,
-} from './store/actions.js';
+
 import './App.css';
 
 const mongoose = require('mongoose');
 const ClothingItem = require('./models/ClothingItem'); 
 
-
 const App = ({ images }) => {
   const [isDesktop, setIsDesktop] = useState(false);
   const isRegistrationModalVisible = useSelector(state => state.isRegistrationModalVisible);
   const isLoginModalVisible = useSelector(state => state.isLoginModalVisible);
-  const isAuthenticated = useSelector(state => state.isAuthenticated);
-  const dispatch = useDispatch();
 
   const [selectedItems, setSelectedItems] = useState({
     hat: null,
@@ -77,22 +70,6 @@ const App = ({ images }) => {
     }
   };
 
-  const showRegistrationModal = () => {
-    dispatch(setRegistrationModalVisible(true));
-  };
-
-  const showLoginModal = () => {
-    dispatch(setLoginModalVisible(true));
-  };
-
-  const handleLogoutUser = () => {
-    dispatch(logoutUser());
-  };
-
-  const handleLoginAnonymous = () => {
-    dispatch(loginAnonymous());
-  };
-
   const refreshPhotostream = async () => {
     try {
       // Perform the fetch operation or any data refreshing logic here
@@ -107,23 +84,8 @@ const App = ({ images }) => {
 
   return (
     <div className="body-container">
-      <nav className="navbar">
-        <ul className="navbar-menu">
-          <li>
-            <button className="registration-button" onClick={showRegistrationModal}>Register</button>
-          </li>
-          <li>
-            {!isAuthenticated ? (
-              <button className="login-button" onClick={showLoginModal}>Login</button>
-            ) : (
-              <button className="logout-button" onClick={handleLogoutUser}>Logout</button>
-            )}
-          </li>
-          <li>
-            <button className="demo-button" onClick={handleLoginAnonymous}>Demo</button>
-          </li>
-        </ul>
-      </nav>
+      
+      <NavBar />
 
       {isRegistrationModalVisible && <RegistrationModal />}
       {isLoginModalVisible && <LoginModal />}

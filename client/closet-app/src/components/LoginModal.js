@@ -4,7 +4,6 @@ import { loginUser } from '../store/actions';
 
 const LoginModal = () => {
   const dispatch = useDispatch();
-  const isAuthenticated = userSelector((state) => state.auth.isAuthenticated);
   const isLoginModalVisible = useSelector(state => state.isLoginModalVisible);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
