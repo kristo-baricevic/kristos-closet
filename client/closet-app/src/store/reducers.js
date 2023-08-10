@@ -3,10 +3,22 @@ const initialState = {
     user: null,
     isRegistrationModalVisible: false,
     isLoginModalVisible: false,
+    registrationError: null,
   };
   
   const reducer = (state = initialState, action) => {
     switch (action.type) {
+      case 'REGISTER_USER_SUCCESS':
+      return {
+        ...state,
+        user: action.payload.user, 
+        registrationError: null,   
+      };
+    case 'REGISTER_USER_ERROR':
+      return {
+        ...state,
+        registrationError: action.payload, 
+      };
       case 'SET_AUTHENTICATION':
         return {
           ...state,
@@ -38,7 +50,7 @@ const initialState = {
           isAuthenticated: true,
           user: action.payload,
         };
-      case 'LOGOUT':
+      case 'LOGOUT_USER':
         return {
           isAuthenticated: false,
           user: null,

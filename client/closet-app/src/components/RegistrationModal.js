@@ -31,6 +31,7 @@ const RegistrationModal = () => {
   };
 
   return (
+
     <div className={`modal ${isRegistrationModalVisible ? 'modal-visible' : ''}`}>
       <div className="modal-content">
         <h2>Register</h2>

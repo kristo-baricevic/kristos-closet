@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from "axios";
 
 export const setAuthentication = (isAuthenticated) => ({
     type: 'SET_AUTHENTICATION',
@@ -74,11 +74,14 @@ export const setAuthentication = (isAuthenticated) => ({
   });
 
   export const registerUser = (userData) => {
+    console.log("registerUser has run");
     return async (dispatch) => {
       try {
+        console.log("userData about to post");
         const response = await axios.post('http://localhost:3000/api/users/register', userData);
+        console.log("userData posted");
   
-        if (response.status === 200) {
+        if (response.status === 201) {
           dispatch({
             type: 'REGISTER_USER_SUCCESS',
             payload: response.data,

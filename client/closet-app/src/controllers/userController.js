@@ -1,11 +1,12 @@
-const axios = require('axios');
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 exports.registerUser = async (req, res) => {
+  console.log("registerUser in controller hit");
   try {
+    console.log("inside the try catch of registerUser");
     const { username, email, password } = req.body;
 
     // Check if required fields are provided
@@ -40,9 +41,10 @@ exports.registerUser = async (req, res) => {
       hashedPassword, 
     });
 
+    console.log("about to save")
     // Save the new user to the database
     await newUser.save();
-
+    console.log("new user saved");
     // Send a success response
     res.status(201).json({ message: 'User registered successfully', user: newUser });
 
