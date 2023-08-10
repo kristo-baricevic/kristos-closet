@@ -29,9 +29,7 @@ const LoginModal = () => {
   };
 
   const handleCloseModal = () => {
-    // Dispatch action to hide the login modal
-    // (you need to define this action in your Redux store)
-    // dispatch(hideLoginModal());
+    dispatch({ type: 'SET_LOGIN_MODAL_VISIBLE', payload: false });
     console.log("close");
   };
 
