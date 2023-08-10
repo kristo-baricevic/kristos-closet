@@ -48,17 +48,32 @@ export const setAuthentication = (isAuthenticated) => ({
   });
   
   export const logoutUser = () => ({
-    type: 'LOGOUT_USER', // You can define this action type as needed
+    type: 'LOGOUT_USER', 
   });
 
-  export const registerUser = (userData) => ({
-    type: 'REGISTER_USER',
-    payload: userData,
-  });
+  export const registerUser = (userData) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post('http://localhost:3000/register/register', userData);
+  
+        if (response.status === 200) {
+          dispatch({
+            type: 'REGISTER_USER_SUCCESS',
+            payload: response.data,
+          });
+        }
+      } catch (error) {
+        dispatch({
+          type: 'REGISTER_USER_ERROR',
+          payload: error.message,
+        });
+      }
+    };
+  };
   
   
   export const loginAnonymous = () => ({
-    type: 'LOGIN_ANONYMOUS', // You can define this action type as needed
+    type: 'LOGIN_ANONYMOUS', 
   });
   
   

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const userController = require('../controllers/userController');
+
 const { protectRoute } = require('../middleware/authMiddleware');
 const {
   getImages,
@@ -27,7 +29,7 @@ router.delete('/images/:id', protectRoute, deleteImage);
 router.post('/upload', protectRoute, uploadImage, handleUpload);
 
 // User routes
-router.post('/register', registerUser);
+router.post('/register', userController.registerUser);
 router.post('/login', loginUser);
 router.post('/logout', protectRoute, logoutUser);
 router.post('/loginAnonymous', loginAnonymous);

@@ -11,7 +11,6 @@ const RegistrationModal = () => {
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
-    // Dispatch an action to update the registration modal visibility state
     dispatch({ type: 'SET_REGISTRATION_MODAL_VISIBLE', payload: false });
   };
 
@@ -23,7 +22,6 @@ const RegistrationModal = () => {
         password,
       };
 
-      // Dispatch an action to register the user using the Redux store
       await dispatch(registerUser(userData));
       console.log('User registered successfully!');
       handleCloseModal();
