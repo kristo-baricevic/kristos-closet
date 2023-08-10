@@ -44,11 +44,31 @@ export const setAuthentication = (isAuthenticated) => ({
     payload: visible,
   });
 
-  export const loginUser = (userData) => ({
-    type: 'LOGIN_USER',
-    payload: userData,
-  });
+  export const loginUser = (userData) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post('http://localhost:3000/login', userData);
+
+        if (response.status === 200) {
+          dispatch({
+            type: 'LOGIN_USER_SUCCESS',
+            payload: response.userData,
+          });
+        }
+      } catch (error) {
+        dispatch({
+          type: 'LOGIN_USER_ERROR',
+          payload: response.data,
+        });        
+      }
+    };
+  };
   
+  export const loginSuccess = (user) => ({
+    type: 'LOGIN_SUCCESS',
+    payload: user,
+  });
+
   export const logoutUser = () => ({
     type: 'LOGOUT_USER', 
   });

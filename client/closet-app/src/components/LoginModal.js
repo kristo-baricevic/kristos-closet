@@ -4,19 +4,18 @@ import { loginUser } from '../store/actions';
 
 const LoginModal = () => {
   const dispatch = useDispatch();
+  const isAuthenticated = userSelector((state) => state.auth.isAuthenticated);
   const isLoginModalVisible = useSelector(state => state.isLoginModalVisible);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = () => {
 
     const userData = {
       username,
       password
     };
 
-    // Dispatch loginUser action to Redux
     dispatch(loginUser(userData))
       .then(response => {
         console.log('response:', response);
@@ -58,7 +57,7 @@ const LoginModal = () => {
               required
             />
           </div>
-          <button className="login-button" type="submit">Login</button>
+          <button className="login-button" type="button" onClick={handleLogin}>Login</button>
         </form>
         <button className="close-button-login" onClick={handleCloseModal}>Close</button>
       </div>
