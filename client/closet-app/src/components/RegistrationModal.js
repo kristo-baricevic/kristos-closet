@@ -34,7 +34,7 @@ const RegistrationModal = () => {
     <div className={`modal ${isRegistrationModalVisible ? 'modal-visible' : ''}`}>
       <div className="modal-content">
         <h2>Register</h2>
-        <form onSubmit={e => e.preventDefault()}>
+        <form>
           <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} required />
@@ -47,7 +47,7 @@ const RegistrationModal = () => {
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} required />
           </div>
-          <button className="submit-button" type="submit" onClick={handleRegisterUser}>Register</button>
+          <button className="submit-button" type="button" onClick={handleRegisterUser}>Register</button>
         </form>
         <button className="close-button-register" onClick={handleCloseModal}>Close</button>
       </div>
