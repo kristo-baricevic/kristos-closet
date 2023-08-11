@@ -9,9 +9,9 @@ import LoginModal from './components/LoginModal';
 
 import './App.css';
 
-const express = require('express');
-const mongoose = require('mongoose');
-const ClothingItem = require('./models/ClothingItem'); 
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const ClothingItem = require('./models/ClothingItem'); 
 
 const App = ({ images }) => {
   const [isDesktop, setIsDesktop] = useState(false);

@@ -1,5 +1,4 @@
 const multer = require('multer');
-const UserClothingItem = require('../models/UserClothingItem');
 const ClothingItem = require('../models/ClothingItem');
 
 const storage = multer.memoryStorage();
@@ -15,14 +14,14 @@ exports.handleUpload = async (req, res) => {
 
     // Your preprocessing and category classification logic here...
 
-    const userClothingItem = new UserClothingItem({
+    const clothingItem = new ClothingItem({
       image: imageBuffer,
       category,
       userId,
       isUserImage: true,
     });
 
-    await userClothingItem.save();
+    await clothingItem.save();
 
     res.json({ message: 'Image uploaded successfully' });
   } catch (error) {

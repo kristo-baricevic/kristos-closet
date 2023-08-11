@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const { verifyToken } = require('../middleware/authMiddleware');
+const { singleUpload } = require('../middleware/uploadMiddleware');
 const userController = require('../controllers/userController');
-
-const { protectRoute } = require('../middleware/authMiddleware');
 const {
   getImages,
   updateImage,
@@ -21,18 +21,18 @@ const {
 } = require('../controllers/userController');
 
 // Image routes
-router.get('/images', protectRoute, getImages);
-router.put('/images/:id', protectRoute, updateImage);
-router.delete('/images/:id', protectRoute, deleteImage);
+router.get('/images', verifyToken, getImages);
+router.put('/images/:id', verifyToken, updateImage);
+router.delete('/images/:id', verifyToken, deleteImage);
 
 // Upload route
-router.post('/upload', protectRoute, uploadImage, handleUpload);
+router.post('/upload', singleUpload, handleUpload);
 
 // User routes
 router.post('/register', userController.registerUser);
 router.post('/login', loginUser);
-router.post('/logout', protectRoute, logoutUser);
+router.post('/logout', verifyToken, logoutUser);
 router.post('/loginAnonymous', loginAnonymous);
-router.get('/current', protectRoute, getCurrentUserData);
+router.get('/current', verifyToken, getCurrentUserData);
 
 module.exports = router;
