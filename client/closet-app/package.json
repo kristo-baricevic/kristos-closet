@@ -52,6 +52,12 @@
     ]
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "react-app-rewired": "^2.2.1"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "config-overrides.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
