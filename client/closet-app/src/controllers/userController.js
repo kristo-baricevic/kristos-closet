@@ -2,12 +2,27 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const validator = require('validator');
+const passwordValidator = require('password-validator');
+const schema = new passwordValidator();
+const bcrypt = require('bcrypt');
+
+
+schema
+  .is().min(8)
+  .is().max(18)
+  .has().uppercase()
+  .has().lowercase()
+  .has().digits()
+  .has().symbols()
+  .has().not().spaces()
 
 exports.registerUser = async (req, res) => {
   console.log("registerUser in controller hit");
   try {
     console.log("inside the try catch of registerUser");
     const { username, email, password } = req.body;
+    console.log("username", username);
 
     // Check if required fields are provided
     if (!username || !email || !password) {
@@ -18,11 +33,16 @@ exports.registerUser = async (req, res) => {
     if (!validator.isEmail(email)) {
       return res.status(400).json({ error: 'Invalid email format' });
     }
+    console.log("email", email);
 
+    console.log("password", password);
+    const validationResult = schema.validate(password);
+    console.log("Validation Result:", validationResult);
     // Validate password complexity
-    if (!validator.isStrongPassword(password)) {
+    if (!schema.validate(password)) {
       return res.status(400).json({ error: 'Password does not meet complexity requirements' });
     }
+    console.log("password", password);
 
     // Check if username or email already exists in the database
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
@@ -33,6 +53,8 @@ exports.registerUser = async (req, res) => {
 
     // Create a password hash
     const hashedPassword = await bcrypt.hash(password, 10); 
+    console.log("hash", hashedPassword);
+
 
     // Create a new user in the database
     const newUser = await User.create({
@@ -40,6 +62,7 @@ exports.registerUser = async (req, res) => {
       email,
       hashedPassword, 
     });
+    console.log("newUser", newUser);
 
     console.log("about to save")
     // Save the new user to the database

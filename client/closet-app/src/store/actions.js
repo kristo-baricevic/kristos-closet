@@ -78,7 +78,7 @@ export const setAuthentication = (isAuthenticated) => ({
     return async (dispatch) => {
       try {
         console.log("userData about to post");
-        const response = await axios.post('http://localhost:5000/api/users/register', userData);
+        const response = await axios.post('http://localhost:5000/api/register', userData);
         console.log("userData posted");
   
         if (response.status === 201) {

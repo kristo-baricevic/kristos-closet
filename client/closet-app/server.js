@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 
 // Load environment variables from a .env file
-dotenv.config();
+dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
 
 // Connect to the database
 console.log("DB_URI:", process.env.MONGODB_URI);
