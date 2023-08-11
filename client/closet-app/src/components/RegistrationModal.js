@@ -6,7 +6,6 @@ const RegistrationModal = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const isRegistrationModalVisible = useSelector(state => state.isRegistrationModalVisible);
   const dispatch = useDispatch();
 
@@ -42,11 +41,22 @@ const RegistrationModal = () => {
           </div>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
-            <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} required />
+            <input 
+              type="email" 
+              id="email" 
+              value={email} 
+              onChange={e => setEmail(e.target.value)} 
+              required 
+            />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password:</label>
-            <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} required />
+            <input 
+              type="password" 
+              id="password" 
+              value={password} 
+              onChange={e => setPassword(e.target.value)} required
+            />
           </div>
           <button className="submit-button" type="button" onClick={handleRegisterUser}>Register</button>
         </form>

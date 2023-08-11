@@ -45,14 +45,16 @@ const initialState = {
           ...state,
           isLoginModalVisible: action.payload,
         };
-      case 'LOGIN_SUCCESS':
+      case 'LOGIN_USER_SUCCESS':
         return {
           isAuthenticated: true,
+          token: action.payload,
           user: action.payload,
         };
       case 'LOGOUT_USER':
         return {
           isAuthenticated: false,
+          token: null,
           user: null,
         };
   

@@ -3,47 +3,46 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../store/actions';
 
 const LoginModal = () => {
+
   const dispatch = useDispatch();
   const isLoginModalVisible = useSelector(state => state.isLoginModalVisible);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-
-    const userData = {
-      username,
-      password
-    };
-
-    dispatch(loginUser(userData))
-      .then(response => {
-        console.log('response:', response);
-        handleCloseModal();
-      })
-      .catch(error => {
-        console.error('Login failed:', error);
-        console.log(userData);
-      });
-  };
 
   const handleCloseModal = () => {
     dispatch({ type: 'SET_LOGIN_MODAL_VISIBLE', payload: false });
     console.log("close");
   };
 
+  const handleLogin = async () => {
+    try {
+      console.log("handleLogin ran");
+      const userData = {
+        username,
+        password,
+      };
+
+      await dispatch(loginUser(userData));
+      console.log('dispatch:', userData);
+      handleCloseModal();
+    } catch (error) {
+        console.error('Login failed:', error);
+      };
+    };
+
   return (
     <div className={`modal ${isLoginModalVisible ? 'visible' : ''}`}>
       <div className="modal-content">
         <h2>Login</h2>
-        <form onSubmit={handleLogin}>
+        <form>
           <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input
               type="text"
               id="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
+              onChange={e => setUsername(e.target.value)} required
             />
           </div>
           <div className="form-group">
@@ -52,8 +51,7 @@ const LoginModal = () => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
+              onChange={e => setPassword(e.target.value)} required
             />
           </div>
           <button className="login-button" type="button" onClick={handleLogin}>Login</button>

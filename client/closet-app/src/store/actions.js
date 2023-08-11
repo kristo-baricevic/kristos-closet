@@ -47,7 +47,8 @@ export const setAuthentication = (isAuthenticated) => ({
   export const loginUser = (userData) => {
     return async (dispatch) => {
       try {
-        const response = await axios.post('http://localhost:3000/login', userData);
+        console.log("inside login try");
+        const response = await axios.post('http://localhost:5000/api/login', userData);
 
         if (response.status === 200) {
           dispatch({
@@ -65,7 +66,7 @@ export const setAuthentication = (isAuthenticated) => ({
   };
   
   export const loginSuccess = (user) => ({
-    type: 'LOGIN_SUCCESS',
+    type: 'LOGIN_USER_SUCCESS',
     payload: user,
   });
 

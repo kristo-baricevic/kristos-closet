@@ -7,7 +7,6 @@ const passwordValidator = require('password-validator');
 const schema = new passwordValidator();
 const bcrypt = require('bcrypt');
 
-
 schema
   .is().min(8)
   .is().max(18)
@@ -60,7 +59,7 @@ exports.registerUser = async (req, res) => {
     const newUser = await User.create({
       username,
       email,
-      hashedPassword, 
+      password, 
     });
     console.log("newUser", newUser);
 
@@ -78,24 +77,33 @@ exports.registerUser = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
-  const { email, password } = req.body;
-
+  console.log("loginUser in controller hit");
   try {
-    // find user by email
-    const user = await User.findOne({ email });
+    const { username, password } = req.body;
+    console.log("username", username);
+    console.log("password", password);
+
+    // find user by name
+    const user = await User.findOne({ username });
+    console.log("user", user);
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
     // check to see if the provided password matches the user password
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    console.log("password match attempt");
+    console.log("given password", password);
+    console.log('user.password:', user.password);
+    const passwordMatch = await user.comparePassword(password);
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid Password' });
     }
-    
+    console.log("after password match attempt");
+
     //  successful login
-      res.status(200).json({ message: 'Login successful', user: user.toJSON() });
+    const token = jwt.sign({ userId: user._id }, 'secretKey', { expiresIn: '1h' });
+    res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Server error' });

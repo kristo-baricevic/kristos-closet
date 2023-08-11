@@ -15,7 +15,7 @@ userSchema.pre('save', async function (next) {
   }
 
   try {
-    const hashedPassword = await bcrypt.hash(this.password, 10); // 10 is the salt rounds
+    const hashedPassword = await bcrypt.hash(this.password, 10);
     this.password = hashedPassword;
     return next();
   } catch (error) {

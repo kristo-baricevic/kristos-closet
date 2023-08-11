@@ -30,7 +30,7 @@ router.post('/upload', singleUpload, handleUpload);
 
 // User routes
 router.post('/register', userController.registerUser);
-router.post('/login', loginUser);
+router.post('/login', userController.loginUser);
 router.post('/logout', verifyToken, logoutUser);
 router.post('/loginAnonymous', loginAnonymous);
 router.get('/current', verifyToken, getCurrentUserData);
