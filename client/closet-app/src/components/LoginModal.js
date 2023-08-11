@@ -32,22 +32,22 @@ const LoginModal = () => {
     };
 
   return (
-    <div className={`modal ${isLoginModalVisible ? 'visible' : ''}`}>
-      <div className="modal-content">
-        <h2>Login</h2>
+    <div className={`login-modal ${isLoginModalVisible ? 'visible' : ''}`}>
+      <div className="login-modal-content">
+        <h2 className="login-header">Login</h2>
         <form>
-          <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input
+          <div className="login-form-group">
+            <label className="login-label" htmlFor="username">Username:</label>
+            <input className="login-input"
               type="text"
               id="username"
               value={username}
               onChange={e => setUsername(e.target.value)} required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
+          <div className="login-form-group">
+            <label className="login-label" htmlFor="password">Password:</label>
+            <input className="login-input"
               type="password"
               id="password"
               value={password}
@@ -56,7 +56,7 @@ const LoginModal = () => {
           </div>
           <button className="login-button" type="button" onClick={handleLogin}>Login</button>
         </form>
-        <button className="close-button-login" onClick={handleCloseModal}>Close</button>
+        <button className="login-close-button" onClick={handleCloseModal}>Close</button>
       </div>
     </div>
   );

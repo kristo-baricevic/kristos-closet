@@ -59,7 +59,7 @@ const OutfitView = ({ selectedItems, removeItem }) => {
                   </div>
                   <div className="item-info">
                     <div>{category}</div>
-                    <button onClick={() => removeItem(item, category)}>Remove</button>
+                    <button className="outfit-remove-button" onClick={() => removeItem(item, category)}>Remove</button>
                   </div>
                 </div>
               ))}
@@ -96,7 +96,7 @@ const OutfitView = ({ selectedItems, removeItem }) => {
                   </div>
                   <div className="item-info">
                     <div>{category}</div>
-                    <button onClick={() => removeItem(item, category)}>Remove</button>
+                    <button className="outfit-remove-button" onClick={() => removeItem(item, category)}>Remove</button>
                   </div>
                 </div>
               ))}

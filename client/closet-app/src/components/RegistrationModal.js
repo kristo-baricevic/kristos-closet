@@ -31,17 +31,17 @@ const RegistrationModal = () => {
 
   return (
 
-    <div className={`modal ${isRegistrationModalVisible ? 'modal-visible' : ''}`}>
-      <div className="modal-content">
-        <h2>Register</h2>
+    <div className={`registration-modal ${isRegistrationModalVisible ? 'modal-visible' : ''}`}>
+      <div className="registration-modal-content">
+        <h2 className="registration-header">Register</h2>
         <form>
-          <div className="form-group">
+          <div className="registration-form-group">
             <label htmlFor="username">Username:</label>
             <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} required />
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input 
+          <div className="registration-form-group">
+            <label className="registration-label" htmlFor="email">Email:</label>
+            <input className="registration-input"
               type="email" 
               id="email" 
               value={email} 
@@ -49,18 +49,18 @@ const RegistrationModal = () => {
               required 
             />
           </div>
-          <div className="form-group">
+          <div className="registration-form-group">
             <label htmlFor="password">Password:</label>
-            <input 
+            <input className="registration-input"
               type="password" 
               id="password" 
               value={password} 
               onChange={e => setPassword(e.target.value)} required
             />
           </div>
-          <button className="submit-button" type="button" onClick={handleRegisterUser}>Register</button>
+          <button className="registration-submit-button" type="button" onClick={handleRegisterUser}>Register</button>
         </form>
-        <button className="close-button-register" onClick={handleCloseModal}>Close</button>
+        <button className="registration-close-button" onClick={handleCloseModal}>Close</button>
       </div>
     </div>
   );

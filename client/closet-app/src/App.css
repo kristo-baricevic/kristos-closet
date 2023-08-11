@@ -16,7 +16,7 @@
   flex-direction: column;
 }
 
-/* navbar design */
+/* Navbar Design */
 
 .navbar {
   background-color: #a4e333;
@@ -43,7 +43,7 @@
   line-height: 80px; 
 }
 
-/* button design */
+/* Button Design */
 
 .registration-button {
   margin: 5px;
@@ -121,7 +121,7 @@
   color: black;
 }
 
-/* component containers */
+/* Component Containers */
 
 .image-uploader-container {
   margin-left:20px;
@@ -154,4 +154,450 @@
   height: calc(100vh - 80px);
   overflow-y: auto;
   min-width: 90%;
+}
+
+/* Login Modal */
+
+.login-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.login-modal-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 400px;
+}
+
+.login-header {
+  margin-top: 0;
+}
+
+.login-form-group {
+  margin-bottom: 10px;
+}
+
+.login-label {
+  margin-bottom: 5px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-button {
+  display: block;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+.login-close-button {
+  display: block;
+  margin: 5px;
+  width: 83px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-close-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+/* Register Modal */
+
+.registration-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.registration-modal-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 400px;
+}
+
+.registration-header {
+  margin-top: 0;
+}
+
+.registration-form-group {
+  margin-bottom: 10px;
+}
+
+.registration-label {
+  margin-bottom: 5px;
+}
+
+.registration-input {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registration-submit-button {
+  display: block;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registration-submit-button:hover {
+  background-color: #0056b3;
+}
+
+.registration-close-button {
+  display: block;
+  margin: 5px;
+  width: 71px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registration-close-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+/* Image Uploader Component */
+
+.upload-container {
+  display: inline-block;
+}
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+.upload-title {
+  margin-left: 10px;
+  margin-top: 15px;
+}
+.choose-file {
+  margin: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 83px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.choose-file:hover {
+  background-color: #228B22;
+  color: black;
+}
+input[type="file"] {
+    display: none;
+}
+.classify-button {
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.classify-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+/* Outfit View Component */
+
+.outfit-view-container-desktop {
+  display: flex;
+  flex-direction: column;
+}
+
+.outfit-view-container-mobile {
+  display: flex;
+  flex-direction: row;
+}
+
+.outfit-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.outfit-remove-button {
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.outfit-remove-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+.accessory-view {
+  display: flex;
+  flex-direction: row;
+}
+
+.item {
+  width: 120px;
+  height: 180px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.empty-message {
+  margin-top: 20px;
+  text-align: center;
+  color: gray;
+}
+
+.item-image-wrapper {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.item-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.item-info {
+  margin-top: 10px;
+}
+
+.item-category {
+  font-size: 14px;
+  color: black;
+  padding: 5px;
+}
+
+button {
+  margin-top: 5px;
+}
+
+/* PhotoStream Component */
+
+.sticky-container {
+  position: sticky;
+  top: 0;
+  z-index: 0; 
+}
+
+.photo-stream {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.category-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background-color: #a4e333;
+  position: sticky;
+  top: 0;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.category-button {
+  padding: 5 5px;
+  margin: 5px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category-button:hover {
+  background-color: #228B22;
+  border-color: #0056b3;
+}
+
+.delete-button {
+  display: block;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+.edit-button {
+  display: block;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-category {
+  margin-top: 5px;
+  font-size: 14px;
+  color: black;
+  padding: 5px;
+}
+
+.select-button {
+  display: block;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.select-button:hover {
+  background-color: #228B22;
+  border-color: #0056b3;
 }
