@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import ImageUploader from './components/ImageUploader.js';
-import PhotoStream from './components/PhotoStream.js';
-import OutfitView from './components/OutfitView.js';
-import NavBar from './components/NavBar.js';
-import RegistrationModal from './components/RegistrationModal.js';
-import LoginModal from './components/LoginModal.js';
+import ImageUploader from './components/ImageUploader';
+import PhotoStream from './components/PhotoStream';
+import OutfitView from './components/OutfitView';
+import NavBar from './components/NavBar';
+import RegistrationModal from './components/RegistrationModal';
+import LoginModal from './components/LoginModal';
 
 import './App.css';
 
