@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ImageUploader from './components/ImageUploader';
-import PhotoStream from './components/PhotoStream';
+import ClosetView from './components/ClosetView';
 import OutfitView from './components/OutfitView';
 import NavBar from './components/NavBar';
 import RegistrationModal from './components/RegistrationModal';
@@ -71,15 +71,15 @@ const App = ({ images }) => {
     }
   };
 
-  const refreshPhotostream = async () => {
+  const refreshClosetView = async () => {
     try {
       // Perform the fetch operation or any data refreshing logic here
       const response = await fetch('/backend/Images');
       const data = await response.json();
       // Update state or perform other necessary actions with the data
-      console.log("refreshPhotostream has run with updated data:", data);
+      console.log("refreshClosetView has run with updated data:", data);
     } catch (error) {
-      console.error("Error refreshing photostream:", error);
+      console.error("Error refreshing closetview:", error);
     }
   };  
 
@@ -92,13 +92,13 @@ const App = ({ images }) => {
       {isLoginModalVisible && <LoginModal />}
 
       <div className="image-uploader-container">
-        <ImageUploader msg="Welcome to The Image Uploader!" onImageUploaded={refreshPhotostream} />
+        <ImageUploader msg="Welcome to The Image Uploader!" onImageUploaded={refreshClosetView} />
       </div>
 
       {isDesktop ? (
         <div className="desktop-layout">
-          <div className="photostream-container">
-            <PhotoStream images={images} onSelectImage={handleSelectImage} />
+          <div className="closetview-container">
+            <ClosetView images={images} onSelectImage={handleSelectImage} />
           </div>
           <div className="outfit-view-container">
             <OutfitView selectedItems={selectedItems} onRemoveItem={handleRemoveItem} className="outfit-view-desktop" />
@@ -106,8 +106,8 @@ const App = ({ images }) => {
         </div>
       ) : (
         <div className="mobile-layout">
-          <div className="photostream-container-mobile">
-            <PhotoStream images={images} onSelectImage={handleSelectImage} />
+          <div className="closetview-container-mobile">
+            <ClosetView images={images} onSelectImage={handleSelectImage} />
           </div>
           <div className="outfit-view-container-mobile">
             <OutfitView selectedItems={selectedItems} onRemoveItem={handleRemoveItem} className="outfit-view-mobile" />

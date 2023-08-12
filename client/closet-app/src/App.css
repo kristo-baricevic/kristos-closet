@@ -127,14 +127,14 @@
   margin-left:20px;
 }
 
-.photostream-container {
+.closetview-container {
   flex-grow: 1;
   height: calc(100vh - 80px);
   overflow-y: scroll;
   max-width: 60%;
 }
 
-.photostream-container-mobile {
+.closetview-container-mobile {
   flex-grow: 1;
   resize: vertical;
   height: calc(100vh - 80px);
@@ -457,7 +457,7 @@ button {
   margin-top: 5px;
 }
 
-/* PhotoStream Component */
+/* ClosetView Component */
 
 .sticky-container {
   position: sticky;
@@ -465,7 +465,7 @@ button {
   z-index: 0; 
 }
 
-.photo-stream {
+.closet-view {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
