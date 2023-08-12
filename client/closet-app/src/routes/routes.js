@@ -32,7 +32,7 @@ router.post('/upload', singleUpload, handleUpload);
 router.post('/register', userController.registerUser);
 router.post('/login', userController.loginUser);
 router.post('/logout', verifyToken, logoutUser);
-router.post('/loginAnonymous', loginAnonymous);
+router.post('/loginAnonymous', userController.loginAnonymous);
 router.get('/current', verifyToken, getCurrentUserData);
 
 module.exports = router;

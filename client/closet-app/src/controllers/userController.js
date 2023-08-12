@@ -6,6 +6,7 @@ const validator = require('validator');
 const passwordValidator = require('password-validator');
 const schema = new passwordValidator();
 const bcrypt = require('bcrypt');
+const authService = require('./authService');
 
 schema
   .is().min(8)
@@ -125,11 +126,7 @@ exports.loginAnonymous = async (req, res) => {
     await user.save()
 
     // Create and sign a JWT token for the anonymous user
-    const token = jwt.sign(
-      { userId: user._id, username: user.username },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' } 
-    );
+    const token = authService.generateToken(user);
 
     return res.status(200).json({
       token,
@@ -144,6 +141,13 @@ exports.loginAnonymous = async (req, res) => {
     return res.status(500).json({ error: 'An error occurred during anonymous login' });
   }
 };
+
+function generateUniqueUsername() {
+  // Implement a function to generate a unique username 
+  const prefix = 'anonymous';
+  const randomNumber = Math.floor(Math.random() * 1000);
+  return `${prefix}${randomNumber}`;
+}
 
 exports.getCurrentUserData = async (req, res) => {
   // Retrieve current user's data from req.user

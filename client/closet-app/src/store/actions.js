@@ -104,7 +104,7 @@ export const setAuthentication = (isAuthenticated) => ({
 
   export const loginAnonymous = () => async (dispatch) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/register');
+      const response = await axios.post('http://localhost:5000/api/loginAnonymous');
       console.log('Response data:', response.data);
   
       const isAuthenticated = response.data.isAuthenticated;
@@ -118,15 +118,7 @@ export const setAuthentication = (isAuthenticated) => ({
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-  
-      // Make another request to the backend with the JWT token included
-      const userResponse = await axios.get('http://localhost:5000/api/current', {
-        headers: headers,
-      });
-  
-      const authenticatedUser = userResponse.data;
-      console.log('Authenticated user: ', authenticatedUser);
-  
+    
       // Dispatch actions to update the Redux store
       dispatch({ type: 'SET_AUTHENTICATION', payload: isAuthenticated });
       dispatch({ type: 'SET_USER', payload: user });
