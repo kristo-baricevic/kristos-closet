@@ -100,7 +100,6 @@ export const setAuthentication = (isAuthenticated) => ({
       }
     };
   };
-  
 
   export const loginAnonymous = () => async (dispatch) => {
     try {
@@ -150,7 +149,7 @@ export const setAuthentication = (isAuthenticated) => ({
         'Authorization': `Bearer ${token}`,
       };
   
-      await axios.post('/backend/api/Upload', formData, { headers });
+      await axios.post('http://localhost:5000/api/upload', formData, { headers });
   
       dispatch(uploadImageSuccess());
       // You might want to dispatch additional actions or update the state as needed

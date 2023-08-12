@@ -38,7 +38,7 @@ const ImageUploader = () => {
     <div>
       <h2 className="upload-title">Upload Your Article of Clothing</h2>
       <div className="upload-container">
-        <form id="imageForm">
+        <form action="http://localhost:5000/api/upload" id="imageForm" method="post" enctype="multipart/form-data">
           <label htmlFor="category">Category:</label>
           <select
             id="category"
@@ -57,6 +57,7 @@ const ImageUploader = () => {
             <input
               type="file"
               id="imageFile"
+              name="imageFile"
               accept=".jpg,.jpeg,.png,.gif"
               required
               onChange={handleFileUpload}

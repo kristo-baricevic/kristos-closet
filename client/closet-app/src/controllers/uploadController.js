@@ -10,7 +10,7 @@ exports.handleUpload = async (req, res) => {
   try {
     const { category } = req.body;
     const imageBuffer = req.file.buffer;
-    const userId = req.user._id; // Assuming you've implemented authentication middleware
+    const userId = req.user._id;
 
     // Your preprocessing and category classification logic here...
 
