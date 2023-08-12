@@ -120,7 +120,7 @@ export const setAuthentication = (isAuthenticated) => ({
       };
   
       // Make another request to the backend with the JWT token included
-      const userResponse = await axios.get('/backend/User/current', {
+      const userResponse = await axios.get('http://localhost:5000/api/current', {
         headers: headers,
       });
   
