@@ -36,7 +36,7 @@ const RegistrationModal = () => {
         <h2 className="registration-header">Register</h2>
         <form>
           <div className="registration-form-group">
-            <label htmlFor="username">Username:</label>
+            <label className="registration-label" htmlFor="username">Username:</label>
             <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} required />
           </div>
           <div className="registration-form-group">

@@ -98,8 +98,38 @@ export const setAuthentication = (isAuthenticated) => ({
   };
   
 
-  export const loginAnonymous = () => ({
-    type: 'LOGIN_ANONYMOUS', 
-  });
+  export const loginAnonymous = () => async (dispatch) => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/register');
+      console.log('Response data:', response.data);
+  
+      const isAuthenticated = response.data.isAuthenticated;
+      const user = response.data.user;
+      const token = response.data.token;
+  
+      // Save token in local storage
+      localStorage.setItem('token', token);
+  
+      // Include JWT token
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+  
+      // Make another request to the backend with the JWT token included
+      const userResponse = await axios.get('/backend/User/current', {
+        headers: headers,
+      });
+  
+      const authenticatedUser = userResponse.data;
+      console.log('Authenticated user: ', authenticatedUser);
+  
+      // Dispatch actions to update the Redux store
+      dispatch({ type: 'SET_AUTHENTICATION', payload: isAuthenticated });
+      dispatch({ type: 'SET_USER', payload: user });
+    } catch (error) {
+      // Handle login error
+      console.error('Login failed:', error);
+    }
+  };
   
   

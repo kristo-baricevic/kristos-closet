@@ -3,8 +3,8 @@ import {
     setRegistrationModalVisible,
     setLoginModalVisible,
     logoutUser,
-    loginAnonymous,
 } from '../store/actions.js';
+import DemoButton from './DemoButton';
 
 const NavBar = () => {
 
@@ -23,10 +23,6 @@ const handleLogoutUser = () => {
     dispatch(logoutUser());
 };
 
-const handleLoginAnonymous = () => {
-    dispatch(loginAnonymous());
-};
-
     return (
         <nav className="navbar">
             <ul className="navbar-menu">
@@ -41,7 +37,7 @@ const handleLoginAnonymous = () => {
                 )}
             </li>
             <li>
-                <button className="demo-button" onClick={handleLoginAnonymous}>Demo</button>
+                <DemoButton />
             </li>
             </ul>
         </nav>
