@@ -4,6 +4,7 @@ const { verifyToken } = require('../middleware/authMiddleware');
 const { singleUpload } = require('../middleware/uploadMiddleware');
 const userController = require('../controllers/userController');
 const uploadController = require('../controllers/uploadController');
+const upload = require('../config/multer-config');
 const {
   getImages,
   updateImage,
@@ -27,7 +28,7 @@ router.put('/images/:id', verifyToken, updateImage);
 router.delete('/images/:id', verifyToken, deleteImage);
 
 // Upload route
-router.post('/upload', upload.single('imageFile'), uploadController.handleUpload);
+router.post('/upload', verifyToken, upload.single('imageFile'), uploadController.handleUpload);
 
 // User routes
 router.post('/register', userController.registerUser);

@@ -55,9 +55,11 @@ export const setAuthentication = (isAuthenticated) => ({
         const response = await axios.post('http://localhost:5000/api/login', userData);
 
         if (response.status === 200) {
+          const user = response.data.user;
+          console.log("user data", user);
           dispatch({
             type: 'LOGIN_USER_SUCCESS',
-            payload: response.data,
+            payload: user,
           });
         }
       } catch (error) {
@@ -140,7 +142,7 @@ export const setAuthentication = (isAuthenticated) => ({
     error,
   });
   
-  export const uploadImage = formData => async dispatch => {
+  export const uploadImage = (formData, userId) => async dispatch => {
     dispatch(uploadImageRequest());
   
     try {

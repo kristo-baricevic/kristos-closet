@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { uploadImage } from '../store/actions'; // Assuming you have an uploadImage action
+import { uploadImage } from '../store/actions'; 
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
@@ -27,9 +27,10 @@ const ImageUploader = () => {
     const formData = new FormData();
     formData.append('imageFile', file);
     formData.append('category', selectedCategory);
-    formData.append('userId', user.id);
+    // formData.append('userId', user._id);
+    console.log(user);
 
-    dispatch(uploadImage(formData)); // Dispatch your uploadImage action here
+    dispatch(uploadImage(formData)); 
     setImageUrl(null);
     setSelectedCategory('');
   };
