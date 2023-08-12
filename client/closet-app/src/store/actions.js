@@ -44,6 +44,10 @@ export const setAuthentication = (isAuthenticated) => ({
     payload: visible,
   });
 
+  export const UPLOAD_IMAGE_REQUEST = 'UPLOAD_IMAGE_REQUEST';
+  export const UPLOAD_IMAGE_SUCCESS = 'UPLOAD_IMAGE_SUCCESS';
+  export const UPLOAD_IMAGE_FAILURE = 'UPLOAD_IMAGE_FAILURE';
+
   export const loginUser = (userData) => {
     return async (dispatch) => {
       try {
@@ -131,5 +135,35 @@ export const setAuthentication = (isAuthenticated) => ({
       console.error('Login failed:', error);
     }
   };
+
+  export const uploadImageRequest = () => ({
+    type: UPLOAD_IMAGE_REQUEST,
+  });
   
+  export const uploadImageSuccess = () => ({
+    type: UPLOAD_IMAGE_SUCCESS,
+  });
   
+  export const uploadImageFailure = error => ({
+    type: UPLOAD_IMAGE_FAILURE,
+    error,
+  });
+  
+  export const uploadImage = formData => async dispatch => {
+    dispatch(uploadImageRequest());
+  
+    try {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`,
+      };
+  
+      await axios.post('/backend/api/Upload', formData, { headers });
+  
+      dispatch(uploadImageSuccess());
+      // You might want to dispatch additional actions or update the state as needed
+    } catch (error) {
+      dispatch(uploadImageFailure(error));
+      // You might want to handle the error and dispatch additional actions or update the state
+    }
+  };
