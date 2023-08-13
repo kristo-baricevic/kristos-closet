@@ -36,6 +36,5 @@ router.post('/login', userController.loginUser);
 router.post('/logout', verifyToken, userController.logoutUser);
 router.post('/loginAnonymous', userController.loginAnonymous);
 router.get('/current', verifyToken, userController.getCurrentUserData);
-router.get('/userinfo', verifyToken, userController.getUserInfo);
 
 module.exports = router;

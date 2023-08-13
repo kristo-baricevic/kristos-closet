@@ -1,39 +1,32 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../store/actions';
+import { loginUser, closeLoginModal } from '../store/actions';
 
 const LoginModal = () => {
-
   const isLoginModalVisible = useSelector(state => state.isLoginModalVisible);
+  const dispatch = useDispatch();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
-
-
   const handleCloseModal = () => {
-    dispatch({ type: 'SET_LOGIN_MODAL_VISIBLE', payload: false });
-    console.log("close");
+    dispatch(closeLoginModal()); 
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      console.log("handleLogin ran");
-
-      dispatch(login({
+      await dispatch(loginUser({ 
         username: username,
         password: password,
-      }))
+      }));
 
-      console.log('dispatch:', userData);
       handleCloseModal();
-      
     } catch (error) {
-        console.error('Login failed:', error);
-      };
-    };
+      console.error('Login failed:', error);
+    }
+  };
 
   return (
     <div className={`login-modal ${isLoginModalVisible ? 'visible' : ''}`}>
@@ -42,7 +35,8 @@ const LoginModal = () => {
         <form className="login-form" onSubmit={(e) => handleLogin(e)}>
           <div className="login-form-group">
             <label className="login-label" htmlFor="username">Username:</label>
-            <input className="login-input"
+            <input
+              className="login-input"
               type="text"
               id="username"
               value={username}
@@ -51,7 +45,8 @@ const LoginModal = () => {
           </div>
           <div className="login-form-group">
             <label className="login-label" htmlFor="password">Password:</label>
-            <input className="login-input"
+            <input
+              className="login-input"
               type="password"
               id="password"
               value={password}
@@ -60,7 +55,7 @@ const LoginModal = () => {
           </div>
           <button className="login-button" type="submit">Login</button>
         </form>
-        <button className="login-close-button">Close</button>
+        <button className="login-close-button" onClick={handleCloseModal}>Close</button>
       </div>
     </div>
   );

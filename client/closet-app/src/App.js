@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ImageUploader from './components/ImageUploader';
 import ClosetView from './components/ClosetView';
 import OutfitView from './components/OutfitView';
 import NavBar from './components/NavBar';
 import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
+import { loginUser } from './store/actions';
 
 import './App.css';
 
 const App = ({ images }) => {
+
   const [isDesktop, setIsDesktop] = useState(false);
   const isRegistrationModalVisible = useSelector(state => state.isRegistrationModalVisible);
   const isLoginModalVisible = useSelector(state => state.isLoginModalVisible);
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(state => state.isAuthenticated);
+  const user = useSelector(state => state.user);
 
   const [selectedItems, setSelectedItems] = useState({
     hat: null,
@@ -33,6 +38,13 @@ const App = ({ images }) => {
       window.removeEventListener('resize', checkScreenSize);
     };
   }, []);
+
+  useEffect(() => {
+    // Fetch user data once the component mounts
+    if (!isAuthenticated) {
+      dispatch(loginUser({ username: 'yourUsername', password: 'yourPassword' }));
+    }
+  }, [dispatch, isAuthenticated]);
 
   const handleSelectImage = (image) => {
     const { category } = image;
