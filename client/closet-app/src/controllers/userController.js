@@ -93,18 +93,17 @@ exports.loginUser = async (req, res) => {
     }
 
     // check to see if the provided password matches the user password
-    console.log("password match attempt");
-    console.log("given password", password);
-    console.log('user.password:', user.password);
+    console.log("password match attempt made");
     const passwordMatch = await user.comparePassword(password);
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid Password' });
     }
     console.log("after password match attempt");
 
-    //  successful login
+    // Generate JWT token
     const token = jwt.sign({ userId: user._id }, 'secretKey', { expiresIn: '1h' });
-    res.status(200).json({ message: 'Login successful', token });
+    
+    res.status(200).json({ message: 'Login successful', user: { _id: user._id, username: user.username } });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Server error' });

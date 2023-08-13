@@ -47,9 +47,10 @@ const initialState = {
         };
       case 'LOGIN_USER_SUCCESS':
         return {
+          ...state,
           isAuthenticated: true,
           token: action.payload,
-          user: action.payload,
+          user: action.payload.user,
         };
       case 'LOGOUT_USER':
         return {
