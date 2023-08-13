@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadImage } from '../store/actions'; 
+import { selectUser } from '../features/userSlice';
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.isAuthenticated);
-  const user = useSelector(state => state.user);
+  const user = useSelector(selectUser);
   
   console.log("the user is", user);
 
