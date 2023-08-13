@@ -50,7 +50,7 @@ const initialState = {
           ...state,
           isAuthenticated: true,
           token: action.payload,
-          user: action.payload.user,
+          user: action.payload,
         };
       case 'LOGOUT_USER':
         return {
