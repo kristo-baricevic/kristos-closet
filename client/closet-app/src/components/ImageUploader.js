@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadImage } from '../store/actions'; 
+import { selectUser } from '../features/userSlice';
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.isAuthenticated);
-  const user = useSelector(state => state.user);
+  const user = useSelector(selectUser);
+
+  console.log("the user is", user);
+
+  useEffect(() => {
+  console.log("Component re-rendered, user:", user);
+  }, [user]);
 
   const [imageUrl, setImageUrl] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -27,7 +34,7 @@ const ImageUploader = () => {
     const formData = new FormData();
     formData.append('imageFile', file);
     formData.append('category', selectedCategory);
-    // formData.append('userId', user._id);
+    formData.append('userId', user._id);
     console.log(user);
 
     dispatch(uploadImage(formData)); 

@@ -6,8 +6,6 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import 'path-browserify';
 
-const db = require('./config/database');
-require('./seed');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

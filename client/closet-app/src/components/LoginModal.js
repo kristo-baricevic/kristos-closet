@@ -4,10 +4,11 @@ import { loginUser } from '../store/actions';
 
 const LoginModal = () => {
 
-  const dispatch = useDispatch();
   const isLoginModalVisible = useSelector(state => state.isLoginModalVisible);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
 
 
   const handleCloseModal = () => {
@@ -15,17 +16,20 @@ const LoginModal = () => {
     console.log("close");
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
     try {
       console.log("handleLogin ran");
-      const userData = {
-        username,
-        password,
-      };
 
-      await dispatch(loginUser(userData));
+      dispatch(login({
+        username: username,
+        password: password,
+      }))
+
       console.log('dispatch:', userData);
       handleCloseModal();
+      
     } catch (error) {
         console.error('Login failed:', error);
       };
@@ -35,14 +39,14 @@ const LoginModal = () => {
     <div className={`login-modal ${isLoginModalVisible ? 'visible' : ''}`}>
       <div className="login-modal-content">
         <h2 className="login-header">Login</h2>
-        <form>
+        <form className="login-form" onSubmit={(e) => handleLogin(e)}>
           <div className="login-form-group">
             <label className="login-label" htmlFor="username">Username:</label>
             <input className="login-input"
               type="text"
               id="username"
               value={username}
-              onChange={e => setUsername(e.target.value)} required
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="login-form-group">
@@ -51,12 +55,12 @@ const LoginModal = () => {
               type="password"
               id="password"
               value={password}
-              onChange={e => setPassword(e.target.value)} required
+              onChange={(e) => setPassword(e.target.value)} 
             />
           </div>
-          <button className="login-button" type="button" onClick={handleLogin}>Login</button>
+          <button className="login-button" type="submit">Login</button>
         </form>
-        <button className="login-close-button" onClick={handleCloseModal}>Close</button>
+        <button className="login-close-button">Close</button>
       </div>
     </div>
   );

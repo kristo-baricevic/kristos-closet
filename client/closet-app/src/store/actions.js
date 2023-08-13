@@ -61,6 +61,7 @@ export const setAuthentication = (isAuthenticated) => ({
             type: 'LOGIN_USER_SUCCESS',
             payload: user,
           });
+          return console.log(user);
         }
       } catch (error) {
         dispatch({
