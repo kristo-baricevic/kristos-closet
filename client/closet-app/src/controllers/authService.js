@@ -33,9 +33,9 @@ const AuthService = {
 
   generateToken: (user) => {
     const token = jwt.sign(
-      { userId: user._id, username: user.username, isAdmin: user.isAdmin },
-      'your-secret-key',
-      { expiresIn: '1h' } // Token expiration time
+      { userId: user._id, username: user.username},
+      'ladybug-soccer',
+      { expiresIn: '1h' } 
     );
 
     return token;

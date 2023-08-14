@@ -14,11 +14,11 @@ const initialState = {
         user: action.payload.user, 
         registrationError: null,   
       };
-    case 'REGISTER_USER_ERROR':
-      return {
-        ...state,
-        registrationError: action.payload, 
-      };
+      case 'REGISTER_USER_ERROR':
+        return {
+          ...state,
+          registrationError: action.payload, 
+        };
       case 'SET_AUTHENTICATION':
         return {
           ...state,
@@ -58,7 +58,25 @@ const initialState = {
           token: null,
           user: null,
         };
-  
+      case 'UPLOAD_IMAGE_REQUEST':
+        return {
+          ...state,
+          isUploadingImage: true,
+          uploadError: null,
+        };
+      case 'UPLOAD_IMAGE_SUCCESS':
+        return {
+          ...state,
+          isUploadingImage: false,
+          uploadError: null,
+        };
+      case 'UPLOAD_IMAGE_FAILURE':
+        return {
+          ...state,
+          isUploadingImage: false,
+          uploadError: action.payload,
+        };
+    
       default:
         return state; 
     }

@@ -162,6 +162,8 @@ export const uploadImage = (formData) => async dispatch => {
       'Authorization': `Bearer ${token}`,
     };
 
+    console.log("token is", token);
+
     await axios.post('http://localhost:5000/api/upload', formData, { headers });
 
     dispatch(uploadImageSuccess());

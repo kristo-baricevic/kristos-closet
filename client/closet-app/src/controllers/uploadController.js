@@ -24,6 +24,8 @@ exports.handleUpload = async (req, res) => {
 
     await clothingItem.save();
 
+    console.log("clothing item saved is", clothingItem);
+
     res.json({ message: 'Image uploaded successfully' });
   } catch (error) {
     console.error(error);
