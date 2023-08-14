@@ -4,8 +4,6 @@ const ClothingItem = require('../models/ClothingItem');
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-exports.uploadImage = upload.single('imageFile');
-
 exports.handleUpload = async (req, res) => {
   console.log("inside handle upload controller");
   try {
@@ -13,15 +11,15 @@ exports.handleUpload = async (req, res) => {
     const imageBuffer = req.file.buffer;
     const userId = req.user._id;
 
-    console.log("user in controller", user);
-
-    // Your preprocessing and category classification logic here...
+    console.log("user in controller", req.user);
+    console.log("image data", imageBuffer );
+    console.log("image category", category);
 
     const clothingItem = new ClothingItem({
       image: imageBuffer,
-      category,
-      userId,
-      isUserImage: true,
+      category: category,
+      userId: userId,
+      isUserImage: false,
     });
 
     await clothingItem.save();

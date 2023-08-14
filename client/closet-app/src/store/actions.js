@@ -153,7 +153,7 @@ export const uploadImageFailure = error => ({
 });
 
 // Thunk action to upload an image
-export const uploadImage = (formData, userId) => async dispatch => {
+export const uploadImage = (formData) => async dispatch => {
   dispatch(uploadImageRequest());
 
   try {

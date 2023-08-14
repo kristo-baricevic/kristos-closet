@@ -10,36 +10,39 @@ const ImageUploader = () => {
   
   console.log("the user is", user);
 
-  useEffect(() => {
-  console.log("Component re-rendered, user:", user);
-  }, [user]);
-
   const [imageUrl, setImageUrl] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [category, setCategory] = useState('');
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     setImageUrl(URL.createObjectURL(file));
   };
 
-  const classifyImage = (event) => {
+  const classifyImage = async (event) => {
     event.preventDefault();
 
-    if (!isAuthenticated) {
+    if (!isAuthenticated) { 
       alert('You need to be logged in to upload an image.');
       return;
     }
 
     const file = document.getElementById('imageFile').files[0];
+    if (!file) {
+      alert('Please choose an image file.');
+      return;
+    }
+
     const formData = new FormData();
     formData.append('imageFile', file);
-    formData.append('category', selectedCategory);
+    formData.append('category', category);
     formData.append('userId', user._id);
-    console.log(user);
+    formData.append('isUserImage', false);
+
+    console.log("image upload", user);
 
     dispatch(uploadImage(formData)); 
     setImageUrl(null);
-    setSelectedCategory('');
+    setCategory('');
   };
 
   return (
@@ -50,9 +53,8 @@ const ImageUploader = () => {
           <label htmlFor="category">Category:</label>
           <select
             id="category"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            required
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
           >
             <option value="Top">Top</option>
             <option value="Bottom">Bottom</option>
@@ -67,7 +69,6 @@ const ImageUploader = () => {
               id="imageFile"
               name="imageFile"
               accept=".jpg,.jpeg,.png,.gif"
-              required
               onChange={handleFileUpload}
             />
             Choose File
