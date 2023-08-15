@@ -35,7 +35,7 @@ const AuthService = {
     const token = jwt.sign(
       { userId: user._id, username: user.username},
       'ladybug-soccer',
-      { expiresIn: '1h' } 
+      { expiresIn: '1h'} 
     );
 
     return token;

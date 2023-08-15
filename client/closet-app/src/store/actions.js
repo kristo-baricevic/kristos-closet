@@ -63,7 +63,15 @@ export const loginUser = (userData) => {
 
       if (response.status === 200) {
         const user = response.data.user;
+        const token = response.data.token; // Assuming the token is returned from the server
         console.log("user data", user);
+        console.log("token", token);
+
+        // Set the token in client storage
+        localStorage.setItem('token', token);
+
+        console.log("client side token", token);
+
         dispatch(loginSuccess(user));
         return console.log(user);
       }
@@ -75,6 +83,7 @@ export const loginUser = (userData) => {
     }
   };
 };
+
   
 // action creator fo successful login
 export const loginSuccess = (user) => ({
@@ -158,6 +167,7 @@ export const uploadImage = (formData) => async dispatch => {
 
   try {
     const token = localStorage.getItem('token');
+    console.log("token in upload image in actions.js", token);
     const headers = {
       'Authorization': `Bearer ${token}`,
     };

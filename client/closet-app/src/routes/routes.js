@@ -9,17 +9,6 @@ const {
   updateImage,
   deleteImage,
 } = require('../controllers/imagesController');
-const {
-  uploadImage,
-  handleUpload,
-} = require('../controllers/uploadController');
-const {
-  registerUser,
-  loginUser,
-  logoutUser,
-  loginAnonymous,
-  getCurrentUserData,
-} = require('../controllers/userController');
 
 // Image routes
 router.get('/images', verifyToken, getImages);

@@ -100,14 +100,20 @@ exports.loginUser = async (req, res) => {
     }
     console.log("after password match attempt");
 
-    // Generate JWT token
-    const token = jwt.sign({ userId: user._id }, 'secretKey', { expiresIn: '1h' });
-    
-    res.status(200).json({ message: 'Login successful', user: { _id: user._id, username: user.username } });
-    } catch (error) {
+    const token = authService.generateToken(user);
+
+    return res.status(200).json({
+      token,
+      user: {
+        _id: user._id,
+        username: user.username,
+      },
+      isAuthenticated: true,
+    });
+  } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Server error' });
-  }
+    }
 };
 
 exports.logoutUser = async (req, res) => {

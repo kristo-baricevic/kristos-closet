@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadImage } from '../store/actions'; 
 import { selectUser } from '../features/userSlice';
@@ -35,8 +35,7 @@ const ImageUploader = () => {
     const formData = new FormData();
     formData.append('imageFile', file);
     formData.append('category', category);
-    formData.append('userId', user._id);
-    formData.append('isUserImage', false);
+    formData.append('user', user);
 
     console.log("image upload", user);
 

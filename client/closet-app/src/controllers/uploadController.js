@@ -7,9 +7,12 @@ const upload = multer({ storage });
 exports.handleUpload = async (req, res) => {
   console.log("inside handle upload controller");
   try {
+    console.log("log the response", req.body);
+    console.log("log the response", req);
+    console.log("log the response", req.body.user._id);
     const { category } = req.body;
     const imageBuffer = req.file.buffer;
-    const userId = req.user._id;
+    const userId = req.body.user._id;
 
     console.log("user in controller", req.user);
     console.log("image data", imageBuffer );

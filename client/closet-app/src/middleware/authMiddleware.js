@@ -20,7 +20,7 @@ const verifyToken = (req, res, next) => {
     
     jwt.verify(token, secretKey, (error, decoded) => {
       if (error) {
-        console.error("Token verification error:", error.message);
+        console.error("Token verification error:", error);
         return res.status(401).json({ error: 'Invalid token' });
       }
 
@@ -34,7 +34,6 @@ const verifyToken = (req, res, next) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
-
 
 module.exports = {
   verifyToken
