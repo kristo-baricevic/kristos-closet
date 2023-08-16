@@ -8,9 +8,11 @@ import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
 import { loginUser } from './store/actions';
 
+
 import './App.css';
 
 const App = ({ images }) => {
+
 
   const [isDesktop, setIsDesktop] = useState(false);
   const isRegistrationModalVisible = useSelector(state => state.isRegistrationModalVisible);
@@ -82,10 +84,10 @@ const App = ({ images }) => {
   const refreshClosetView = async () => {
     try {
       // Perform the fetch operation or any data refreshing logic here
-      const response = await fetch('/backend/Images');
-      const data = await response.json();
+      // const response = await fetch('/backend/Images');
+      // const data = await response.json();
       // Update state or perform other necessary actions with the data
-      console.log("refreshClosetView has run with updated data:", data);
+      // console.log("refreshClosetView has run with updated data:", data);
     } catch (error) {
       console.error("Error refreshing closetview:", error);
     }

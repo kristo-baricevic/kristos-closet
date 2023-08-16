@@ -63,7 +63,7 @@ export const loginUser = (userData) => {
 
       if (response.status === 200) {
         const user = response.data.user;
-        const token = response.data.token; // Assuming the token is returned from the server
+        const token = response.data.token; 
         console.log("user data", user);
         console.log("token", token);
 
@@ -124,7 +124,7 @@ export const registerUser = (userData) => {
 export const loginAnonymous = () => async (dispatch) => {
   try {
     const response = await axios.post('http://localhost:5000/api/loginAnonymous');
-    console.log('Response data:', response.data);
+    // console.log('Response data:', response.data);
 
     const isAuthenticated = response.data.isAuthenticated;
     const user = response.data.user;
@@ -162,19 +162,26 @@ export const uploadImageFailure = error => ({
 });
 
 // Thunk action to upload an image and metadata
-export const uploadImageAndMetaData = (formData) => async (dispatch, getState) => {
+export const uploadImageAndMetaData = (filename, dbFormData) => async (dispatch, getState) => {
   dispatch(uploadImageRequest());
-
+  console.log("inside action for upload");
   try {
-    const token = getState().auth.token;
+    const token = localStorage.getItem('token');
     const headers = {
       'Authorization': `Bearer ${token}`,
     };
 
-    const uploadToDbPromise = axios.post('http://localhost:5000/api/upload-to-db', formData, { headers });
-    const uploadToBunnyPromise = axios.post('http://localhost:5000/api/upload-to-bunny', formData, { headers });
+    // Combine the data for both requests
+    const combinedFormData = new FormData();
+    combinedFormData.append('filename', filename);
+    for (const [key, value] of dbFormData.entries()) {
+      combinedFormData.append(key, value);
+    }
 
-    await axios.all([uploadToDbPromise, uploadToBunnyPromise]);
+    // Upload data to backend
+    const uploadPromise = axios.post('http://localhost:5000/api/upload', combinedFormData, { headers });
+
+    await uploadPromise;
 
     dispatch(uploadImageSuccess());
   } catch (error) {

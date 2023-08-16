@@ -7,27 +7,15 @@ exports.getImages = async (req, res) => {
   try {
     const { user } = req.body;
 
-    console.log("user", user);
-
     const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
-
-    console.log("clothingItems", clothingItems);
 
     const imageIds = clothingItems.map(item => new mongoose.Types.ObjectId(item.imageFileId));
     
-    console.log("imageIds", imageIds);
-
     const imageChunks = await ImageChunk.find({ files_id: { $in: imageIds } });
 
     const matchingChunks = imageChunks.filter(chunk => imageIds.includes(chunk.files_id.toString()));
 
-    console.log("matchingChunks", matchingChunks);
-    
-    console.log("imageChunks", imageChunks);
-
     const imageFiles = await ImageFile.find({ _id: { $in: imageIds } });
-
-    console.log("imageFiles", imageFiles);
 
     const images = clothingItems.map(item => {
       const imageData = imageChunks
@@ -36,8 +24,6 @@ exports.getImages = async (req, res) => {
         .join('');
 
       const imageFile = imageFiles.find(file => file._id.equals(item.imageFileId));
-
-      console.log("imageFile", imageFile);
 
       return {
         id: item._id,

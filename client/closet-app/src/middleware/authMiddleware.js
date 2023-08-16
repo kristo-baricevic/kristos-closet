@@ -24,9 +24,9 @@ const verifyToken = (req, res, next) => {
         return res.status(401).json({ error: 'Invalid token' });
       }
 
-      console.log("decoded", decoded);
+      // console.log("decoded", decoded);
       req.user = decoded.user;
-      console.log("decoded user", req.user);
+      // console.log("decoded user", req.user);
       next();
     });
   } catch (error) {
