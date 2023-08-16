@@ -162,7 +162,7 @@ export const uploadImageFailure = error => ({
 });
 
 // Thunk action to upload an image and metadata
-export const uploadImageAndMetaData = (filename, dbFormData) => async (dispatch, getState) => {
+export const uploadImageAndMetaData = (imageFile, dbFormData) => async (dispatch) => {
   dispatch(uploadImageRequest());
   console.log("inside action for upload");
   try {
@@ -171,12 +171,17 @@ export const uploadImageAndMetaData = (filename, dbFormData) => async (dispatch,
       'Authorization': `Bearer ${token}`,
     };
 
+    console.log("form data in actions",dbFormData);
+    console.log("imageFile in the actions", imageFile);
+    
     // Combine the data for both requests
     const combinedFormData = new FormData();
-    combinedFormData.append('filename', filename);
+    combinedFormData.append('imageFile', imageFile);
     for (const [key, value] of dbFormData.entries()) {
       combinedFormData.append(key, value);
     }
+
+    console.log("combined form data", combinedFormData);
 
     // Upload data to backend
     const uploadPromise = axios.post('http://localhost:5000/api/upload', combinedFormData, { headers });

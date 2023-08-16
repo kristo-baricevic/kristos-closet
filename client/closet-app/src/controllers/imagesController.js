@@ -1,7 +1,5 @@
 const ClothingItem = require('../models/ClothingItem');
-const ImageChunk = require('../models/ImageChunk');
-const ImageFile = require('../models/ImageFile');
-const mongoose = require('mongoose');
+const AWS = require('aws-sdk');
 
 exports.getImages = async (req, res) => {
   try {
@@ -9,31 +7,25 @@ exports.getImages = async (req, res) => {
 
     const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
 
-    const imageIds = clothingItems.map(item => new mongoose.Types.ObjectId(item.imageFileId));
-    
-    const imageChunks = await ImageChunk.find({ files_id: { $in: imageIds } });
+    const images = await Promise.all(clothingItems.map(async item => {
+      const s3 = new AWS.S3();
+      const bucketName = 'closet-app';
+      const imageKey = `images/${item.filename}`; 
 
-    const matchingChunks = imageChunks.filter(chunk => imageIds.includes(chunk.files_id.toString()));
-
-    const imageFiles = await ImageFile.find({ _id: { $in: imageIds } });
-
-    const images = clothingItems.map(item => {
-      const imageData = imageChunks
-        .filter(chunk => chunk.files_id.equals(item.imageFileId))
-        .map(chunk => chunk.data.toString('base64'))
-        .join('');
-
-      const imageFile = imageFiles.find(file => file._id.equals(item.imageFileId));
+      const imageUrl = s3.getSignedUrl('getObject', {
+        Bucket: bucketName,
+        Key: imageKey,
+      });
 
       return {
         id: item._id,
-        data: imageData,
+        imageUrl: imageUrl,
         category: item.category,
         userId: item.userId,
-        filename: imageFile.filename,
-        contentType: imageFile.contentType
+        filename: item.filename,
+        contentType: item.contentType
       };
-    });
+    }));
 
     res.json(images);
   } catch (error) {

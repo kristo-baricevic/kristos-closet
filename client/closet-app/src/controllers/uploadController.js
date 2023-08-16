@@ -11,26 +11,34 @@ exports.uploadImageAndMetaData = async (req, res) => {
   try {
     const s3 = new AWS.S3();
     const bucketName = 'closet-app';
-    const file = req.file; // Access the uploaded file from req
+    const file = req.file; 
+    console.log("backend upload file check", req.file);
     const { category } = req.body;
-    const userId = req.user._id; // Assuming you have the user data in req.user
+    const user = req.body.user;
+    console.log("testing backend upload", req.user);
+    console.log("category", category);
+    console.log("user in the backend", user);
 
     // Upload the image to AWS S3
-    const filename = `images/${Date.now()}-${file.originalname}`;
+    const imageFile = `images/${Date.now()}-${file.originalname}`;
+    console.log("imageFile in the backend", imageFile);
     const uploadParams = {
       Bucket: bucketName,
-      Key: filename,
-      Body: file.buffer, // Use file.buffer to upload file content
+      Key: imageFile,
+      Body: req.file.buffer,
       ACL: 'public-read',
     };
+
+    console.log("upload backend check", uploadParams);
+
     await s3.upload(uploadParams).promise();
 
     // Save metadata in the database
     const clothingItem = new ClothingItem({
       category: category,
       isUserImage: false,
-      userId: userId,
-      imageUrl: `https://${bucketName}.s3.amazonaws.com/${filename}`, // Add the S3 URL to metadata
+      userId: user._id,
+      imageUrl: `https://${bucketName}.s3.amazonaws.com/${imageFile}`, // Add the S3 URL to metadata
     });
     await clothingItem.save();
 

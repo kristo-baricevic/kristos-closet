@@ -12,11 +12,12 @@ const ImageUploader = () => {
   const [isUserImage, setIsUserImage] = useState(false);
 
   const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    setFile(file);
+    const uploadedFile = event.target.files[0];
+    console.log("uploadedFile", uploadedFile);
+    setImageFile(uploadedFile);
   };
 
-  const [file, setFile] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
 
   const classifyImage = async () => {
     if (!isAuthenticated) { 
@@ -24,20 +25,25 @@ const ImageUploader = () => {
       return;
     }
 
-    if (!file) {
+    if (!imageFile) {
       alert('Please choose an image file.');
       return;
     }
+
+    console.log("front end imageFile", imageFile);
 
     const dbFormData = new FormData();
     dbFormData.append('user', user);
     dbFormData.append('category', category);
     dbFormData.append('isUserImage', isUserImage);
 
-    dispatch(uploadImageAndMetaData(file, dbFormData)); 
+    console.log("user in frontend", user);
+    console.log("dbFormData in front", dbFormData);
+
+    dispatch(uploadImageAndMetaData(imageFile, dbFormData)); 
 
     // Clear the selected file and other inputs
-    setFile(null);
+    setImageFile(null);
     setCategory('');
     setIsUserImage(false);
   };
@@ -63,8 +69,8 @@ const ImageUploader = () => {
           <label className="choose-file">
             <input
               type="file"
-              id="imageFile"
-              name="imageFile"
+              id="uploadedFile"
+              name="uploadedFile"
               accept=".jpg,.jpeg,.png,.gif"
               onChange={handleFileUpload}
             />
@@ -84,7 +90,7 @@ const ImageUploader = () => {
       <p id="resultLabel"></p>
 
       <div id="imageContainer">
-        {file && <img id="uploadedImage" alt="Uploaded" src={URL.createObjectURL(file)} />}
+        {imageFile && <img id="uploadedImage" alt="Uploaded" src={URL.createObjectURL(imageFile)} />}
       </div>
     </div>
   );
