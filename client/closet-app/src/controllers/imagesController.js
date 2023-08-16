@@ -1,17 +1,53 @@
 const ClothingItem = require('../models/ClothingItem');
+const ImageChunk = require('../models/ImageChunk');
+const ImageFile = require('../models/ImageFile');
+const mongoose = require('mongoose');
 
 exports.getImages = async (req, res) => {
   try {
-    const userId = req.user._id; // Assuming you've implemented authentication middleware
+    const { user } = req.body;
 
-    const clothingItems = await ClothingItem.find({ $or: [{ userId }, { isUserImage: false }] });
+    console.log("user", user);
 
-    const images = clothingItems.map(item => ({
-      id: item._id,
-      data: item.image,
-      category: item.category,
-      userId: item.userId,
-    }));
+    const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
+
+    console.log("clothingItems", clothingItems);
+
+    const imageIds = clothingItems.map(item => new mongoose.Types.ObjectId(item.imageFileId));
+    
+    console.log("imageIds", imageIds);
+
+    const imageChunks = await ImageChunk.find({ files_id: { $in: imageIds } });
+
+    const matchingChunks = imageChunks.filter(chunk => imageIds.includes(chunk.files_id.toString()));
+
+    console.log("matchingChunks", matchingChunks);
+    
+    console.log("imageChunks", imageChunks);
+
+    const imageFiles = await ImageFile.find({ _id: { $in: imageIds } });
+
+    console.log("imageFiles", imageFiles);
+
+    const images = clothingItems.map(item => {
+      const imageData = imageChunks
+        .filter(chunk => chunk.files_id.equals(item.imageFileId))
+        .map(chunk => chunk.data.toString('base64'))
+        .join('');
+
+      const imageFile = imageFiles.find(file => file._id.equals(item.imageFileId));
+
+      console.log("imageFile", imageFile);
+
+      return {
+        id: item._id,
+        data: imageData,
+        category: item.category,
+        userId: item.userId,
+        filename: imageFile.filename,
+        contentType: imageFile.contentType
+      };
+    });
 
     res.json(images);
   } catch (error) {

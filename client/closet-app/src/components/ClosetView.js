@@ -54,12 +54,8 @@ const ClosetView = ({ isAuthenticated }) => {
 
   const fetchImages = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const headers = {
-        Authorization: `Bearer ${token}`,
-      };
 
-      const response = await fetch('/backend/Images', { headers });
+      const response = await fetch('http://localhost:5000/api/images');
       const data = await response.json();
 
       const updatedImages = data.map((image) => ({

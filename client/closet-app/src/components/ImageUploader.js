@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { uploadImage } from '../store/actions'; 
+import { uploadImageAndMetaData } from '../store/actions'; 
 import { selectUser } from '../features/userSlice';
 
 const ImageUploader = () => {
@@ -39,7 +39,7 @@ const ImageUploader = () => {
 
     console.log("image upload", user);
 
-    dispatch(uploadImage(formData)); 
+    dispatch(uploadImageAndMetaData(formData)); 
     setImageUrl(null);
     setCategory('');
   };

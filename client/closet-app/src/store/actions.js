@@ -161,20 +161,20 @@ export const uploadImageFailure = error => ({
   error,
 });
 
-// Thunk action to upload an image
-export const uploadImage = (formData) => async dispatch => {
+// Thunk action to upload an image and metadata
+export const uploadImageAndMetaData = (formData) => async (dispatch, getState) => {
   dispatch(uploadImageRequest());
 
   try {
-    const token = localStorage.getItem('token');
-    console.log("token in upload image in actions.js", token);
+    const token = getState().auth.token;
     const headers = {
       'Authorization': `Bearer ${token}`,
     };
 
-    console.log("token is", token);
+    const uploadToDbPromise = axios.post('http://localhost:5000/api/upload-to-db', formData, { headers });
+    const uploadToBunnyPromise = axios.post('http://localhost:5000/api/upload-to-bunny', formData, { headers });
 
-    await axios.post('http://localhost:5000/api/upload', formData, { headers });
+    await axios.all([uploadToDbPromise, uploadToBunnyPromise]);
 
     dispatch(uploadImageSuccess());
   } catch (error) {
