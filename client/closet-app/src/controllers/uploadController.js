@@ -3,6 +3,8 @@ const axios = require('axios');
 const ClothingItem = require('../models/ClothingItem');
 const FormData = require('form-data');
 const AWS = require('../config/aws-config');
+const fs = require('fs');
+
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -25,13 +27,12 @@ exports.uploadImageAndMetaData = async (req, res) => {
     const uploadParams = {
       Bucket: bucketName,
       Key: imageFile,
-      Body: req.file.buffer,
-      ACL: 'public-read',
+      Body: fs.createReadStream(file.path),
     };
 
-    console.log("upload backend check", uploadParams);
-
     await s3.upload(uploadParams).promise();
+
+    console.log("upload backend passed checks");
 
     // Save metadata in the database
     const clothingItem = new ClothingItem({
