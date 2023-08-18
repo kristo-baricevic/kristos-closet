@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItem } from '../features/addSliceItem.js'
 
-const OutfitView = ({ selectedItems, removeItem }) => {
+const OutfitView = () => {
   const [isDesktop, setIsDesktop] = useState(false);
+
+  const selectedItems = useSelector(state => state.selectedItems);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsDesktop(window.innerWidth >= 768);
@@ -15,6 +20,10 @@ const OutfitView = ({ selectedItems, removeItem }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const removeSelectedItem = (item, category) => {
+    dispatch(removeItem({ category, itemId: item.id }));
+  };
 
   const filteredSelectedItems = Object.keys(selectedItems).reduce((acc, category) => {
     if (category !== "accessory") {
@@ -59,7 +68,7 @@ const OutfitView = ({ selectedItems, removeItem }) => {
                   </div>
                   <div className="item-info">
                     <div>{category}</div>
-                    <button className="outfit-remove-button" onClick={() => removeItem(item, category)}>Remove</button>
+                    <button className="outfit-remove-button" onClick={() => removeSelectedItem(item, category)}>Remove</button>
                   </div>
                 </div>
               ))}
@@ -74,7 +83,7 @@ const OutfitView = ({ selectedItems, removeItem }) => {
                       </div>
                       <div className="item-info">
                         <div>Accessory</div>
-                        <button onClick={() => removeItem(accessory, 'accessory')}>Remove</button>
+                        <button onClick={() => removeSelectedItem(accessory, 'accessory')}>Remove</button>
                       </div>
                     </div>
                   ))}
@@ -96,7 +105,7 @@ const OutfitView = ({ selectedItems, removeItem }) => {
                   </div>
                   <div className="item-info">
                     <div>{category}</div>
-                    <button className="outfit-remove-button" onClick={() => removeItem(item, category)}>Remove</button>
+                    <button className="outfit-remove-button" onClick={() => removeSelectedItem(item, category)}>Remove</button>
                   </div>
                 </div>
               ))}
@@ -111,7 +120,7 @@ const OutfitView = ({ selectedItems, removeItem }) => {
                       </div>
                       <div className="item-info">
                         <div>Accessory</div>
-                        <button onClick={() => removeItem(accessory, 'accessory')}>Remove</button>
+                        <button onClick={() => removeSelectedItem(accessory, 'accessory')}>Remove</button>
                       </div>
                     </div>
                   ))}

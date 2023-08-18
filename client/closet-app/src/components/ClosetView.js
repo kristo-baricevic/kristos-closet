@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/selectedItemsSlice'; 
+
 
 const ClosetView = ({ isAuthenticated }) => {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -6,6 +9,8 @@ const ClosetView = ({ isAuthenticated }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [editedCategory, setEditedCategory] = useState(null);
   const [editingImageId, setEditingImageId] = useState(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchImages();
@@ -156,10 +161,8 @@ const ClosetView = ({ isAuthenticated }) => {
     setEditedCategory("");
   };
 
-  const handleSelectImage = (image) => {
-    // Emit the selected image to the parent component
-    // this.$emit('selectImage', image);
-    console.log('handleSelectImage connected:', image);
+  const handleSelectImage = (image, category) => {
+    dispatch(addItem({ category, item: image }));
   };
 
   const filterByCategory = (category) => {
