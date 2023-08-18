@@ -30,33 +30,27 @@ const ClosetView = ({ isAuthenticated }) => {
     // Open the image when clicked
   };
 
-  const getImageUrl = (imageData) => {
-    try {
-      if (!imageData) {
-        console.error('Invalid image data:', imageData);
-        return null;
-      }
-
-      const base64String = atob(imageData);
-      const bytes = new Uint8Array(base64String.length);
-
-      for (let i = 0; i < base64String.length; i++) {
-        bytes[i] = base64String.charCodeAt(i);
-      }
-
-      const blob = new Blob([bytes.buffer], { type: 'image/jpeg' });
-      return URL.createObjectURL(blob);
-    } catch (error) {
-      console.error('Error converting image data:', error);
+  const getImageUrl = (image) => {
+    if (!image) {
+      console.error('Invalid image URL:', image);
       return null;
     }
+
+    const { imageUrl } = image;
+
+    return imageUrl;
   };
 
   const fetchImages = async () => {
     try {
 
+      console.log("Inside fetch");
+
       const response = await fetch('http://localhost:5000/api/images');
       const data = await response.json();
+
+      console.log("after fetch");
+      console.log("data fetched", data);
 
       const updatedImages = data.map((image) => ({
         ...image,
@@ -189,7 +183,7 @@ const ClosetView = ({ isAuthenticated }) => {
           <div className="closet-view">
             {filteredImages.map(image => (
               <div key={image.id} className="card" onClick={() => openImage(image)}>
-                <img className="card-image" src={getImageUrl(image.data)} alt="Photo" />
+                <img className="card-image" src={`data:$image.ContentType};base64,${getImageUrl(image)}`} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">
                     <button className="delete-button" onClick={() => deleteImage(image)}>Delete</button>
@@ -239,7 +233,7 @@ const ClosetView = ({ isAuthenticated }) => {
           <div className="closet-view">
             {filteredImages.map(image => (
               <div key={image.id} className="card" onClick={() => openImage(image)}>
-                <img className="card-image" src={getImageUrl(image.data)} alt="Photo" />
+                <img className="card-image" src={`data:$image.ContentType};base64,${getImageUrl(image)}`} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">
                     <button className="delete-button" onClick={() => deleteImage(image)}>Delete</button>

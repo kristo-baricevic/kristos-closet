@@ -8,6 +8,8 @@ const clothingItemSchema = new mongoose.Schema({
     ref: 'User', 
   },
   imageFileId: mongoose.Schema.Types.ObjectId, 
+  imageUrl: String, 
+  filename: String,
 });
 
 const ClothingItem = mongoose.model('ClothingItem', clothingItemSchema);

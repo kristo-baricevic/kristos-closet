@@ -1,7 +1,5 @@
 const multer = require('multer');
-const axios = require('axios');
 const ClothingItem = require('../models/ClothingItem');
-const FormData = require('form-data');
 const AWS = require('../config/aws-config');
 const fs = require('fs');
 
@@ -21,15 +19,19 @@ exports.uploadImageAndMetaData = async (req, res) => {
     console.log("category", category);
     console.log("user in the backend", user);
 
-    // Upload the image to AWS S3
-    const imageFile = `images/${Date.now()}-${file.originalname}`;
+    const timestampPrefix = Date.now();
+
+    const imageFile = `images/${timestampPrefix}-${file.originalname}`;
+    
     console.log("imageFile in the backend", imageFile);
+     
     const uploadParams = {
       Bucket: bucketName,
       Key: imageFile,
       Body: fs.createReadStream(file.path),
     };
 
+    // Upload the image to AWS S3
     await s3.upload(uploadParams).promise();
 
     console.log("upload backend passed checks");
@@ -39,7 +41,8 @@ exports.uploadImageAndMetaData = async (req, res) => {
       category: category,
       isUserImage: false,
       userId: user._id,
-      imageUrl: `https://${bucketName}.s3.amazonaws.com/${imageFile}`, // Add the S3 URL to metadata
+      imageUrl: `${imageFile}`,
+      filename: file.originalname,
     });
     await clothingItem.save();
 

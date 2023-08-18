@@ -5,21 +5,32 @@ exports.getImages = async (req, res) => {
   try {
     const { user } = req.body;
 
+    console.log("inside get images");
+
     const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
+
+    console.log("clothing items", clothingItems);
 
     const images = await Promise.all(clothingItems.map(async item => {
       const s3 = new AWS.S3();
       const bucketName = 'closet-app';
-      const imageKey = `images/${item.filename}`; 
+      const imageKey = `${item.imageUrl}`; 
 
-      const imageUrl = s3.getSignedUrl('getObject', {
+      console.log("item filename check", item.imageUrl);
+      console.log("imageKey check", imageKey);
+
+      const imageObject = await s3.getObject({
         Bucket: bucketName,
         Key: imageKey,
-      });
+      }).promise();
+
+      const imageUrl = imageObject.Body.toString('base64');
+
+      console.log("backend URL", imageUrl);
 
       return {
         id: item._id,
-        imageUrl: imageUrl,
+        imageUrl: imageUrl, 
         category: item.category,
         userId: item.userId,
         filename: item.filename,
@@ -60,6 +71,7 @@ exports.updateImage = async (req, res) => {
     res.status(500).json({ error: 'An error occurred' });
   }
 };
+
 
 exports.deleteImage = async (req, res) => {
   try {
