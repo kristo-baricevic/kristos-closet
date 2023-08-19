@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeItem } from '../features/addSliceItem.js'
+import { removeItem } from '../features/selectedItemsSlice.js'
 
 const OutfitView = () => {
   const [isDesktop, setIsDesktop] = useState(false);
