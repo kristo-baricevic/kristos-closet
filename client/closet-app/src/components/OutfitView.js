@@ -33,26 +33,12 @@ const OutfitView = () => {
   }, {});
 
   const getImageUrl = (imageData) => {
-    try {
-      if (!imageData) {
-        console.error('Invalid image data:', imageData);
-        return null;
-      }
-
-      const selectedImageData = imageData.data;
-      const base64String = atob(selectedImageData);
-      const bytes = new Uint8Array(base64String.length);
-
-      for (let i = 0; i < base64String.length; i++) {
-        bytes[i] = base64String.charCodeAt(i);
-      }
-
-      const blob = new Blob([bytes.buffer], { type: 'image/jpeg' });
-      return URL.createObjectURL(blob);
-    } catch (error) {
-      console.error('Error converting image data:', error);
+    if (!imageData) {
+      console.error('Invalid image data:', imageData);
       return null;
     }
+
+    return `data:${imageData.ContentType};base64,${imageData.imageData}`;
   };
 
   return (
@@ -73,7 +59,7 @@ const OutfitView = () => {
                 </div>
               ))}
             </div>
-            <div className="accessory-view">
+            {/* <div className="accessory-view">
               {selectedItems.accessory.length > 0 ? (
                 <div className="accessories">
                   {selectedItems.accessory.map(accessory => (
@@ -87,11 +73,11 @@ const OutfitView = () => {
                       </div>
                     </div>
                   ))}
-                </div>
-              ) : (
+                </div> */}
+              {/* ) : (
                 <div className="empty-message">No items selected</div>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       ) : (
@@ -110,7 +96,7 @@ const OutfitView = () => {
                 </div>
               ))}
             </div>
-            <div className="accessory-view">
+            {/* <div className="accessory-view">
               {selectedItems.accessory.length > 0 ? (
                 <div className="accessories">
                   {selectedItems.accessory.map(accessory => (
@@ -128,7 +114,7 @@ const OutfitView = () => {
               ) : (
                 <div className="empty-message">No items selected</div>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       )}
