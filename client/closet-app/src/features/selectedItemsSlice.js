@@ -1,44 +1,48 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const selectedItemsSlice = createSlice({
-  name: 'selectedItems',
-  initialState: {
+const initialState = {
     top: null,
     bottom: null,
     shoes: null,
     hat: null,
     onePiece: null,
     accessories: [],
-  },
+}
+
+const selectedItemsSlice = createSlice({
+  name: 'selectedItems',
+  initialState,
   reducers: {
     addItem: (state, action) => {
-      const { category, item } = action.payload;
+        
+        const { category, item } = action.payload;
 
-      // Check if adding this item violates the constraints
-      if (!isValidAddition(state, category, item)) {
-        console.error('Invalid addition:', category, item);
-        return;
-      }
+        // Check if adding this item violates the constraints
+        if (!isValidAddition(state, category, item)) {
+            console.error('Invalid addition:', category, item);
+            return;
+        }
 
-      // If item is a 'onePiece', remove 'top' and 'bottom' from the state
-      if (item.category === 'onePiece') {
-        state.top = null;
-        state.bottom = null;
-      } else if (item.category === 'top' || item.category === 'bottom') {
-        // If item is 'top' or 'bottom', remove 'onePiece' from the state
-        state.onePiece = null;
-      }
+        // If item is a 'onePiece', remove 'top' and 'bottom' from the state
+        if (item.category === 'onePiece') {
+            state.top = null;
+            state.bottom = null;
+        } else if (item.category === 'top' || item.category === 'bottom') {
+            // If item is 'top' or 'bottom', remove 'onePiece' from the state
+            state.onePiece = null;
+        }
 
-      // Ensure that only up to three accessories can be added
-      if (category === 'accessories' && state.accessories.length >= 3) {
-        console.error('Too many accessories:', state.accessories);
-        return;
-      }
+        // Ensure that only up to three accessories can be added
+        if (category === 'accessories' && state.accessories.length >= 3) {
+            console.error('Too many accessories:', state.accessories);
+            return;
+        }
 
-      // Update the state with the new item for the specified category
-      state[category] = Array.isArray(state[category]) ? [...state[category], item] : item;
+        // Update the state with the new item for the specified category
+        state[category] = item;
     },
     removeItem: (state, action) => {
+
       const { category, itemId } = action.payload;
       
       // Update the state by removing the item from the specified category
