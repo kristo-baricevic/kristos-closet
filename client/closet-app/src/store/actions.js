@@ -84,7 +84,6 @@ export const loginUser = (userData) => {
   };
 };
 
-  
 // action creator fo successful login
 export const loginSuccess = (user) => ({
   type: 'LOGIN_USER_SUCCESS',
@@ -173,7 +172,7 @@ export const uploadImageAndMetaData = (imageFile, dbFormData) => async (dispatch
 
     console.log("form data in actions",dbFormData);
     console.log("imageFile in the actions", imageFile);
-    
+
     // Combine the data for both requests
     const combinedFormData = new FormData();
     combinedFormData.append('imageFile', imageFile);
