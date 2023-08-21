@@ -41,9 +41,8 @@ const ClosetView = ({ isAuthenticated }) => {
       return null;
     }
 
-    const { imageUrl } = image;
 
-    return imageUrl;
+    return image.imageUrl;
   };
 
   const fetchImages = async () => {
@@ -60,6 +59,7 @@ const ClosetView = ({ isAuthenticated }) => {
       const updatedImages = data.map((image) => ({
         ...image,
         isUserImage: image.userId !== null,
+        imageUrl: `http://localhost:5000/api/images/${image.id}`,
       }));
       setImages(updatedImages);
     } catch (error) {
@@ -79,7 +79,7 @@ const ClosetView = ({ isAuthenticated }) => {
     }
 
     try {
-      const response = await fetch(`/backend/Images/${image.id}`, {
+      const response = await fetch(`http://localhost:5000/api/images/${image.id}`, {
         method: 'DELETE',
       });
 
@@ -131,7 +131,7 @@ const ClosetView = ({ isAuthenticated }) => {
       }
 
       try {
-        const response = await fetch(`/backend/Images/${image.id}`, {
+        const response = await fetch(`http://localhost:5000/Images/${image.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -186,7 +186,7 @@ const ClosetView = ({ isAuthenticated }) => {
           <div className="closet-view">
             {filteredImages.map(image => (
               <div key={image.id} className="card" onClick={() => openImage(image)}>
-                <img className="card-image" src={`data:$image.ContentType};base64,${getImageUrl(image)}`} alt="closetItem" />
+                <img className="card-image" src={getImageUrl(image)} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">
                     <button className="delete-button" onClick={() => deleteImage(image)}>Delete</button>
@@ -236,7 +236,7 @@ const ClosetView = ({ isAuthenticated }) => {
           <div className="closet-view">
             {filteredImages.map(image => (
               <div key={image.id} className="card" onClick={() => openImage(image)}>
-                <img className="card-image" src={`data:$image.ContentType};base64,${getImageUrl(image)}`} alt="closetItem" />
+                <img className="card-image" src={getImageUrl(image)} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">
                     <button className="delete-button" onClick={() => deleteImage(image)}>Delete</button>

@@ -24,7 +24,7 @@ exports.getImages = async (req, res) => {
         Key: imageKey,
       }).promise();
 
-      const imageUrl = imageObject.Body.toString('base64');
+      const imageUrl = `http://your-server-url/images/${item._id}`;
 
       console.log("backend URL", imageUrl);
 
@@ -39,6 +39,33 @@ exports.getImages = async (req, res) => {
     }));
 
     res.json(images);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
+
+exports.getImageById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const item = await ClothingItem.findById(id);
+
+    if (!item) {
+      return res.status(404).json({ error: 'Image not found' });
+    }
+
+    const s3 = new AWS.S3();
+    const bucketName = 'closet-app';
+    const imageKey = `${item.imageUrl}`; 
+
+    const imageObject = await s3.getObject({
+      Bucket: bucketName,
+      Key: imageKey,
+    }).promise();
+
+    // Send the image as a response
+    res.set('Content-Type', item.contentType);
+    res.send(imageObject.Body);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred' });
