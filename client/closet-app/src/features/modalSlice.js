@@ -15,19 +15,17 @@ const modalSlice = createSlice({
     setLoginModalVisible: (state, action) => {
       state.isLoginModalVisible = action.payload;
     },
-    // ... other actions related to modals
   },
 });
 
 export const {
   setRegistrationModalVisible,
   setLoginModalVisible,
-  // ... other exported actions
 } = modalSlice.actions;
 
-export const selectIsRegistrationModalVisible = (state) =>
+export const RegistrationModalVisibility = (state) =>
   state.modal.isRegistrationModalVisible;
-export const selectIsLoginModalVisible = (state) =>
+export const LoginModalVisibility = (state) =>
   state.modal.isLoginModalVisible;
 
 export default modalSlice.reducer;
