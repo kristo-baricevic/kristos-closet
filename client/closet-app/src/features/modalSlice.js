@@ -28,4 +28,4 @@ export const RegistrationModalVisibility = (state) =>
 export const LoginModalVisibility = (state) =>
   state.modal.isLoginModalVisible;
 
-export default modalSlice.reducer;
+export const modalSliceReducer = modalSlice.reducer;

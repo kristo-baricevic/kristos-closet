@@ -27,7 +27,7 @@ export const fetchItems = () => async (dispatch) => {
     }
   };
 
-const initialClosetSlice = createSlice({
+const closetSlice = createSlice({
   name: 'initialCloset',
   initialState,
   reducers: {
@@ -64,10 +64,10 @@ export const {
   fetchItemsFailure,
   editImage,
   deleteImage,
-} = initialClosetSlice.actions;
+} = closetSlice.actions;
 
-export const selectInitialClosetItems = (state) => state.initialCloset.images;
-export const selectInitialClosetLoading = (state) => state.initialCloset.loading;
-export const selectInitialClosetError = (state) => state.initialCloset.error;
+export const selectInitialClosetItems = (state) => state.closet.images;
+export const selectInitialClosetLoading = (state) => state.closet.loading;
+export const selectInitialClosetError = (state) => state.closet.error;
 
-export default initialClosetSlice.reducer;
+export const closetSliceReducer = closetSlice.reducer;

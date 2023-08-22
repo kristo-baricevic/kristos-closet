@@ -61,4 +61,4 @@ export const {
 export const selectIsUploadingImage = (state) => state.upload.isUploadingImage;
 export const selectUploadError = (state) => state.upload.uploadError;
 
-export default uploadSlice.reducer;
+export const uploadSliceReducer = uploadSlice.reducer;

@@ -1,19 +1,23 @@
-import { configureStore } from '@reduxjs/toolkit';
-import uploadSlice from '../features/uploadSlice';
-import modalSlice from '../features/modalSlice';
-import userSlice from '../features/userSlice';
-import selectedItemsSlice from '../features/selectedItemsSlice';
-import closetSlice from '../features/closetSlice';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { uploadSliceReducer } from '../features/uploadSlice';
+import { modalSliceReducer } from '../features/modalSlice';
+import { userSliceReducer } from '../features/userSlice';
+import { selectedItemsSliceReducer } from '../features/selectedItemsSlice';
+import { closetSliceReducer } from '../features/closetSlice';
+import thunkMiddleware from 'redux-thunk';
 
-const store = configureStore({
+const middleware = [...getDefaultMiddleware(), thunkMiddleware];
+
+export const store = configureStore({
   reducer: {
-    upload: uploadSlice.reducer,
-    modal: modalSlice.reducer,
-    user: userSlice.reducer,
-    selectedItems: selectedItemsSlice.reducer,
-    closet: closetSlice.reducer,
+    upload: uploadSliceReducer,
+    modal: modalSliceReducer,
+    user: userSliceReducer,
+    selectedItems: selectedItemsSliceReducer,
+    closet: closetSliceReducer,
   },
-  // Add middleware or other configurations if needed
-});
+  middleware: middleware,
+  devTools: process.env.NODE_ENV !== 'production',
+})
 
 export default store;

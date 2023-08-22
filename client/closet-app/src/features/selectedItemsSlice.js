@@ -69,4 +69,4 @@ function isValidAddition(state, category, newItem) {
 }
 
 export const { addItem, removeItem } = selectedItemsSlice.actions;
-export default selectedItemsSlice.reducer;
+export const selectedItemsSliceReducer = selectedItemsSlice.reducer;

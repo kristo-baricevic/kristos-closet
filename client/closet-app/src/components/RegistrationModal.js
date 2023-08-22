@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { registerUser } from '../features/userSlice'; 
-import { setRegistrationModalVisible, isRegistrationModalVisible } from '../features/modalSlice';
+import { setRegistrationModalVisible, RegistrationModalVisibility } from '../features/modalSlice';
 
 const RegistrationModal = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const registrationModalVisible = useSelector(isRegistrationModalVisible);
+  const registrationModalVisible = useSelector(RegistrationModalVisibility);
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {

@@ -6,8 +6,8 @@ import OutfitView from './components/OutfitView';
 import NavBar from './components/NavBar';
 import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
-import { loginUser, selectUser, selectIsAuthenticated } from '../features/userSlice';
-import { selectIsRegistrationModalVisible, selectIsLoginModalVisible } from '../features/modalSlice';
+import { loginUser, selectUser, selectIsAuthenticated } from './features/userSlice';
+import { setRegistrationModalVisible, setLoginModalVisible } from './features/modalSlice';
 
 
 import './App.css';
@@ -15,8 +15,8 @@ import './App.css';
 const App = ({ images }) => {
   const [isDesktop, setIsDesktop] = useState(false);
  
-  const isRegistrationModalVisible = useSelector(selectIsRegistrationModalVisible);
-  const isLoginModalVisible = useSelector(selectIsLoginModalVisible);
+  const isRegistrationModalVisible = useSelector(setRegistrationModalVisible);
+  const isLoginModalVisible = useSelector(setLoginModalVisible);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const user = useSelector(selectUser);
 
