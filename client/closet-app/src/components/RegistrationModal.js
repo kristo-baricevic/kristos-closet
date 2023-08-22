@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { registerUser } from '../store/actions'; 
+import { registerUser } from '../features/userSlice'; 
+import { setRegistrationModalVisible, isRegistrationModalVisible } from '../features/modalSlice';
 
 const RegistrationModal = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const isRegistrationModalVisible = useSelector(state => state.isRegistrationModalVisible);
+  const registrationModalVisible = useSelector(isRegistrationModalVisible);
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
-    dispatch({ type: 'SET_REGISTRATION_MODAL_VISIBLE', payload: false });
+    dispatch(setRegistrationModalVisible(false)); 
   };
 
   const handleRegisterUser = async () => {
@@ -31,7 +32,7 @@ const RegistrationModal = () => {
 
   return (
 
-    <div className={`registration-modal ${isRegistrationModalVisible ? 'modal-visible' : ''}`}>
+    <div className={`registration-modal ${registrationModalVisible ? 'modal-visible' : ''}`}>
       <div className="registration-modal-content">
         <h2 className="registration-header">Register</h2>
         <form>
