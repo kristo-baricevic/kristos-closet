@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, closeLoginModal } from '../store/actions';
+import { LoginModalVisibility, setLoginModalVisible } from '../features/modalSlice';
+import axios from 'axios';
 
 const LoginModal = () => {
-  const isLoginModalVisible = useSelector(state => state.isLoginModalVisible);
+  const isLoginModalVisible = useSelector(LoginModalVisibility);
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleCloseModal = () => {
-    dispatch(closeLoginModal()); 
+    dispatch(setLoginModalVisible(false)); 
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      await dispatch(loginUser({ 
-        username: username,
-        password: password,
-      }));
+      const response = await axios.post('http://localhost:5000/api/login', {
+        username,
+        password,
+      });
+
+      console.log('Login successful:', response.data);
 
       handleCloseModal();
     } catch (error) {

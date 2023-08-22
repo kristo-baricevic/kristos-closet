@@ -1,19 +1,23 @@
-import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import rootReducer from './reducers';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { uploadSliceReducer } from '../features/uploadSlice';
+import { modalSliceReducer } from '../features/modalSlice';
+import { userSliceReducer } from '../features/userSlice';
+import { selectedItemsSliceReducer } from '../features/selectedItemsSlice';
+import { closetSliceReducer } from '../features/closetSlice';
 import thunkMiddleware from 'redux-thunk';
-import selectedItemsReducer from '../features/selectedItemsSlice'; 
 
 const middleware = [...getDefaultMiddleware(), thunkMiddleware];
 
-const rootReducerCombined = combineReducers({
-  selectedItems: selectedItemsReducer,
-  reducer: rootReducer,
-})
-
-const store = configureStore({
-  reducer: rootReducerCombined,
+export const store = configureStore({
+  reducer: {
+    upload: uploadSliceReducer,
+    modal: modalSliceReducer,
+    user: userSliceReducer,
+    selectedItems: selectedItemsSliceReducer,
+    closet: closetSliceReducer,
+  },
   middleware: middleware,
   devTools: process.env.NODE_ENV !== 'production',
-});
+})
 
 export default store;
