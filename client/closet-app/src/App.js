@@ -22,7 +22,6 @@ const App = ({ images }) => {
 
   const dispatch = useDispatch();
 
-
   const [selectedItems, setSelectedItems] = useState({
     hat: null,
     top: null,
@@ -100,8 +99,8 @@ const App = ({ images }) => {
       
       <NavBar />
 
-      {isRegistrationModalVisible && <RegistrationModal />}
-      {isLoginModalVisible && <LoginModal />}
+      {/* {isRegistrationModalVisible && <RegistrationModal />}
+      {isLoginModalVisible && <LoginModal />} */}
 
       <div className="image-uploader-container">
         <ImageUploader msg="Welcome to The Image Uploader!" onImageUploaded={refreshClosetView} />
