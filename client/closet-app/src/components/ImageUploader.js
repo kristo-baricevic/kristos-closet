@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { uploadImageAndMetaData } from '../store/actions'; 
-import { selectUser } from '../features/userSlice';
+import { uploadImageAndMetaData } from '../features/uploadSlice'; 
+import { selectUser, isAuthenticated } from '../features/userSlice';
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(state => state.isAuthenticated);
+  const userAuthenticated = useSelector(isAuthenticated);
   const user = useSelector(selectUser);
 
   const [category, setCategory] = useState('');
@@ -20,7 +20,7 @@ const ImageUploader = () => {
   const [imageFile, setImageFile] = useState(null);
 
   const classifyImage = async () => {
-    if (!isAuthenticated) { 
+    if (!userAuthenticated) { 
       alert('You need to be logged in to upload an image.');
       return;
     }

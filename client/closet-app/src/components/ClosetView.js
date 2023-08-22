@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../features/selectedItemsSlice'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchItems, editImage, deleteImage, selectInitialClosetItems } from '../features/closetSlice';
+import { addItem } from '../features/selectedItemsSlice';
 
 
 const ClosetView = ({ isAuthenticated }) => {
   const [isDesktop, setIsDesktop] = useState(false);
-  const [images, setImages] = useState([]);
+  const images = useSelector(selectInitialClosetItems);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [editedCategory, setEditedCategory] = useState(null);
   const [editingImageId, setEditingImageId] = useState(null);
@@ -13,13 +14,13 @@ const ClosetView = ({ isAuthenticated }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchImages();
+    dispatch(fetchItems());
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
     return () => {
       window.removeEventListener('resize', checkScreenSize);
     };
-  }, []);
+  }, [dispatch]);
 
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 
@@ -45,29 +46,7 @@ const ClosetView = ({ isAuthenticated }) => {
     return image.imageUrl;
   };
 
-  const fetchImages = async () => {
-    try {
-
-      console.log("Inside fetch");
-
-      const response = await fetch('http://localhost:5000/api/images');
-      const data = await response.json();
-
-      console.log("after fetch");
-      console.log("data fetched", data);
-
-      const updatedImages = data.map((image) => ({
-        ...image,
-        isUserImage: image.userId !== null,
-        imageUrl: `http://localhost:5000/api/images/${image.id}`,
-      }));
-      setImages(updatedImages);
-    } catch (error) {
-      console.error('Failed to fetch images:', error);
-    }
-  };
-
-  const deleteImage = async (image) => {
+  const deleteImageHandler = async (image) => {
     if (!isAuthenticated) {
       alert('You must be logged in to delete items.');
       return;
@@ -79,20 +58,13 @@ const ClosetView = ({ isAuthenticated }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/images/${image.id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        await fetchImages();
-      } else {
-        console.error('Failed to delete image:', image.id);
-      }
+      await dispatch(deleteImage(image.id));
     } catch (error) {
       console.error('Error deleting image:', error);
     }
   };
 
+ 
   const handleEditImage = (image) => {
     if (!isAuthenticated) {
       alert('You must be logged in to edit items.');
@@ -108,16 +80,6 @@ const ClosetView = ({ isAuthenticated }) => {
     setEditedCategory(image.category);
   };
 
-  // const isUserClothingItem = async (imageId) => {
-  //   try {
-  //     const image = images.find((img) => img.id === imageId);
-  //     return image && image.isUserImage;
-  //   } catch (error) {
-  //     console.error('Error checking if the image belongs to UserClothingItem:', error);
-  //     return false;
-  //   }
-  // };
-
   const isEditing = (image) => {
     return editingImageId === image.id && image.isUserImage;
   };
@@ -125,31 +87,7 @@ const ClosetView = ({ isAuthenticated }) => {
   const saveImageEdit = async (image) => {
     const updatedCategory = editedCategory.trim();
     if (updatedCategory !== "") {
-      const foundImage = images.find((img) => img.id === image.id);
-      if (foundImage) {
-        foundImage.category = updatedCategory;
-      }
-
-      try {
-        const response = await fetch(`http://localhost:5000/Images/${image.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            category: updatedCategory,
-          }),
-        });
-
-        if (response.ok) {
-          const updatedImage = await response.json();
-          foundImage.category = updatedImage.category;
-        } else {
-          console.error('Failed to update image category:', response);
-        }
-      } catch (error) {
-        console.error('Error updating image category:', error);
-      }
+      await dispatch(editImage({ id: image.id, category: updatedCategory }));
     }
 
     setEditingImageId(null);
@@ -168,7 +106,7 @@ const ClosetView = ({ isAuthenticated }) => {
   const filterByCategory = (category) => {
     setSelectedCategory(category);
   };
-
+ 
   return (
     <div>
       {isDesktop ? (
@@ -189,7 +127,7 @@ const ClosetView = ({ isAuthenticated }) => {
                 <img className="card-image" src={getImageUrl(image)} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">
-                    <button className="delete-button" onClick={() => deleteImage(image)}>Delete</button>
+                    <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
                     <button className="select-button" onClick={() => handleSelectImage(image)}>Select</button>
                     <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
                   </div>
@@ -239,7 +177,7 @@ const ClosetView = ({ isAuthenticated }) => {
                 <img className="card-image" src={getImageUrl(image)} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">
-                    <button className="delete-button" onClick={() => deleteImage(image)}>Delete</button>
+                    <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
                     <button className="select-button" onClick={() => handleSelectImage(image)}>Select</button>
                     <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
                   </div>
