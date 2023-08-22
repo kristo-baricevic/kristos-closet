@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
 import { loginUser, selectUser, selectIsAuthenticated } from './features/userSlice';
-import { setRegistrationModalVisible, setLoginModalVisible } from './features/modalSlice';
+import { RegistrationModalVisibility, LoginModalVisibility } from './features/modalSlice';
 
 
 import './App.css';
@@ -15,8 +15,8 @@ import './App.css';
 const App = ({ images }) => {
   const [isDesktop, setIsDesktop] = useState(false);
  
-  const isRegistrationModalVisible = useSelector(setRegistrationModalVisible);
-  const isLoginModalVisible = useSelector(setLoginModalVisible);
+  const isRegistrationModalVisible = useSelector(RegistrationModalVisibility);
+  const isLoginModalVisible = useSelector(LoginModalVisibility);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const user = useSelector(selectUser);
 
@@ -99,8 +99,8 @@ const App = ({ images }) => {
       
       <NavBar />
 
-      {/* {isRegistrationModalVisible && <RegistrationModal />}
-      {isLoginModalVisible && <LoginModal />} */}
+      {isRegistrationModalVisible && <RegistrationModal />}
+      {isLoginModalVisible && <LoginModal />}
 
       <div className="image-uploader-container">
         <ImageUploader msg="Welcome to The Image Uploader!" onImageUploaded={refreshClosetView} />
