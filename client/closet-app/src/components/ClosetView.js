@@ -22,6 +22,8 @@ const ClosetView = ({ isAuthenticated }) => {
     };
   }, [dispatch]);
 
+  console.log("image structure", images);
+
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 
   const filteredImages = selectedCategory
@@ -100,6 +102,7 @@ const ClosetView = ({ isAuthenticated }) => {
   };
 
   const handleSelectImage = (image, category) => {
+    console.log("handleSelectImage", category)
     dispatch(addItem({ category, item: image }));
   };
 
@@ -128,7 +131,7 @@ const ClosetView = ({ isAuthenticated }) => {
                 <div className="card-info">
                   <div className="card-buttons-container">
                     <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
-                    <button className="select-button" onClick={() => handleSelectImage(image)}>Select</button>
+                    <button className="select-button" onClick={() => handleSelectImage(image, image.category)}>Select</button>
                     <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
                   </div>
                   <div className="category-container">
@@ -178,7 +181,7 @@ const ClosetView = ({ isAuthenticated }) => {
                 <div className="card-info">
                   <div className="card-buttons-container">
                     <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
-                    <button className="select-button" onClick={() => handleSelectImage(image)}>Select</button>
+                    <button className="select-button" onClick={() => handleSelectImage(image, image.category)}>Select</button>
                     <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
                   </div>
                   <div className="category-container">

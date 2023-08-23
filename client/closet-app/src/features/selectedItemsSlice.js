@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     items: {
-      top: null,
-      bottom: null,
-      shoes: null,
-      hat: null,
-      onePiece: null,
-      accessories: [],
+      Top: null,
+      Bottom: null,
+      Shoes: null,
+      Hat: null,
+      OnePiece: null,
+      Accessories: [],
   },
   loading: false,
   error: null,
@@ -20,6 +20,8 @@ export const selectedItemsSlice = createSlice({
     addItem: (state, action) => {
         
         const { category, item } = action.payload;
+        console.log("category", category);
+        console.log("item check", item);
 
         // Check if adding this item violates the constraints
         if (!isValidAddition(state, category, item)) {
@@ -43,7 +45,8 @@ export const selectedItemsSlice = createSlice({
         }
 
         // Update the state with the new item for the specified category
-        state[category] = item;
+        state.items[category] = item;
+        console.log("state check", state.items[category]);
     },
     removeItem: (state, action) => {
 
