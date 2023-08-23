@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginModalVisibility, setLoginModalVisible } from '../features/modalSlice';
-import axios from 'axios';
+import { loginUser } from '../features/userSlice';
+// import axios from 'axios';
 
 const LoginModal = () => {
   const isLoginModalVisible = useSelector(LoginModalVisibility);
@@ -18,12 +19,10 @@ const LoginModal = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', {
-        username,
-        password,
-      });
+      const response = await dispatch(loginUser({ username, password }));
 
-      console.log('Login successful:', response.data);
+      console.log('Login successful:', response.payload);
+      
 
       handleCloseModal();
     } catch (error) {

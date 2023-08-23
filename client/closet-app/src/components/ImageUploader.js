@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadImageAndMetaData } from '../features/uploadSlice'; 
-import { selectUser, selectIsAuthenticated } from '../features/userSlice';
+import { selectUser, userIsAuthenticated } from '../features/userSlice';
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
-  const userAuthenticated = useSelector(selectIsAuthenticated);
+  const userAuthenticated = useSelector(userIsAuthenticated);
   const user = useSelector(selectUser);
 
   const [category, setCategory] = useState('');

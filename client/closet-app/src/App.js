@@ -6,7 +6,7 @@ import OutfitView from './components/OutfitView';
 import NavBar from './components/NavBar';
 import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
-import { loginUser, selectIsAuthenticated } from './features/userSlice';
+import { loginUser, userIsAuthenticated } from './features/userSlice';
 import { RegistrationModalVisibility, LoginModalVisibility } from './features/modalSlice';
 import { removeItem, addItem } from './features/selectedItemsSlice';
 
@@ -18,7 +18,7 @@ import './App.css';
   
     const isRegistrationModalVisible = useSelector(RegistrationModalVisibility);
     const isLoginModalVisible = useSelector(LoginModalVisibility);
-    const isAuthenticated = useSelector(selectIsAuthenticated);
+    const isAuthenticated = useSelector(userIsAuthenticated);
     // const selectedItems = useSelector(selectedItemsSliceReducer)
     const state = useSelector(state => state.selectedItems);
 
