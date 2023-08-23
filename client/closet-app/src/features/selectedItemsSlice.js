@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    top: null,
-    bottom: null,
-    shoes: null,
-    hat: null,
-    onePiece: null,
-    accessories: [],
-}
+    items: {
+      top: null,
+      bottom: null,
+      shoes: null,
+      hat: null,
+      onePiece: null,
+      accessories: [],
+  },
+  loading: false,
+  error: null,
+};
 
-const selectedItemsSlice = createSlice({
+export const selectedItemsSlice = createSlice({
   name: 'selectedItems',
   initialState,
   reducers: {
@@ -54,6 +58,7 @@ const selectedItemsSlice = createSlice({
 // Function to check if adding a certain item is valid based on constraints
 function isValidAddition(state, category, newItem) {
   if (category === 'accessories' && state.accessories.length >= 3) {
+    console.error('too many accessories');
     return false; // Too many accessories
   }
 
@@ -67,6 +72,10 @@ function isValidAddition(state, category, newItem) {
 
   return true;
 }
+
+export const selectedItems = (state) => state.selectedItems.items;
+export const selectedItemsLoading = (state) => state.selectedItems.loading;
+export const selectedItemsError = (state) => state.selectedItems.error;
 
 export const { addItem, removeItem } = selectedItemsSlice.actions;
 export const selectedItemsSliceReducer = selectedItemsSlice.reducer;

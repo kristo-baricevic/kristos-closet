@@ -24,6 +24,8 @@ exports.getImages = async (req, res) => {
         Key: imageKey,
       }).promise();
 
+      console.log(imageObject);
+
       const imageUrl = `http://your-server-url/images/${item._id}`;
 
       console.log("backend URL", imageUrl);
