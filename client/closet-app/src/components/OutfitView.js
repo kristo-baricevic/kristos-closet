@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectedItemsSliceReducer } from '../features/selectedItemsSlice';
 
 const OutfitView = () => {
-    const selectedItems = useSelector(state => state.selectedItems);
+    const selectedItems = useSelector(selectedItemsSliceReducer);
 
     return (
         <div className="outfit-view-container-desktop">
