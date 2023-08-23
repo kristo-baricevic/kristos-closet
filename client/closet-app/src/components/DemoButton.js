@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { loginAnonymous } from '../store/actions'; 
+import { loginAnonymous } from '../features/userSlice'; 
 
 const DemoButton = () => {
   const dispatch = useDispatch();

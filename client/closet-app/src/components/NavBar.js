@@ -2,13 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
     setRegistrationModalVisible,
     setLoginModalVisible,
-    logoutUser,
-} from '../store/actions.js';
+} from '../features/modalSlice.js';
+import { logout, selectIsAuthenticated } from '../features/userSlice.js';
 import DemoButton from './DemoButton';
 
 const NavBar = () => {
 
-const isAuthenticated = useSelector((state) => state.isAuthenticated);
+const userIsAuthenticated = useSelector(selectIsAuthenticated);
 const dispatch = useDispatch();
 
 const showRegistrationModal = () => {
@@ -20,7 +20,7 @@ const showLoginModal = () => {
 };
 
 const handleLogoutUser = () => {
-    dispatch(logoutUser());
+    dispatch(logout());
 };
 
     return (
@@ -30,7 +30,7 @@ const handleLogoutUser = () => {
                 <button className="registration-button" onClick={showRegistrationModal}>Register</button>
             </li>
             <li>
-                {!isAuthenticated ? (
+                {!userIsAuthenticated ? (
                 <button className="login-button" onClick={showLoginModal}>Login</button>
                 ) : (
                 <button className="logout-button" onClick={handleLogoutUser}>Logout</button>
