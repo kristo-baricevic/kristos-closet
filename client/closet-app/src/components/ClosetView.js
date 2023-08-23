@@ -2,14 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems, editImage, deleteImage, selectInitialClosetItems } from '../features/closetSlice';
 import { addItem } from '../features/selectedItemsSlice';
+import { userIsAuthenticated, selectUser } from '../features/userSlice';
 
 
-const ClosetView = ({ isAuthenticated }) => {
+
+const ClosetView = () => {
   const [isDesktop, setIsDesktop] = useState(false);
   const images = useSelector(selectInitialClosetItems);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [editedCategory, setEditedCategory] = useState(null);
   const [editingImageId, setEditingImageId] = useState(null);
+  const isAuthenticated = useSelector(userIsAuthenticated);
+  const user = useSelector(selectUser);
+
 
   const dispatch = useDispatch();
 
@@ -54,10 +59,12 @@ const ClosetView = ({ isAuthenticated }) => {
       return;
     }
 
-    if (!image.userId) {
-      alert('You cannot delete shared items.');
-      return;
-    }
+    // if (!image.userId) {
+    //   alert('You cannot delete shared items.');
+    //   return;
+    // }
+
+    console.log("image.userId", image.userId)
 
     try {
       await dispatch(deleteImage(image.id));
@@ -73,10 +80,13 @@ const ClosetView = ({ isAuthenticated }) => {
       return;
     }
 
-    if (!image.userId) {
-      alert('You cannot edit shared images.');
-      return;
-    }
+    console.log("image.userId", image.id);
+    console.log("user id", user._id);
+    
+    // if (image.id !== user._id) {
+    //   alert('You cannot edit shared images.');
+    //   return;
+    // }
 
     setEditingImageId(image.id);
     setEditedCategory(image.category);
@@ -102,7 +112,7 @@ const ClosetView = ({ isAuthenticated }) => {
   };
 
   const handleSelectImage = (image, category) => {
-    console.log("handleSelectImage", category)
+    console.log("handleSelectImage", category);
     dispatch(addItem({ category, item: image }));
   };
 
