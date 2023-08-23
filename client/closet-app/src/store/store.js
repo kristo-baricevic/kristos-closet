@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 
 const middleware = [...getDefaultMiddleware(), thunkMiddleware];
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     upload: uploadSliceReducer,
     modal: modalSliceReducer,
