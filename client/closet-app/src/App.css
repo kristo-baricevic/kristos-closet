@@ -2,6 +2,7 @@
 
 .body-container {
   background-color: #e9ff96;
+  padding: 10px;
 }
 
 .desktop-layout {
@@ -20,7 +21,9 @@
 
 .navbar {
   background-color: #a4e333;
-  height: 80px; 
+  height: 80px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px; 
 }
 
 .navbar-menu {
@@ -57,6 +60,7 @@
   width: 83px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .registration-button:hover {
@@ -76,6 +80,7 @@
   width: 83px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .login-button:hover {
@@ -95,6 +100,7 @@
   width: 83px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .logout-button:hover{
@@ -114,6 +120,7 @@
   width: 83px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .demo-button:hover{
@@ -147,6 +154,7 @@
   height: calc(100vh - 80px);
   overflow-y: auto;
   min-width: 40%;
+  padding: 10px;
 }
 
 .outfit-view-container-mobile {
@@ -210,6 +218,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .login-button:hover {
@@ -229,6 +238,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .login-close-button:hover {
@@ -290,6 +300,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .registration-submit-button:hover {
@@ -308,6 +319,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .registration-close-button:hover {
@@ -367,6 +379,7 @@ input[type="file"] {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 .classify-button:hover {
   background-color: #228B22;
@@ -401,6 +414,7 @@ input[type="file"] {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .outfit-remove-button:hover {
@@ -455,6 +469,7 @@ input[type="file"] {
 
 button {
   margin-top: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 /* ClosetView Component */
@@ -479,6 +494,7 @@ button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.3s ease;
+  border-radius: 8px; 
 }
 
 .card:hover {
