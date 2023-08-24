@@ -6,7 +6,7 @@ const initialState = {
       Bottom: null,
       Shoes: null,
       Hat: null,
-      OnePiece: null,
+      onePiece: null,
       Accessories: [],
   },
   loading: false,
@@ -31,15 +31,15 @@ export const selectedItemsSlice = createSlice({
 
         // If item is a 'onePiece', remove 'top' and 'bottom' from the state
         if (item.category === 'onePiece') {
-            state.top = null;
-            state.bottom = null;
-        } else if (item.category === 'top' || item.category === 'bottom') {
+            state.Top = null;
+            state.Bottom = null;
+        } else if (item.category === 'Top' || item.category === 'Bottom') {
             // If item is 'top' or 'bottom', remove 'onePiece' from the state
             state.onePiece = null;
         }
 
         // Ensure that only up to three accessories can be added
-        if (category === 'accessories' && state.accessories.length >= 3) {
+        if (category === 'Accessories' && state.accessories.length >= 3) {
             console.error('Too many accessories:', state.accessories);
             return;
         }

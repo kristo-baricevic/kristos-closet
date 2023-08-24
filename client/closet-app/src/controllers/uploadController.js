@@ -9,15 +9,16 @@ const upload = multer({ storage });
 
 exports.uploadImageAndMetaData = async (req, res) => {
   try {
+    console.log("insideUploadImage...");
     const s3 = new AWS.S3();
     const bucketName = 'closet-app';
     const file = req.file; 
     console.log("backend upload file check", req.file);
     const { category } = req.body;
     const user = req.body.user;
-    console.log("testing backend upload", req.user);
+    console.log("testing backend upload");
     console.log("category", category);
-    console.log("user in the backend", user);
+    console.log("user in the backend", user.user);
 
     const timestampPrefix = Date.now();
 

@@ -40,7 +40,7 @@ const ImageUploader = () => {
     console.log("user in frontend", user);
     console.log("dbFormData in front", dbFormData);
 
-    dispatch(uploadImageAndMetaData(imageFile, dbFormData)); 
+    dispatch(uploadImageAndMetaData({imageFile, dbFormData})); 
 
     // Clear the selected file and other inputs
     setImageFile(null);

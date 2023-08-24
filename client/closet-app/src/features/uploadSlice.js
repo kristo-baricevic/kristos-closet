@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 const initialState = {
@@ -8,16 +9,21 @@ const initialState = {
 
 export const uploadImageAndMetaData = createAsyncThunk(
   "user/uploadImageAndMetaData",
-  async ({ imageFile, dbFormData }, { dispatch }) => {
-    dispatch(uploadImageRequest());
+  async ( {imageFile, dbFormData} ) => {
+    console.log("inside upload action");
     try {
+
       const token = localStorage.getItem("token");
       const headers = {
         Authorization: `Bearer ${token}`,
       };
+      
+      console.log("uploadSlice formData", dbFormData);
 
       const combinedFormData = new FormData();
+
       combinedFormData.append("imageFile", imageFile);
+
       for (const [key, value] of dbFormData.entries()) {
         combinedFormData.append(key, value);
       }
@@ -26,9 +32,9 @@ export const uploadImageAndMetaData = createAsyncThunk(
         headers,
       });
 
-      dispatch(uploadImageSuccess());
+      return combinedFormData;
     } catch (error) {
-      dispatch(uploadImageFailure(error));
+      throw error;
     }
   }
 );
