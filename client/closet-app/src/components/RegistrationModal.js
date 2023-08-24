@@ -38,7 +38,7 @@ const RegistrationModal = () => {
         <form>
           <div className="registration-form-group">
             <label className="registration-label" htmlFor="username">Username:</label>
-            <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input className="registration-input" type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} required />
           </div>
           <div className="registration-form-group">
             <label className="registration-label" htmlFor="email">Email:</label>

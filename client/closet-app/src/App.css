@@ -1,8 +1,7 @@
- 
-
-.body-container {
+ .body-container {
   background-color: #e9ff96;
   padding: 10px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .desktop-layout {
@@ -370,6 +369,7 @@ a {
   font-size: 24px;
   margin-bottom: 20px;
   font-family: 'Varela Round', sans-serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 .choose-file {
   margin: 5px;
@@ -422,6 +422,7 @@ input[type="file"] {
   font-size: 24px;
   margin-bottom: 20px;
   font-family: 'Varela Round', sans-serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .outfit-view-container-mobile {
