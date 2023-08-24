@@ -515,7 +515,6 @@ button {
   position: sticky;
   top: 0;
   z-index: 1; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .closet-view {
@@ -570,7 +569,8 @@ button {
   position: sticky;
   top: 0;
   border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .category-button {

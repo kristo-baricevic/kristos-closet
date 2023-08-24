@@ -12,13 +12,13 @@ export const fetchItems = () => async (dispatch) => {
     dispatch(fetchItemsStart());
   
     try {
-      const response = await axios.get('http://localhost:5000/api/images');
+      const response = await axios.get('https://kristos-closet.vercel.app/api/images');
       const data = response.data;
   
       const updatedImages = data.map((image) => ({
         ...image,
         isUserImage: image.userId !== null,
-        imageUrl: `http://localhost:5000/api/images/${image.id}`,
+        imageUrl: `https://kristos-closet.vercel.app/api/images/${image.id}`,
       }));
   
       dispatch(fetchItemsSuccess(updatedImages));

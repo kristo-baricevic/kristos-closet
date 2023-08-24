@@ -14,7 +14,7 @@ export const registerUser = createAsyncThunk(
         try {
         console.log("userData about to post");
         const response = await axios.post(
-            "http://localhost:5000/api/register",
+            "https://kristos-closet.vercel.app/api/register",
             userData
         );
         console.log("userData posted");
@@ -34,7 +34,7 @@ export const loginUser = createAsyncThunk(
     async (userData) => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/login",
+          "https://kristos-closet.vercel.app/api/login",
           userData
         );
   
@@ -58,7 +58,7 @@ export const loginAnonymous = createAsyncThunk(
     "user/loginAnonymous",
     async () => {
       try {
-        const response = await axios.post('http://localhost:5000/api/loginAnonymous');
+        const response = await axios.post('https://kristos-closet.vercel.app/api/loginAnonymous');
         const isAuthenticated = response.data.isAuthenticated;
         const user = response.data.user;
         const token = response.data.token;
