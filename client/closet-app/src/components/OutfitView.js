@@ -13,7 +13,7 @@ const OutfitView = () => {
           <h2>Your Selected Outfit</h2>
             <div className="outfit-view">
                 {Object.entries(outfit).map(([category, item]) => (
-                <div key={category} className="item">
+                <div key={category} className="outfit-item">
                     <h3>{category}</h3>
                     {item ? (
                     <div className="item-image-wrapper">
