@@ -15,9 +15,16 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
 });
 
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://kristos-closet.vercel.app'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
 // Middleware and configurations
 app.use(express.json()); // Parse JSON request bodies
-app.use(cors()); // Handle CORS
+app.use(cors(corsOptions)); // Handle CORS
 app.use('/static', express.static('public')); // Serve static files from a "public" directory
 
 // Use routes with a base URL of '/api'
