@@ -130,9 +130,7 @@
 
 /* Component Containers */
 
-.image-uploader-container {
-  margin-left:20px;
-}
+
 
 .closetview-container {
   flex-grow: 1;
@@ -329,6 +327,10 @@
 
 /* Image Uploader Component */
 
+.image-uploader-container {
+  margin-left:20px;
+}
+
 .upload-component-container {
   display: flex;
   flex-direction: column;
@@ -347,7 +349,7 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   background-color: #fbfbfb;
 }
 
@@ -367,6 +369,7 @@ a {
 .upload-title {
   font-size: 24px;
   margin-bottom: 20px;
+  font-family: 'Varela Round', sans-serif;
 }
 .choose-file {
   margin: 5px;
@@ -411,6 +414,14 @@ input[type="file"] {
 .outfit-view-container-desktop {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.outfit-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .outfit-view-container-mobile {
@@ -503,7 +514,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 1; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .closet-view {
