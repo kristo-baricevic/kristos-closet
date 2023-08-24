@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems, editImage, deleteImage, selectInitialClosetItems } from '../features/closetSlice';
 import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
+import ImageModal from './ImageModal';
+import { setModalImage, imageModalVisibility, openImageModal} from '../features/imageModalSlice';
 
 
 
@@ -13,6 +15,7 @@ const ClosetView = () => {
   const [editedCategory, setEditedCategory] = useState(null);
   const [editingImageId, setEditingImageId] = useState(null);
   const isAuthenticated = useSelector(userIsAuthenticated);
+  const isImageModalVisible = useSelector(imageModalVisibility);
   const user = useSelector(selectUser);
 
 
@@ -40,7 +43,8 @@ const ClosetView = () => {
   };
 
   const openImage = (image) => {
-    // Open the image when clicked
+    dispatch(setModalImage(image));
+    dispatch(openImageModal());
   };
 
   const getImageUrl = (image) => {
@@ -122,6 +126,7 @@ const ClosetView = () => {
  
   return (
     <div>
+      {isImageModalVisible && <ImageModal />}
       {isDesktop ? (
         <div>
           <div className="sticky-container">
@@ -137,7 +142,7 @@ const ClosetView = () => {
           <div className="closet-view">
             {filteredImages.map(image => (
               <div key={image.id} className="card" onClick={() => openImage(image)}>
-                <img className="card-image" src={getImageUrl(image)} alt="closetItem" />
+                  <img className="card-image" src={getImageUrl(image)} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">
                     <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>

@@ -4,7 +4,9 @@ import { modalSliceReducer } from '../features/modalSlice';
 import { userSliceReducer } from '../features/userSlice';
 import { selectedItemsSliceReducer } from '../features/selectedItemsSlice';
 import { closetSliceReducer } from '../features/closetSlice';
+import { imageModalSliceReducer } from '../features/imageModalSlice';
 import thunkMiddleware from 'redux-thunk';
+
 
 const middleware = [...getDefaultMiddleware(), thunkMiddleware];
 
@@ -15,6 +17,7 @@ const store = configureStore({
     user: userSliceReducer,
     selectedItems: selectedItemsSliceReducer,
     closet: closetSliceReducer,
+    imageModal: imageModalSliceReducer,
   },
   middleware: middleware,
   devTools: process.env.NODE_ENV !== 'production',

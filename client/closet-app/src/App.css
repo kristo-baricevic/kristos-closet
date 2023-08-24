@@ -661,3 +661,50 @@ button {
   background-color: #228B22;
   border-color: #0056b3;
 }
+
+/* Image Modal */
+
+.image-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.image-modal-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 400px;
+}
+
+.image-header {
+  margin-top: 0;
+}
+
+.image-close-button {
+  display: block;
+  margin: 5px;
+  width: 83px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.image-close-button:hover {
+  background-color: #228B22;
+  color: black;
+}
