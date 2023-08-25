@@ -11,11 +11,11 @@ WORKDIR /app
 ENV NODE_ENV="production"
 
 # Install node modules
-COPY --link package-lock.json package.json ./
+COPY package-lock.json package.json ./
 RUN npm ci --include=dev
 
 # Copy application code
-COPY --link . .
+COPY . .
 
 # Build application (if needed)
 RUN npm run build
