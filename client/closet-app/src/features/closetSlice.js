@@ -12,13 +12,13 @@ export const fetchItems = () => async (dispatch) => {
     dispatch(fetchItemsStart());
   
     try {
-      const response = await axios.get('https://kristos-closet.vercel.app/api/images');
+      const response = await axios.get('https://closet-app-backend.fly.dev/api/images');
       const data = response.data;
   
       const updatedImages = data.map((image) => ({
         ...image,
         isUserImage: image.userId !== null,
-        imageUrl: `https://kristos-closet.vercel.app/api/images/${image.id}`,
+        imageUrl: `https://closet-app-backend.fly.dev/api/images/${image.id}`,
       }));
   
       dispatch(fetchItemsSuccess(updatedImages));

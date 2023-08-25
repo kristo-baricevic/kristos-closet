@@ -27,7 +27,7 @@ export const uploadImageAndMetaData = createAsyncThunk(
         combinedFormData.append(key, value);
       }
 
-      await axios.post("https://kristos-closet.vercel.app/api/upload", combinedFormData, {
+      await axios.post("https://closet-app-backend.fly.dev/api/upload", combinedFormData, {
         headers,
       });
 

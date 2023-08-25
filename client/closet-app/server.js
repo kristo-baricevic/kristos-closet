@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://kristos-closet.vercel.app'],
+  origin: ['http://localhost:3000', 'https://kristos-closet.vercel.app', 'https://fly.io/apps/closet-app-backend'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
