@@ -58,12 +58,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.11",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-react": "^7.22.5",
     "@flydotio/dockerfile": "^0.4.8",
-    "nodemon": "^3.0.1",
-    "react-app-rewired": "^2.2.1"
+    "nodemon": "^3.0.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "config-overrides.js",
