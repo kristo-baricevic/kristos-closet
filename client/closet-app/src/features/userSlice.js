@@ -58,8 +58,10 @@ export const loginAnonymous = createAsyncThunk(
     "user/loginAnonymous",
     async () => {
       try {
+        console.log("inside loginAnonymous");
         const response = await axios.post('https://closet-app-backend.fly.dev/api/loginAnonymous');
         const isAuthenticated = response.data.isAuthenticated;
+        console.log("response", isAuthenticated);
         const user = response.data.user;
         const token = response.data.token;
     
