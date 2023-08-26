@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 // Create a WebSocket connection
-const socket = new WebSocket('wss://your-backend-url.com');
+const socket = new WebSocket('wss://closet-app-backend.fly.dev');
 
 // Attach event listeners to the socket (e.g., for handling messages)
 socket.addEventListener('open', () => {
