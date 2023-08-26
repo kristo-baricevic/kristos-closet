@@ -6,6 +6,8 @@ const initialState = {
   uploadError: null,
 };
 
+const backendBaseUrl = 'https://closet-app-backend.fly.dev';
+
 export const uploadImageAndMetaData = createAsyncThunk(
   "user/uploadImageAndMetaData",
   async ( {imageFile, dbFormData} ) => {
@@ -27,7 +29,7 @@ export const uploadImageAndMetaData = createAsyncThunk(
         combinedFormData.append(key, value);
       }
 
-      await axios.post("https://closet-app-backend.fly.dev/api/upload", combinedFormData, {
+      await axios.post(`${backendBaseUrl}/api/upload`, combinedFormData, {
         headers,
       });
 

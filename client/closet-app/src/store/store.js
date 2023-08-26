@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { uploadSliceReducer } from '../features/uploadSlice';
 import { modalSliceReducer } from '../features/modalSlice';
 import { userSliceReducer } from '../features/userSlice';
@@ -8,7 +8,7 @@ import { imageModalSliceReducer } from '../features/imageModalSlice';
 import thunkMiddleware from 'redux-thunk';
 
 
-const middleware = [...getDefaultMiddleware(), thunkMiddleware];
+const middleware = [thunkMiddleware];
 
 const store = configureStore({
   reducer: {
