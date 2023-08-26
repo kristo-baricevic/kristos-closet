@@ -8,7 +8,7 @@ const initialState = {
 
 const backendBaseUrl = 'https://closet-app-backend.fly.dev';
 
-const socket = new WebSocket('https://closet-app-backend.fly.dev');
+const socket = new WebSocket('wss://closet-app-backend.fly.dev');
 
 
 // Async thunk action to register user
