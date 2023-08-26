@@ -125,7 +125,7 @@ exports.loginAnonymous = async (req, res) => {
     console.log("server hit @ loginAnon");
 
     // Create a WebSocket connection to the server
-    const socket = new WebSocket('ws://localhost:3000');
+    const socket = new WebSocket('wss://closet-app-backend.fly.dev/ws');
 
      // Wait for the WebSocket connection to open
      socket.onopen = () => {
