@@ -14,7 +14,6 @@ const {
 } = require('../controllers/imagesController');
 const WebSocket = require('ws'); // Import WebSocket library
 
-
 // Create a WebSocket server
 const wss = new WebSocket.Server({ noServer: true });
 

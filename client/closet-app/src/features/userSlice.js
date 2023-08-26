@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import WebSocket from 'ws';
-
 
 const initialState = {
     user: null,
