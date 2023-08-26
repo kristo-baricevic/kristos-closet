@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 
 // Load environment variables from a .env file
-dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
+// dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
 
 // Connect to the database
 console.log("DB_URI:", process.env.MONGODB_URI);
@@ -16,7 +16,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://kristos-closet.vercel.app', 'https://fly.io/apps/closet-app-backend'],
+  origin: [
+    'http://localhost:3000', 
+    'https://kristos-closet.vercel.app'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,

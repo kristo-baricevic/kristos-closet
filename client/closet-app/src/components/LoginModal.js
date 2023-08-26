@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginModalVisibility, setLoginModalVisible } from '../features/modalSlice';
 import { loginUser } from '../features/userSlice';
-// import axios from 'axios';
 
 const LoginModal = () => {
   const isLoginModalVisible = useSelector(LoginModalVisibility);
