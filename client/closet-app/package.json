@@ -8,8 +8,6 @@
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-react": "^7.22.5",
     "@flydotio/dockerfile": "^0.4.8",
-    "nodemon": "^3.0.1",
-    "react-app-rewired": "^2.2.1",
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -28,9 +26,11 @@
     "mongoose": "^7.4.3",
     "multer": "^1.4.4",
     "multer-gridfs-storage": "^5.0.2",
+    "nodemon": "^3.0.1",
     "password-validator": "^5.3.0",
     "path-browserify": "^1.0.1",
     "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
     "react-scripts": "5.0.1",
@@ -38,6 +38,7 @@
     "redux-thunk": "^2.4.2",
     "validator": "^13.11.0",
     "web-vitals": "^2.1.4",
+    "ws": "^8.13.0",
     "zlib": "^1.0.5"
   },
   "scripts": {
@@ -63,8 +64,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "config-overrides.js",

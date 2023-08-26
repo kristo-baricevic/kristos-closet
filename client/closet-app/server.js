@@ -4,9 +4,34 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv'); 
 const cors = require('cors');
+const WebSocket = require('ws');
+const http = require('http');
 
 // Load environment variables from a .env file
 // dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
+
+
+// Create a WebSocket server by attaching it to the HTTP server
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+// Handle WebSocket connections
+wss.on('connection', (socket) => {
+  // Handle WebSocket events for the connected socket
+  socket.on('message', (message) => {
+    // Handle incoming messages
+    console.log('Received:', message);
+  });
+
+  socket.on('close', () => {
+    // Handle socket closure
+    console.log('WebSocket connection closed');
+  });
+
+  // Send a welcome message to the connected client
+  socket.send('Welcome to the WebSocket server!');
+});
+
 
 // Connect to the database
 console.log("DB_URI:", process.env.MONGODB_URI);
@@ -38,8 +63,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-// Start the server
+// Start the HTTP server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
