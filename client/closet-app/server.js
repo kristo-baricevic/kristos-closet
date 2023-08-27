@@ -17,10 +17,11 @@ const wss = new WebSocket.Server({ server });
 
 // Handle WebSocket connections
 wss.on('connection', (socket) => {
+  console.log('WebSocket connected');
   // Handle WebSocket events for the connected socket
   socket.on('message', (message) => {
     // Handle incoming messages
-    console.log('Received:', message);
+    console.log('Websocket Message Received:', message);
   });
 
   socket.on('close', () => {
@@ -43,7 +44,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 const corsOptions = {
   origin: [
     'http://localhost:3000', 
-    'https://kristos-closet.vercel.app'],
+    'https://kristos-closet.vercel.app',
+    'https://fly.io'
+  ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,

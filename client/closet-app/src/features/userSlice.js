@@ -38,7 +38,7 @@ export const loginUser = createAsyncThunk(
     async (userData) => {
       try {
         const response = await axios.post(
-          `${backendBaseUrl}/api/upload`,
+          `${backendBaseUrl}/api/login`,
           userData
         );
   
@@ -59,44 +59,24 @@ export const loginUser = createAsyncThunk(
 
 // Create an async thunk for loginAnonymous
 export const loginAnonymous = createAsyncThunk(
-    "user/loginAnonymous",
-    async () => {
-      try {
-        console.log("inside loginAnonymous");
-
-        // Send a login request to the server via WebSocket
-        const loginMessage = JSON.stringify({
-          type: 'login',
-          data: {
-            anonymous: true,
-          },
-        });
-        
-        socket.send(loginMessage);
-
-        // Return a promise that resolves when the response is received
-        return new Promise((resolve, reject) => {
-          const responseHandler = (event) => {
-            const data = JSON.parse(event.data);
-            if (data.type === 'loginResponse') {
-              const isAuthenticated = data.isAuthenticated;
-              const user = data.user;
-              const token = data.token;
-
-              localStorage.setItem('token', token);
-
-              // Resolve the promise with the received data
-              resolve({ isAuthenticated, user });
-            }
-          };
-          // Attach the response handler to the WebSocket
-          socket.addEventListener('message', responseHandler);
-        });
-      } catch (error) {
-        throw error;
-      }
+  "user/loginAnonymous",
+  async () => {
+    try {
+      console.log("inside loginAnonymous");
+      const response = await axios.post('https://closet-app-backend.fly.dev/api/loginAnonymous');
+      const isAuthenticated = response.data.isAuthenticated;
+      console.log("response", isAuthenticated);
+      const user = response.data.user;
+      const token = response.data.token;
+  
+      localStorage.setItem('token', token);
+  
+      return { isAuthenticated, user };
+    } catch (error) {
+      throw error;
     }
-  );
+  }
+);
 
 export const userSlice = createSlice({
     name: "user",
