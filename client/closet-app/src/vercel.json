@@ -12,39 +12,10 @@
       ],
     "rewrites": [
         { 
-            "source": "/api/images/(.*)", 
-            "destination": "https://closet-app-backend.fly.dev/api/images" ,
-            "methods": ["GET", "PUT", "DELETE"]
-        },
-        {
-             "source": "/api/upload/(.*)", 
-             "destination": "https://closet-app-backend.fly.dev/api/upload",
-             "methods": ["POST"] 
-        },
-        { 
-            "source": "/api/register/(.*)", 
-            "destination": "https://closet-app-backend.fly.dev/api/register",
-            "methods": ["POST"]
-        },
-        { 
-            "source": "/api/login/(.*)",
-            "destination": "https://closet-app-backend.fly.dev/api/login",
-            "methods": ["POST"]
-         },
-        { 
-            "source": "/api/logout/(.*)", 
-            "destination": "https://closet-app-backend.fly.dev/api/logout",
-            "methods": ["POST"]
-        },
-        { 
-            "source": "/api/loginAnonymous/(.*)", 
-            "destination": "https://closet-app-backend.fly.dev/api/loginAnonymous", 
-            "methods": ["POST", "GET"] 
-        },
-        { 
-            "source": "/api/current/(.*)", 
-            "destination": "https://closet-app-backend.fly.dev/api/current",
-            "methods": ["GET"]
+            "rewrites": [
+                { "source": "/api/(.*)", "destination": "https://closet-app-backend.fly.dev/api/$1" },
+                { "source": "/(.*)", "destination": "/$1" }
+            ]
         }
     ]
 }
