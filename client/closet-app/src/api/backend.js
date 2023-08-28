@@ -108,6 +108,6 @@ router.get('/current', async (req, res) => {
 });
 
 
-app.use('/api', router); // Mount the router under the /api path
+app.use('/api', router);
 
 module.exports = app;
