@@ -121,67 +121,31 @@ exports.logoutUser = async (req, res) => {
 };
 
 exports.loginAnonymous = async (req, res) => {
-  try{
+  try {
     console.log("server hit @ loginAnon");
+    // Create an anonymous user (or find if already exists)
+    const anonymousUsername = generateUniqueUsername();
 
-    // Create a WebSocket connection to the server
-    const socket = new WebSocket('wss://closet-app-backend.fly.dev/ws');
+    const user = new User({
+      username: anonymousUsername,
+    });
+    await user.save()
 
-     // Wait for the WebSocket connection to open
-     socket.onopen = () => {
-      // Send a login message to the WebSocket server
-      const loginMessage = {
-        type: 'login',
-        data: {
-          anonymous: true,
-        },
-      };
-      socket.send(JSON.stringify(loginMessage));
-    };
-  
-    socket.onmessage = async (event) => {
-      const message = JSON.parse(event.data);
-      if (message.type === 'login') {
-        try {
-          // Process the login response from the WebSocket server
-          const anonymousUsername = generateUniqueUsername();
-          const user = new User({
-            username: anonymousUsername,
-          });
-          
-          await user.save();
-      
-          const token = authService.generateToken(user);
-      
-          const responseMessage = {
-            type: 'login',
-            data: {
-              token,
-              user: {
-                _id: user._id,
-                username: user.username,
-              },
-              isAuthenticated: true,
-            },
-          };
-      
-          // Send the response back to the client via WebSocket
-          socket.send(JSON.stringify(responseMessage));
-        } catch (error) {
-        console.error('Anonymous login error:', error);
-        // Handle the error and send an appropriate response
-        const errorMessage = {
-          type: 'error',
-          data: 'An error occurred during anonymous login responseMessage',
-        };
-        socket.send(JSON.stringify(errorMessage));
-      }
-    };
-    };
+    // Create and sign a JWT token for the anonymous user
+    const token = authService.generateToken(user);
+
+    return res.status(200).json({
+      token,
+      user: {
+        _id: user._id,
+        username: user.username,
+      },
+      isAuthenticated: true,
+    });
   } catch (error) {
     console.error('Anonymous login error:', error);
     return res.status(500).json({ error: 'An error occurred during anonymous login' });
-  };
+  }
 };
 
 
