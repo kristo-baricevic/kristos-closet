@@ -1,5 +1,5 @@
 {
-    "routes": [
+    "rewrites": [
         { 
             "source": "/api/images/(.*)", 
             "destination": "https://acme.com/api/images" ,
