@@ -8,6 +8,8 @@
         { "src": "/logout/(.*)", "dest": "server.js" },
         { "src": "/loginAnonymous/(.*)", "dest": "server.js" },
         { "src": "/current/(.*)", "dest": "server.js" },
-        { "src": "/(.*)", "dest": "index.js" }
+        { "src": "/static/(.*)", "dest": "static/$1" },
+        { "src": "/(.*)", "dest": "index.html" }
     ]
 }
+  
