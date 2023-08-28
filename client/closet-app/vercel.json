@@ -1,21 +1,48 @@
 {
     "routes": [
-        { "src": "/api/(.*)", "dest": "routes.js" },
-        { "src": "/images/(.*)", "dest": "routes.js" },
-        { "src": "/upload/(.*)", "dest": "routes.js" },
-        { "src": "/register/(.*)", "dest": "routes.js" },
-        { "src": "/login/(.*)", "dest": "routes.js" },
-        { "src": "/logout/(.*)", "dest": "routes.js" },
-        { "src": "/loginAnonymous/(.*)", "dest": "routes.js", "methods": [
-            "GET",
-            "POST",
-            "PATCH",
-            "DELETE",
-            "OPTIONS"
-        ] },
-        { "src": "/current/(.*)", "dest": "routes.js" },
-        { "src": "/static/(.*)", "dest": "static/$1" },
-        { "src": "/(.*)", "dest": "index.html" }
+        { 
+            "src": "api/images/(.*)", 
+            "dest": "routes.js" ,
+            "methods": ["GET", "PUT", "DELETE"]
+        },
+        {
+             "src": "api/upload/(.*)", 
+             "dest": "routes.js",
+             "methods": ["POST"] 
+        },
+        { 
+            "src": "api/register/(.*)", 
+            "dest": "routes.js",
+            "methods": ["POST"]
+        },
+        { 
+            "src": "api/login/(.*)",
+            "dest": "routes.js",
+            "methods": ["POST"]
+         },
+        { 
+            "src": "api/logout/(.*)", 
+            "dest": "routes.js",
+            "methods": ["POST"]
+        },
+        { 
+            "src": "api/loginAnonymous/(.*)", 
+            "dest": "routes.js", 
+            "methods": ["POST"] 
+        },
+        { 
+            "src": "api/current/(.*)", 
+            "dest": "routes.js",
+            "methods": ["GET"]
+        },
+        { 
+            "src": "/static/(.*)", 
+            "dest": "static/$1" 
+        },
+        { 
+            "src": "/(.*)",
+            "dest": "index.html" 
+        }
     ]
 }
   
