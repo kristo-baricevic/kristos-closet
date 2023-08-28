@@ -86,7 +86,9 @@ router.post('/logout', async (req, res) => {
 });
 
 router.post('/loginAnonymous', async (req, res) => {
+  console.log("inside backend.js try");
   try {
+    console.log("inside backend.js try");
     const response = await axios.post(`https://closet-app-backend.fly.dev/loginAnonymous`);
     res.status(response.status).json(response.data);
   } catch (error) {
