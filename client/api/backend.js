@@ -25,6 +25,7 @@ router.put('/images/:id', async (req, res) => {
 });
 
 router.get('/images/:id', async (req, res) => {
+  console.log("backend.js test reached");
   try {
     const response = await axios.get(`https://closet-app-backend.fly.dev/images/${req.params.id}`);
     res.status(response.status).json(response.data);
