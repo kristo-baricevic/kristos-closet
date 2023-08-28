@@ -2,7 +2,6 @@ const routes = require('./src/routes/routes');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const dotenv = require('dotenv'); 
 const cors = require('cors');
 
 // Load environment variables from a .env file
@@ -49,6 +48,6 @@ app.use((err, req, res, next) => {
 
 // Start the HTTP server
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
