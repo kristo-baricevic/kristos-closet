@@ -2,37 +2,37 @@
     "rewrites": [
         { 
             "source": "/api/images/(.*)", 
-            "destination": "https://acme.com/api/images" ,
+            "destination": "https://closet-app-backend.fly.dev/api/images" ,
             "methods": ["GET", "PUT", "DELETE"]
         },
         {
              "source": "/api/upload/(.*)", 
-             "destination": "https://acme.com/api/upload",
+             "destination": "https://closet-app-backend.fly.dev/api/upload",
              "methods": ["POST"] 
         },
         { 
             "source": "/api/register/(.*)", 
-            "destination": "https://acme.com/api/register",
+            "destination": "https://closet-app-backend.fly.dev/api/register",
             "methods": ["POST"]
         },
         { 
             "source": "/api/login/(.*)",
-            "destination": "https://acme.com/api/login",
+            "destination": "https://closet-app-backend.fly.dev/api/login",
             "methods": ["POST"]
          },
         { 
             "source": "/api/logout/(.*)", 
-            "destination": "https://acme.com/api/logout",
+            "destination": "https://closet-app-backend.fly.dev/api/logout",
             "methods": ["POST"]
         },
         { 
             "source": "/api/loginAnonymous/(.*)", 
-            "destination": "https://acme.com/api/loginAnonymous", 
+            "destination": "https://closet-app-backend.fly.dev/api/loginAnonymous", 
             "methods": ["POST"] 
         },
         { 
             "source": "/api/current/(.*)", 
-            "destination": "https://acme.com/api/current",
+            "destination": "https://closet-app-backend.fly.dev/api/current",
             "methods": ["GET"]
         }
     ]
