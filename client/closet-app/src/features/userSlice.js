@@ -6,10 +6,7 @@ const initialState = {
     isAuthenticated: false,
 };
 
-const backendBaseUrl = 'https://closet-app-backend.fly.dev';
-
-const socket = new WebSocket('wss://closet-app-backend.fly.dev/ws');
-
+// const backendBaseUrl = 'https://closet-app-backend.fly.dev';
 
 // Async thunk action to register user
 export const registerUser = createAsyncThunk(
@@ -18,7 +15,7 @@ export const registerUser = createAsyncThunk(
         try {
         console.log("userData about to post");
         const response = await axios.post(
-            `${backendBaseUrl}/api/register`,
+            `/api/register`,
             userData
         );
         console.log("userData posted");
@@ -38,7 +35,7 @@ export const loginUser = createAsyncThunk(
     async (userData) => {
       try {
         const response = await axios.post(
-          `${backendBaseUrl}/api/login`,
+          `/api/login`,
           userData
         );
   
@@ -63,7 +60,7 @@ export const loginAnonymous = createAsyncThunk(
   async () => {
     try {
       console.log("inside loginAnonymous");
-      const response = await axios.post('https://closet-app-backend.fly.dev/api/loginAnonymous');
+      const response = await axios.post('/api/loginAnonymous');
       const isAuthenticated = response.data.isAuthenticated;
       console.log("response", isAuthenticated);
       const user = response.data.user;

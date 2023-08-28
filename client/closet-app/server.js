@@ -4,34 +4,9 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv'); 
 const cors = require('cors');
-const WebSocket = require('ws');
-const http = require('http');
 
 // Load environment variables from a .env file
 // dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
-
-
-// Create a WebSocket server by attaching it to the HTTP server
-const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
-
-// Handle WebSocket connections
-wss.on('connection', (socket) => {
-  console.log('WebSocket connected');
-  // Handle WebSocket events for the connected socket
-  socket.on('message', (message) => {
-    // Handle incoming messages
-    console.log('Websocket Message Received:', message);
-  });
-
-  socket.on('close', () => {
-    // Handle socket closure
-    console.log('WebSocket connection closed');
-  });
-
-  // Send a welcome message to the connected client
-  socket.send('Welcome to the WebSocket server!');
-});
 
 // Connect to the database
 console.log("DB_URI:", process.env.MONGODB_URI);

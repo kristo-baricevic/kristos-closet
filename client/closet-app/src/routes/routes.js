@@ -13,7 +13,6 @@ const {
   deleteImage,
 } = require('../controllers/imagesController');
 
-
 // Image routes
 router.get('/images', getImages);
 router.put('/images/:id', verifyToken, updateImage);

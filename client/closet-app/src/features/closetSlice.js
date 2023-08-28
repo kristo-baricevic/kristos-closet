@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 
-const backendBaseUrl = 'https://closet-app-backend.fly.dev';
+// const backendBaseUrl = 'https://closet-app-backend.fly.dev';
 
 
 // Thunk action to fetch items
@@ -15,13 +15,13 @@ export const fetchItems = () => async (dispatch) => {
     dispatch(fetchItemsStart());
   
     try {
-      const response = await axios.get(`${backendBaseUrl}/api/images`);
+      const response = await axios.get(`/api/images`);
       const data = response.data;
   
       const updatedImages = data.map((image) => ({
         ...image,
         isUserImage: image.userId !== null,
-        imageUrl: `${backendBaseUrl}/api/images/${image.id}`,
+        imageUrl: `/api/images/${image.id}`,
       }));
   
       dispatch(fetchItemsSuccess(updatedImages));
