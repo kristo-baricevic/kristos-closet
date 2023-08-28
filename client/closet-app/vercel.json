@@ -6,7 +6,13 @@
         { "src": "/register/(.*)", "dest": "routes.js" },
         { "src": "/login/(.*)", "dest": "routes.js" },
         { "src": "/logout/(.*)", "dest": "routes.js" },
-        { "src": "/loginAnonymous/(.*)", "dest": "routes.js" },
+        { "src": "/loginAnonymous/(.*)", "dest": "routes.js", "methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE",
+            "OPTIONS"
+        ] },
         { "src": "/current/(.*)", "dest": "routes.js" },
         { "src": "/static/(.*)", "dest": "static/$1" },
         { "src": "/(.*)", "dest": "index.html" }
