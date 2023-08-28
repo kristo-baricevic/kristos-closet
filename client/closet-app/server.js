@@ -14,21 +14,21 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
 });
 
-// const corsOptions = {
-//   origin: [
-//     'http://localhost:3000', 
-//     'https://kristos-closet.vercel.app',
-//     'https://closet-app-backend.fly.dev/',
-//     'https://fly.io/apps/closet-app-backend/monitoring'
-//   ],
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true,
-//   optionsSuccessStatus: 204,
-// };
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', 
+    'https://kristos-closet.vercel.app',
+    'https://closet-app-backend.fly.dev/',
+    'https://fly.io/apps/closet-app-backend/monitoring'
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
 
 // Middleware and configurations
 app.use(express.json()); 
-// app.use(cors(corsOptions)); 
+app.use(cors(corsOptions)); 
 app.use('/static', express.static('public'));
 
 // Default route
