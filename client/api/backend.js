@@ -6,7 +6,7 @@ const router = express.Router();
 // Image routes
 router.get('/images', async (req, res) => {
   try {
-    const response = await axios.get('https://closet-app-backend.fly.dev/images');
+    const response = await axios.get('https://closet-app-backend.fly.dev/api/images');
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -16,7 +16,7 @@ router.get('/images', async (req, res) => {
 
 router.put('/images/:id', async (req, res) => {
   try {
-    const response = await axios.put(`https://closet-app-backend.fly.dev/images/${req.params.id}`, req.body);
+    const response = await axios.put(`https://closet-app-backend.fly.dev/api/images/${req.params.id}`, req.body);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -27,7 +27,7 @@ router.put('/images/:id', async (req, res) => {
 router.get('/images/:id', async (req, res) => {
   console.log("backend.js test reached");
   try {
-    const response = await axios.get(`https://closet-app-backend.fly.dev/images/${req.params.id}`);
+    const response = await axios.get(`https://closet-app-backend.fly.dev/api/images/${req.params.id}`);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -37,7 +37,7 @@ router.get('/images/:id', async (req, res) => {
 
 router.delete('/images/:id', async (req, res) => {
   try {
-    const response = await axios.delete(`https://closet-app-backend.fly.dev/images/${req.params.id}`);
+    const response = await axios.delete(`https://closet-app-backend.fly.dev/api/images/${req.params.id}`);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -47,7 +47,7 @@ router.delete('/images/:id', async (req, res) => {
 
 router.post('/upload', async (req, res) => {
   try {
-    const response = await axios.post(`https://closet-app-backend.fly.dev/upload`);
+    const response = await axios.post(`https://closet-app-backend.fly.dev/api/upload`);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -57,7 +57,7 @@ router.post('/upload', async (req, res) => {
 
 router.post('/register', async (req, res) => {
   try {
-    const response = await axios.post(`https://closet-app-backend.fly.dev/register`);
+    const response = await axios.post(`https://closet-app-backend.fly.dev/api/register`);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -67,7 +67,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const response = await axios.post(`https://closet-app-backend.fly.dev/login`);
+    const response = await axios.post(`https://closet-app-backend.fly.dev/api/login`);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -77,7 +77,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', async (req, res) => {
   try {
-    const response = await axios.post(`https://closet-app-backend.fly.dev/logout`);
+    const response = await axios.post(`https://closet-app-backend.fly.dev/api/logout`);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -89,7 +89,7 @@ router.post('/loginAnonymous', async (req, res) => {
   console.log("inside backend.js try");
   try {
     console.log("inside backend.js try");
-    const response = await axios.post(`https://closet-app-backend.fly.dev/loginAnonymous`);
+    const response = await axios.post(`https://closet-app-backend.fly.dev/api/loginAnonymous`);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
@@ -99,7 +99,7 @@ router.post('/loginAnonymous', async (req, res) => {
 
 router.get('/current', async (req, res) => {
   try {
-    const response = await axios.get(`https://closet-app-backend.fly.dev/current`);
+    const response = await axios.get(`https://closet-app-backend.fly.dev/api/current`);
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error(error);
