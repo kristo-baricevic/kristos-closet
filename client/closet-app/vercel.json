@@ -9,7 +9,7 @@
         { "src": "/loginAnonymous/(.*)", "dest": "server.js" },
         { "src": "/current/(.*)", "dest": "server.js" },
         { "src": "/static/(.*)", "dest": "public/$1" },
-        { "src": "/(.*)", "dest": "index.html" }
+        { "src": "/(.*)", "dest": "index.js" }
     ]
 }
   
