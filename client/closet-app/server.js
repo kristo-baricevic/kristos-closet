@@ -21,6 +21,7 @@ const corsOptions = {
     'https://closet-app-backend.fly.dev/',
     'https://fly.io/apps/closet-app-backend/monitoring'
   ],
+  allowedHeaders: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
