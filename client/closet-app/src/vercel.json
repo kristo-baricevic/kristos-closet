@@ -1,0 +1,40 @@
+{
+    "routes": [
+        { 
+            "source": "/api/images/(.*)", 
+            "destination": "https://acme.com/api/images" ,
+            "methods": ["GET", "PUT", "DELETE"]
+        },
+        {
+             "source": "/api/upload/(.*)", 
+             "destination": "https://acme.com/api/upload",
+             "methods": ["POST"] 
+        },
+        { 
+            "source": "/api/register/(.*)", 
+            "destination": "https://acme.com/api/register",
+            "methods": ["POST"]
+        },
+        { 
+            "source": "/api/login/(.*)",
+            "destination": "https://acme.com/api/login",
+            "methods": ["POST"]
+         },
+        { 
+            "source": "/api/logout/(.*)", 
+            "destination": "https://acme.com/api/logout",
+            "methods": ["POST"]
+        },
+        { 
+            "source": "/api/loginAnonymous/(.*)", 
+            "destination": "https://acme.com/api/loginAnonymous", 
+            "methods": ["POST"] 
+        },
+        { 
+            "source": "/api/current/(.*)", 
+            "destination": "https://acme.com/api/current",
+            "methods": ["GET"]
+        }
+    ]
+}
+  
