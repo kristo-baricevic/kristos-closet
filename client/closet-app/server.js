@@ -33,7 +33,6 @@ wss.on('connection', (socket) => {
   socket.send('Welcome to the WebSocket server!');
 });
 
-
 // Connect to the database
 console.log("DB_URI:", process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI, {
@@ -56,6 +55,12 @@ const corsOptions = {
 app.use(express.json()); // Parse JSON request bodies
 app.use(cors(corsOptions)); // Handle CORS
 app.use('/static', express.static('public')); // Serve static files from a "public" directory
+
+// Default route
+app.get('/', (req, res) => {
+  res.send('Express on Vercel');
+});
+
 
 // Use routes with a base URL of '/api'
 app.use('/api', routes);

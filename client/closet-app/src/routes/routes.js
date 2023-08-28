@@ -12,42 +12,7 @@ const {
   updateImage,
   deleteImage,
 } = require('../controllers/imagesController');
-const WebSocket = require('ws'); // Import WebSocket library
 
-// Create a WebSocket server
-const wss = new WebSocket.Server({ noServer: true });
-
-// Attach the WebSocket server to the existing HTTP server
-app.on('upgrade', (request, socket, head) => {
-  wss.handleUpgrade(request, socket, head, (socket) => {
-    wss.emit('connection', socket, request);
-  });
-});
-
-// Handle WebSocket connections
-wss.on('connection', (socket) => {
-  socket.on('message', async (message) => {
-    try {
-      const data = JSON.parse(message);
-
-      if (data.type === 'login') {
-        // Handle the login request, possibly by calling your controller method
-        const response = await userController.handleLogin(data.data);
-        const responseMessage = JSON.stringify({
-          type: 'loginResponse',
-          data: response,
-        });
-        socket.send(responseMessage);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  });
-
-  socket.on('close', () => {
-    console.log('WebSocket connection closed');
-  });
-});
 
 // Image routes
 router.get('/images', getImages);
