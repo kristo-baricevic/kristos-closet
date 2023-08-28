@@ -39,7 +39,7 @@
         { 
             "source": "/api/loginAnonymous/(.*)", 
             "destination": "https://closet-app-backend.fly.dev/api/loginAnonymous", 
-            "methods": ["POST"] 
+            "methods": ["POST", "GET"] 
         },
         { 
             "source": "/api/current/(.*)", 
