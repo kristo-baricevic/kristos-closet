@@ -1,4 +1,4 @@
-const routes = require('./src/routes/routes');
+const router = require('./src/routes/routes');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 
 // Use routes with a base URL of '/api'
-app.use('/api', routes);
+app.use('/api', router);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
