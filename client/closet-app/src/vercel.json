@@ -12,10 +12,12 @@
       ],
     "rewrites": [
         { 
-            "rewrites": [
-                { "source": "/api/(.*)", "destination": "https://closet-app-backend.fly.dev/api/$1" },
-                { "source": "/(.*)", "destination": "/$1" }
-            ]
+            "source": "/api/(.*)", 
+            "destination": "https://closet-app-backend.fly.dev/api/$1" 
+        },
+        { 
+            "source": "/(.*)", 
+            "destination": "/$1" 
         }
     ]
 }
