@@ -55,7 +55,7 @@ const corsOptions = {
 // Middleware and configurations
 app.use(express.json()); // Parse JSON request bodies
 app.use(cors(corsOptions)); // Handle CORS
-// app.use('/static', express.static('public')); // Serve static files from a "public" directory
+app.use('/static', express.static('public')); // Serve static files from a "public" directory
 
 // Use routes with a base URL of '/api'
 app.use('/api', routes);
