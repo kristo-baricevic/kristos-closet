@@ -44,11 +44,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-// Catch-all route to serve the React app
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'client', 'closet-app', 'build', 'index.html'));
-// });
-
 
 // Start the HTTP server
 const PORT = process.env.PORT || 5000;
