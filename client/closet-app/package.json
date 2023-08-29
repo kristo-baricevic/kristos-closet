@@ -2,7 +2,6 @@
   "name": "closet-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://closet-app-backend.fly.dev",
   "dependencies": {
     "@babel/core": "^7.22.11",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
