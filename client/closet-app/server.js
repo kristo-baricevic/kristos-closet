@@ -1,5 +1,6 @@
 const routes = require('./src/routes/routes');
 const express = require('express');
+const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -27,6 +28,10 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
+// Serve the static files from the build directory
+app.use(express.static(path.join(__dirname, 'client', 'closet-app', 'build')));
+
+
 // Middleware and configurations
 app.use(express.json()); 
 app.use(cors(corsOptions)); 
@@ -40,6 +45,12 @@ app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ error: 'Internal server error' });
 });
+
+// Catch-all route to serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'closet-app', 'build', 'index.html'));
+});
+
 
 // Start the HTTP server
 const PORT = process.env.PORT || 5000;
