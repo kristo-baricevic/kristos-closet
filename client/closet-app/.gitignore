@@ -8,7 +8,6 @@
 /coverage
 
 # production
-/build
 /node_modules
 
 # misc
