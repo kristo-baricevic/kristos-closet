@@ -29,7 +29,7 @@ export const uploadImageAndMetaData = createAsyncThunk(
         combinedFormData.append(key, value);
       }
 
-      await axios.post(`/api/upload`, combinedFormData, {
+      await axios.post(`http://localhost:5000/api/upload`, combinedFormData, {
         headers,
       });
 

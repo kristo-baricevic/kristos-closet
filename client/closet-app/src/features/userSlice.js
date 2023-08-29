@@ -15,7 +15,7 @@ export const registerUser = createAsyncThunk(
         try {
         console.log("userData about to post");
         const response = await axios.post(
-            `/api/register`,
+            `http://localhost:5000/api/register`,
             userData
         );
         console.log("userData posted");
@@ -35,7 +35,7 @@ export const loginUser = createAsyncThunk(
     async (userData) => {
       try {
         const response = await axios.post(
-          `/api/login`,
+          `http://localhost:5000/api/login`,
           userData
         );
   
@@ -60,7 +60,7 @@ export const loginAnonymous = createAsyncThunk(
   async () => {
     try {
       console.log("inside loginAnonymous");
-      const response = await axios.post('/api/loginAnonymous');
+      const response = await axios.post('http://localhost:5000/api/loginAnonymous');
       const isAuthenticated = response.data.isAuthenticated;
       console.log("response", isAuthenticated);
       const user = response.data.user;
