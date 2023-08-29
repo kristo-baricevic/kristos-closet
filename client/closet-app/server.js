@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
 
 
 // Connect to the database
@@ -26,14 +29,11 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-// Serve the static files from the build directory
-app.use(express.static(path.join(__dirname, 'client', 'closet-app', 'build')));
-
 
 // Middleware and configurations
 app.use(express.json()); 
 app.use(cors(corsOptions)); 
-app.use('/static', express.static('public'));
+app.use('/static', express.static('build'));
 
 // Use routes with a base URL of '/api'
 app.use('/api', routes);
@@ -45,9 +45,9 @@ app.use((err, req, res, next) => {
 });
 
 // Catch-all route to serve the React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'closet-app', 'build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client', 'closet-app', 'build', 'index.html'));
+// });
 
 
 // Start the HTTP server
