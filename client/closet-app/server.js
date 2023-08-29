@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
+// dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
 
 
 // Connect to the database

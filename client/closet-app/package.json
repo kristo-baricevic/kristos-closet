@@ -1,9 +1,6 @@
 {
   "name": "closet-app",
   "version": "0.1.0",
-  "engines": {
-    "node": "18.16.1"
-  },
   "private": true,
   "dependencies": {
     "@babel/core": "^7.22.11",
