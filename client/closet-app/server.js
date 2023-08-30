@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
-// dotenv.config();
+// dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
+dotenv.config();
 
 // Connect to the database
 console.log("DB_URI:", process.env.MONGODB_URI);
@@ -49,10 +49,10 @@ app.use((err, req, res, next) => {
 
 
 // Start the HTTP server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
 
 module.exports = app;
 
