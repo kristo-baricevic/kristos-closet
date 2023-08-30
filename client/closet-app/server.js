@@ -1,18 +1,18 @@
 const express = require('express');
 const app = express();
 const routes = require('./src/routes/routes');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 // const cors = require('cors');
 // const dotenv = require('dotenv');
 
 // dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
 
 // Connect to the database
-console.log("DB_URI:", process.env.MONGODB_URI);
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// console.log("DB_URI:", process.env.MONGODB_URI);
+// mongoose.connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 // const corsOptions = {
 //   origin: [
