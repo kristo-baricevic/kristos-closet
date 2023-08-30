@@ -21,8 +21,7 @@ const corsOptions = {
     'http://localhost:3000', 
     'http://localhost:5000', 
     'http://kristos-closet.vercel.app',
-    'http://closet-app-backend.fly.dev/',
-    'http://fly.io/apps/closet-app-backend/monitoring'
+    'http://closet-app-backend.fly.dev/'
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,

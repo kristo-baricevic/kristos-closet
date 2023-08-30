@@ -26,7 +26,7 @@ exports.getImages = async (req, res) => {
 
       console.log(imageObject);
 
-      const imageUrl = `http://localhost:5000/images/${item._id}`;
+      const imageUrl = `https://kristos-closet.vercel.app/api/images/${item._id}`;
 
       console.log("backend URL", imageUrl);
 
