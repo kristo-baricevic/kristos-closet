@@ -24,12 +24,14 @@ app.use('/', (req, res) => {
   res.send('Welcome to the Walk-In Closet');
 });
 
+
+app.listen(port, () => {
+  console.log(`Server is definitely running on port ${port}`);
+});
+
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ error: 'Internal closet error' });
 });
 
-app.listen(port, () => {
-  console.log(`Server is definitely running on port ${port}`);
-});
 
