@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 const corsOptions = {
   origin: [
     'http://localhost:3000', 
-    'http://localhost:5000', 
+    'http://localhost:5000',
     'https://kristos-closet.vercel.app',
     'http://kristos-closet.vercel.app'
   ],
