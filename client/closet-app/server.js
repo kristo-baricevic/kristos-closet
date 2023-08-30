@@ -31,7 +31,7 @@ app.use(express.json());
 app.use('/static', express.static('build'));
 
 // Use routes with a base URL of '/api'
-app.use('/api', routes);
+// app.use('/api', routes);
 
 app.use('/', (req, res) => {  
   console.log('Request to walk-in received.');
