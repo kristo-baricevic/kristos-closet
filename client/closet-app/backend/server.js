@@ -17,7 +17,7 @@ const app = express();
 // const corsOptions = {
 //   origin: [
 //     'http://localhost:3000', 
-//     'http://kristos-closet.vercel.app'
+//     'http://kristos-closet.vercel.app' 
 //   ],
 //   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 //   credentials: true,
