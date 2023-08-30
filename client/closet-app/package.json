@@ -4,8 +4,9 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.22.11",
+    "@babel/node": "^7.22.10",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-env": "^7.22.14",
     "@babel/preset-react": "^7.22.5",
     "@flydotio/dockerfile": "^0.4.8",
     "@popperjs/core": "^2.11.8",
