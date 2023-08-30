@@ -1,6 +1,6 @@
-const routes = require('./src/routes/routes');
 const express = require('express');
 const app = express();
+const routes = require('./src/routes/routes');
 const mongoose = require('mongoose');
 const cors = require('cors');
 // const dotenv = require('dotenv');
@@ -27,7 +27,7 @@ const corsOptions = {
 
 // Middleware and configurations
 app.use(express.json()); 
-app.use(cors(corsOptions)); 
+// app.use(cors(corsOptions)); 
 app.use('/static', express.static('build'));
 
 // Use routes with a base URL of '/api'
@@ -45,7 +45,7 @@ app.use((err, req, res, next) => {
 });
 
 
-// Start the HTTP server
+// // Start the HTTP server
 // const PORT = process.env.PORT || 5000;
 // app.listen(PORT, () => {
 //   console.log(`Server is running on port ${PORT}`);
