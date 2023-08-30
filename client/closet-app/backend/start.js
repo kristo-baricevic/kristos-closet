@@ -1,10 +1,22 @@
 //start server in production
-// const app = require('./server.js');
 const express = require('express');
 const port = process.env.PORT || 5000;
 const app = express();
+const cors = require('cors');
+
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', 
+    'http://kristos-closet.vercel.app' 
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
 
 require('dotenv').config();
+app.use(cors(corsOptions)); 
+
 
 app.use(express.json()); 
 app.use('/', (req, res) => {  
@@ -20,3 +32,4 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
 });
+
