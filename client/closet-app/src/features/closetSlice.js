@@ -7,9 +7,6 @@ const initialState = {
   error: null,
 };
 
-// const backendBaseUrl = 'https://closet-app-backend.fly.dev';
-
-
 // Thunk action to fetch items
 export const fetchItems = () => async (dispatch) => {
     dispatch(fetchItemsStart());

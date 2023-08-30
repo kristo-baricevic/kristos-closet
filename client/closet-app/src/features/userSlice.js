@@ -15,7 +15,7 @@ export const registerUser = createAsyncThunk(
         try {
         console.log("userData about to post");
         const response = await axios.post(
-            `https://kristos-closet.vercel.app/api/api/register`,
+            `https://kristos-closet.vercel.app/api/register`,
             userData
         );
         console.log("userData posted");
@@ -35,7 +35,7 @@ export const loginUser = createAsyncThunk(
     async (userData) => {
       try {
         const response = await axios.post(
-          `https://kristos-closet.vercel.app/api/api/login`,
+          `https://kristos-closet.vercel.app/api/login`,
           userData
         );
   
