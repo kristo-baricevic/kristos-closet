@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 // const routes = require('./routes/routes');
 // const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
 // const dotenv = require('dotenv');
 
 // dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
@@ -14,20 +14,20 @@ const app = express();
 //   useUnifiedTopology: true,
 // });
 
-// const corsOptions = {
-//   origin: [
-//     'http://localhost:3000', 
-//     'http://kristos-closet.vercel.app' 
-//   ],
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true,
-//   optionsSuccessStatus: 204,
-// };
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', 
+    'http://kristos-closet.vercel.app' 
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
 
 
 // Middleware and configurations
 app.use(express.json()); 
-// app.use(cors(corsOptions)); 
+app.use(cors(corsOptions)); 
 // app.use('/static', express.static('build'));
 
 // Use routes with a base URL of '/api'
