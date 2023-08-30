@@ -1,10 +1,8 @@
 const routes = require('./src/routes/routes');
 const express = require('express');
-const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv');
 
 // dotenv.config({ path: '/Users/kristo/kristos-closet/client/closet-app/.env.local' });
 
