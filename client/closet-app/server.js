@@ -38,7 +38,7 @@ app.use('/api', routes);
 
 app.use('/', (req, res) => {  
   console.log('Request to root path received.');
-  res.send('Welcome to my API');
+  res.send('Welcome to the Walk-In Closet');
 });
 
 // Error handling middleware
