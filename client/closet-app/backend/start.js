@@ -1,5 +1,5 @@
 //start server in production
-const app = require('./server')
+const app = require('./server');
 const port = process.env.PORT || 5000;
 
 require('dotenv').config();
