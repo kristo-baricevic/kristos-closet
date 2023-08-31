@@ -37,6 +37,12 @@ app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
 });
 
+router.get("/index", (req, res)=> {
+  res.json({
+    message: "success"
+  })
+ });
+
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ error: 'Internal closet error' });
