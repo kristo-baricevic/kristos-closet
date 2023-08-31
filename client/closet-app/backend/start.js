@@ -1,6 +1,5 @@
 //start server in production
 const express = require('express');
-const router = express.Router();
 const port = process.env.PORT || 5000;
 const app = express();
 const cors = require('cors');
@@ -11,7 +10,7 @@ const cors = require('cors');
 //   deleteImage,
 // } = require('./controllers/imagesController');
 // const { verifyToken } = require('./middleware/authMiddleware');
-// const route = require('./routes/routes');
+const ApiRouter = require('./routes/routes');
 
 
 const corsOptions = {
@@ -34,7 +33,7 @@ app.use('/', (req, res, next) => {
   res.send('Welcome to the Walk-In Closet');
 });
 
-app.use('/api', router);
+app.use('/api', ApiRouter);
 
 app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
