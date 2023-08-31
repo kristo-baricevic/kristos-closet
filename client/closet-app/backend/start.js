@@ -38,7 +38,7 @@ app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
 });
 
-router.get("/index", (req, res, next) => {
+router.get("/getindex", (req, res, next) => {
   console.log("index of the walk-in");
   res.send('Looking at the index');
  });
