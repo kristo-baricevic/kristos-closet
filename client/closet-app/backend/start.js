@@ -38,11 +38,6 @@ app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
 });
 
-router.get("/getindex", (req, res, next) => {
-  console.log("index of the walk-in");
-  res.send('Looking at the index');
- });
-
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ error: 'Internal closet error' });
