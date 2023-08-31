@@ -121,7 +121,7 @@ exports.loginAnonymous = async (req, res, next) => {
     console.log("server hit @ loginAnon");
     const responseMessage = "server hit @ loginAnon";
 
-    res.status(200).json({ message: responseMessage });
+    return res.status(200).json({ message: responseMessage });
     // Create an anonymous user (or find if already exists)
   //   const anonymousUsername = generateUniqueUsername();
 
