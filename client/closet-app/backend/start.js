@@ -25,9 +25,9 @@ app.use('/', (req, res) => {
   res.send('Welcome to the Walk-In Closet');
 });
 
-app.use('/api', routes);
+// app.use('/api', routes);
 // app.use('/static', express.static('build'));
-app.use('/api',routes,(err,req,res,next)=>{next(err);}); 
+app.use('/api',routes, (err, req,res,next)=>{next(err);}); 
 
 app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
