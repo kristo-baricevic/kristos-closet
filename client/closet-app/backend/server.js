@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-// const routes = require('./routes/routes');
+const routes = require('./routes/routes');
 // const mongoose = require('mongoose');
 const cors = require('cors');
 // const dotenv = require('dotenv');
@@ -31,7 +31,7 @@ app.use(cors(corsOptions));
 // app.use('/static', express.static('build'));
 
 // Use routes with a base URL of '/api'
-// app.use('/api', routes);
+app.use('/api', routes);
 
 app.use('/', (req, res) => {  
   console.log('Request to walk-in received.');
