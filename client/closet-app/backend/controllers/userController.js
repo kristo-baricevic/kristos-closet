@@ -114,7 +114,6 @@ exports.loginUser = async (req, res) => {
 };
 
 exports.logoutUser = async (req, res) => {
-  // user logout logic here...
 };
 
 exports.loginAnonymous = async (req, res) => {

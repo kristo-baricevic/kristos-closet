@@ -37,11 +37,11 @@ app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
 });
 
-router.get("/index", (req, res)=> {
-  res.json({
-    message: "success"
-  })
- });
+// router.get("/index", (req, res)=> {
+//   res.json({
+//     message: "success"
+//   })
+//  });
 
 app.use((err, req, res, next) => {
   console.error(err);
