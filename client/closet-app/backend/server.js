@@ -14,20 +14,20 @@ const cors = require('cors');
 //   useUnifiedTopology: true,
 // });
 
-const corsOptions = {
-  origin: [
-    'http://localhost:3000', 
-    'http://kristos-closet.vercel.app' 
-  ],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
+// const corsOptions = {
+//   origin: [
+//     'http://localhost:3000', 
+//     'http://kristos-closet.vercel.app' 
+//   ],
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+// };
 
 
 // Middleware and configurations
 app.use(express.json()); 
-app.use(cors(corsOptions)); 
+app.use(cors()); 
 app.use('/static', express.static('build'));
 
 // Use routes with a base URL of '/api'
