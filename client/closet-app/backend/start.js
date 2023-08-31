@@ -3,7 +3,7 @@ const express = require('express');
 const port = process.env.PORT || 5000;
 const app = express();
 const cors = require('cors');
-// const routes = require('./routes/routes');
+const routes = require('./routes/routes');
 
 
 const corsOptions = {
@@ -25,7 +25,7 @@ app.use('/', (req, res) => {
   res.send('Welcome to the Walk-In Closet');
 });
 
-// app.use('/api', routes);
+app.use('/api', routes);
 // app.use('/static', express.static('build'));
 
 
