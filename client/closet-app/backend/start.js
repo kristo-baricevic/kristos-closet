@@ -26,7 +26,7 @@ app.use(express.json());
 // });
 
 // app.use('/api', routes);
-app.use(express.static('build'));
+app.use('/static', express.static('build'));
 
 
 app.listen(port, () => {
