@@ -1,8 +1,15 @@
 //start server in production
 const express = require('express');
+const router = express.Router();
 const port = process.env.PORT || 5000;
 const app = express();
 const cors = require('cors');
+const {
+  getImages,
+  getImageById,
+  updateImage,
+  deleteImage,
+} = require('../controllers/imagesController');
 // const route = require('./routes/routes');
 
 
@@ -25,8 +32,12 @@ app.use('/', (req, res) => {
   res.send('Welcome to the Walk-In Closet');
 });
 
-// app.use('/api', routes);
-app.use('/static', express.static('build'));
+
+// Image routes
+router.get('/images', getImages);
+router.put('/images/:id', verifyToken, updateImage);
+router.get('/images/:id', getImageById);
+router.delete('/images/:id', verifyToken, deleteImage);
 
 app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
