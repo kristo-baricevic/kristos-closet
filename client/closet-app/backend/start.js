@@ -1,16 +1,16 @@
 //start server in production
 const express = require('express');
-const router = express.Router();
+// const router = express.Router();
 const port = process.env.PORT || 5000;
 const app = express();
 const cors = require('cors');
-const {
-  getImages,
-  getImageById,
-  updateImage,
-  deleteImage,
-} = require('./controllers/imagesController');
-const { verifyToken } = require('./middleware/authMiddleware');
+// const {
+//   getImages,
+//   getImageById,
+//   updateImage,
+//   deleteImage,
+// } = require('./controllers/imagesController');
+// const { verifyToken } = require('./middleware/authMiddleware');
 // const route = require('./routes/routes');
 
 
