@@ -120,24 +120,24 @@ exports.loginAnonymous = async (req, res) => {
   try {
     console.log("server hit @ loginAnon");
     // Create an anonymous user (or find if already exists)
-    // const anonymousUsername = generateUniqueUsername();
+    const anonymousUsername = generateUniqueUsername();
 
-    // const user = new User({
-    //   username: anonymousUsername,
-    // });
-    // await user.save()
+    const user = new User({
+      username: anonymousUsername,
+    });
+    await user.save()
 
-    // // Create and sign a JWT token for the anonymous user
-    // const token = authService.generateToken(user);
+    // Create and sign a JWT token for the anonymous user
+    const token = authService.generateToken(user);
 
-    // return res.status(200).json({
-    //   token,
-    //   user: {
-    //     _id: user._id,
-    //     username: user.username,
-    //   },
-    //   isAuthenticated: true,
-    // });
+    return res.status(200).json({
+      token,
+      user: {
+        _id: user._id,
+        username: user.username,
+      },
+      isAuthenticated: true,
+    });
   } catch (error) {
     console.error('Anonymous login error:', error);
     return res.status(500).json({ error: 'An error occurred during anonymous login' });
