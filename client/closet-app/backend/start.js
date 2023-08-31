@@ -29,12 +29,14 @@ require('dotenv').config();
 app.use(cors());
 
 app.use(express.json()); 
+
+app.use('/api', ApiRouter);
+
 app.use('/', (req, res, next) => {  
   console.log('Request to walk-in received.');
   res.send('Welcome to the Walk-In Closet');
 });
 
-app.use('/api', ApiRouter);
 
 app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
