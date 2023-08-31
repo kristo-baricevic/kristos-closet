@@ -10,6 +10,7 @@ const {
   updateImage,
   deleteImage,
 } = require('../controllers/imagesController');
+const { verifyToken } = require('../middleware/authMiddleware');
 // const route = require('./routes/routes');
 
 
@@ -27,17 +28,12 @@ require('dotenv').config();
 app.use(cors(corsOptions)); 
 
 app.use(express.json()); 
-app.use('/', (req, res) => {  
+app.use('/', (req, res, next) => {  
   console.log('Request to walk-in received.');
   res.send('Welcome to the Walk-In Closet');
 });
 
-
-// Image routes
-router.get('/images', getImages);
-router.put('/images/:id', verifyToken, updateImage);
-router.get('/images/:id', getImageById);
-router.delete('/images/:id', verifyToken, deleteImage);
+app.use(router);
 
 app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
