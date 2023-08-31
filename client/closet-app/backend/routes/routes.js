@@ -12,9 +12,9 @@ const {
 } = require('../controllers/imagesController');
 
 // Image routes
-// router.get('/images', getImages);
+router.get('/images', getImages);
 router.put('/images/:id', verifyToken, updateImage);
-// router.get('/images/:id', getImageById);
+router.get('/images/:id', getImageById);
 router.delete('/images/:id', verifyToken, deleteImage);
 
 // Upload route
