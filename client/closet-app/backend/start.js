@@ -29,10 +29,10 @@ require('dotenv').config();
 app.use(cors(corsOptions)); 
 
 app.use(express.json()); 
-app.use('/', (req, res, next) => {  
-  console.log('Request to walk-in received.');
-  res.send('Welcome to the Walk-In Closet');
-});
+// app.use('/', (req, res, next) => {  
+//   console.log('Request to walk-in received.');
+//   res.send('Welcome to the Walk-In Closet');
+// });
 
 app.use('/api', router);
 
