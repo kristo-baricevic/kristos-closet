@@ -1,6 +1,6 @@
 const multer = require('multer');
 
-// Create a storage engine using GridFS
+// Create a storage engine using GridFS ** make sure directory exists
 const storage = multer.diskStorage({
   destination: './images', 
   filename: (req, file, cb) => {
