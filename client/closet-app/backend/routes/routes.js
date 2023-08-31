@@ -13,18 +13,18 @@ const {
 
 // Image routes
 router.get('/images', getImages);
-router.put('/images/:id', verifyToken, updateImage);
-router.get('/images/:id', getImageById);
-router.delete('/images/:id', verifyToken, deleteImage);
+// router.put('/images/:id', verifyToken, updateImage);
+// router.get('/images/:id', getImageById);
+// router.delete('/images/:id', verifyToken, deleteImage);
 
 // Upload route
-router.post('/upload', upload.single('imageFile'), uploadController.uploadImageAndMetaData);
+// router.post('/upload', upload.single('imageFile'), uploadController.uploadImageAndMetaData);
 
 // User routes
-router.post('/register', userController.registerUser);
-router.post('/login', userController.loginUser);
-router.post('/logout', verifyToken, userController.logoutUser);
-router.post('/loginAnonymous', userController.loginAnonymous);
-router.get('/current', verifyToken, userController.getCurrentUserData);
+// router.post('/register', userController.registerUser);
+// router.post('/login', userController.loginUser);
+// router.post('/logout', verifyToken, userController.logoutUser);
+// router.post('/loginAnonymous', userController.loginAnonymous);
+// router.get('/current', verifyToken, userController.getCurrentUserData);
 
 module.exports = router;
