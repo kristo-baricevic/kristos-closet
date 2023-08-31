@@ -24,10 +24,10 @@ app.use('/static', express.static('build'));
 
 
 app.use(express.json()); 
-app.use('/', (req, res) => {  
-  console.log('Request to walk-in received.');
-  res.send('Welcome to the Walk-In Closet');
-});
+// app.use('/', (req, res) => {  
+//   console.log('Request to walk-in received.');
+//   res.send('Welcome to the Walk-In Closet');
+// });
 
 
 app.listen(port, () => {
