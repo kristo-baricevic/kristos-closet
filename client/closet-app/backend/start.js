@@ -34,6 +34,8 @@ app.use('/', (req, res, next) => {
   res.send('Welcome to the Walk-In Closet');
 });
 
+app.use('/api', router);
+
 app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);
 });
