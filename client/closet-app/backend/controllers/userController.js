@@ -116,7 +116,7 @@
 // exports.logoutUser = async (req, res) => {
 // };
 
-exports.loginAnonymous = async (req, res) => {
+exports.loginAnonymous = async (req, res, next) => {
   // try {
     console.log("server hit @ loginAnon");
     const responseMessage = "server hit @ loginAnon";
