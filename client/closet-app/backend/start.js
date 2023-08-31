@@ -13,19 +13,20 @@ const cors = require('cors');
 const ApiRouter = require('./routes/routes');
 
 
-const corsOptions = {
-  origin: [
-    'http://localhost:3000', 
-    'http://kristos-closet.vercel.app' 
-  ],
-  methods: 'GET,HEAD,PUT,OPTIONS,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
+// const corsOptions = {
+//   origin: [
+//     'http://localhost:3000', 
+//     'http://kristos-closet.vercel.app'
+//   ],
+//   methods: 'GET,HEAD,PUT,OPTIONS,PATCH,POST,DELETE',
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+// };
 
 require('dotenv').config();
 
-app.use(cors(corsOptions)); 
+// app.use(cors(corsOptions)); 
+app.use(cors);
 
 app.use(express.json()); 
 app.use('/', (req, res, next) => {  
