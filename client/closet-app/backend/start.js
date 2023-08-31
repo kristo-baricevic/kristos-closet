@@ -3,7 +3,7 @@ const express = require('express');
 const port = process.env.PORT || 5000;
 const app = express();
 const cors = require('cors');
-// const routes = require('./routes/routes');
+// const route = require('./routes/routes');
 
 
 const corsOptions = {
@@ -26,7 +26,7 @@ app.use('/', (req, res) => {
 });
 
 // app.use('/api', routes);
-// app.use('/static', express.static('build'));
+app.use('/static', express.static('build'));
 
 app.listen(port, () => {
   console.log(`Server is definitely running on port ${port}`);

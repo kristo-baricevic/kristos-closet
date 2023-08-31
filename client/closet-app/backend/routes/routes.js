@@ -12,10 +12,10 @@ const {
 } = require('../controllers/imagesController');
 
 // Image routes
-// router.get('/images', getImages);
-// router.put('/images/:id', verifyToken, updateImage);
-// router.get('/images/:id', getImageById);
-// router.delete('/images/:id', verifyToken, deleteImage);
+router.get('/images', getImages);
+router.put('/images/:id', verifyToken, updateImage);
+router.get('/images/:id', getImageById);
+router.delete('/images/:id', verifyToken, deleteImage);
 
 // Upload route
 // router.post('/upload', upload.single('imageFile'), uploadController.uploadImageAndMetaData);
@@ -27,4 +27,4 @@ const {
 // router.post('/loginAnonymous', userController.loginAnonymous);
 // router.get('/current', verifyToken, userController.getCurrentUserData);
 
-module.exports = router;
+module.exports = { router };
