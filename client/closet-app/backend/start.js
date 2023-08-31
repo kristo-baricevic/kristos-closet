@@ -19,7 +19,7 @@ const corsOptions = {
     'http://localhost:3000', 
     'http://kristos-closet.vercel.app' 
   ],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  methods: 'GET,HEAD,PUT,OPTIONS,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
 };

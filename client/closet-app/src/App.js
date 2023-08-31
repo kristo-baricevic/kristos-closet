@@ -36,12 +36,12 @@ import './App.css';
       };
     }, []);
 
-    useEffect(() => {
-      // Fetch user data once the component mounts
-      if (!isAuthenticated) {
-        dispatch(loginUser({ username: 'yourUsername', password: 'yourPassword' }));
-      }
-    }, [dispatch, isAuthenticated]);
+    // useEffect(() => {
+    //   // Fetch user data once the component mounts
+    //   if (!isAuthenticated) {
+    //     dispatch(loginUser({ username: 'yourUsername', password: 'yourPassword' }));
+    //   }
+    // }, [dispatch, isAuthenticated]);
 
     const handleSelectItem = (image) => {
       const { category } = image;
@@ -64,7 +64,6 @@ import './App.css';
       }
     };
     
-
     const handleRemoveItem = (item, category) => {
       if (category === 'accessory') {
         dispatch(removeItem({ category, item }));
