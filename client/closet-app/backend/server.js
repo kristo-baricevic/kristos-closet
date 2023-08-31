@@ -33,10 +33,10 @@ app.use('/static', express.static('build'));
 // Use routes with a base URL of '/api'
 app.use('/api', routes);
 
-app.use('/', (req, res) => {  
-  console.log('Request to walk-in received.');
-  res.send('Welcome to the Walk-In Closet');
-});
+// app.use('/', (req, res) => {  
+//   console.log('Request to walk-in received.');
+//   res.send('Welcome to the Walk-In Closet');
+// });
 
 // Error handling middleware
 app.use((err, req, res, next) => {

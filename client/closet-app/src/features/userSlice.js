@@ -61,14 +61,15 @@ export const loginAnonymous = createAsyncThunk(
     try {
       console.log("inside loginAnonymous");
       const response = await axios.post('https://kristobaricevic.com/api/loginAnonymous');
-      const isAuthenticated = response.data.isAuthenticated;
-      console.log("response", isAuthenticated);
-      const user = response.data.user;
-      const token = response.data.token;
+      console.log("this is a", response.data);
+      // const isAuthenticated = response.data.isAuthenticated;
+      // console.log("response", isAuthenticated);
+      // const user = response.data.user;
+      // const token = response.data.token;
   
-      localStorage.setItem('token', token);
+      // localStorage.setItem('token', token);
   
-      return { isAuthenticated, user };
+      // return { isAuthenticated, user };
     } catch (error) {
       throw error;
     }
@@ -108,8 +109,8 @@ export const userSlice = createSlice({
                 // Handle login failure if needed
             })
             .addCase(loginAnonymous.fulfilled, (state, action) => {
-                state.isAuthenticated = action.payload.isAuthenticated;
-                state.user = action.payload.user;
+                // state.isAuthenticated = action.payload.isAuthenticated;
+                // state.user = action.payload.user;
             })
             .addCase(loginAnonymous.rejected, (state, action) => {
                 // Handle the error case here if needed
