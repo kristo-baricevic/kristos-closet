@@ -9,8 +9,8 @@ const {
   getImageById,
   updateImage,
   deleteImage,
-} = require('../controllers/imagesController');
-const { verifyToken } = require('../middleware/authMiddleware');
+} = require('./controllers/imagesController');
+const { verifyToken } = require('./middleware/authMiddleware');
 // const route = require('./routes/routes');
 
 
