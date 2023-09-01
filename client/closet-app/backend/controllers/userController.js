@@ -13,7 +13,7 @@ const User = require('../models/User');
 //   .has().digits()
 //   .has().symbols()
 //   .has().not().spaces()
-
+// 
 // exports.registerUser = async (req, res) => {
 //   console.log("registerUser in controller hit");
 //   try {
@@ -125,10 +125,11 @@ exports.loginAnonymous = async (req, res, next) => {
     // Create an anonymous user (or find if already exists)
     const anonymousUsername = generateUniqueUsername();
 
-    const user = new User({
-      username: anonymousUsername,
-    });
-    await user.save()
+    // const user = new User({
+    //   username: anonymousUsername,
+    // });
+
+    // await user.save()
 
   //   // Create and sign a JWT token for the anonymous user
     // const token = authService.generateToken(user);

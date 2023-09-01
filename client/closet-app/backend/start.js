@@ -11,6 +11,7 @@ const cors = require('cors');
 // } = require('./controllers/imagesController');
 // const { verifyToken } = require('./middleware/authMiddleware');
 const ApiRouter = require('./routes/routes');
+const dotenv = require ('dotenv');
 
 
 // const corsOptions = {
@@ -23,7 +24,10 @@ const ApiRouter = require('./routes/routes');
 //   optionsSuccessStatus: 204,
 // };
 
-require('dotenv').config();
+
+// dotenv.config({ path: './.env' });
+
+dotenv.config();
 
 // app.use(cors(corsOptions)); 
 app.use(cors());
