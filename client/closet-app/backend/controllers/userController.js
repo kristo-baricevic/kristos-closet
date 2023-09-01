@@ -1,4 +1,4 @@
-// const User = require('../models/User');
+const User = require('../models/User');
 // const validator = require('validator');
 // const passwordValidator = require('password-validator');
 // const schema = new passwordValidator();
@@ -125,13 +125,13 @@ exports.loginAnonymous = async (req, res, next) => {
     // Create an anonymous user (or find if already exists)
     const anonymousUsername = generateUniqueUsername();
 
-  //   const user = new User({
-  //     username: anonymousUsername,
-  //   });
-  //   await user.save()
+    const user = new User({
+      username: anonymousUsername,
+    });
+    await user.save()
 
   //   // Create and sign a JWT token for the anonymous user
-  //   const token = authService.generateToken(user);
+    // const token = authService.generateToken(user);
 
   //   return res.status(200).json({
   //     token,
