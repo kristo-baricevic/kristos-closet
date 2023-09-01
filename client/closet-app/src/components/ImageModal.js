@@ -26,7 +26,7 @@ const ImageModal = () => {
     <div className={`image-modal ${isImageModalVisible ? 'visible' : ''}`}>
       <div className="image-modal-content">
         <h2 className="image-header">Clothing Item</h2>
-          <img src={getImageUrl(image)} alt="selected item in a modal"/>
+          <img className="image-modal-image" src={getImageUrl(image)} alt="selected item in a modal"/>
         <button className="image-close-button" onClick={handleCloseModal}>Close</button>
       </div>
     </div>
