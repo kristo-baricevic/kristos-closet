@@ -6,8 +6,6 @@ const initialState = {
     isAuthenticated: false,
 };
 
-// const backendBaseUrl = 'https://closet-app-backend.fly.dev';
-
 // Async thunk action to register user
 export const registerUser = createAsyncThunk(
     "user/registerUser",
@@ -15,7 +13,7 @@ export const registerUser = createAsyncThunk(
         try {
         console.log("userData about to post");
         const response = await axios.post(
-            `https://kristobaricevic.com/api/register`,
+            `http://162.243.187.19:5000/api/register`,
             userData
         );
         console.log("userData posted");
@@ -35,7 +33,7 @@ export const loginUser = createAsyncThunk(
     async (userData) => {
       try {
         const response = await axios.post(
-          `https://kristobaricevic.com/api/login`,
+          `http://162.243.187.19:5000/api/login`,
           userData
         );
   
@@ -109,8 +107,8 @@ export const userSlice = createSlice({
                 // Handle login failure if needed
             })
             .addCase(loginAnonymous.fulfilled, (state, action) => {
-                // state.isAuthenticated = action.payload.isAuthenticated;
-                // state.user = action.payload.user;
+                state.isAuthenticated = action.payload.isAuthenticated;
+                state.user = action.payload.user;
             })
             .addCase(loginAnonymous.rejected, (state, action) => {
                 // Handle the error case here if needed
