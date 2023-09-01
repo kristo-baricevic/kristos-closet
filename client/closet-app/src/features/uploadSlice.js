@@ -6,7 +6,6 @@ const initialState = {
   uploadError: null,
 };
 
-// const backendBaseUrl = 'https://closet-app-backend.fly.dev';
 
 export const uploadImageAndMetaData = createAsyncThunk(
   "user/uploadImageAndMetaData",
