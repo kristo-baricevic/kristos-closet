@@ -1,7 +1,7 @@
 const User = require('../models/User');
-// const validator = require('validator');
-// const bcrypt = require('bcrypt');
-// const authService = require('./authService');
+const validator = require('validator');
+const bcrypt = require('bcrypt');
+const authService = require('./authService');
 
 // const passwordValidator = require('password-validator');
 // const schema = new passwordValidator();
@@ -118,49 +118,50 @@ const User = require('../models/User');
 // };
 
 exports.loginAnonymous = async (req, res, next) => {
-  // try {
+  try {
     console.log("server hit @ loginAnon");
     const responseMessage = "server hit @ loginAnon";
 
     console.log("mongo test 2/2 ");
 
-    return res.status(200).json({ message: responseMessage });
+    // return res.status(200).json({ message: responseMessage });
     // Create an anonymous user (or find if already exists)
-    // const anonymousUsername = generateUniqueUsername();
+    const anonymousUsername = generateUniqueUsername();
 
-    // const user = new User({
-    //   username: anonymousUsername,
-    // });
+    const user = new User({
+      username: anonymousUsername,
+    });
 
-    // await user.save()
+    await user.save()
 
   //   // Create and sign a JWT token for the anonymous user
-    // const token = authService.generateToken(user);
+    const token = authService.generateToken(user);
 
-  //   return res.status(200).json({
-  //     token,
-  //     user: {
-  //       _id: user._id,
-  //       username: user.username,
-  //     },
-  //     isAuthenticated: true,
-  //   });
-  // } catch (error) {
-  //   console.error('Anonymous login error:', error);
-  //   return res.status(500).json({ error: 'An error occurred during anonymous login' });
-  // }
+    return res.status(200).json({
+      token,
+      user: {
+        _id: user._id,
+        username: user.username,
+      },
+      isAuthenticated: true,
+      message: responseMessage,
+    });
+  } catch (error) {
+    console.error('Anonymous login error:', error);
+    return res.status(500).json({ error: 'An error occurred during anonymous login' });
+  }
 };
 
 
-// function generateUniqueUsername() {
-//   // Implement a function to generate a unique username 
-//   const prefix = 'anonymous';
-//   const randomNumber = Math.floor(Math.random() * 1000);
-//   return `${prefix}${randomNumber}`;
-// }
+function generateUniqueUsername() {
+  // Implement a function to generate a unique username 
+  const prefix = 'anonymous';
+  const randomNumber = Math.floor(Math.random() * 1000);
+  return `${prefix}${randomNumber}`;
+}
 
-// exports.getCurrentUserData = async (req, res) => {
-//   // Retrieve current user's data from req.user
-//   const currentUser = req.user;
-//   res.json(currentUser);
-// };
+exports.getCurrentUserData = async (req, res) => {
+  // Retrieve current user's data from req.user
+  const currentUser = req.user;
+  res.json(currentUser);
+};
