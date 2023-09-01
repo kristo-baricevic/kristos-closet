@@ -149,12 +149,12 @@ exports.loginAnonymous = async (req, res, next) => {
 };
 
 
-// function generateUniqueUsername() {
-//   // Implement a function to generate a unique username 
-//   const prefix = 'anonymous';
-//   const randomNumber = Math.floor(Math.random() * 1000);
-//   return `${prefix}${randomNumber}`;
-// }
+function generateUniqueUsername() {
+  // Implement a function to generate a unique username 
+  const prefix = 'anonymous';
+  const randomNumber = Math.floor(Math.random() * 1000);
+  return `${prefix}${randomNumber}`;
+}
 
 // exports.getCurrentUserData = async (req, res) => {
 //   // Retrieve current user's data from req.user
