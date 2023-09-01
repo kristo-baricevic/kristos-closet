@@ -28,6 +28,7 @@ const dotenv = require ('dotenv');
 // dotenv.config({ path: './.env' });
 
 dotenv.config();
+console.log("env loaded", process.env.MONGODB_URI);
 
 // app.use(cors(corsOptions)); 
 app.use(cors());
@@ -50,5 +51,4 @@ app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ error: 'Internal closet error' });
 });
-
 
