@@ -670,7 +670,7 @@ button {
   align-items: center;
   position: absolute;
   left: 50%;
-  top: 75%;
+  top: 80%;
   transform: translate(-50%, -50%);
   width: 100px;
   max-height: 200px;
