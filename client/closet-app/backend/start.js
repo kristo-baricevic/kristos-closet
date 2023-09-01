@@ -11,8 +11,8 @@ const mongoose = require('mongoose');
 // set-up cors
 const corsOptions = {
   origin: [
-    'http://localhost:3000', 
-    'http://kristos-closet.vercel.app'
+    'https://localhost:3000', 
+    'https://kristos-closet.vercel.app'
   ],
   methods: 'GET,HEAD,PUT,OPTIONS,PATCH,POST,DELETE',
   credentials: true,
