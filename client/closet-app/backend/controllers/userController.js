@@ -1,9 +1,10 @@
-// const User = require('../models/User');
+const User = require('../models/User');
 // const validator = require('validator');
-// const passwordValidator = require('password-validator');
-// const schema = new passwordValidator();
 // const bcrypt = require('bcrypt');
 // const authService = require('./authService');
+
+// const passwordValidator = require('password-validator');
+// const schema = new passwordValidator();
 
 // schema
 //   .is().min(8)
@@ -13,7 +14,7 @@
 //   .has().digits()
 //   .has().symbols()
 //   .has().not().spaces()
-// 
+
 // exports.registerUser = async (req, res) => {
 //   console.log("registerUser in controller hit");
 //   try {
@@ -121,7 +122,7 @@ exports.loginAnonymous = async (req, res, next) => {
     console.log("server hit @ loginAnon");
     const responseMessage = "server hit @ loginAnon";
 
-    // console.log("mongo test 2/2 ", User);
+    console.log("mongo test 2/2 ", User);
 
     return res.status(200).json({ message: responseMessage });
     // Create an anonymous user (or find if already exists)
