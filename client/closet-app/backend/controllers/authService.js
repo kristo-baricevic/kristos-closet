@@ -8,8 +8,8 @@ const AuthService = {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
-      username,
-      email,
+      username: username,
+      email: email,
       password: hashedPassword,
     });
 
