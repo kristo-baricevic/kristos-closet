@@ -12,6 +12,7 @@ const cors = require('cors');
 // const { verifyToken } = require('./middleware/authMiddleware');
 const ApiRouter = require('./routes/routes');
 const dotenv = require ('dotenv');
+const mongoose = require('mongoose');
 
 
 // const corsOptions = {
@@ -29,6 +30,7 @@ const dotenv = require ('dotenv');
 
 dotenv.config();
 console.log("env loaded 1/2 ", process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
 // app.use(cors(corsOptions)); 
 app.use(cors());
