@@ -28,7 +28,7 @@ const dotenv = require ('dotenv');
 // dotenv.config({ path: './.env' });
 
 dotenv.config();
-console.log("env loaded", process.env.MONGODB_URI);
+console.log("env loaded 1/2 ", process.env.MONGODB_URI);
 
 // app.use(cors(corsOptions)); 
 app.use(cors());

@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema({
   isAdmin: { type: Boolean, default: false },
 });
 
+ console.log("schema loading page", userSchema);
+
 // Hash the user's password before saving it to the databasee
 // userSchema.pre('save', async function (next) {
 //   if (!this.isModified('password')) {
