@@ -668,8 +668,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
