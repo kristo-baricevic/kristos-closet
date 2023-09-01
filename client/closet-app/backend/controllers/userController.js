@@ -123,7 +123,7 @@ exports.loginAnonymous = async (req, res, next) => {
 
     return res.status(200).json({ message: responseMessage });
     // Create an anonymous user (or find if already exists)
-  //   const anonymousUsername = generateUniqueUsername();
+    const anonymousUsername = generateUniqueUsername();
 
   //   const user = new User({
   //     username: anonymousUsername,
@@ -148,12 +148,12 @@ exports.loginAnonymous = async (req, res, next) => {
 };
 
 
-// function generateUniqueUsername() {
-//   // Implement a function to generate a unique username 
-//   const prefix = 'anonymous';
-//   const randomNumber = Math.floor(Math.random() * 1000);
-//   return `${prefix}${randomNumber}`;
-// }
+function generateUniqueUsername() {
+  // Implement a function to generate a unique username 
+  const prefix = 'anonymous';
+  const randomNumber = Math.floor(Math.random() * 1000);
+  return `${prefix}${randomNumber}`;
+}
 
 // exports.getCurrentUserData = async (req, res) => {
 //   // Retrieve current user's data from req.user
