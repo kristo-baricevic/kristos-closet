@@ -1,4 +1,4 @@
-// const User = require('../models/User');
+const User = require('../models/User');
 // const validator = require('validator');
 // const bcrypt = require('bcrypt');
 // const authService = require('./authService');
@@ -122,7 +122,7 @@ exports.loginAnonymous = async (req, res, next) => {
     console.log("server hit @ loginAnon");
     const responseMessage = "server hit @ loginAnon";
 
-    // console.log("mongo test 2/2 ", User);
+    console.log("mongo test 2/2 ", User);
 
     return res.status(200).json({ message: responseMessage });
     // Create an anonymous user (or find if already exists)

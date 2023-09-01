@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 // const bcrypt = require('bcrypt');
 
-const userSchema = new mongoose.Schema({
-  username: String,
-  email: String,
-  password: String, 
-  isAdmin: { type: Boolean, default: false },
-});
+// const userSchema = new mongoose.Schema({
+//   username: String,
+//   email: String,
+//   password: String, 
+//   isAdmin: { type: Boolean, default: false },
+// });
 
- console.log("schema loading page", userSchema);
+ console.log("schema loading page");
 
 // Hash the user's password before saving it to the databasee
 // userSchema.pre('save', async function (next) {
@@ -34,6 +34,6 @@ const userSchema = new mongoose.Schema({
 //   }
 // };
 
-const User = mongoose.model('User', userSchema);
+// const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+// module.exports = User;
