@@ -1,8 +1,8 @@
 const User = require('../models/User');
-const validator = require('validator');
+// const validator = require('validator');
 const passwordValidator = require('password-validator');
 const schema = new passwordValidator();
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const authService = require('./authService');
 
 schema
