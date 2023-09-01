@@ -31,6 +31,7 @@ const mongoose = require('mongoose');
 dotenv.config();
 console.log("env loaded 1/2 ", process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI);
+console.log("passed the mongoose!");
 
 // app.use(cors(corsOptions)); 
 app.use(cors());
@@ -46,7 +47,7 @@ app.use('/', (req, res, next) => {
 
 
 app.listen(port, () => {
-  console.log(`Server is definitely running on port ${port}`);
+  console.log(`Server is definitely, definitely running on port ${port}`);
 });
 
 app.use((err, req, res, next) => {
