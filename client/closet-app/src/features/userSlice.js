@@ -62,14 +62,14 @@ export const loginAnonymous = createAsyncThunk(
       console.log("inside loginAnonymous");
       const response = await axios.post('http://162.243.187.19:5000/api/loginAnonymous');
       console.log("this is a", response.data.message);
-      // const isAuthenticated = response.data.isAuthenticated;
-      // console.log("response", isAuthenticated);
-      // const user = response.data.user;
-      // const token = response.data.token;
+      const isAuthenticated = response.data.isAuthenticated;
+      console.log("response", isAuthenticated);
+      const user = response.data.user;
+      const token = response.data.token;
   
-      // localStorage.setItem('token', token);
+      localStorage.setItem('token', token);
   
-      // return { isAuthenticated, user };
+      return { isAuthenticated, user };
     } catch (error) {
       throw error;
     }
