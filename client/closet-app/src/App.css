@@ -672,8 +672,8 @@ button {
   left: 50%;
   top: 75%;
   transform: translate(-50%, -50%);
-  width: auto;
-  max-height: 400px;
+  width: 100px;
+  max-height: 200px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
@@ -686,7 +686,7 @@ button {
 }
 
 .image-modal-image {
-  height: 400px;
+  height: 200px;
   width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
