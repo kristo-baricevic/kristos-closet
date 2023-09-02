@@ -131,22 +131,14 @@
 
 /* Component Containers */
 
-
-
 .closet-view-container {
-  flex-grow: 1;
-  height: calc(100vh - 80px);
-  overflow-y: scroll;
-  max-width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
 }
 
-.closetview-container-mobile {
-  flex-grow: 1;
-  resize: vertical;
-  height: calc(100vh - 80px);
-  overflow-y: scroll;
-  max-width: 90%;
-}
 
 .outfit-view-container {
   flex-grow: 1;
@@ -154,13 +146,6 @@
   overflow-y: auto;
   min-width: 40%;
   padding: 10px;
-}
-
-.outfit-view-container-mobile {
-  flex-grow: 1;
-  height: calc(100vh - 80px);
-  overflow-y: auto;
-  min-width: 90%;
 }
 
 /* Login Modal */
@@ -535,10 +520,10 @@ button {
 }
 
 .closet-view {
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   justify-content: center;
-}
+  align-items: center;
+} 
 
 .card {
   width: 250px;
