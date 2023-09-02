@@ -75,7 +75,6 @@ const closetSlice = createSlice({
       state.error = null;
     },
     deleteItemsSuccess: (state, action) => {
-      state.images = action.payload;
       state.loading = false;
       state.error = null;
     },
