@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchItems, editImage, deleteItems, selectInitialClosetItems } from '../features/closetSlice';
+import { fetchItems, editImage, deleteImage, deleteItems, selectInitialClosetItems } from '../features/closetSlice';
 import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
@@ -61,8 +61,8 @@ const ClosetView = () => {
     console.log("image.userId", image.id)
     const imageId = image.id;
 
-    // dispatch(deleteImage(imageId));
     dispatch(deleteItems(imageId));
+    dispatch(deleteImage(imageId));
     return;
   };
 
