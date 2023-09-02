@@ -33,8 +33,8 @@ export const deleteItems = (imageId) => async (dispatch) => {
 
   try {
     const response = await axios.delete(`https://kristobaricevic.com/api/images/{$imageId}`);
-    const imageId = response.data;
-
+    console.log(response);
+    console.log("delete items slice with ", imageId);
     dispatch(deleteItemsSuccess(imageId));
   } catch (error) {
     dispatch(deleteItemsFailure(error));

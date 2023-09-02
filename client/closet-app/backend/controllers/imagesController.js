@@ -100,7 +100,7 @@ exports.updateImage = async (req, res) => {
 
 exports.deleteImage = async (req, res) => {
   try {
-    console.log("inside delete image frontend");
+    console.log("inside delete image backend");
     const { imageId } = req.params;
 
     const clothingItem = await ClothingItem.fineOne({ _id: imageId });
@@ -113,7 +113,7 @@ exports.deleteImage = async (req, res) => {
     const bucketName = 'closet-app';
     const imageKey = `${clothingItem.imageUrl}`;
 
-    console.log("imageKey test", imageKey);
+    console.log("imageKey test backend", imageKey);
 
     // Delete image from S3
     await s3.deleteObject({  
