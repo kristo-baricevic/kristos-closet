@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ImageUploader from './components/ImageUploader';
 import ClosetView from './components/ClosetView';
-import OutfitView from './components/OutfitView';
 import NavBar from './components/NavBar';
+import SlideUpTab from './components/SlideUpTab';
 import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
-import { loginUser, userIsAuthenticated } from './features/userSlice';
+import { userIsAuthenticated } from './features/userSlice';
 import { RegistrationModalVisibility, LoginModalVisibility } from './features/modalSlice';
 import { removeItem, addItem } from './features/selectedItemsSlice';
 
@@ -14,7 +14,6 @@ import './App.css';
 
   const App = ({ images }) => {
     
-    const [isDesktop, setIsDesktop] = useState(false);
   
     const isRegistrationModalVisible = useSelector(RegistrationModalVisibility);
     const isLoginModalVisible = useSelector(LoginModalVisibility);
@@ -24,17 +23,6 @@ import './App.css';
 
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-      const checkScreenSize = () => {
-        setIsDesktop(window.innerWidth >= 768);
-      };
-      checkScreenSize();
-      window.addEventListener('resize', checkScreenSize);
-      return () => {
-        window.removeEventListener('resize', checkScreenSize);
-      };
-    }, []);
 
     // useEffect(() => {
     //   // Fetch user data once the component mounts
@@ -103,7 +91,7 @@ import './App.css';
               <ClosetView images={images} onSelectImage={handleSelectItem} />
             </div>
             <div className="outfit-view-container">
-              <OutfitView onRemoveItems={handleRemoveItem} onRemoveItem={handleRemoveItem} className="outfit-view-desktop" />
+              <SlideUpTab />
             </div>
           </div>
 
