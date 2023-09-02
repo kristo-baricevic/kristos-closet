@@ -87,36 +87,27 @@ import './App.css';
     return (
 
       <div className="body-container">
-        
-        <NavBar />
+        <div className="main-column-layout">
 
-        {isRegistrationModalVisible && <RegistrationModal />}
-        {isLoginModalVisible && <LoginModal />}
+          <div class="navbar-container">
+            <NavBar />
+              {isRegistrationModalVisible && <RegistrationModal />}
+              {isLoginModalVisible && <LoginModal />}
+          </div>
+          <div className="image-uploader-container">
+            <ImageUploader msg="Welcome to The Image Uploader!" onImageUploaded={refreshClosetView} />
+          </div>
 
-        <div className="image-uploader-container">
-          <ImageUploader msg="Welcome to The Image Uploader!" onImageUploaded={refreshClosetView} />
-        </div>
-
-        {isDesktop ? (
-          <div className="desktop-layout">
-            <div className="closetview-container">
+          <div className="clothing-components-layout">
+            <div className="closet-view-container">
               <ClosetView images={images} onSelectImage={handleSelectItem} />
             </div>
             <div className="outfit-view-container">
               <OutfitView onRemoveItems={handleRemoveItem} onRemoveItem={handleRemoveItem} className="outfit-view-desktop" />
             </div>
           </div>
-        ) : (
-          <div className="mobile-layout">
-            <div className="closetview-container-mobile">
-              <ClosetView images={images} onSelectImage={handleSelectItem} />
-            </div>
-            <div className="outfit-view-container-mobile">
-              <OutfitView onRemoveItem={handleRemoveItem} className="outfit-view-mobile" />
-            </div>
-          </div>
-        )}
 
+        </div>
       </div>
   );
 };

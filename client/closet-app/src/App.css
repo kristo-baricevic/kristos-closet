@@ -4,12 +4,14 @@
   font-family: 'Varela Round', sans-serif;
 }
 
-.desktop-layout {
+.main-column-layout {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.mobile-layout {
+.clothing-components-layout {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +133,7 @@
 
 
 
-.closetview-container {
+.closet-view-container {
   flex-grow: 1;
   height: calc(100vh - 80px);
   overflow-y: scroll;
@@ -430,32 +432,25 @@ input[type="file"] {
 
 /* Outfit View Component */
 
-.outfit-view-container-desktop {
-  display: flex;
+.outfit-view-container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.outfit-title {
+.outfit-main-title {
   font-size: 24px;
-  margin-bottom: 20px;
   font-family: 'Varela Round', sans-serif;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
-.outfit-view-container-mobile {
+.outfit-view-main {
   display: flex;
   flex-direction: row;
-}
-
-.outfit-view {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
 
-.outfit-remove-button {
+.remove-outfit-button {
   margin: 5px;
   margin-top: 10px;
   padding: 5px 10px;
@@ -468,7 +463,7 @@ input[type="file"] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
-.outfit-remove-button:hover {
+.remove-outfit-button:hover {
   background-color: #228B22;
   color: black;
 }
@@ -478,7 +473,7 @@ input[type="file"] {
   flex-direction: row;
 }
 
-.outfit-item {
+.outfit-item-card {
   width: 120px;
   height: 180px;
   margin: 10px;
@@ -489,8 +484,14 @@ input[type="file"] {
   text-align: center;
 }
 
-.outfit-item:hover {
+.outfit-item-card:hover {
   transform: translateY(-5px);
+}
+
+
+.outfit-item-category-title {
+  font-size: 12px;
+  color: black;
 }
 
 .empty-message {
@@ -499,28 +500,25 @@ input[type="file"] {
   color: gray;
 }
 
-.item-image-wrapper {
+.outfit-image-wrapper {
   width: 100%;
   height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.item-image-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
+.outfit-image {
+  width: auto;
+  height: 120px;
+  border-radius: 8px;
 }
 
 .item-info {
   margin-top: 10px;
-}
-
-.item-category {
-  font-size: 14px;
-  color: black;
-  padding: 5px;
 }
 
 button {

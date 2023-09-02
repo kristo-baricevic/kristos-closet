@@ -8,21 +8,31 @@ const OutfitView = () => {
     const outfit = useSelector(selectedItems);
     // console.log("outfit", outfit);
 
+     
+    const handleRemoveItem = (item) => {
+
+        console.log("Handle Remove Item", item.id);
+
+    };
+
+
     return (
-        <div className="outfit-view-container-desktop">
-          <h2 className="outfit-title">Your Selected Outfit</h2>
-            <div className="outfit-view">
+        <div className="outfit-view-container">
+          <h2 className="outfit-main-title">Your Outfit</h2>
+            <div className="outfit-view-main">
                 {Object.entries(outfit).map(([category, item]) => (
-                <div key={category} className="outfit-item">
-                    <h3>{category}</h3>
+                <div className="outfit-item-card" key={category} >
+                    <div className="outfit-item-category-title">{category}</div>
                     {item ? (
-                    <div className="item-image-wrapper">
-                        <img src={item.imageUrl} alt={category} />
-                        <p>{item.name}</p>
+                    <div className="outfit-image-wrapper">
+                        <img class="outfit-image" src={item.imageUrl} alt={category} />
                     </div>
                     ) : (
                     <p>No {category} selected</p>
                     )}
+                    <div>
+                        <button class="remove-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
+                    </div>
                 </div>
                 ))}
             </div>
