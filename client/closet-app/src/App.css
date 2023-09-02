@@ -520,7 +520,6 @@ button {
 }
 
 .closet-view {
-  display: block;
   justify-content: center;
   align-items: center;
 } 

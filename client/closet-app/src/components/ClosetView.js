@@ -116,7 +116,7 @@ const ClosetView = () => {
   return (
     <div>
       {isImageModalVisible && <ImageModal />}
-        <div>
+        
           <div className="sticky-container">
             <div className="category-buttons-container">
               <button className="category-button" onClick={() => filterByCategory(null)}>All</button>
@@ -164,7 +164,6 @@ const ClosetView = () => {
               </div>
             ))}
           </div>
-        </div>
     </div>
   );
 };
