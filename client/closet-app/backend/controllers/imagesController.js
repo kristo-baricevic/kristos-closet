@@ -103,23 +103,28 @@ exports.deleteImage = async (req, res) => {
     console.log("inside delete image frontend");
     const { id } = req.params;
 
-    const clothingItem = await ClothingItem.findOneAndDelete({ _id: id });
-    
-    const s3 = new AWS.S3();
-    const bucketName = 'closet-app';
-    const imageKey = `${clothingItem.imageUrl}`;
-    const imageObject = await s3.getObject({
-      Bucket: bucketName,
-      Key: imageKey,
-    }).promise();
-
-    s3.deleteObject({  
-    imageObject
-    },function (err,data){})
+    const clothingItem = await ClothingItem.fineOne({ _id: id });
 
     if (!clothingItem) {
       return res.status(404).json({ error: 'Image not found' });
     }
+    
+    const s3 = new AWS.S3();
+    const bucketName = 'closet-app';
+    const imageKey = `${clothingItem.imageUrl}`;
+
+    console.log("imageKey test", imageKey);
+
+    // Delete image from S3
+    await s3.deleteObject({  
+      Bucket: bucketName,
+      Key: imageKey,
+    }).promise();
+
+    // Delete corresponding data from MongoDB
+    await ClothingItem.findOneAndDelete({ _id: id });
+
+    console.log("after delete in imagesController");
 
     res.json({ message: 'Image deleted successfully' });
   } catch (error) {
