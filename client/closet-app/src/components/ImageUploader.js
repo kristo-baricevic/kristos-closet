@@ -50,8 +50,7 @@ const ImageUploader = () => {
   };
 
   return (
-    <div>
-      <div className="upload-component-container">
+    <div className="upload-component-container">
       <h2 className="upload-title">Upload Your Article of Clothing</h2>
       <div className="upload-container">
         <form id="imageForm" method="post" encType="multipart/form-data">
@@ -92,7 +91,6 @@ const ImageUploader = () => {
       <p id="resultLabel"></p>
 
         {imageFile && <div class="upload-selected-image-container"><img id="uploadedImage" class="upload-selected-image" alt="Uploaded" src={URL.createObjectURL(imageFile)} /></div>}
-      </div>
       </div>
   );
 };

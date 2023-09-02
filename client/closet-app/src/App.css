@@ -16,9 +16,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  max-width: 90%;
 }
 
 /* Navbar Design */
+
+.navbar-container {
+  width: 100%;
+}
 
 .navbar {
   background-color: #a4e333;
@@ -145,6 +150,7 @@
   height: calc(100vh - 80px);
   overflow-y: auto;
   min-width: 40%;
+  max-width: 99%;
   padding: 10px;
 }
 
@@ -315,6 +321,7 @@
 
 .image-uploader-container {
   margin-left:20px;
+  width: 90%;
 }
 
 .upload-component-container {
@@ -331,7 +338,7 @@
   justify-content: center;
   margin: 0 auto;
   width: 80%;
-  max-width: 500px;
+  max-width: 600px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -519,13 +526,23 @@ button {
   z-index: 1; 
 }
 
+.closet-inner-container {
+  max-width: 99%;
+}
+
 .closet-view {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   align-items: center;
+  overflow: auto;
 } 
 
 .card {
-  width: 250px;
+  width: auto;
+  height: 425px;
   margin: 10px;
   padding: 10px;
   background-color: #f9f9f9;
@@ -540,8 +557,8 @@ button {
 }
 
 .card-image {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 325px;
   z-index: 0;
 }
 

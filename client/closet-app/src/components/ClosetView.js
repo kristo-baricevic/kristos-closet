@@ -114,9 +114,8 @@ const ClosetView = () => {
   };
  
   return (
-    <div>
+    <div className="closet-inner-container">
       {isImageModalVisible && <ImageModal />}
-        
           <div className="sticky-container">
             <div className="category-buttons-container">
               <button className="category-button" onClick={() => filterByCategory(null)}>All</button>
