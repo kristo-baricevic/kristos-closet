@@ -409,6 +409,25 @@ input[type="file"] {
   color: black;
 }
 
+.upload-selected-image-container {
+  height: 150px;
+  width: auto;
+  margin: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+
+.upload-selected-image {
+  height: 140px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* Outfit View Component */
 
 .outfit-view-container-desktop {

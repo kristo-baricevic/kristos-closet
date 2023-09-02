@@ -84,18 +84,16 @@ const ImageUploader = () => {
             type="button"
             onClick={classifyImage}
           >
-            Upload Image
+            Upload
           </button>
         </form>
       </div>
 
       <p id="resultLabel"></p>
 
-      <div id="imageContainer">
-        {imageFile && <img id="uploadedImage" alt="Uploaded" src={URL.createObjectURL(imageFile)} />}
+        {imageFile && <div class="upload-selected-image-container"><img id="uploadedImage" class="upload-selected-image" alt="Uploaded" src={URL.createObjectURL(imageFile)} /></div>}
       </div>
       </div>
-    </div>
   );
 };
 
