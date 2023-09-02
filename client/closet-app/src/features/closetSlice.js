@@ -30,7 +30,7 @@ export const fetchItems = () => async (dispatch) => {
   // Thunk action to fetch items
 export const deleteItems = (imageId) => async (dispatch) => {
   dispatch(deleteItemsStart());
-
+  console.log("delete Items before try");
   try {
     const response = await axios.delete(`https://kristobaricevic.com/api/images/{$imageId}`);
     console.log(response);

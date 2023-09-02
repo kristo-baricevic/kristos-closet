@@ -16,9 +16,9 @@ const {
 
 // Image routes
 router.get('/images', getImages);
-router.put('/images/:id', verifyToken, updateImage);
+router.put('/images/:id', updateImage);
 router.get('/images/:id', getImageById);
-router.delete('/images/:id', verifyToken, deleteImage);
+router.delete('/images/:id', deleteImage);
 
 // Upload route
 router.post('/upload', upload.single('imageFile'), uploadController.uploadImageAndMetaData);

@@ -9,7 +9,7 @@ exports.getImages = async (req, res) => {
 
     const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
 
-    console.log("clothing items", clothingItems);
+    // console.log("clothing items", clothingItems);
 
     const images = await Promise.all(clothingItems.map(async item => {
       const s3 = new AWS.S3();
