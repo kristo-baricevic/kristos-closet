@@ -101,7 +101,7 @@ exports.updateImage = async (req, res) => {
 exports.deleteImage = async (req, res) => {
   try {
     console.log("inside delete image backend");
-    const { imageId } = req.params;
+    const  imageId = req.params;
     console.log(imageId);
     console.log(req.params);
 
