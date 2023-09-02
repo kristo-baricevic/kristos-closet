@@ -24,7 +24,7 @@ const ClosetView = () => {
     dispatch(fetchItems());
   }, [dispatch]);
 
-  console.log("image structure", images);
+  // console.log("image structure", images);
 
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 
