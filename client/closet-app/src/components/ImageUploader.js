@@ -25,14 +25,15 @@ const ImageUploader = () => {
     //   return;
     // }
 
-    // if (!imageFile) {
-    //   alert('Please choose an image file.');
-    //   return;
-    // }
+    if (!imageFile) {
+      alert('Please choose an image file.');
+      return;
+    }
 
     console.log("front end imageFile", imageFile);
 
     const dbFormData = new FormData();
+    
     dbFormData.append('user', user);
     dbFormData.append('category', category);
     dbFormData.append('isUserImage', isUserImage);

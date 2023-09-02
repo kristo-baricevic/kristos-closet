@@ -16,19 +16,15 @@ exports.getImages = async (req, res) => {
       const bucketName = 'closet-app';
       const imageKey = `${item.imageUrl}`; 
 
-      console.log("item filename check", item.imageUrl);
-      console.log("imageKey check", imageKey);
-
       const imageObject = await s3.getObject({
         Bucket: bucketName,
         Key: imageKey,
       }).promise();
 
+      console.log("getImages running in imagesController")
       console.log(imageObject);
 
       const imageUrl = `https://kristobaricevic.com/api/images/${item._id}`;
-
-      console.log("backend URL", imageUrl);
 
       return {
         id: item._id,
@@ -104,9 +100,22 @@ exports.updateImage = async (req, res) => {
 
 exports.deleteImage = async (req, res) => {
   try {
+    console.log("inside delete image frontend");
     const { id } = req.params;
 
     const clothingItem = await ClothingItem.findOneAndDelete({ _id: id });
+    
+    const s3 = new AWS.S3();
+    const bucketName = 'closet-app';
+    const imageKey = `${clothingItem.imageUrl}`;
+    const imageObject = await s3.getObject({
+      Bucket: bucketName,
+      Key: imageKey,
+    }).promise();
+
+    s3.deleteObject({  
+    imageObject
+    },function (err,data){})
 
     if (!clothingItem) {
       return res.status(404).json({ error: 'Image not found' });

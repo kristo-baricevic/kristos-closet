@@ -18,7 +18,7 @@ exports.uploadImageAndMetaData = async (req, res) => {
     const user = req.body.user;
     console.log("testing backend upload");
     console.log("category", category);
-    console.log("user in the backend", user.user);
+    console.log("user in the backend", user.user); //undefined
 
     const timestampPrefix = Date.now();
 
@@ -45,6 +45,7 @@ exports.uploadImageAndMetaData = async (req, res) => {
       imageUrl: `${imageFile}`,
       filename: file.originalname,
     });
+    
     await clothingItem.save();
 
     // Handle the response and send a success message
