@@ -101,9 +101,9 @@ exports.updateImage = async (req, res) => {
 exports.deleteImage = async (req, res) => {
   try {
     console.log("inside delete image frontend");
-    const { id } = req.params;
+    const { imageId } = req.params;
 
-    const clothingItem = await ClothingItem.fineOne({ _id: id });
+    const clothingItem = await ClothingItem.fineOne({ _id: imageId });
 
     if (!clothingItem) {
       return res.status(404).json({ error: 'Image not found' });
@@ -122,7 +122,7 @@ exports.deleteImage = async (req, res) => {
     }).promise();
 
     // Delete corresponding data from MongoDB
-    await ClothingItem.findOneAndDelete({ _id: id });
+    await ClothingItem.findOneAndDelete({ _id: imageId });
 
     console.log("after delete in imagesController");
 

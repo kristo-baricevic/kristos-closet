@@ -27,6 +27,20 @@ export const fetchItems = () => async (dispatch) => {
     }
   };
 
+  // Thunk action to fetch items
+export const deleteItems = (imageId) => async (dispatch) => {
+  dispatch(deleteItemsStart());
+
+  try {
+    const response = await axios.delete(`https://kristobaricevic.com/api/images/{$imageId}`);
+    const data = response.data;
+
+    dispatch(deleteItemsSuccess(imageId));
+  } catch (error) {
+    dispatch(deleteItemsFailure(error));
+  }
+};
+
 const closetSlice = createSlice({
   name: 'initialCloset',
   initialState,
@@ -55,6 +69,19 @@ const closetSlice = createSlice({
         const imageId = action.payload;
         state.images = state.images.filter(image => image.id !== imageId);
     },
+    deleteItemsStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    deleteItemsSuccess: (state, action) => {
+      state.images = action.payload;
+      state.loading = false;
+      state.error = null;
+    },
+    deleteItemsFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -62,6 +89,9 @@ export const {
   fetchItemsStart,
   fetchItemsSuccess,
   fetchItemsFailure,
+  deleteItemsStart,
+  deleteItemsSuccess,
+  deleteItemsFailure,
   editImage,
   deleteImage,
 } = closetSlice.actions;
