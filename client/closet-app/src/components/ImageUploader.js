@@ -20,15 +20,15 @@ const ImageUploader = () => {
   const [imageFile, setImageFile] = useState(null);
 
   const classifyImage = async () => {
-    if (!userAuthenticated) { 
-      alert('You need to be logged in to upload an image.');
-      return;
-    }
+    // if (!userAuthenticated) { 
+    //   alert('You need to be logged in to upload an image.');
+    //   return;
+    // }
 
-    if (!imageFile) {
-      alert('Please choose an image file.');
-      return;
-    }
+    // if (!imageFile) {
+    //   alert('Please choose an image file.');
+    //   return;
+    // }
 
     console.log("front end imageFile", imageFile);
 

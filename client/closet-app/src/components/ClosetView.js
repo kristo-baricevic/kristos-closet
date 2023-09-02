@@ -131,7 +131,7 @@ const ClosetView = () => {
           <div className="closet-view">
             {filteredImages.map(image => (
               <div key={image.id} className="card">
-                  <img className="card-image" src={getImageUrl(image)}  onClick={() => openImage(image)} alt="closetItem" />
+                  <img className="card-image" src={getImageUrl(image)} onClick={() => openImage(image)} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">
                     <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
