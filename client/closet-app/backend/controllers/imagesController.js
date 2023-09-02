@@ -102,7 +102,7 @@ exports.deleteImage = async (req, res) => {
   try {
     console.log("inside delete image backend");
     const { imageId } = req.body.id;
-    console.log(imageId);
+    // console.log(imageId);
     console.log(req.body);
 
     const clothingItem = await ClothingItem.findOne({ _id: imageId });
