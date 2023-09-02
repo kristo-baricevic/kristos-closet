@@ -103,7 +103,7 @@ exports.deleteImage = async (req, res) => {
     console.log("inside delete image backend");
     const { imageId } = req.params;
 
-    const clothingItem = await ClothingItem.fineOne({ _id: imageId });
+    const clothingItem = await ClothingItem.findOne({ _id: imageId });
 
     if (!clothingItem) {
       return res.status(404).json({ error: 'Image not found' });
