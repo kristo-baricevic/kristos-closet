@@ -6,7 +6,7 @@ import { selectedItems } from '../features/selectedItemsSlice';
 const OutfitView = () => {
 
     const outfit = useSelector(selectedItems);
-    console.log("outfit", outfit);
+    // console.log("outfit", outfit);
 
     return (
         <div className="outfit-view-container-desktop">
