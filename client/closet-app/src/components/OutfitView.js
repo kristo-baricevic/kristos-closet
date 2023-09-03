@@ -10,9 +10,15 @@ const OutfitView = () => {
     const dispatch = useDispatch();
      
     const handleRemoveItem = (item) => {
+        //check to see if there is an item
+        if (!item) 
+            {
+                alert('This is what it sounds like when doves cry :,(');
+                return;            
+            }
+
         dispatch(removeItem(item));
         console.log("Handle Remove Item", item);
-
     };
 
     return (
