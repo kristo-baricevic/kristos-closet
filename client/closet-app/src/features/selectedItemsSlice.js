@@ -47,10 +47,20 @@ export const selectedItemsSlice = createSlice({
     },
     removeItem: (state, action) => {
 
-      const { category, itemId } = action.payload;
-      
-      // Update the state by removing the item from the specified category
-      state[category] = state[category].filter(item => item.id !== itemId);
+      const { category, item } = action.payload;
+      console.log("inside remove item in selectedItemsSlice.js");
+      console.log("category is", category);
+      console.log("item is", item);
+      state.items[category] = null;
+      console.log("state test", state.items.category);      
+
+      // if (Array.isArray(state[category])) {
+      //   // If the category is an array, filter it to remove the item by its id
+      //   state[category] = state[category].filter(itemObj => itemObj.id !== item.id);
+      // } else if (state[category] && typeof state[category] === 'object') {
+      //   // If the category is an object, set it to null
+      //   state.items[category] = null;
+      // }    
     },
   },
 });

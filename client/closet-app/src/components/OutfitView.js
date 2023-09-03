@@ -1,20 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectedItems } from '../features/selectedItemsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectedItems, removeItem } from '../features/selectedItemsSlice';
 
 
 const OutfitView = () => {
 
     const outfit = useSelector(selectedItems);
     // console.log("outfit", outfit);
-
+    const dispatch = useDispatch();
      
     const handleRemoveItem = (item) => {
-
-        console.log("Handle Remove Item", item.id);
+        dispatch(removeItem(item));
+        console.log("Handle Remove Item", item);
 
     };
-
 
     return (
         <div className="outfit-view-container">

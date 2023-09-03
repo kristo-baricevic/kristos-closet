@@ -16,8 +16,6 @@ const ClosetView = () => {
   const isAuthenticated = useSelector(userIsAuthenticated);
   const isImageModalVisible = useSelector(imageModalVisibility);
   const user = useSelector(selectUser);
-
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,7 +40,6 @@ const ClosetView = () => {
       console.error('Invalid image URL:', image);
       return null;
     }
-
 
     return image.imageUrl;
   };
