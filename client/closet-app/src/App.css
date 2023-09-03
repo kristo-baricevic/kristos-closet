@@ -12,10 +12,6 @@
 }
 
 .clothing-components-layout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   max-width: 90%;
 }
 
@@ -140,12 +136,8 @@
 /* Component Containers */
 
 .closet-view-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
   width: 100%;
-  margin-bottom: 200px;
+  margin-bottom: 25px;
 }
 
 
@@ -434,7 +426,7 @@ input[type="file"] {
 .outfit-view-main {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
 }
 
 .remove-outfit-button {
@@ -528,12 +520,11 @@ button {
 .closet-view {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: nowrap;
-  white-space: nowrap;
-  align-items: center;
+  gap: 16px;
   overflow: auto;
-  padding-left: 1500px;
+
 } 
 
 .card {
