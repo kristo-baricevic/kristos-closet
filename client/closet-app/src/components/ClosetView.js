@@ -107,6 +107,7 @@ const ClosetView = () => {
   };
 
   const filterByCategory = (category) => {
+    console.log("category clicked", category);
     setSelectedCategory(category);
   };
  

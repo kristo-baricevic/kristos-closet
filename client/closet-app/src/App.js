@@ -10,7 +10,7 @@ import { RegistrationModalVisibility, LoginModalVisibility } from './features/mo
 
 import './App.css';
 
-  const App = ({ images }) => {
+  const App = () => {
     
   
     const isRegistrationModalVisible = useSelector(RegistrationModalVisibility);
