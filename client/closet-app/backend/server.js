@@ -28,7 +28,7 @@ const cors = require('cors');
 // Middleware and configurations
 app.use(express.json()); 
 app.use(cors()); 
-app.use('/static', express.static('build'));
+// app.use('/static', express.static('build'));
 
 // Use routes with a base URL of '/api'
 app.use('/api', routes);
