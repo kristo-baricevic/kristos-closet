@@ -90,7 +90,7 @@ import './App.css';
             <div className="closet-view-container">
               <ClosetView images={images} onSelectImage={handleSelectItem} />
             </div>
-            <div className="outfit-view-container">
+            <div>
               <SlideUpTab />
             </div>
           </div>

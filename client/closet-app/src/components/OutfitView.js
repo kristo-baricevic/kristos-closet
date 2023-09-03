@@ -18,7 +18,6 @@ const OutfitView = () => {
 
     return (
         <div className="outfit-view-container">
-          <h2 className="outfit-main-title">Your Outfit</h2>
             <div className="outfit-view-main">
                 {Object.entries(outfit).map(([category, item]) => (
                 <div className="outfit-item-card" key={category} >

@@ -23,6 +23,9 @@
 
 .navbar-container {
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .navbar {
@@ -142,17 +145,9 @@
   justify-content: center;
   flex-direction: row;
   width: 100%;
+  margin-bottom: 200px;
 }
 
-
-.outfit-view-container {
-  flex-grow: 1;
-  height: calc(100vh - 80px);
-  overflow-y: auto;
-  min-width: 40%;
-  max-width: 99%;
-  padding: 10px;
-}
 
 /* Login Modal */
 
@@ -522,8 +517,8 @@ button {
 
 .sticky-container {
   position: sticky;
-  top: 0;
-  z-index: 1; 
+  top: 100px;
+  z-index: 2; 
 }
 
 .closet-inner-container {
@@ -772,5 +767,5 @@ button {
 }
 
 .slide-up-tab.open {
-  transform: translateY(45%); 
+  transform: translateY(55%); 
 }
