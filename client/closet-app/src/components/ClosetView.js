@@ -41,7 +41,6 @@ const ClosetView = () => {
       return null;
     }
 
-
     return image.imageUrl;
   };
 
