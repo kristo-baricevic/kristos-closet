@@ -10,11 +10,10 @@ const initialState = {
 // Thunk action to fetch items
 export const fetchItems = () => async (dispatch) => {
     dispatch(fetchItemsStart());
-  
+    console.log("inside fetch images", fetchItemsStart);
     try {
       const response = await axios.get(`https://kristobaricevic.com/api/images`);
       const data = response.data;
-      console.log("inside fetch images");
       const updatedImages = data.map((image) => ({
         ...image,
         isUserImage: image.userId !== null,

@@ -39,15 +39,19 @@ const ImageUploader = () => {
     dbFormData.append('category', category);
     dbFormData.append('isUserImage', isUserImage);
 
-    console.log("user in frontend", user);
     console.log("dbFormData in front", dbFormData);
-
-    dispatch(uploadImageAndMetaData({imageFile, dbFormData})); 
-    dispatch(fetchItems());
-    // Clear the selected file and other inputs
-    setImageFile(null);
-    setCategory('');
-    setIsUserImage(false);
+    
+    try{
+      await dispatch(uploadImageAndMetaData({imageFile, dbFormData})); 
+      dispatch(fetchItems());
+      console.log("after fetchItems");
+      // Clear the selected file and other inputs
+      setImageFile(null);
+      setCategory('');
+      setIsUserImage(false);
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
   };
 
   return (
