@@ -20,7 +20,7 @@ const ClosetView = () => {
 
   useEffect(() => {
     dispatch(fetchItems());
-  }, [dispatch]);
+  }, []);
 
   // console.log("image structure", images);
 
