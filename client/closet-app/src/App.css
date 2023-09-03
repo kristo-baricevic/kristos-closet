@@ -453,8 +453,8 @@ input[type="file"] {
 }
 
 .outfit-item-card {
-  width: 120px;
-  height: 180px;
+  width: 100px;
+  height: 170px;
   margin: 10px;
   padding: 10px;
   border-radius: 14px;
@@ -762,7 +762,7 @@ button {
   transform: translateY(55%); 
 }
 
-@media (max-width: 425px) {
+@media (max-width: 600px) {
 
 /* Navbar Design */
 
@@ -839,4 +839,20 @@ input[type="file"] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.collapsed-component {
+  display: none;
 }
+
+.card {
+  width: auto;
+  height: 300px;
+}
+
+.card-image  {
+  width: auto;
+  height: 75%;
+}
+
+}
+
+

@@ -27,7 +27,7 @@ import './App.css';
               {isLoginModalVisible && <LoginModal />}
           </div>
           <div className="image-uploader-container">
-            <ImageUploader msg="Welcome to The Image Uploader!"/>
+            <ImageUploader/>
           </div>
 
           <div className="clothing-components-layout">
