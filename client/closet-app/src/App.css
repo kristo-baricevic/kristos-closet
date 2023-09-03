@@ -517,12 +517,12 @@ button {
 
 .sticky-container {
   position: sticky;
-  top: 100px;
-  z-index: 2; 
+  top: 10px;
+  z-index: 1; 
 }
 
 .closet-inner-container {
-  max-width: 99%;
+  overflow: auto;
 }
 
 .closet-view {
@@ -533,6 +533,7 @@ button {
   white-space: nowrap;
   align-items: center;
   overflow: auto;
+  padding-left: 1500px;
 } 
 
 .card {
@@ -768,4 +769,83 @@ button {
 
 .slide-up-tab.open {
   transform: translateY(55%); 
+}
+
+@media (max-width: 425px) {
+
+/* Navbar Design */
+
+.navbar-menu {
+  list-style-type: none;
+  padding: 0;
+  height: 100%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-menu li {
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  line-height: 80px; 
+}
+
+/* Image Uploader Component */
+
+.image-uploader-container {
+  margin-left: 0px;
+  width: 90%;
+}
+
+.upload-component-container {
+}
+
+.upload-container {
+  width: 80%;
+  max-width: 600px;
+}
+.upload-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.choose-file {
+  margin: 5px;
+  font-size: 12px;
+  margin-top: 10px;
+  padding: 5px 5px;
+}
+input[type="file"] {
+    display: none;
+}
+.classify-button {
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px 16px;
+}
+
+.upload-selected-image-container {
+  height: 150px;
+  width: auto;
+  margin: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+
+.upload-selected-image {
+  height: 160px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 }

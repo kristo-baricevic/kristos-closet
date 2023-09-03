@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadImageAndMetaData } from '../features/uploadSlice'; 
 import { selectUser, userIsAuthenticated } from '../features/userSlice';
+import { fetchItems } from '../features/closetSlice';
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const ImageUploader = () => {
     console.log("dbFormData in front", dbFormData);
 
     dispatch(uploadImageAndMetaData({imageFile, dbFormData})); 
-
+    dispatch(fetchItems());
     // Clear the selected file and other inputs
     setImageFile(null);
     setCategory('');
@@ -60,6 +61,7 @@ const ImageUploader = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
+            <option value="Default">Select Option</option>
             <option value="Top">Top</option>
             <option value="Bottom">Bottom</option>
             <option value="onePiece">One-piece</option>
@@ -67,24 +69,26 @@ const ImageUploader = () => {
             <option value="Hat">Hat</option>
             <option value="Accessory">Accessory</option>
           </select>
-          <label className="choose-file">
-            <input
-              type="file"
-              id="uploadedFile"
-              name="uploadedFile"
-              accept=".jpg,.jpeg,.png,.gif"
-              onChange={handleFileUpload}
-            />
-            Choose File
-          </label>
-          <button
-            className="classify-button"
-            id="classifyButton"
-            type="button"
-            onClick={classifyImage}
-          >
-            Upload
-          </button>
+          <div>
+            <label className="choose-file">
+              <input
+                type="file"
+                id="uploadedFile"
+                name="uploadedFile"
+                accept=".jpg,.jpeg,.png,.gif"
+                onChange={handleFileUpload}
+              />
+              Choose File
+            </label>
+            <button
+              className="classify-button"
+              id="classifyButton"
+              type="button"
+              onClick={classifyImage}
+            >
+              Upload
+            </button>
+          </div>
         </form>
       </div>
 
