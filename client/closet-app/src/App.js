@@ -26,9 +26,6 @@ import './App.css';
               {isRegistrationModalVisible && <RegistrationModal />}
               {isLoginModalVisible && <LoginModal />}
           </div>
-          <div className="image-uploader-container">
-            <ImageUploader/>
-          </div>
 
           <div className="clothing-components-layout">
             <div className="closet-view-container">

@@ -56,16 +56,14 @@ const ImageUploader = () => {
 
   return (
     <div className="upload-component-container">
-      <h2 className="upload-title">Upload Your Article of Clothing</h2>
       <div className="upload-container">
         <form id="imageForm" method="post" encType="multipart/form-data">
-          <label htmlFor="category">Category:</label>
-          <select
+          <select className="select-options-bar"
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="Default">Select Option</option>
+            <option value="Default">Select Category</option>
             <option value="Top">Top</option>
             <option value="Bottom">Bottom</option>
             <option value="onePiece">One-piece</option>
@@ -73,7 +71,7 @@ const ImageUploader = () => {
             <option value="Hat">Hat</option>
             <option value="Accessory">Accessory</option>
           </select>
-          <div>
+          <div className="upload-buttons-container">
             <label className="choose-file">
               <input
                 type="file"
@@ -82,7 +80,7 @@ const ImageUploader = () => {
                 accept=".jpg,.jpeg,.png,.gif"
                 onChange={handleFileUpload}
               />
-              Choose File
+              +
             </label>
             <button
               className="classify-button"

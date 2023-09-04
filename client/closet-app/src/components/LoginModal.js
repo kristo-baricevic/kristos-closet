@@ -54,7 +54,7 @@ const LoginModal = () => {
               onChange={(e) => setPassword(e.target.value)} 
             />
           </div>
-          <button className="login-button" type="submit">Login</button>
+          <button className="login-form-button" type="submit">Login</button>
         </form>
         <button className="login-close-button" onClick={handleCloseModal}>Close</button>
       </div>

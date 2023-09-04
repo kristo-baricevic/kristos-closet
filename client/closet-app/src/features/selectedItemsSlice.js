@@ -7,7 +7,7 @@ const initialState = {
       Shoes: null,
       Hat: null,
       onePiece: null,
-      Accessory: [],
+      Accessory: null,
   },
   loading: false,
   error: null,

@@ -17,52 +17,51 @@
 
 /* Navbar Design */
 
+.logo-sizing {
+  height: 100px;
+  width: auto;
+  padding: 5px;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  height: 100%; 
+  display: flex;
+}
+
 .navbar-container {
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 2;
 }
 
+.navbar-buttons-container {
+  padding: 5px
+}
+
 .navbar {
   background-color: #a4e333;
-  height: 80px;
+  height: 120px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
   border-radius: 8px; 
-}
-
-.navbar-menu {
-  list-style-type: none;
-  padding: 0;
-  height: 100%; 
-  display: flex;
-  align-items: center;
-}
-
-.navbar-menu li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-.navbar-menu a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  line-height: 80px; 
 }
 
 /* Button Design */
 
 .registration-button {
-  margin: 5px;
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 12px;
   padding: 5px 10px;
   background-color: #50C878;
   color: black;
   border: 1px solid black;
   border-radius: 14px;
-  width: 83px;
+  width: 70px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
@@ -74,15 +73,13 @@
 }
 
 .login-button {
-  margin: 5px;
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 12px;
   padding: 5px 10px;
   background-color: #50C878;
   color: black;
   border: 1px solid black;
   border-radius: 14px;
-  width: 83px;
+  width: 70px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
@@ -94,15 +91,13 @@
 }
 
 .logout-button {
-  margin: 5px;
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 12px;
   padding: 5px 10px;
   background-color: #50C878;
   color: black;
   border: 1px solid black;
   border-radius: 14px;
-  width: 83px;
+  width: 70px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
@@ -114,15 +109,13 @@
 }
 
 .demo-button {
-  margin: 5px;
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 12px;
   padding: 5px 10px;
   background-color: #50C878;
   color: black;
   border: 1px solid black;
   border-radius: 14px;
-  width: 83px;
+  width: 70px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
@@ -172,6 +165,24 @@
   margin-bottom: 10px;
 }
 
+.logout-form-button {
+  font-size: 12px;
+  padding: 5px 10px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 14px;
+  width: 70px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.logout-form-button:hover{
+  background-color: #228B22;
+  color: black;
+}
+
 .login-label {
   margin-bottom: 5px;
 }
@@ -186,8 +197,6 @@
 
 .login-button {
   display: block;
-  margin: 5px;
-  margin-top: 10px;
   padding: 5px 10px;
   background-color: #50C878;
   color: black;
@@ -308,7 +317,6 @@
 
 .image-uploader-container {
   margin-left:20px;
-  width: 90%;
 }
 
 .upload-component-container {
@@ -316,6 +324,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .upload-container {
@@ -323,35 +332,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  width: 80%;
-  max-width: 600px;
-  padding: 20px;
+  padding: 5px;
+  height: 90px;
+  width: 150px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   background-color: #fbfbfb;
 }
 
-h3 {
-  margin: 40px 0 0;
+.upload-buttons-container {
+  display: inline-block;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.select-options-bar {
+  margin-left: 10px;
 }
-li {
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.upload-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  font-family: 'Varela Round', sans-serif;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-}
+
 .choose-file {
   margin: 5px;
   font-size: 14px;
@@ -761,98 +758,3 @@ button {
 .slide-up-tab.open {
   transform: translateY(55%); 
 }
-
-@media (max-width: 600px) {
-
-/* Navbar Design */
-
-.navbar-menu {
-  list-style-type: none;
-  padding: 0;
-  height: 100%; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-menu li {
-  display: inline-block;
-  margin: 0 2px;
-}
-
-.navbar-menu a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  line-height: 80px; 
-}
-
-/* Image Uploader Component */
-
-.image-uploader-container {
-  margin-left: 0px;
-  width: 90%;
-}
-
-.upload-component-container {
-}
-
-.upload-container {
-  width: 80%;
-  max-width: 600px;
-}
-.upload-title {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-.choose-file {
-  margin: 5px;
-  font-size: 12px;
-  margin-top: 10px;
-  padding: 5px 5px;
-}
-input[type="file"] {
-    display: none;
-}
-.classify-button {
-  margin: 5px;
-  margin-top: 10px;
-  padding: 5px 16px;
-}
-
-.upload-selected-image-container {
-  height: 150px;
-  width: auto;
-  margin: 20px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  border-radius: 8px;
-}
-
-.upload-selected-image {
-  height: 160px;
-  width: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.collapsed-component {
-  display: none;
-}
-
-.card {
-  width: auto;
-  height: 300px;
-}
-
-.card-image  {
-  width: auto;
-  height: 75%;
-}
-
-}
-
-
