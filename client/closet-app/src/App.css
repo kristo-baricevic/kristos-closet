@@ -756,5 +756,5 @@ button {
 }
 
 .slide-up-tab.open {
-  transform: translateY(20%); 
+  transform: translateY(5%); 
 }
