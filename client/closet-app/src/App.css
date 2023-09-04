@@ -734,7 +734,7 @@ button {
   width: 100%;
   background-color: #ffffff;
   transition: transform 0.3s ease-in-out;
-  z-index: 999; 
+  z-index: 998; 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   transform: translateY(80%);
@@ -757,4 +757,13 @@ button {
 
 .slide-up-tab.open {
   transform: translateY(5%); 
+}
+
+@media screen and (max-width: 600px) {
+
+.logo-sizing {
+  height: 80px;
+  padding: 0px;
+}
+
 }
