@@ -10,7 +10,9 @@ const initialState = {
 export const uploadImageAndMetaData = createAsyncThunk(
   "user/uploadImageAndMetaData",
   async ( {imageFile, dbFormData} ) => {
+
     console.log("inside upload action");
+    
     try {
 
       const token = localStorage.getItem("token");

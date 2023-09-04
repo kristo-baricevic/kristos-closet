@@ -7,7 +7,7 @@ const initialState = {
       Shoes: null,
       Hat: null,
       onePiece: null,
-      Accessories: [],
+      Accessory: [],
   },
   loading: false,
   error: null,
@@ -33,13 +33,7 @@ export const selectedItemsSlice = createSlice({
             state.items.onePiece = null;
         }
 
-        console.log("state check", state);
-
-        // Ensure that only up to three accessories can be added
-        if (category === 'Accessories' && state.accessories.length >= 3) {
-            console.error('Too many accessories:', state.accessories);
-            return;
-        }
+        console.log("state check", state);        
 
         // Update the state with the new item for the specified category
         state.items[category] = item;
