@@ -1,6 +1,5 @@
-import React from 'react';
+import { React, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ImageUploader from './components/ImageUploader';
 import ClosetView from './components/ClosetView';
 import NavBar from './components/NavBar';
 import SlideUpTab from './components/SlideUpTab';
@@ -11,10 +10,11 @@ import { RegistrationModalVisibility, LoginModalVisibility } from './features/mo
 import './App.css';
 
   const App = () => {
-    
   
     const isRegistrationModalVisible = useSelector(RegistrationModalVisibility);
     const isLoginModalVisible = useSelector(LoginModalVisibility);
+
+ 
 
     return (
 

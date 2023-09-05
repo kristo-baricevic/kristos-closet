@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   images: [],
+  tabOpen: false,
   loading: false,
   error: null,
 };
@@ -26,7 +27,7 @@ export const fetchItems = () => async (dispatch) => {
     }
   };
 
-  // Thunk action to fetch items
+// Thunk action to delete items
 export const deleteItems = (imageId) => async (dispatch) => {
   dispatch(deleteItemsStart());
   console.log("delete Items before try");
@@ -40,6 +41,12 @@ export const deleteItems = (imageId) => async (dispatch) => {
     dispatch(deleteItemsFailure(error));
   }
 };
+
+export const toggleTabState = () => async (dispatch) => {
+  console.log("toggle tab style");
+  dispatch(toggleTabState(tabStyle));
+  }
+
 
 const closetSlice = createSlice({
   name: 'initialCloset',
@@ -81,10 +88,16 @@ const closetSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    toggleTabStyle: (state, action) => {
+        console.log("hello there");
+        console.log(state.tabStyle);
+        state.tabStyle = !state.tabStyle;
+    }
   },
 });
 
 export const {
+  toggleTabStyle,
   fetchItemsStart,
   fetchItemsSuccess,
   fetchItemsFailure,
@@ -98,5 +111,6 @@ export const {
 export const selectInitialClosetItems = (state) => state.closet.images;
 export const selectInitialClosetLoading = (state) => state.closet.loading;
 export const selectInitialClosetError = (state) => state.closet.error;
+export const tabStyle = (state) => state.closet.tabOpen;
 
 export const closetSliceReducer = closetSlice.reducer;

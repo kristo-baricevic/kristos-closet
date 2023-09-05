@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchItems, editImage, deleteImage, deleteItems, selectInitialClosetItems } from '../features/closetSlice';
+import { tabStyle, fetchItems, editImage, deleteImage, deleteItems, selectInitialClosetItems } from '../features/closetSlice';
 import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
 import { setModalImage, imageModalVisibility, openImageModal} from '../features/imageModalSlice';
-
 
 
 const ClosetView = () => {
@@ -16,10 +15,12 @@ const ClosetView = () => {
   const isAuthenticated = useSelector(userIsAuthenticated);
   const isImageModalVisible = useSelector(imageModalVisibility);
   const user = useSelector(selectUser);
+  const tabToggle = useSelector(tabStyle);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchItems());
+    console.log(tabToggle, "truth is out there?");
   }, [dispatch]);
 
   // console.log("image structure", images);
@@ -126,7 +127,7 @@ const ClosetView = () => {
           </div>
           <div className="closet-view">
             {filteredImages.map(image => (
-              <div key={image.id} className="card">
+                <div key={image.id} className={tabToggle ? 'card-tab-open' : 'card'} >
                   <img className="card-image" src={getImageUrl(image)} onClick={() => openImage(image)} alt="closetItem" />
                 <div className="card-info">
                   <div className="card-buttons-container">

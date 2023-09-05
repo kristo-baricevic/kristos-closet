@@ -525,8 +525,10 @@ button {
 } 
 
 .card {
+  justify-content: center;
+  align-items: center;
   width: auto;
-  height: 425px;
+  height: 375px;
   margin: 10px;
   padding: 10px;
   background-color: #f9f9f9;
@@ -536,13 +538,44 @@ button {
   border-radius: 8px; 
 }
 
+.card-tab-open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  min-width: 220px;
+  height: 250px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 8px; 
+}
+
+.card-tab-open img {
+  height: 200px;
+}
+
+.card-tab-open button {
+  width: 60px
+}
+
 .card:hover {
   transform: translateY(-5px);
 }
 
+.card.open {
+  background-color: red;
+}
+
 .card-image {
+  justify-content: center;
+  align-items: center;
   width: auto;
-  height: 325px;
+  height: 275px;
   z-index: 0;
   border-radius: 8px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); 
@@ -641,7 +674,7 @@ button {
 }
 
 .image-category {
-  margin-top: 5px;
+  margin-top: -10px;
   font-size: 14px;
   color: black;
   padding: 5px;
@@ -759,6 +792,8 @@ button {
 .slide-up-tab.open {
   transform: translateY(5%); 
 }
+
+
 
 @media screen and (max-width: 600px) {
 
