@@ -412,6 +412,7 @@ input[type="file"] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 160px;
 }
 
 .outfit-main-title {
@@ -452,7 +453,7 @@ input[type="file"] {
 .outfit-item-card {
   width: 100px;
   height: 170px;
-  margin: 10px;
+  margin: 5px;
   padding: 10px;
   border-radius: 14px;
   background-color: #f9f9f9;
@@ -478,7 +479,7 @@ input[type="file"] {
 
 .outfit-image-wrapper {
   width: 100%;
-  height: 120px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -489,7 +490,7 @@ input[type="file"] {
 
 .outfit-image {
   width: auto;
-  height: 120px;
+  height: 100px;
   border-radius: 8px;
 }
 
@@ -519,8 +520,9 @@ button {
   flex-direction: row;
   justify-content: left;
   flex-wrap: nowrap;
+  height: 400px;
   gap: 16px;
-  overflow: auto;
+  overflow-y: auto;
 
 } 
 
@@ -545,18 +547,20 @@ button {
   align-items: center;
   width: auto;
   min-width: 220px;
-  height: 250px;
+  height: 210px;
   margin: 10px;
   padding: 10px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.3s ease;
-  border-radius: 8px; 
+  border-radius: 40px; 
 }
 
 .card-tab-open img {
-  height: 200px;
+  height: 160px;
+  border-radius: 20px; 
+  margin-top: 60px;
 }
 
 .card-tab-open button {
@@ -594,6 +598,14 @@ button {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.card-buttons-container-tab-open {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 }
 
 .category-buttons-container {
@@ -786,7 +798,7 @@ button {
 
 .tab-content {
   overflow: auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 .slide-up-tab.open {

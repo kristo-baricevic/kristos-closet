@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { tabStyle, fetchItems, editImage, deleteImage, deleteItems, selectInitialClosetItems } from '../features/closetSlice';
+import { tabStyle, toggleTabStyle, fetchItems, editImage, deleteImage, deleteItems, selectInitialClosetItems } from '../features/closetSlice';
 import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
 import { setModalImage, imageModalVisibility, openImageModal} from '../features/imageModalSlice';
-
 
 const ClosetView = () => {
   const images = useSelector(selectInitialClosetItems);
@@ -18,10 +17,12 @@ const ClosetView = () => {
   const tabToggle = useSelector(tabStyle);
   const dispatch = useDispatch();
 
+  dispatch(toggleTabStyle);
+  
   useEffect(() => {
     dispatch(fetchItems());
     console.log(tabToggle, "truth is out there?");
-  }, [dispatch]);
+  }, []);
 
   // console.log("image structure", images);
 
@@ -127,10 +128,10 @@ const ClosetView = () => {
           </div>
           <div className="closet-view">
             {filteredImages.map(image => (
-                <div key={image.id} className={tabToggle ? 'card-tab-open' : 'card'} >
+                <div key={image.id} className={tabToggle ? "card-tab-open" : "card"} >
                   <img className="card-image" src={getImageUrl(image)} onClick={() => openImage(image)} alt="closetItem" />
                 <div className="card-info">
-                  <div className="card-buttons-container">
+                  <div className={tabToggle ? "card-buttons-container-tab-open" : "card-buttons-container"} >
                     <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
                     <button className="select-button" onClick={() => handleSelectImage(image, image.category)}>Select</button>
                     <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>

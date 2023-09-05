@@ -44,7 +44,7 @@ export const deleteItems = (imageId) => async (dispatch) => {
 
 export const toggleTabState = () => async (dispatch) => {
   console.log("toggle tab style");
-  dispatch(toggleTabState(tabStyle));
+  dispatch(toggleTabState());
   }
 
 
@@ -90,8 +90,8 @@ const closetSlice = createSlice({
     },
     toggleTabStyle: (state, action) => {
         console.log("hello there");
-        console.log(state.tabStyle);
-        state.tabStyle = !state.tabStyle;
+        console.log(state.tabOpen);
+        state.tabOpen = !state.tabOpen;
     }
   },
 });
