@@ -16,6 +16,7 @@ const ClosetView = () => {
   const user = useSelector(selectUser);
   const tabToggle = useSelector(tabStyle);
   const dispatch = useDispatch();
+  
 
   dispatch(toggleTabStyle);
   

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uploadImageAndMetaData } from '../features/uploadSlice'; 
 import { selectUser, userIsAuthenticated } from '../features/userSlice';
 import { fetchItems } from '../features/closetSlice';
+import { setPreviewImage } from '../features/previewModalSlice'
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
@@ -11,14 +12,17 @@ const ImageUploader = () => {
 
   const [category, setCategory] = useState('');
   const [isUserImage, setIsUserImage] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
 
   const handleFileUpload = (event) => {
     const uploadedFile = event.target.files[0];
-    console.log("uploadedFile", uploadedFile);
-    setImageFile(uploadedFile);
+    const fileURL = URL.createObjectURL(uploadedFile);
+    console.log("uploadedFile", fileURL);
+    setImageFile(fileURL);
+    console.log("image file", fileURL);
+    dispatch(setPreviewImage(fileURL));
   };
 
-  const [imageFile, setImageFile] = useState(null);
 
   const classifyImage = async () => {
     // if (!userAuthenticated) { 
@@ -92,12 +96,10 @@ const ImageUploader = () => {
             </button>
           </div>
         </form>
+      </div>      
+       
       </div>
 
-      <p id="resultLabel"></p>
-
-        {imageFile && <div class="upload-selected-image-container"><img id="uploadedImage" class="upload-selected-image" alt="Uploaded" src={URL.createObjectURL(imageFile)} /></div>}
-      </div>
   );
 };
 

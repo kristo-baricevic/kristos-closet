@@ -1,4 +1,3 @@
-// imageModalSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const imageModalSlice = createSlice({
