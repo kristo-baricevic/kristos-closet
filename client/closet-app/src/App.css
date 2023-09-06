@@ -584,8 +584,8 @@ button {
   justify-content: center;
   align-items: center;
   width: auto;
-  height: 375px;
-  margin: 10px;
+  height: 350px;
+  margin: 30px;
   padding: 10px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -602,7 +602,7 @@ button {
   width: auto;
   min-width: 220px;
   height: 210px;
-  margin: 10px;
+  margin: 25px;
   padding: 10px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -828,7 +828,7 @@ button {
 
 .slide-up-tab {
   position: fixed;
-  bottom: 0px; 
+  bottom: 10px; 
   left: 0;
   width: 100%;
   background-color: #ffffff;

@@ -9,12 +9,11 @@ const previewModalSlice = createSlice({
   name: 'previewModal',
   initialState,
   reducers: {
-    setPreviewModalVisibility: (state) => {
-      state.previewModalVisibility = true;
+    setPreviewModalVisibility: (state, action) => {
+      state.previewModalVisibility = action.payload;
     },
     setPreviewImage: (state, action) => {
       state.uploadPreview = action.payload;
-      state.previewModalVisibility = true;
     },
     closePreviewModal: (state, action) => {
       console.log(state.uploadPreview);

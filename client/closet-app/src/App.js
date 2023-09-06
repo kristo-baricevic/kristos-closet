@@ -36,9 +36,7 @@ import './App.css';
             <div className="closet-view-container">
               <ClosetView />
             </div>
-            <div>
               <SlideUpTab />
-            </div>
           </div>
 
         </div>

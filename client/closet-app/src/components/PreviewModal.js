@@ -26,6 +26,11 @@ const PreviewModal = () => {
       return;
     }
 
+    if (!category) {
+      alert("You need to assign a category to your item!")
+      return;
+    }
+
 
     // declare formData and append event
     const dbFormData = new FormData();

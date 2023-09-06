@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userIsAuthenticated } from '../features/userSlice';
-import { setPreviewImage } from '../features/previewModalSlice'
+import { setPreviewImage, setPreviewModalVisibility } from '../features/previewModalSlice'
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ const ImageUploader = () => {
     const image = event.target.files[0];
     console.log("image file", image);
     dispatch(setPreviewImage(image));
+    dispatch(setPreviewModalVisibility(true));
   };
 
   return (

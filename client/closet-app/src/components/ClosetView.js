@@ -157,7 +157,9 @@ const ClosetView = () => {
                         <button onClick={() => cancelImageEdit()}>Cancel</button>
                       </div>
                     ) : (
-                      <div className="image-category">{image.category}</div>
+                      <div className="image-category">
+                        {/* {image.category} */}
+                        </div>
                     )}
                   </div>
                 </div>

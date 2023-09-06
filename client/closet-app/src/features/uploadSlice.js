@@ -14,7 +14,6 @@ export const uploadImageAndMetaData = createAsyncThunk(
     console.log("inside upload action");
     
     try {
-
       const token = localStorage.getItem("token");
       const headers = {
         Authorization: `Bearer ${token}`,
