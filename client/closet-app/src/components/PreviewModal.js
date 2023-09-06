@@ -21,6 +21,12 @@ const PreviewModal = () => {
 
   const handleUpload = async() => {
 
+    if (!user) {
+      alert("You must be logged in to do that! Press the DEMO button or register to continue.");
+      return;
+    }
+
+
     // declare formData and append event
     const dbFormData = new FormData();
     
