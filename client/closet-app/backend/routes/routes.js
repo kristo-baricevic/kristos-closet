@@ -21,7 +21,7 @@ router.get('/images/:id', getImageById);
 router.delete('/images/:id', deleteImage);
 
 // Upload route
-router.post('/upload', upload.single('previewImage'), uploadImageAndMetaData);
+router.post('/upload', upload.single('image'), uploadImageAndMetaData);
 
 // User routes
 router.post('/register', userController.registerUser);

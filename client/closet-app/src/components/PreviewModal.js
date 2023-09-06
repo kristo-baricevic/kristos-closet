@@ -10,11 +10,10 @@ const PreviewModal = () => {
   const user = useSelector(selectUser);
   const [isUserImage, setIsUserImage] = useState(false);
   const [category, setCategory] = useState('');
-  const previewImage = useSelector(previewModalImage);
+  const image = useSelector(previewModalImage);
 
-  const imageURL = URL.createObjectURL(previewImage);
-  
-  console.log("preview modal", previewImage);
+  const imageURL = URL.createObjectURL(image);
+  console.log("preview modal", image);
 
   const handleCancelModal = () => {
     dispatch(closePreviewModal(false));
@@ -24,15 +23,15 @@ const PreviewModal = () => {
 
     // declare formData and append event
     const dbFormData = new FormData();
-    
+
     dbFormData.append('user', user);
     dbFormData.append('category', category);
     dbFormData.append('isUserImage', isUserImage);
 
-    console.log("params before await in front", previewImage, dbFormData);
+    console.log("params before await in front", image, dbFormData);
     
     try{
-      await dispatch(uploadImageAndMetaData({previewImage, dbFormData})); 
+      await dispatch(uploadImageAndMetaData({image, dbFormData})); 
       console.log("after fetchItems");
       // Clear the selected file and other inputs
       setPreviewImage(null);

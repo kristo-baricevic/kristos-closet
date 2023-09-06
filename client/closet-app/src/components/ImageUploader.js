@@ -8,9 +8,9 @@ const ImageUploader = () => {
   const userAuthenticated = useSelector(userIsAuthenticated);
 
   const handleFileUpload = (event) => {
-    const uploadedFile = event.target.files[0];
-    console.log("image file", uploadedFile);
-    dispatch(setPreviewImage(uploadedFile));
+    const image = event.target.files[0];
+    console.log("image file", image);
+    dispatch(setPreviewImage(image));
   };
 
   return (

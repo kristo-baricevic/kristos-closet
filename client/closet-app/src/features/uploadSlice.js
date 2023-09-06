@@ -31,7 +31,7 @@ export const uploadImageAndMetaData = createAsyncThunk(
 
       console.log("pre upload data", combinedFormData);
 
-      await axios.post(`https://kristobaricevic.com/api/upload`, combinedFormData, {
+      await axios.post(`https://kristobaricevic.com/api/upload`, previewImage, combinedFormData, {
         headers,
       });
       console.log("after form data");
