@@ -130,7 +130,7 @@
 
 .closet-view-container {
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 
@@ -574,7 +574,7 @@ button {
   flex-direction: row;
   justify-content: left;
   flex-wrap: nowrap;
-  height: 400px;
+  height: 420px;
   gap: 16px;
   overflow-y: auto;
 

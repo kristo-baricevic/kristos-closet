@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userIsAuthenticated } from '../features/userSlice';
 import { setPreviewImage, setPreviewModalVisibility } from '../features/previewModalSlice'
@@ -6,12 +6,15 @@ import { setPreviewImage, setPreviewModalVisibility } from '../features/previewM
 const ImageUploader = () => {
   const dispatch = useDispatch();
   const userAuthenticated = useSelector(userIsAuthenticated);
+  const fileInputRef = useRef(null);
+
 
   const handleFileUpload = (event) => {
     const image = event.target.files[0];
     console.log("image file", image);
     dispatch(setPreviewImage(image));
     dispatch(setPreviewModalVisibility(true));
+    fileInputRef.current.value = null;
   };
 
   return (
@@ -21,6 +24,7 @@ const ImageUploader = () => {
             <label className="choose-file">
               <input
                 type="file"
+                ref={fileInputRef}
                 id="uploadedFile"
                 name="uploadedFile"
                 accept=".jpg,.jpeg,.png,.gif"
