@@ -9,7 +9,7 @@ const initialState = {
 
 export const uploadImageAndMetaData = createAsyncThunk(
   "user/uploadImageAndMetaData",
-  async ( {previewImage, dbFormData} ) => {
+  async ( {imageFile, dbFormData} ) => {
 
     console.log("inside upload action");
     
@@ -18,23 +18,22 @@ export const uploadImageAndMetaData = createAsyncThunk(
       const token = localStorage.getItem("token");
       const headers = {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "multipart/form-data",
       };
       
+      console.log("uploadSlice formData", dbFormData);
+
       const combinedFormData = new FormData();
 
-      combinedFormData.append("image", previewImage);
+      combinedFormData.append("imageFile", imageFile);
 
       for (const [key, value] of dbFormData.entries()) {
         combinedFormData.append(key, value);
       }
 
-      console.log("pre upload data", combinedFormData);
-
-      await axios.post(`https://kristobaricevic.com/api/upload`, previewImage, combinedFormData, {
+      await axios.post(`https://kristobaricevic.com/api/upload`, combinedFormData, {
         headers,
       });
-      console.log("after form data");
+
       return combinedFormData;
     } catch (error) {
       throw error;

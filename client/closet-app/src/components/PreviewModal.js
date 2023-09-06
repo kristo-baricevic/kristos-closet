@@ -23,7 +23,8 @@ const PreviewModal = () => {
 
     // declare formData and append event
     const dbFormData = new FormData();
-
+    
+    dbFormData.append('imageFile', image);
     dbFormData.append('user', user);
     dbFormData.append('category', category);
     dbFormData.append('isUserImage', isUserImage);
@@ -31,7 +32,7 @@ const PreviewModal = () => {
     console.log("params before await in front", image, dbFormData);
     
     try{
-      await dispatch(uploadImageAndMetaData({image, dbFormData})); 
+      await dispatch(uploadImageAndMetaData({ image, dbFormData})); 
       console.log("after fetchItems");
       // Clear the selected file and other inputs
       setPreviewImage(null);
