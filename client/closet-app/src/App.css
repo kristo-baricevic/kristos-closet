@@ -516,20 +516,24 @@ button {
 
 .closet-view {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: left;
+  align-items: center;
   flex-wrap: nowrap;
-  height: 420px;
   gap: 16px;
   overflow-y: auto;
-
 } 
 
+/* Cards */
+
 .card {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: auto;
   height: 350px;
+  width: 280px;
   margin: 30px;
   padding: 10px;
   background-color: #f9f9f9;
@@ -539,44 +543,9 @@ button {
   border-radius: 8px; 
 }
 
-.card-tab-open {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  min-width: 220px;
-  height: 210px;
-  margin: 20px;
-  padding: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  border-radius: 40px; 
-}
-
-.card-tab-open img {
-  height: 160px;
-  border-radius: 20px; 
-  margin-top: 60px;
-}
-
-.card-tab-open button {
-  width: 60px
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card.open {
-  background-color: red;
-}
-
 .card-image {
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: auto;
   height: 275px;
   z-index: 0;
@@ -597,14 +566,6 @@ button {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.card-buttons-container-tab-open {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
 }
 
 .category-buttons-container {
@@ -707,7 +668,50 @@ button {
 
 .select-button:hover {
   background-color: #228B22;
-  border-color: #0056b3;
+  border-color: black;
+}
+
+.card-tab-open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  min-width: 220px;
+  height: 210px;
+  margin: 20px;
+  padding: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 40px; 
+}
+
+.card-tab-open img {
+  height: 160px;
+  border-radius: 20px; 
+  margin-top: 60px;
+}
+
+.card-tab-open button {
+  width: 60px
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card.open {
+
+}
+
+.card-buttons-container-tab-open {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 }
 
 /* Image Modal */
