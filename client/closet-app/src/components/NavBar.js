@@ -29,11 +29,11 @@ const handleLogoutUser = () => {
         <nav className="navbar">
             <div className="navbar-menu">
                 <div class="navbar-buttons-container">
-                    <button className="registration-button" onClick={showRegistrationModal}>Register</button>
+                    <button className="navbar-button" onClick={showRegistrationModal}>Register</button>
                     {!isAuthenticated ? (
-                    <button className="login-button" onClick={showLoginModal}>Login</button>
+                    <button className="navbar-button" onClick={showLoginModal}>Login</button>
                     ) : (
-                    <button className="logout-button" onClick={handleLogoutUser}>Logout</button>
+                    <button className="navbar-button" onClick={handleLogoutUser}>Logout</button>
                     )}
                     <DemoButton />
                 </div>

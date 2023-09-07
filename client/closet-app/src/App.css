@@ -43,6 +43,8 @@
 }
 
 .navbar-buttons-container {
+  display: flex;
+  flex-direction: column;
   padding: 5px
 }
 
@@ -52,9 +54,7 @@
   padding: 5px;
 }
 
-/* Button Design */
-
-.registration-button {
+.navbar-button {
   font-size: 12px;
   padding: 5px 10px;
   background-color: #50C878;
@@ -67,61 +67,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
-.registration-button:hover {
-  background-color: #228B22;
-  color: black;
-}
-
-.login-button {
-  font-size: 12px;
-  padding: 5px 10px;
-  background-color: #50C878;
-  color: black;
-  border: 1px solid black;
-  border-radius: 14px;
-  width: 70px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-}
-
-.login-button:hover {
-  background-color: #228B22;
-  color: black;
-}
-
-.logout-button {
-  font-size: 12px;
-  padding: 5px 10px;
-  background-color: #50C878;
-  color: black;
-  border: 1px solid black;
-  border-radius: 14px;
-  width: 70px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-}
-
-.logout-button:hover{
-  background-color: #228B22;
-  color: black;
-}
-
-.demo-button {
-  font-size: 12px;
-  padding: 5px 10px;
-  background-color: #50C878;
-  color: black;
-  border: 1px solid black;
-  border-radius: 14px;
-  width: 70px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-}
-
-.demo-button:hover{
+.navbar-button:hover {
   background-color: #228B22;
   color: black;
 }

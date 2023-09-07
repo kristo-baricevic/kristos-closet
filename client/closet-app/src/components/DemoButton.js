@@ -10,7 +10,7 @@ const DemoButton = () => {
   };
 
   return (
-    <button className="demo-button" onClick={handleDemoLogin}>Demo</button>
+    <button className="navbar-button" onClick={handleDemoLogin}>Demo</button>
   );
 };
 
