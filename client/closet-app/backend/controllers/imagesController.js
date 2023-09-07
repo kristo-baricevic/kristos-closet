@@ -71,6 +71,7 @@ exports.getImageById = async (req, res) => {
 };
 
 exports.updateImage = async (req, res) => {
+  console.log("images controller update");
   try {
     const { id } = req.params;
     const { category } = req.body;

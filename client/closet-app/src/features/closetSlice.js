@@ -42,6 +42,27 @@ export const deleteItems = (imageId) => async (dispatch) => {
   }
 };
 
+
+// Thunk action to delete items
+export const editCategory = (imageId, category) => async (dispatch) => {
+  console.log("edit Items before try");
+  dispatch(editImageStart());
+  console.log("category", category);
+  dispatch(editImage(imageId, category));
+  console.log("new category", category);
+  try {
+    const response = await axios.put(`https://kristobaricevic.com/api/images/${imageId}`, {category});
+
+    console.log(response);
+    console.log("delete items slice with ", imageId);
+
+    dispatch(editItemsSuccess());
+  } catch (error) {
+    dispatch(editItemsFailure(error));
+  }
+};
+
+
 export const toggleTabState = () => async (dispatch) => {
   console.log("toggle tab style");
   dispatch(toggleTabState());
@@ -66,11 +87,23 @@ const closetSlice = createSlice({
       state.error = action.payload;
     },
     editImage: (state, action) => {
-        const { id, category } = action.payload;
-        const imageToEdit = state.images.find(image => image.id === id);
-        if (imageToEdit) {
-          imageToEdit.category = category;
-        }
+      const { id, category } = action.payload;
+      const imageToEdit = state.images.find(image => image.id === id);
+      if (imageToEdit) {
+        imageToEdit.category = category;
+      }
+    },
+    editImageStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    editItemsSuccess: (state) => {
+      state.loading = false;
+      state.error = null;
+    },
+    editItemsFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     },
     deleteImage: (state, action) => {
         const imageId = action.payload;
@@ -101,6 +134,9 @@ export const {
   fetchItemsStart,
   fetchItemsSuccess,
   fetchItemsFailure,
+  editImageStart,
+  editItemsFailure,
+  editItemsSuccess,
   deleteItemsStart,
   deleteItemsSuccess,
   deleteItemsFailure,

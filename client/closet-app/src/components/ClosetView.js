@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { tabStyle, toggleTabStyle, fetchItems, editImage, deleteImage, deleteItems, selectInitialClosetItems } from '../features/closetSlice';
+import { tabStyle, toggleTabStyle, fetchItems, deleteImage, deleteItems, selectInitialClosetItems, editCategory } from '../features/closetSlice';
 import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
@@ -92,7 +92,7 @@ const ClosetView = () => {
   const saveImageEdit = async (image) => {
     const updatedCategory = editedCategory.trim();
     if (updatedCategory !== "") {
-      await dispatch(editImage({ id: image.id, category: updatedCategory }));
+      await dispatch(editCategory(image.id, updatedCategory));
     }
 
     setEditingImageId(null);
