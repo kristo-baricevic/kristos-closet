@@ -21,7 +21,6 @@ import './App.css';
 
     return (
 
-      <div className="body-container">
         <div className="main-column-layout">
 
           <div class="navbar-container">
@@ -37,7 +36,6 @@ import './App.css';
             </div>
           <SlideUpTab />
         </div>
-      </div>
   );
 };
 
