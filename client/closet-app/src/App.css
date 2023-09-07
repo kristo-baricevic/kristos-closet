@@ -17,39 +17,39 @@
 
 /* Navbar Design */
 
-.logo-sizing {
-  height: 100px;
-  width: auto;
-  padding: 5px;
-}
-
-.navbar-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style-type: none;
-  height: 100%; 
-  display: flex;
-}
 
 .navbar-container {
-  justify-content: space-between;
-  align-items: center;
+  display: flex;  
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 2;
 }
 
+.navbar {
+  background-color: #a4e333;
+  width: 100%;
+  height: 120px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+  border-radius: 8px; 
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  height: 100%; 
+}
+
 .navbar-buttons-container {
   padding: 5px
 }
 
-.navbar {
-  background-color: #a4e333;
-  height: 120px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
-  border-radius: 8px; 
+.logo-sizing {
+  height: 100px;
+  width: auto;
+  padding: 5px;
 }
 
 /* Button Design */
@@ -872,5 +872,4 @@ button {
     height: 80px;
     padding: 0px;
   }
-
 }

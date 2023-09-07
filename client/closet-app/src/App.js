@@ -32,13 +32,10 @@ import './App.css';
               
           </div>
 
-          <div className="clothing-components-layout">
             <div className="closet-view-container">
               <ClosetView />
             </div>
-              <SlideUpTab />
-          </div>
-
+          <SlideUpTab />
         </div>
       </div>
   );

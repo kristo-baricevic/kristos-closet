@@ -92,6 +92,7 @@ exports.updateImage = async (req, res) => {
       category: clothingItem.category,
       userId: clothingItem.userId,
     });
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred' });

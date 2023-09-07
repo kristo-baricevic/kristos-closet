@@ -30,6 +30,7 @@ app.use(express.json());
 app.use(cors()); 
 app.use('/static', express.static('build'));
 
+
 // Use routes with a base URL of '/api'
 app.use('/api', routes);
 
