@@ -6,8 +6,6 @@
 
 .main-column-layout {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -71,14 +69,6 @@
   background-color: #228B22;
   color: black;
 }
-
-/* Component Containers */
-
-.closet-view-container {
-  width: 100%;
-  margin-bottom: 30px;
-}
-
 
 /* Login Modal */
 
@@ -511,14 +501,17 @@ button {
 
 /* ClosetView Component */
 
+.closet-inner-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: auto;
+}
+
 .sticky-container {
   position: sticky;
   top: 10px;
   z-index: 1; 
-}
-
-.closet-inner-container {
-  overflow: auto;
 }
 
 .closet-view {
