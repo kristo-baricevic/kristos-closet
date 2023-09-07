@@ -55,8 +55,8 @@ const LoginModal = () => {
             />
           </div>
           <button className="login-form-button" type="submit">Login</button>
+          <button className="login-close-button" onClick={handleCloseModal}>Close</button>
         </form>
-        <button className="login-close-button" onClick={handleCloseModal}>Close</button>
       </div>
     </div>
   );

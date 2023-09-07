@@ -154,31 +154,14 @@
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  width: 400px;
+  width: 300px;
 }
 
 .login-header {
   margin-top: 0;
 }
 
-.login-form-group {
-  margin-bottom: 10px;
-}
-
-.logout-form-button {
-  font-size: 12px;
-  padding: 5px 10px;
-  background-color: #50C878;
-  color: black;
-  border: 1px solid black;
-  border-radius: 14px;
-  width: 70px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-}
-
-.logout-form-button:hover{
+.lo-form-button:hover{
   background-color: #228B22;
   color: black;
 }
@@ -212,9 +195,32 @@
   color: black;
 }
 
-.login-close-button {
-  display: block;
+.login-form-group {
+  margin-bottom: 10px;
+}
+
+.login-form-button {
+  font-size: 12px;
+  padding: 5px 10px;
   margin: 5px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 14px;
+  width: 83px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.login-form-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+.login-close-button {
+  font-size: 12px;
+  display: block;
   width: 83px;
   margin-top: 10px;
   padding: 5px 10px;
@@ -252,7 +258,7 @@
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  width: 400px;
+  width: 300px;
 }
 
 .registration-header {
@@ -290,7 +296,7 @@
 }
 
 .registration-submit-button:hover {
-  background-color: #0056b3;
+  background-color: #228B22;
 }
 
 .registration-close-button {
@@ -602,8 +608,8 @@ button {
   width: auto;
   min-width: 220px;
   height: 210px;
-  margin: 25px;
-  padding: 10px;
+  margin: 20px;
+  padding: 5px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -833,7 +839,7 @@ button {
   width: 100%;
   background-color: #ffffff;
   transition: transform 0.3s ease-in-out;
-  z-index: 4; 
+  z-index: 1; 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   transform: translateY(80%);
@@ -856,9 +862,8 @@ button {
 }
 
 .slide-up-tab.open {
-  transform: translateY(5%); 
+  transform: translateY(10%); 
 }
-
 
 
 @media screen and (max-width: 600px) {
