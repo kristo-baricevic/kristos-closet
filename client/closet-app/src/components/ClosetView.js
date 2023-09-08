@@ -139,27 +139,31 @@ const ClosetView = () => {
                   </div>
                   <div className="category-container">
                     {isEditing(image) ? (
-                      <div className="edit-category">
-                        <select
-                          value={editedCategory}
-                          onChange={event => setEditedCategory(event.target.value)}
-                          onKeyUp={event => {
-                            if (event.key === 'Enter') {
-                              saveImageEdit(image);
-                            }
-                          }}
-                        >
-                          {uniqueCategories.map(category => (
-                            <option key={category} value={category}>{category}</option>
-                          ))}
-                        </select>
-                        <button onClick={() => saveImageEdit(image)}>Save</button>
-                        <button onClick={() => cancelImageEdit()}>Cancel</button>
+                      <div className="edit-category-modal">
+                        <div className="edit-category">
+                          <select
+                            value={editedCategory}
+                            onChange={event => setEditedCategory(event.target.value)}
+                            onKeyUp={event => {
+                              if (event.key === 'Enter') {
+                                saveImageEdit(image);
+                              }
+                            }}
+                          >
+                            {uniqueCategories.map(category => (
+                              <option key={category} value={category}>{category}</option>
+                            ))}
+                          </select>
+                          <div class="edit-modal-button-container">
+                            <button class="edit-modal-button" onClick={() => saveImageEdit(image)}>Save</button>
+                            <button class="edit-modal-button" onClick={() => cancelImageEdit()}>Cancel</button>
+                          </div>
+                        </div>
                       </div>
                     ) : (
                       <div className="image-category">
                         {/* {image.category} */}
-                        </div>
+                      </div>
                     )}
                   </div>
                 </div>
