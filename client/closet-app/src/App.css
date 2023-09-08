@@ -421,7 +421,7 @@ input[type="file"] {
 .outfit-view-main {
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: flex-start;
 }
 
 .remove-outfit-button {
