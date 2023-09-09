@@ -310,6 +310,7 @@
   background-color: #228B22;
   color: black;
 }
+
 input[type="file"] {
     display: none;
 }
@@ -601,7 +602,7 @@ button {
 
 .category-button:hover {
   background-color: #228B22;
-  border-color: #0056b3;
+  border-color: black;
 }
 
 .delete-button {
@@ -640,20 +641,6 @@ button {
 .edit-button:hover {
   background-color: #228B22;
   color: black;
-}
-
-.category-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-category {
-  margin-top: -10px;
-  font-size: 14px;
-  color: black;
-  padding: 5px;
 }
 
 .select-button {
@@ -706,9 +693,6 @@ button {
   transform: translateY(-5px);
 }
 
-.card.open {
-
-}
 
 .card-buttons-container-tab-open {
   display: flex;
@@ -720,17 +704,24 @@ button {
 
 /* Edit modal */
 
-.edit-category-modal {
+.category-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.edit-category-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; 
 }
 
 .edit-category {
@@ -739,8 +730,6 @@ button {
   background-color: #f9f9f9;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 200px;
   padding: 20px;  
   background-color: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -761,6 +750,13 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.image-category {
+  margin-top: -10px;
+  font-size: 14px;
+  color: black;
+  padding: 5px;
 }
 
 /* Image Modal */
@@ -834,7 +830,7 @@ button {
   z-index: 1; 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  transform: translateY(80%);
+  transform: translateY(87%);
 }
 
 .tab-button {
