@@ -1,0 +1,43 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+  editModalVisibility: false,
+  editImage: null,
+  uniqueCategories: null,
+};
+
+const editModalSlice = createSlice({
+  name: 'previewModal',
+  initialState,
+  reducers: {
+    setEditModalVisibility: (state, action) => {
+        state.editModalVisibility = action.payload;
+    },
+    setEditImage: (state, action) => {
+        state.editImage = action.payload;
+    },
+    setCategory: (state, action) => {
+        state.editImage.category = action.payload;
+    },
+    closeEditModal: (state, action) => {
+        state.editModalVisibility = action.payload;
+    },
+    setUniqueCategories: (state, action) => {
+        state.uniqueCategories = action.payload;
+    },
+  },
+});
+
+export const {
+    closeEditModal,    
+    setEditModalVisibility,
+    setUniqueCategories,
+    setEditImage,
+    setCategory,
+} = editModalSlice.actions;
+
+export const editVisibility = (state) => state.editModal.editModalVisibility;
+export const editingImage = (state) => state.editModal.editModalImage;
+export const categories = (state) => state.editModal.uniqueCategories;
+
+export const editModalReducer = editModalSlice.reducer;

@@ -5,12 +5,14 @@ import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
 import { setModalImage, imageModalVisibility, openImageModal} from '../features/imageModalSlice';
+import { setEditImage, edit } from '../features/editModalSlice';
 
 const ClosetView = () => {
   const images = useSelector(selectInitialClosetItems);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [editedCategory, setEditedCategory] = useState(null);
   const [editingImageId, setEditingImageId] = useState(null);
+  const editImage = useSelector(edit);
   const isAuthenticated = useSelector(userIsAuthenticated);
   const isImageModalVisible = useSelector(imageModalVisibility);
   const user = useSelector(selectUser);
@@ -72,6 +74,8 @@ const ClosetView = () => {
       alert('You must be logged in to edit items.');
       return;
     }
+
+    setEditImage(image);
 
     console.log("image.userId", image.id);
     console.log("user id", user._id);
