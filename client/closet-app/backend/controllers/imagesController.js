@@ -72,33 +72,30 @@ exports.getImageById = async (req, res) => {
 
 exports.updateImage = async (req, res) => {
   console.log("images controller update");
-  try {
-    const { id } = req.params;
-    const { category } = req.body;
-    console.log("id check", id);
-    console.log("category check", category);
+  console.log("test test test");
 
-    const clothingItem = await ClothingItem.findOneAndUpdate(
-      { _id: id },
-      { $set: { category } },
-      { new: true }
-    );
+  const { id } = req.params;
+  const { category } = req.body;
 
-    if (!clothingItem) {
-      return res.status(404).json({ error: 'Image not found' });
-    }
+  console.log("id check", id);
+  console.log("category check", category);
 
-    res.json({
-      id: clothingItem._id,
-      data: clothingItem.image,
-      category: clothingItem.category,
-      userId: clothingItem.userId,
-    });
-    
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred' });
+  const clothingItem = await ClothingItem.findOneAndUpdate(
+    { _id: id },
+    { $set: { category } },
+    { new: true }
+  );
+
+  if (!clothingItem) {
+    return res.status(404).json({ error: 'Image not found' });
   }
+
+  res.json({
+    id: clothingItem._id,
+    data: clothingItem.image,
+    category: clothingItem.category,
+    userId: clothingItem.userId,
+  });
 };
 
 
