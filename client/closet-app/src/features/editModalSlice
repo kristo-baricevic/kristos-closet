@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
   editModalVisibility: false,
@@ -6,8 +7,27 @@ const initialState = {
   uniqueCategories: null,
 };
 
+// Thunk action to delete items
+export const editCategory = (imageId, category) => async (dispatch) => {
+    console.log("edit Items before try");
+    dispatch(editImageStart());
+    console.log("category", category);
+    dispatch(editImage(imageId, category));
+    console.log("new category", category);
+    try {
+      const response = await axios.put(`https://kristobaricevic.com/api/images/${imageId}`, {category});
+  
+      console.log(response);
+      console.log("delete items slice with ", imageId);
+  
+      dispatch(editItemsSuccess());
+    } catch (error) {
+      dispatch(editItemsFailure(error));
+    }
+  };
+
 const editModalSlice = createSlice({
-  name: 'previewModal',
+  name: 'editModal',
   initialState,
   reducers: {
     setEditModalVisibility: (state, action) => {
@@ -25,6 +45,25 @@ const editModalSlice = createSlice({
     setUniqueCategories: (state, action) => {
         state.uniqueCategories = action.payload;
     },
+    editImage: (state, action) => {
+        const { id, category } = action.payload;
+        const imageToEdit = state.images.find(image => image.id === id);
+        if (imageToEdit) {
+            imageToEdit.category = category;
+        }
+    },
+    editImageStart: (state) => {
+        state.loading = true;
+        state.error = null;
+    },
+    editItemsSuccess: (state) => {
+        state.loading = false;
+        state.error = null;
+    },
+    editItemsFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    },
   },
 });
 
@@ -33,6 +72,10 @@ export const {
     setEditModalVisibility,
     setUniqueCategories,
     setEditImage,
+    editImage,
+    editImageStart,
+    editItemsFailure,
+    editItemsSuccess,
     setCategory,
 } = editModalSlice.actions;
 

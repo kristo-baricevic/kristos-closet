@@ -5,23 +5,21 @@ import { editingImage, setEditImage, categories, setCategory, closeEditModal, ed
 const EditModal = () => {
   const isEditModalVisible = useSelector(editModalVisibility);
   const image = useSelector(editingImage);
+  const [editedCategory, setEditedCategory] = useState(null);
   const uniqueCategories = useSelector(categories);
   const dispatch = useDispatch();
   const category = image.category;
 //   const [editedCategory, setEditedCategory] = useState(null);
 
 
-  const isEditing = (image) => {
-    return editingImageId === image.id && image.isUserImage;
-  };
-
   const saveImageEdit = async (image) => {
-    const updatedCategory = editedCategory.trim();
+    const updatedCategory = category.trim();
     if (updatedCategory !== "") {
       await dispatch(setCategory(updatedCategory));
     }
 
     setEditImage(null);
+    setEditedCategory("");
   };
 
   const handleCloseModal = () => {
@@ -30,14 +28,13 @@ const EditModal = () => {
 
   const cancelImageEdit = () => {
     setEditImage(null);
-    setEditedCategory("");
   };
 
   return (
     <div className="edit-category-modal">
       <div className="edit-category">
       <select
-            value={category}
+            value={editedCategory}
             onChange={event => setCategory(event.target.value)}
             onKeyUp={event => {
             if (event.key === 'Enter') {
