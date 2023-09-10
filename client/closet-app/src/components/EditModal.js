@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editingImage, setEditImage, categories, setCategory, closeEditModal } from '../features/editModalSlice';
+import { editingImage, setEditImage, categories, setCategory, closeEditModal, editCategory } from '../features/editModalSlice';
 
 const EditModal = () => {
   const image = useSelector(editingImage);
-  const editedCategory = useSelector(categories);
+  const [editedCategory, setEditedCategory] = useState(image.category);
   const uniqueCategories = useSelector(categories);
   const dispatch = useDispatch();
 
 
   const saveImageEdit = async (image) => {
-    const updatedCategory = editedCategory.trim();
+    console.log("image test", image);
+    console.log("test category", editedCategory);
+    const updatedCategory = editedCategory;
     if (updatedCategory !== "") {
-      await dispatch(setCategory(updatedCategory));
+        await dispatch(editCategory({ imageId: image.id, category: updatedCategory }));
     }
 
     setEditImage(null);
@@ -31,7 +33,7 @@ const EditModal = () => {
             <h1>SELECT A NEW CATEGORY</h1>
             <select
                     value={editedCategory}
-                    onChange={event => dispatch(setCategory(event.target.value))}
+                    onChange={event => setEditedCategory(event.target.value)}
                     onKeyUp={event => {
                     if (event.key === 'Enter') {
                         saveImageEdit(image);

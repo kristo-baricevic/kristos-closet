@@ -5,15 +5,13 @@ import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
 import { setModalImage, imageModalVisibility, openImageModal} from '../features/imageModalSlice';
-import { categories, editModalVisibility, setEditModalVisibility, setUniqueCategories } from '../features/editModalSlice';
+import { editModalVisibility, setEditImage, setEditModalVisibility, setUniqueCategories } from '../features/editModalSlice';
 import EditModal from './EditModal';
 
 const ClosetView = () => {
   const isEditModalVisible = useSelector(editModalVisibility);
   const images = useSelector(selectInitialClosetItems);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [editedCategory, setEditedCategory] = useState(null);
-  const [editingImageId, setEditingImageId] = useState(null);
   const isAuthenticated = useSelector(userIsAuthenticated);
   const isImageModalVisible = useSelector(imageModalVisibility);
   const user = useSelector(selectUser);
@@ -81,9 +79,8 @@ const ClosetView = () => {
     //   return;
     // }
 
-    // setEditingImageId(image.id);
-    // setEditedCategory(image.category);
     dispatch(setUniqueCategories(uniqueCategories));
+    dispatch(setEditImage(image));
     dispatch(setEditModalVisibility(true));
   };
 

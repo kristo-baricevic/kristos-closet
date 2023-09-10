@@ -22,7 +22,6 @@ export const editCategory = createAsyncThunk(
       const response = await axios.put(`https://kristobaricevic.com/api/images/${imageId}`, {category});
   
       console.log(response);
-      console.log("delete items slice with ", imageId);
   
       editItemsSuccess();
     } catch (error) {
@@ -45,7 +44,7 @@ export const editModalSlice = createSlice({
         state.editImage.category = action.payload;
     },
     closeEditModal: (state, action) => {
-        state.editModalVisibility = action.payload;
+        state.editVisibility = action.payload;
     },
     setUniqueCategories: (state, action) => {
         state.uniqueCategories = action.payload;
