@@ -75,6 +75,8 @@ exports.updateImage = async (req, res) => {
   try {
     const { id } = req.params;
     const { category } = req.body;
+    console.log("id check", id);
+    console.log("category check", category);
 
     const clothingItem = await ClothingItem.findOneAndUpdate(
       { _id: id },
