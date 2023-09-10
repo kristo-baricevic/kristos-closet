@@ -5,7 +5,7 @@ import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
 import { setModalImage, imageModalVisibility, openImageModal} from '../features/imageModalSlice';
-import { editModalVisibility, setEditModalVisibility } from '../features/editModalSlice';
+import { categories, editModalVisibility, setEditModalVisibility, setUniqueCategories } from '../features/editModalSlice';
 import EditModal from './EditModal';
 
 const ClosetView = () => {
@@ -26,7 +26,7 @@ const ClosetView = () => {
   useEffect(() => {
     dispatch(fetchItems());
     console.log(tabToggle, "truth is out there?");
-  });
+  }, []);
 
   // console.log("image structure", images);
 
@@ -75,42 +75,20 @@ const ClosetView = () => {
       alert('You must be logged in to edit items.');
       return;
     }
-
-
-    console.log("image.userId", image.id);
-    console.log("user id", user._id);
     
     // if (image.id !== user._id) {
     //   alert('You cannot edit shared images.');
     //   return;
     // }
 
-    setEditingImageId(image.id);
-    setEditedCategory(image.category);
-  };
-
-  const isEditing = (image) => {
-    return editingImageId === image.id && image.isUserImage;
-  };
-
-  const saveImageEdit = async (image) => {
-    const updatedCategory = editedCategory.trim();
-    if (updatedCategory !== "") {
-      await dispatch(editCategory(image.id, updatedCategory));
-    }
-
-    setEditingImageId(null);
-    setEditedCategory("");
-  };
-
-  const cancelImageEdit = () => {
-    setEditingImageId(null);
-    setEditedCategory("");
+    // setEditingImageId(image.id);
+    // setEditedCategory(image.category);
+    dispatch(setUniqueCategories(uniqueCategories));
+    dispatch(setEditModalVisibility(true));
   };
 
   const handleSelectImage = (image, category) => {
     console.log("handleSelectImage", category);
-    dispatch(setEditModalVisibility());
     dispatch(addItem({ category, item: image }));
   };
 
@@ -122,6 +100,7 @@ const ClosetView = () => {
   return (
     <div className="closet-inner-container">
       {isImageModalVisible && <ImageModal />}
+      {isEditModalVisible && <EditModal />}
           <div className="sticky-container">
             <div className="category-buttons-container">
               <button className="category-button" onClick={() => filterByCategory(null)}>All</button>
@@ -141,9 +120,6 @@ const ClosetView = () => {
                     <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
                     <button className="select-button" onClick={() => handleSelectImage(image, image.category)}>Select</button>
                     <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
-                  </div>
-                  <div className="category-container">
-                    {isEditModalVisible && <EditModal />}
                   </div>
                 </div>
               </div>

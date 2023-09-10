@@ -7,6 +7,7 @@ import { closetSliceReducer } from '../features/closetSlice';
 import { imageModalSliceReducer } from '../features/imageModalSlice';
 import thunkMiddleware from 'redux-thunk';
 import { previewModalReducer } from '../features/previewModalSlice.js';
+import { editModalSliceReducer } from '../features/editModalSlice';
 
 
 const middleware = [thunkMiddleware];
@@ -18,6 +19,7 @@ const store = configureStore({
     user: userSliceReducer,
     selectedItems: selectedItemsSliceReducer,
     closet: closetSliceReducer,
+    editModal: editModalSliceReducer,
     imageModal: imageModalSliceReducer,
     previewModal: previewModalReducer,
   },

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { modalImage, closeImageModal, imageModalVisibility } from '../features/imageModalSlice';
 
 const ImageModal = () => {
-  const isImageModalVisible = useSelector(imageModalVisibility);
   const image = useSelector(modalImage);
   const dispatch = useDispatch();
 
@@ -24,7 +23,7 @@ const ImageModal = () => {
 
   return (
     <div className="modal-background">
-      <div className={`image-modal ${isImageModalVisible ? 'visible' : ''}`}>
+      <div className="image-modal">
         <div className="image-modal-content">
             <img className="image-modal-image" src={getImageUrl(image)} alt="selected item in a modal"/>
           <button className="image-close-button" onClick={handleCloseModal}>Close</button>
