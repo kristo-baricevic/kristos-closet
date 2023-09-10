@@ -79,7 +79,7 @@ export const {
     setCategory,
 } = editModalSlice.actions;
 
-export const editVisibility = (state) => state.editModal.editModalVisibility;
+export const editModalVisibility = (state) => state.editModal.editModalVisibility;
 export const editingImage = (state) => state.editModal.editModalImage;
 export const categories = (state) => state.editModal.uniqueCategories;
 

@@ -5,14 +5,15 @@ import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
 import { setModalImage, imageModalVisibility, openImageModal} from '../features/imageModalSlice';
-import { setEditImage, edit } from '../features/editModalSlice';
+import { editModalVisibility, setEditModalVisibility } from '../features/editModalSlice';
+import EditModal from './EditModal';
 
 const ClosetView = () => {
+  const isEditModalVisible = useSelector(editModalVisibility);
   const images = useSelector(selectInitialClosetItems);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [editedCategory, setEditedCategory] = useState(null);
   const [editingImageId, setEditingImageId] = useState(null);
-  const editImage = useSelector(edit);
   const isAuthenticated = useSelector(userIsAuthenticated);
   const isImageModalVisible = useSelector(imageModalVisibility);
   const user = useSelector(selectUser);
@@ -75,7 +76,6 @@ const ClosetView = () => {
       return;
     }
 
-    setEditImage(image);
 
     console.log("image.userId", image.id);
     console.log("user id", user._id);
@@ -110,6 +110,7 @@ const ClosetView = () => {
 
   const handleSelectImage = (image, category) => {
     console.log("handleSelectImage", category);
+    dispatch(setEditModalVisibility());
     dispatch(addItem({ category, item: image }));
   };
 
@@ -142,33 +143,7 @@ const ClosetView = () => {
                     <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
                   </div>
                   <div className="category-container">
-                    {isEditing(image) ? (
-                        <div className="edit-category-modal">
-                          <div className="edit-category">
-                            <select
-                              value={editedCategory}
-                              onChange={event => setEditedCategory(event.target.value)}
-                              onKeyUp={event => {
-                                if (event.key === 'Enter') {
-                                  saveImageEdit(image);
-                                }
-                              }}
-                            >
-                              {uniqueCategories.map(category => (
-                                <option key={category} value={category}>{category}</option>
-                              ))}
-                            </select>
-                            <div class="edit-modal-button-container">
-                              <button class="edit-modal-button" onClick={() => saveImageEdit(image)}>Save</button>
-                              <button class="edit-modal-button" onClick={() => cancelImageEdit()}>Cancel</button>
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                      <div className="image-category">
-                        {/* {image.category} */}
-                      </div>
-                    )}
+                    {isEditModalVisible && <EditModal />}
                   </div>
                 </div>
               </div>

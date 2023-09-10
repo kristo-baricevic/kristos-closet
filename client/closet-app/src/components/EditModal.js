@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editingImage, setEditImage, categories, setCategory, closeEditModal, editModalVisibility } from '../features/editModalSlice';
 
@@ -9,11 +9,10 @@ const EditModal = () => {
   const uniqueCategories = useSelector(categories);
   const dispatch = useDispatch();
   const category = image.category;
-//   const [editedCategory, setEditedCategory] = useState(null);
 
 
   const saveImageEdit = async (image) => {
-    const updatedCategory = category.trim();
+    const updatedCategory = editedCategory.trim();
     if (updatedCategory !== "") {
       await dispatch(setCategory(updatedCategory));
     }
@@ -22,12 +21,9 @@ const EditModal = () => {
     setEditedCategory("");
   };
 
-  const handleCloseModal = () => {
-    dispatch(closeEditModal());
-  };
-
   const cancelImageEdit = () => {
     setEditImage(null);
+    dispatch(closeEditModal());
   };
 
   return (
