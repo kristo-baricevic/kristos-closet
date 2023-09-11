@@ -32,7 +32,7 @@ const EditModal = () => {
     <div className="category-container">
         <div className="edit-category-modal">
             <div className="edit-category">
-            <h1>Select A New Category</h1>
+            <h3>Select A New Category</h3>
             <select
                     value={editedCategory}
                     onChange={event => setEditedCategory(event.target.value)}
