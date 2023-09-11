@@ -11,7 +11,7 @@ const initialState = {
 // Thunk action to fetch items
 export const fetchItems = () => async (dispatch) => {
     dispatch(fetchItemsStart());
-    console.log("inside fetch images", fetchItemsStart);
+    console.log("fetch running");
     try {
       const response = await axios.get(`https://kristobaricevic.com/api/images`);
       const data = response.data;
@@ -26,6 +26,7 @@ export const fetchItems = () => async (dispatch) => {
       dispatch(fetchItemsFailure(error));
     }
   };
+
 
 // Thunk action to delete items
 export const deleteItems = (imageId) => async (dispatch) => {
@@ -113,7 +114,7 @@ const closetSlice = createSlice({
       state.loading = true;
       state.error = null;
     },
-    deleteItemsSuccess: (state, action) => {
+    deleteItemsSuccess: (state) => {
       state.loading = false;
       state.error = null;
     },

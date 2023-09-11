@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editingImage, setEditImage, categories, setCategory, closeEditModal, editCategory } from '../features/editModalSlice';
+import { editingImage, setEditImage, categories, closeEditModal, editCategory } from '../features/editModalSlice';
+import { fetchItems } from '../features/closetSlice';
 
 const EditModal = () => {
   const image = useSelector(editingImage);
@@ -17,6 +18,7 @@ const EditModal = () => {
         await dispatch(editCategory({ imageId: image.id, category: updatedCategory }));
     }
 
+    dispatch(fetchItems());
     setEditImage(null);
     dispatch(closeEditModal());
   };
@@ -30,7 +32,7 @@ const EditModal = () => {
     <div className="category-container">
         <div className="edit-category-modal">
             <div className="edit-category">
-            <h1>SELECT A NEW CATEGORY</h1>
+            <h1>Select A New Category</h1>
             <select
                     value={editedCategory}
                     onChange={event => setEditedCategory(event.target.value)}
