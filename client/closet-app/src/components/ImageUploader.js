@@ -21,6 +21,7 @@ const ImageUploader = () => {
     <div className="upload-component-container">
       <div className="upload-container">
           <div className="upload-buttons-container">
+            <h3 className="upload-heading">Upload Item</h3>
             <label className="choose-file">
               <input
                 type="file"

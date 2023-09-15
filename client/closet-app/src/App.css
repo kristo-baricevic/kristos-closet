@@ -258,6 +258,11 @@
 
 /* Image Uploader Component */
 
+
+.upload-heading{
+  font-size: 16px;
+}
+
 .image-uploader-container {
   margin-left:20px;
 }
@@ -265,14 +270,11 @@
 .upload-component-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin-top: .5px;
 }
 
 .upload-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 5px;
@@ -285,7 +287,10 @@
 }
 
 .upload-buttons-container {
-  display: inline-block;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .select-options-bar {
@@ -293,15 +298,14 @@
 }
 
 .choose-file {
-  margin: 5px;
+  margin-bottom: 10px;
   font-size: 14px;
-  margin-top: 10px;
   padding: 5px 16px;
   background-color: #50C878;
   color: black;
   border: 1px solid black;
   border-radius: 14px;
-  width: 83px;
+  width: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
