@@ -275,9 +275,6 @@
 
 .upload-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
   height: 90px;
   width: 150px;
   border: 1px solid #ddd;
@@ -290,7 +287,6 @@
   flex-direction: column;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .select-options-bar {
