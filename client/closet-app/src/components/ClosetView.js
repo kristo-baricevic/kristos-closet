@@ -26,7 +26,6 @@ const ClosetView = () => {
     console.log(tabToggle, "truth is out there?");
   }, []);
 
-  // console.log("image structure", images);
 
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 
@@ -54,11 +53,6 @@ const ClosetView = () => {
       return;
     }
 
-    // if (!image.userId) {
-    //   alert('You cannot delete shared items.');
-    //   return;
-    // }
-
     console.log("image.userId", image.id)
     const imageId = image.id;
 
@@ -74,24 +68,13 @@ const ClosetView = () => {
       return;
     }
     
-    // if (image.id !== user._id) {
-    //   alert('You cannot edit shared images.');
-    //   return;
-    // }
-
     dispatch(setUniqueCategories(uniqueCategories));
     dispatch(setEditImage(image));
     dispatch(setEditModalVisibility(true));
   };
 
   const handleSelectImage = (image, category) => {
-    console.log("handleSelectImage", category);
     dispatch(addItem({ category, item: image }));
-  };
-
-  const filterByCategory = (category) => {
-    console.log("category clicked", category);
-    setSelectedCategory(category);
   };
  
   return (
@@ -100,9 +83,9 @@ const ClosetView = () => {
       {isEditModalVisible && <EditModal />}
           <div className="sticky-container">
             <div className="category-buttons-container">
-              <button className="category-button" onClick={() => filterByCategory(null)}>All</button>
+              <button className="category-button" onClick={() => setSelectedCategory(null)}>All</button>
               {uniqueCategories.map(category => (
-                <button key={category} className="category-button" onClick={() => filterByCategory(category)}>
+                <button key={category} className="category-button" onClick={() => setSelectedCategory(category)}>
                   {category}
                 </button>
               ))}
