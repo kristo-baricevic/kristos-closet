@@ -523,7 +523,6 @@ button {
   justify-content: center;
   align-items: center;
   gap: 16px;
-  flex-grow: 1;
   overflow-y: auto;
 } 
 
