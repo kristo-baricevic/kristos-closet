@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalImage, closeImageModal, imageModalVisibility } from '../features/imageModalSlice';
 
 const ImageModal = () => {
+  const [detailVisibility, setDetailVisibility] = useState(false);
   const image = useSelector(modalImage);
   const dispatch = useDispatch();
 
@@ -10,6 +11,10 @@ const ImageModal = () => {
   const handleCloseModal = () => {
     dispatch(closeImageModal());
   };
+
+  const handleDetails = () => {
+    setDetailVisibility(!detailVisibility);
+  }
 
   const getImageUrl = (image) => {
     if (!image) {
@@ -28,8 +33,13 @@ const ImageModal = () => {
             <img className="image-modal-image" src={getImageUrl(image)} alt="selected item in a modal"/>
           <div class="image-modal-buttons">
             <button className="image-close-button" onClick={handleCloseModal}>Close</button>
-            <button className="image-close-button" onClick={handleCloseModal}>Details</button>
+            <button className="image-close-button" onClick={handleDetails}>Details</button>
           </div>
+          {detailVisibility && (
+            <div>
+              <p>This is some text about the item.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
