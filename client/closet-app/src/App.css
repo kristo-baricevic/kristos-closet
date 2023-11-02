@@ -803,6 +803,7 @@ button {
   flex-direction: flex-row;
   justify-content: center;
   align-items: middle;
+  padding-bottom: 4px;
 }
 
 .image-header {
@@ -827,6 +828,18 @@ button {
 .image-close-button:hover {
   background-color: #228B22;
   color: black;
+}
+
+.detail-view{
+  display: flex;
+  background-color:rgb(150, 223, 150);
+  padding: 2px;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.detail-view p {
+  padding: 6px;
 }
 
 /* SlideUpTab */

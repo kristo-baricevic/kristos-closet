@@ -36,7 +36,7 @@ const ImageModal = () => {
             <button className="image-close-button" onClick={handleDetails}>Details</button>
           </div>
           {detailVisibility && (
-            <div>
+            <div className="detail-view">
               <p>This is some text about the item.</p>
             </div>
           )}
