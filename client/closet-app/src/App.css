@@ -778,6 +778,8 @@ button {
 }
 
 .image-modal {
+  display: flex;
+  justify-content: center;
   background-color: rgb(112, 212, 112);
   padding: 8px;  
   background-color: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -785,15 +787,23 @@ button {
 }
 
 .image-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: #f9f9f9;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
+.image-modal-content-container {
+  display: flex;
+  justify-content: center;
+}
+
 .image-modal-image {
-  height: 250px;
-  width: auto;
+  display: flex;
+  justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }

@@ -30,7 +30,9 @@ const ImageModal = () => {
     <div className="modal-background">
       <div className="image-modal">
         <div className="image-modal-content">
+          <div className="image-modal-content-container">
             <img className="image-modal-image" src={getImageUrl(image)} alt="selected item in a modal"/>
+          </div>
           <div class="image-modal-buttons">
             <button className="image-close-button" onClick={handleCloseModal}>Close</button>
             <button className="image-close-button" onClick={handleDetails}>Details</button>
