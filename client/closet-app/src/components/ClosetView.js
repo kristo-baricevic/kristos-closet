@@ -83,11 +83,15 @@ const ClosetView = () => {
         <div className="closet-small-column">
           <div className="category-buttons-container">
             <button className="category-button" onClick={() => setSelectedCategory(null)}>All</button>
-            {uniqueCategories.map(category => (
-              <button key={category} className="category-button" onClick={() => setSelectedCategory(category)}>
-                {category}
-              </button>
-            ))}
+              {uniqueCategories.map(category => (
+                <div className="category-button-container">
+                  <button key={category} className="category-button" onClick={() => setSelectedCategory(category)}>
+                    {category}
+                    <img src="./icons/{category}.png" alt="category text"/>
+                  </button>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
