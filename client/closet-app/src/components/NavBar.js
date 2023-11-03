@@ -42,7 +42,7 @@ const NavBar = () => {
                     {isUserMenuOpen ? (
                         <>
                             <button className="navbar-button-user-open-icon" onClick={handleUserIconClick}>
-                                <img src="./icons/UserImage.png" alt="User" />
+                                <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/Top.png" alt="User" />
                             </button>
                             <button className="navbar-button" onClick={showRegistrationModal}>
                             Register
@@ -60,7 +60,7 @@ const NavBar = () => {
                         </>
                     ) : (
                         <button className="navbar-button" onClick={handleUserIconClick}>
-                            <img src="./icons/UserImage.png" alt="User" />
+                            <img className="user-open-icon-closed" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/Top.png" alt="User" />
                         </button>
                     )}
                 </div>
