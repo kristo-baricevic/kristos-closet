@@ -12,6 +12,8 @@ const {
   updateImage,
   deleteImage,
 } = require('../controllers/imagesController');
+const outfitController = require('../controllers/outfitController');
+const wardrobeController = require('../controllers/wardrobeController');
 
 
 // Image routes
@@ -29,5 +31,15 @@ router.post('/login', userController.loginUser);
 router.post('/logout', verifyToken, userController.logoutUser);
 router.post('/loginAnonymous', userController.loginAnonymous);
 router.get('/current', verifyToken, userController.getCurrentUserData);
+
+// Outfit routes
+router.post('/outfit', outfitController.saveOutfit);
+router.delete('/outfit/:id', outfitController.deleteOutfit);
+router.put('/outfit/:id', outfitController.updateOutfit);
+
+// Wardrobe routes
+router.post('/wardrobe', wardrobeController.addToWardrobe);
+router.delete('/wardrobe/:id', wardrobeController.removeFromWardrobe);
+router.get('/wardrobe/:userId', wardrobeController.getWardrobeOutfits);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const savedOutfit = require('../models/savedOutfit');
+const savedOutfit = require('../models/SavedOutfit');
 const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
@@ -12,7 +12,7 @@ exports.saveOutfit = async (req, res) => {
       });
   
       // Save the outfit to the database
-      await savedOutfit.save();
+      await savedOutfitDoc.save();
   
       res.status(201).json(savedOutfitDoc);
     } catch (error) {
@@ -21,7 +21,6 @@ exports.saveOutfit = async (req, res) => {
     }
   };
   
-
   exports.deleteOutfit = async (req, res) => {
     try {
       const outfitId = req.params.id;
@@ -35,7 +34,6 @@ exports.saveOutfit = async (req, res) => {
       res.status(500).json({ error: 'An error occurred while deleting the outfit' });
     }
   };
-  
 
   exports.updateOutfit = async (req, res) => {
   try {

@@ -6,6 +6,9 @@ import {
 import { logout, userIsAuthenticated } from '../features/userSlice.js';
 import DemoButton from './DemoButton';
 import ImageUploader from './ImageUploader.js';
+import { Link } from 'react-router-dom';
+
+
 // import ImageUploader from './ImageUploader.js';
 
 const NavBar = () => {
@@ -43,8 +46,12 @@ const handleLogoutUser = () => {
                 </div>
             </div>
             <div class="navbar-extended-buttons">
-                <button class="view-wardrobe-button">View Wardrobe</button>
-                <button class="view-outfit-button">View Outfit</button>
+                <Link to="/wardrobe" className="view-wardrobe-button">
+                    View Wardrobe
+                </Link>
+                <Link to="/outfit" className="view-outfit-button">
+                    View Outfit
+                </Link>
             </div>
         </nav>
     );

@@ -1,53 +1,49 @@
-const savedOutfit = require('../models/savedOutfit');
+const SavedOutfit = require('../models/savedOutfit');
 
 exports.addToWardrobe = async (req, res) => {
-try {
+  try {
     const { outfit, userId } = req.body;
 
     // Create a new SavedOutfit document for the wardrobe
-    const wardrobeOutfit = new savedOutfit({
-    outfit,
-    userId,
+    const wardrobeOutfit = new SavedOutfit({
+      outfit,
+      userId,
     });
 
     // Save the wardrobe outfit to the database
     await wardrobeOutfit.save();
 
     res.status(201).json(wardrobeOutfit);
-} catch (error) {
+  } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while adding the outfit to the wardrobe' });
-}
+  }
 };
 
-
 exports.removeFromWardrobe = async (req, res) => {
-try {
+  try {
     const wardrobeOutfitId = req.params.id;
 
     // Delete the outfit from the wardrobe in the database
-    await savedOutfit.findOneAndDelete({ _id: wardrobeOutfitId });
+    await SavedOutfit.findOneAndDelete({ _id: wardrobeOutfitId });
 
     res.json({ message: 'Outfit removed from the wardrobe successfully' });
-} catch (error) {
+  } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while removing the outfit from the wardrobe' });
-}
+  }
 };
 
 exports.getWardrobeOutfits = async (req, res) => {
-try {
+  try {
     const userId = req.params.userId; // Assuming you pass the user's ID as a parameter
 
     // Retrieve all outfits in the wardrobe for the given user
-    const wardrobeOutfits = await savedOutfit.find({ userId });
+    const wardrobeOutfits = await SavedOutfit.find({ userId });
 
     res.json(wardrobeOutfits);
-    } catch (error) {
-        console.error(error);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'An error occurred while fetching wardrobe outfits' });
-    }
+  }
 };
-  
-  
-  
