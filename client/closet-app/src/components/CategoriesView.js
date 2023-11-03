@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { editingImage, setEditImage, closeEditModal } from '../features/editModalSlice';
-import { fetchItems } from '../features/closetSlice';
 
-const CategoriesView = ({categories}) => {
+const CategoriesView = ({categories, onCategorySelect}) => {
     const [isCategoriesExpanded, setIsCategoriesExpanded] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
     console.log("Categories, categories", categories);
+    console.log("Categories, Selected categories", selectedCategory);
+
 
     const handleCategoriesClick = () => {
         setIsCategoriesExpanded(!isCategoriesExpanded);
@@ -30,9 +29,14 @@ const CategoriesView = ({categories}) => {
                 {categories.map(category => 
                     (
                         <div className="category-button-container">
-                            <button key={category} className="category-button" onClick={() => setSelectedCategory(category)}>
+                            <button key={category} className="category-button" 
+                                onClick={() => {
+                                    setSelectedCategory(category);
+                                    onCategorySelect(category);
+                                }}
+                            >
                                 {category}
-                                <img className="user-open-icon-open" src={`./icons/${category}.png" alt="category text"`}/>
+                                <img className="user-open-icon-open" src={`./icons/${category}.png`} alt="category text"/>
                             </button>
                         </div>
                     )

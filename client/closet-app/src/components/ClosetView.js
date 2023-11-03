@@ -78,10 +78,14 @@ const ClosetView = () => {
   const handleSelectImage = (image, category) => {
     dispatch(addItem({ category, item: image }));
   };
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
  
   return (
     <div className="closet-inner-container">
-      <CategoriesView categories={uniqueCategories}/>
+      <CategoriesView categories={uniqueCategories} onCategorySelect={handleCategorySelect} selectedCategory={selectedCategory}/>
         {isImageModalVisible && <ImageModal />}
         {isEditModalVisible && <EditModal />}
       <div className="closet-large-column">
