@@ -81,22 +81,6 @@ const ClosetView = () => {
  
   return (
     <div className="closet-inner-container">
-      <div className="sticky-container">
-        <div className="closet-small-column">
-          <div className="category-buttons-container">
-            <button className="category-button" onClick={() => setSelectedCategory(null)}>All</button>
-              {uniqueCategories.map(category => (
-                <div className="category-button-container">
-                  <button key={category} className="category-button" onClick={() => setSelectedCategory(category)}>
-                    {category}
-                    <img src="./icons/{category}.png" alt="category text"/>
-                  </button>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div>
       <CategoriesView categories={uniqueCategories}/>
         {isImageModalVisible && <ImageModal />}
         {isEditModalVisible && <EditModal />}
