@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromWardrobe } from '../savedOutfitSlice';
+import { removeFromWardrobe } from '../features/wardrobeSlice';
 
 const Wardrobe = () => {
   const wardrobe = useSelector((state) => state.wardrobe.wardrobe); // Assuming this is where your wardrobe outfits are stored
@@ -19,7 +19,7 @@ const Wardrobe = () => {
   return (
     <div className="wardrobe-view-container">
       <h2>Wardrobe</h2>
-      <div className="wardrobe-view-main">
+      {/* <div className="wardrobe-view-main">
         {wardrobe.map((outfit) => (
           <div className="outfit-item-card" key={outfit._id}>
             <div className="outfit-item-category-title">{outfit.name}</div>
@@ -37,7 +37,7 @@ const Wardrobe = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

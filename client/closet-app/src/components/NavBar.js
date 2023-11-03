@@ -13,20 +13,20 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
 
-const isAuthenticated = useSelector(userIsAuthenticated);
-const dispatch = useDispatch();
+    const isAuthenticated = useSelector(userIsAuthenticated);
+    const dispatch = useDispatch();
 
-const showRegistrationModal = () => {
-    dispatch(setRegistrationModalVisible(true));
-};
+    const showRegistrationModal = () => {
+        dispatch(setRegistrationModalVisible(true));
+    };
 
-const showLoginModal = () => {
-    dispatch(setLoginModalVisible(true));
-};
+    const showLoginModal = () => {
+        dispatch(setLoginModalVisible(true));
+    };
 
-const handleLogoutUser = () => {
-    dispatch(logout());
-};
+    const handleLogoutUser = () => {
+        dispatch(logout());
+    };
 
     return (
         <nav className="navbar">
@@ -49,7 +49,7 @@ const handleLogoutUser = () => {
                 <Link to="/wardrobe" className="view-wardrobe-button">
                     View Wardrobe
                 </Link>
-                <Link to="/outfit" className="view-outfit-button">
+                <Link to="/outfit-view" className="view-outfit-button">
                     View Outfit
                 </Link>
             </div>

@@ -23,7 +23,8 @@ const OutfitView = () => {
 
     return (
         <div className="outfit-view-container">
-            <div className="outfit-view-main">
+                  <h2>Outfit</h2>
+            {/* <div className="outfit-view-main">
                 {Object.entries(outfit).map(([category, item]) => (
                 <div className="outfit-item-card" key={category} >
                     <div className="outfit-item-category-title">{category}</div>
@@ -39,7 +40,7 @@ const OutfitView = () => {
                     </div>
                 </div>
                 ))}
-            </div>
+            </div> */}
         </div>
       );
       
