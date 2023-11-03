@@ -50,6 +50,11 @@
   padding: 5px;
 }
 
+.navbar-button-user-open-icon {
+  display: fixed;
+  top:0;
+}
+
 .logo-container {
   display: flex;
   flex-direction: column;
