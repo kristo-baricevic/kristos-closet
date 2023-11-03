@@ -79,32 +79,36 @@ const ClosetView = () => {
  
   return (
     <div className="closet-inner-container">
-      {isImageModalVisible && <ImageModal />}
-      {isEditModalVisible && <EditModal />}
-          <div className="sticky-container">
-            <div className="category-buttons-container">
-              <button className="category-button" onClick={() => setSelectedCategory(null)}>All</button>
-              {uniqueCategories.map(category => (
-                <button key={category} className="category-button" onClick={() => setSelectedCategory(category)}>
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="closet-view">
-            {filteredImages.map(image => (
-                <div key={image.id} className={tabToggle ? "card-tab-open" : "card"} >
-                <img className="card-image" src={getImageUrl(image)} onClick={() => openImage(image)} alt="closetItem" />
-                <div className="card-info">
-                  <div className={tabToggle ? "card-buttons-container-tab-open" : "card-buttons-container"} >
-                    <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
-                    <button className="select-button" onClick={() => handleSelectImage(image, image.category)}>Select</button>
-                    <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
-                  </div>
-                </div>
-              </div>
+      <div className="sticky-container">
+        <div className="closet-small-column">
+          <div className="category-buttons-container">
+            <button className="category-button" onClick={() => setSelectedCategory(null)}>All</button>
+            {uniqueCategories.map(category => (
+              <button key={category} className="category-button" onClick={() => setSelectedCategory(category)}>
+                {category}
+              </button>
             ))}
           </div>
+        </div>
+      </div>
+      {isImageModalVisible && <ImageModal />}
+      {isEditModalVisible && <EditModal />}
+      <div className="closet-large-column">
+        <div className="closet-view">
+          {filteredImages.map(image => (
+            <div key={image.id} className={tabToggle ? "card-tab-open" : "card"} >
+              <img className="card-image" src={getImageUrl(image)} onClick={() => openImage(image)} alt="closetItem" />
+              <div className="card-info">
+                <div className={tabToggle ? "card-buttons-container-tab-open" : "card-buttons-container"} >
+                  <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
+                  <button className="select-button" onClick={() => handleSelectImage(image, image.category)}>Select</button>
+                  <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

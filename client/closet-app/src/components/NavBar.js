@@ -40,7 +40,7 @@ const NavBar = () => {
                     )}
                     <DemoButton />
                 </div>
-                    <ImageUploader />
+                <ImageUploader />
                 <div className="logo-container">
                     <Link to="/" className="logo">
                         <img className="logo-sizing" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
