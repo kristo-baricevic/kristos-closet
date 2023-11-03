@@ -7,6 +7,8 @@ import ImageModal from './ImageModal';
 import { setModalImage, imageModalVisibility, openImageModal} from '../features/imageModalSlice';
 import { editModalVisibility, setEditImage, setEditModalVisibility, setUniqueCategories } from '../features/editModalSlice';
 import EditModal from './EditModal';
+import CategoriesView from './CategoriesView';
+
 
 const ClosetView = () => {
   const isEditModalVisible = useSelector(editModalVisibility);
@@ -95,8 +97,9 @@ const ClosetView = () => {
           </div>
         </div>
       </div>
-      {isImageModalVisible && <ImageModal />}
-      {isEditModalVisible && <EditModal />}
+      <CategoriesView categories={uniqueCategories}/>
+        {isImageModalVisible && <ImageModal />}
+        {isEditModalVisible && <EditModal />}
       <div className="closet-large-column">
         <div className="closet-view">
           {filteredImages.map(image => (
