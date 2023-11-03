@@ -29,6 +29,8 @@
 }
 
 .navbar {
+  display: flex;
+  flex-direction: row;
   background-color: #a4e333;
   width: 100%;
   height: 120px;
@@ -41,7 +43,13 @@
   justify-content: space-around;
   align-items: center;
   list-style-type: none;
-  height: 100%; 
+}
+
+.navbar-menu a {
+  color: #333;
+  font-weight: 700;
+  line-height: 40px;
+  text-decoration: none;
 }
 
 .navbar-buttons-container {
@@ -80,6 +88,16 @@
   align-items: middle;
   justify-content: center;
   padding: 5px;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.logo-closed-container {
+  background-color: #a4e333;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
 }
 
 .logo-sizing {
@@ -297,6 +315,13 @@
 
 /* Image Uploader Component */
 
+
+.image-uploader-navbar-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-left: 30px;
+}
 
 .upload-heading{
   font-size: 16px;
@@ -589,9 +614,10 @@ button {
 
 .view-wardrobe-button {
   display: flex;
+  justify-content: center;
   background-color: #50C878;
   border-radius: 40px;
-  padding:6px;
+  font-size: small;
 }
 
 .view-wardrobe-button:hover {
@@ -601,10 +627,10 @@ button {
 
 .view-outfit-button {
   display: flex;
+  justify-content: center;
   background-color: #50C878;
   border-radius: 40px;
-  margin-left: 4px;
-  padding:6px;
+  font-size: small;
 }
 
 .view-outfit-button:hover {

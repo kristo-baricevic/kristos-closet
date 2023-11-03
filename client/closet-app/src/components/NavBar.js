@@ -15,6 +15,7 @@ import { useState } from 'react';
 
 const NavBar = () => {
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+    const [isWardrobeOpen, setIsWardrobeOpen] = useState(false);
 
     const isAuthenticated = useSelector(userIsAuthenticated);
     const dispatch = useDispatch();
@@ -35,6 +36,10 @@ const NavBar = () => {
         setIsUserMenuOpen(!isUserMenuOpen);
     }
 
+    const handleWardrobeIconClick = () => {
+        setIsWardrobeOpen(!isWardrobeOpen);
+    }
+
     return (
         <nav className="navbar">
             <div className="navbar-menu">
@@ -42,7 +47,7 @@ const NavBar = () => {
                     {isUserMenuOpen ? (
                         <>
                             <button className="navbar-button-user-open-icon" onClick={handleUserIconClick}>
-                                <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/Top.png" alt="User" />
+                                <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/UserImage.png" alt="User" />
                             </button>
                             <button className="navbar-button" onClick={showRegistrationModal}>
                             Register
@@ -60,24 +65,35 @@ const NavBar = () => {
                         </>
                     ) : (
                         <button className="navbar-button" onClick={handleUserIconClick}>
-                            <img className="user-open-icon-closed" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/Top.png" alt="User" />
+                            <img className="user-open-icon-closed" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/UserImage.png" alt="User" />
                         </button>
                     )}
                 </div>
-                <ImageUploader />
-                <div className="logo-container">
-                    <Link to="/" className="logo">
-                        <img className="logo-sizing" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
-                    </Link>
+                <div className="image-uploader-navbar-container">
+                    <ImageUploader />
                 </div>
-            </div>
-            <div class="navbar-extended-buttons">
-                <Link to="/wardrobe" className="view-wardrobe-button">
-                    View Wardrobe
-                </Link>
-                <Link to="/outfit-view" className="view-outfit-button">
-                    View Outfit
-                </Link>
+                <div className="logo-container">
+                    {isWardrobeOpen ? (
+                        <>
+                                <button className="navbar-button-user-open-icon" onClick={handleWardrobeIconClick}>
+                                    <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
+                                </button>
+                                <Link to="/" className="view-outfit-button">
+                                    Closet
+                                </Link>
+                                <Link to="/outfit-view" className="view-outfit-button">
+                                    Outfit
+                                </Link>
+                                <Link to="/wardrobe" className="view-wardrobe-button">
+                                    Wardrobe
+                                </Link>
+                        </>
+                    ) : (
+                        <button className="logo-closed-container" onClick={handleWardrobeIconClick}>
+                            <img className="logo-sizing" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
+                        </button>
+                    )}
+                </div>
             </div>
         </nav>
     );
