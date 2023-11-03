@@ -50,7 +50,19 @@
   padding: 5px
 }
 
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: middle;
+  justify-content: center;
+  padding: 5px
+}
+
 .logo-sizing {
+  display: flex;
+  flex-direction: column;
+  align-items: middle;
+  justify-content: center;
   height: 100px;
   width: auto;
   padding: 5px;
