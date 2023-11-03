@@ -14,11 +14,20 @@ function SlideUpTab() {
     console.log("toggle tab");
   };
 
+  const handleSaveOutfit = () => {
+    // save the selected items as an "outfit"
+  }
+
   return (
     <div className={`slide-up-tab ${isOpen ? 'open' : ''}`}>
+      <div className="tab-view-buttons-container">
       <button className="tab-button" onClick={toggleTab}>
-        Toggle Outfit View
+        Selected Items View
       </button>
+      <button className="save-outfit" onClick={handleSaveOutfit}>
+        Save Outfit
+      </button>
+      </div>
       <div className="tab-content">
         <OutfitView />
       </div>

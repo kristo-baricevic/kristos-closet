@@ -23,10 +23,16 @@
   position: sticky;
   top: 0;
   z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .navbar {
-  background-color: #a4e333;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: hsl(105, 67%, 67%);
   width: 100%;
   height: 120px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
@@ -35,22 +41,103 @@
 
 .navbar-menu {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
   align-items: center;
   list-style-type: none;
-  height: 100%; 
+}
+
+.navbar-menu a {
+  display: flex;
+  color: #333;
+  font-weight: 700;
+  line-height: 40px;
+  text-decoration: none;
 }
 
 .navbar-buttons-container {
   display: flex;
   flex-direction: column;
-  padding: 5px
+  padding: 5px;
+}
+
+.navbar-button-user-open-icon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 33px;
+  display: block;
+  background-color: #62ef5e;
+  color: black;
+  border: 1px solid black;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.user-open-icon-open {
+  height: 20px;
+  width: 20px;
+}
+
+.navbar-open-icon {
+height: 20px;
+width: 20px;
+}
+
+.navbar-button-open {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    margin-left: 60px;
+    width: 33px;
+    display: block;
+    background-color: #62ef5e;
+    color: black;
+    border: 1px solid black;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.user-open-icon-closed {
+  height: 20px;
+  width: 20px;
+}
+
+.logo-menu-box {
+  
+}
+
+.logo-container {
+
+}
+
+.menu-open-container {
+  position: absolute;
+  top: 0;
+  margin-top: 10px;
+}
+
+.logo-closed-container {
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  background-color: hsl(105, 67%, 67%);
+  box-shadow: none;
 }
 
 .logo-sizing {
+  display: flex;
+  flex-direction: column;
+  align-items: middle;
+  justify-content: center;
   height: 100px;
   width: auto;
   padding: 5px;
+  border-style: none;
 }
 
 .navbar-button {
@@ -258,6 +345,12 @@
 
 /* Image Uploader Component */
 
+
+.image-uploader-navbar-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
 
 .upload-heading{
   font-size: 16px;
@@ -504,14 +597,29 @@ button {
 /* ClosetView Component */
 
 .closet-inner-container {
-  display: flex;
-  flex-direction: column;
-  flex: auto;
+  display: grid;
+  grid-template-columns: 1fr auto;  
+  grid-gap: 10px;
+  width: 100%;
+  margin-top: 150px;
   width: 100%;
   height: 100%;
 }
 
+.small-column {
+  background-color: #a4e333;
+  padding: 10px; 
+}
+
+.large-column {
+  background-color: #f0f0f0; 
+  padding: 10px; 
+}
+
+
 .sticky-container {
+  display: flex;
+  flex-direction: col;
   position: sticky;
   top: 10px;
   z-index: 1; 
@@ -525,6 +633,39 @@ button {
   gap: 16px;
   overflow-y: auto;
 } 
+
+.navbar-extended-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding:6px;
+}
+
+.view-wardrobe-button {
+  display: flex;
+  justify-content: center;
+  background-color: #50C878;
+  border-radius: 40px;
+  font-size: small;
+}
+
+.view-wardrobe-button:hover {
+  background-color: #127032;
+  cursor: pointer;
+}
+
+.view-outfit-button {
+  display: flex;
+  justify-content: center;
+  background-color: #50C878;
+  border-radius: 40px;
+  font-size: small;
+}
+
+.view-outfit-button:hover {
+  background-color: #127032;
+  cursor: pointer;
+}
 
 /* Cards */
 
@@ -602,6 +743,15 @@ button {
 .category-button:hover {
   background-color: #228B22;
   border-color: black;
+}
+
+.closet-categories-button {
+  cursor: pointer;
+  background-color: #19b492;
+  border-radius: 24px;
+  border-style: solid;
+  border-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .delete-button {
@@ -867,15 +1017,39 @@ button {
   transform: translateY(87%);
 }
 
+.tab-view-buttons-container {
+  padding: 4px;
+}
+
 .tab-button {
-  width: 100%;
+  width: 65%;
   padding: 10px;
   background-color: #50C878;
   color: black;
   border: none;
   cursor: pointer;
   outline: none;
+  border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.save-outfit {
+  width: 30%;
+  margin-left: 6px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: hsl(105, 67%, 67%);
+  color: black;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.save-outfit:hover {
+  background-color: hsl(304, 54%, 80%);
+
 }
 
 .tab-content {
