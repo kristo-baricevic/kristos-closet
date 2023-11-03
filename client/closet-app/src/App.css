@@ -32,7 +32,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #a4e333;
+  background-color: hsl(105, 67%, 67%);
   width: 100%;
   height: 120px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
@@ -92,7 +92,7 @@
 }
 
 .logo-closed-container {
-  background-color: #a4e333;
+  background-color: hsl(105, 67%, 67%);
   border: none;
   box-shadow: none;
   cursor: pointer;
@@ -713,6 +713,15 @@ button {
   border-color: black;
 }
 
+.closet-categories-button {
+  cursor: pointer;
+  background-color: #19b492;
+  border-radius: 24px;
+  border-style: solid;
+  border-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
 .delete-button {
   display: block;
   margin: 5px;
@@ -997,7 +1006,7 @@ button {
   margin-left: 6px;
   padding: 10px;
   border-radius: 20px;
-  background-color: hsl(304, 54%, 55%);
+  background-color: hsl(105, 67%, 67%);
   color: black;
   border: none;
   cursor: pointer;
