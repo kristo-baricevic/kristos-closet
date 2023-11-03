@@ -72,21 +72,24 @@ const NavBar = () => {
                 <div className="image-uploader-navbar-container">
                     <ImageUploader />
                 </div>
-                <div className="logo-container">
+                <div className="logo-menu-box">
+
                     {isWardrobeOpen ? (
                         <>
-                                <button className="navbar-button-user-open-icon" onClick={handleWardrobeIconClick}>
-                                    <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
-                                </button>
-                                <Link to="/" className="view-outfit-button">
-                                    Closet
-                                </Link>
-                                <Link to="/outfit-view" className="view-outfit-button">
-                                    Outfit
-                                </Link>
-                                <Link to="/wardrobe" className="view-wardrobe-button">
-                                    Wardrobe
-                                </Link>
+                            <button className="navbar-button-open" onClick={handleWardrobeIconClick}>
+                                <img className="navbar-open-icon" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
+                            </button>
+                            <div className="menu-open-container">
+                            <Link to="/" className="navbar-button">
+                                Closet
+                            </Link>
+                            <Link to="/outfit-view" className="navbar-button">
+                                Outfit
+                            </Link>
+                            <Link to="/wardrobe" className="navbar-button">
+                                Wardrobe
+                            </Link>
+                            </div>
                         </>
                     ) : (
                         <button className="logo-closed-container" onClick={handleWardrobeIconClick}>

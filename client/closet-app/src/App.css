@@ -41,12 +41,13 @@
 
 .navbar-menu {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
   align-items: center;
   list-style-type: none;
 }
 
 .navbar-menu a {
+  display: flex;
   color: #333;
   font-weight: 700;
   line-height: 40px;
@@ -60,9 +61,9 @@
 }
 
 .navbar-button-user-open-icon {
-  display: fixed;
+  position: fixed;
+  top: 0;
   width: 33px;
-  top:0;
   display: block;
   background-color: #62ef5e;
   color: black;
@@ -78,24 +79,52 @@
   width: 20px;
 }
 
+.navbar-open-icon {
+height: 20px;
+width: 20px;
+}
+
+.navbar-button-open {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 33px;
+    display: block;
+    background-color: #62ef5e;
+    color: black;
+    border: 1px solid black;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
 .user-open-icon-closed {
   height: 20px;
   width: 20px;
 }
 
+.logo-menu-box {
+  
+}
+
 .logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: middle;
-  justify-content: center;
-  padding: 5px;
+
+}
+
+.menu-open-container {
+  position: absolute;
+  top: 0;
+  margin-top: 10px;
 }
 
 .logo-closed-container {
-  background-color: hsl(105, 67%, 67%);
-  border: none;
-  box-shadow: none;
+  font-size: 12px;
   cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  background-color: hsl(105, 67%, 67%);
+  box-shadow: none;
 }
 
 .logo-sizing {
@@ -106,6 +135,7 @@
   height: 100px;
   width: auto;
   padding: 5px;
+  border-style: none;
 }
 
 .navbar-button {
