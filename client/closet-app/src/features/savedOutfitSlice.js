@@ -1,10 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { selectedItemsSlice } from './selectedItemsSlice';
 
 const initialState = {
-    savedOutfit: {
-      outfit: selectedItemsSlice,
-  },
+  outfits: [],
   loading: false,
   error: null,
 };
@@ -14,32 +11,24 @@ export const savedOutfitSlice = createSlice({
   initialState,
   reducers: {
     saveOutfit: (state, action) => {
-        
-        const { outfit, selectedItems } = action.payload;
-        console.log("outfit", outfit);
-        console.log("item check", selectedItems);
+      const savedOutfit = action.payload; // This should be the entire saved outfit object
 
-             // If item is a 'onePiece', remove 'top' and 'bottom' from the state
-        if (outfit.selectedItems === 'selectedItems') {
-            console.log("this is already an outfit");
-            return;            
-        } else return outfit;
+      // You may want to validate the savedOutfit here before adding it to the state
 
-        // create outfit by adding automatically into wardrobe??
-
+      state.outfits.push(savedOutfit);
     },
     deleteOutfit: (state, action) => {
+      const outfitIdToDelete = action.payload;
 
-     // deletes outfit      
-
-   
+      // Filter out the outfit to delete from the state
+      state.outfits = state.outfits.filter((outfit) => outfit._id !== outfitIdToDelete);
     },
   },
 });
 
-export const selectedOutfit = (state) => state.savedOutfit.items;
+export const selectedOutfits = (state) => state.savedOutfit.outfits;
 export const selectedOutfitLoading = (state) => state.savedOutfit.loading;
 export const selectedOutfitError = (state) => state.savedOutfit.error;
 
-export const { addItem, removeItem } = savedOutfitSlice.actions;
+export const { saveOutfit, deleteOutfit } = savedOutfitSlice.actions;
 export const savedOutfitSliceReducer = savedOutfitSlice.reducer;

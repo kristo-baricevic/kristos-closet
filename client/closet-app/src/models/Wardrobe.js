@@ -1,19 +1,22 @@
-import outfit from './SavedOutfit';
 const mongoose = require('mongoose');
 
 const wardrobeSchema = new mongoose.Schema({
-  outfit: outfit,
-  category2: outfit,
+  outfits: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'SavedOutfit',
+    },
+  ],
   isUserImage: Boolean,
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', 
+    ref: 'User',
   },
-  imageFileId: mongoose.Schema.Types.ObjectId, 
-  imageUrl: String, 
+  imageFileId: mongoose.Schema.Types.ObjectId,
+  imageUrl: String,
   filename: String,
 });
 
-const wardrobe = mongoose.model('wardrobe', wardrobeSchema);
+const Wardrobe = mongoose.model('Wardrobe', wardrobeSchema);
 
-module.exports = wardrobe;
+module.exports = Wardrobe;

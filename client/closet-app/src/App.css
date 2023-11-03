@@ -507,6 +507,7 @@ button {
   display: flex;
   flex-direction: column;
   flex: auto;
+  margin-top: 40px;
   width: 100%;
   height: 100%;
 }
@@ -525,6 +526,38 @@ button {
   gap: 16px;
   overflow-y: auto;
 } 
+
+.navbar-extended-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding:6px;
+}
+
+.view-wardrobe-button {
+  display: flex;
+  background-color: #50C878;
+  border-radius: 40px;
+  padding:6px;
+}
+
+.view-wardrobe-button:hover {
+  background-color: #127032;
+  cursor: pointer;
+}
+
+.view-outfit-button {
+  display: flex;
+  background-color: #50C878;
+  border-radius: 40px;
+  margin-left: 4px;
+  padding:6px;
+}
+
+.view-outfit-button:hover {
+  background-color: #127032;
+  cursor: pointer;
+}
 
 /* Cards */
 
@@ -867,15 +900,39 @@ button {
   transform: translateY(87%);
 }
 
+.tab-view-buttons-container {
+  padding: 4px;
+}
+
 .tab-button {
-  width: 100%;
+  width: 65%;
   padding: 10px;
   background-color: #50C878;
   color: black;
   border: none;
   cursor: pointer;
   outline: none;
+  border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.save-outfit {
+  width: 30%;
+  margin-left: 6px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: hsl(304, 54%, 55%);
+  color: black;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.save-outfit:hover {
+  background-color: hsl(304, 54%, 80%);
+
 }
 
 .tab-content {

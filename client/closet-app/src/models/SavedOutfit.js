@@ -1,17 +1,21 @@
 const mongoose = require('mongoose');
-const { selectedItems } = require('../features/selectedItemsSlice');
 
 const savedOutfitSchema = new mongoose.Schema({
-  outfit: selectedItems,
+  outfit: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ClothingItem',
+    },
+  ],
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', 
+    ref: 'User',
   },
-  imageFileId: mongoose.Schema.Types.ObjectId, 
-  imageUrl: String, 
+  imageFileId: mongoose.Schema.Types.ObjectId,
+  imageUrl: String,
   filename: String,
 });
 
-const savedOutfit = mongoose.model('outfit', savedOutfitSchema);
+const SavedOutfit = mongoose.model('SavedOutfit', savedOutfitSchema);
 
-module.exports = savedOutfit;
+module.exports = SavedOutfit;

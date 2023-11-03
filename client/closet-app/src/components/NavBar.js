@@ -37,10 +37,14 @@ const handleLogoutUser = () => {
                     )}
                     <DemoButton />
                 </div>
-                <ImageUploader />
+                    <ImageUploader />
                 <div>
                     <img class="logo-sizing" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
                 </div>
+            </div>
+            <div class="navbar-extended-buttons">
+                <button class="view-wardrobe-button">View Wardrobe</button>
+                <button class="view-outfit-button">View Outfit</button>
             </div>
         </nav>
     );
