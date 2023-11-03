@@ -41,20 +41,20 @@ export const selectedItemsSlice = createSlice({
     },
     removeItem: (state, action) => {
 
-      const { category, item } = action.payload;
+      const { wardrobe, item } = action.payload;
       console.log("inside remove item in selectedItemsSlice.js");
-      console.log("category is", category);
+      console.log("category is", wardrobe);
       console.log("item is", item);
       // state.items[category] = null;
       // console.log("state test", state.items.category);      
 
    
-      if (Array.isArray(state.items[category])) {
+      if (Array.isArray(state.items[wardrobe])) {
         // If the category is an array, filter it to remove the item by its id
-        state.items[category] = state.items[category].filter(itemObj => itemObj.id !== item.id);
-      } else if (state.items[category] && typeof state.items[category] === 'object') {
+        state.items[wardrobe] = state.items[wardrobe].filter(itemObj => itemObj.id !== item.id);
+      } else if (state.items[wardrobe] && typeof state.items[wardrobe] === 'object') {
         // If the category is an object, set it to null
-        state.items[category] = null;
+        state.items[wardrobe] = null;
       }   
     },
   },
