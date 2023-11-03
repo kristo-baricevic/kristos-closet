@@ -20,7 +20,7 @@ const CategoriesView = ({categories}) => {
             <div className="category-buttons-container">
                 <div>
                     <button> 
-                        <img src={`./icons/Accessory.png" alt="category text"`} onClick={handleCategoriesClick} />
+                        <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/OnePiece.png" alt="category text" onClick={handleCategoriesClick} />
                     </button>
                 </div>
                 <button className="category-button" 
@@ -32,7 +32,7 @@ const CategoriesView = ({categories}) => {
                         <div className="category-button-container">
                             <button key={category} className="category-button" onClick={() => setSelectedCategory(category)}>
                                 {category}
-                                <img src={`./icons/${category}.png" alt="category text"`}/>
+                                <img className="user-open-icon-open" src={`./icons/${category}.png" alt="category text"`}/>
                             </button>
                         </div>
                     )
@@ -42,7 +42,7 @@ const CategoriesView = ({categories}) => {
         ) : (
             <div>
                 <button> 
-                    <img src={`./icons/Accessory.png" alt="category text"`} onClick={handleCategoriesClick} />
+                    <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/OnePiece.png" onClick={handleCategoriesClick} />
                 </button>
             </div>
         )}
