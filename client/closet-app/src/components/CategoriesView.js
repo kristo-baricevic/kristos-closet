@@ -10,7 +10,6 @@ const CategoriesView = ({categories, onCategorySelect}) => {
     const handleCategoriesClick = () => {
         setIsCategoriesExpanded(!isCategoriesExpanded);
     }
-    
 
   return (
     <div className="sticky-container">
