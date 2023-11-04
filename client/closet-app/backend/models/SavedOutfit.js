@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ClothingItem = require('./ClothingItem');
 
 const savedOutfitSchema = new mongoose.Schema({
   name: {
@@ -12,12 +13,8 @@ const savedOutfitSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', 
   },
-  clothingItems: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ClothingItem', 
-    },
-  ],
+  clothingItems: [ClothingItem],
+
   imageUrl: String, 
 });
 
