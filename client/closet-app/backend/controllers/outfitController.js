@@ -6,10 +6,13 @@ exports.saveOutfit = async (req, res) => {
   try {
     const outfitData = req.body; // You can now access the entire outfit data
 
+    console.log("controller outfit test", outfitData);
+
     // Create a new SavedOutfit document
     const savedOutfitDoc = new SavedOutfit({
       ...outfitData,
     });
+    
 
     // Save the outfit to the database
     await savedOutfitDoc.save();
