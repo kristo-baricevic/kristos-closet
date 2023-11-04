@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import OutfitView from './OutfitView';
 import { toggleTabStyle } from '../features/closetSlice';
 import { selectedItems, removeItem } from '../features/selectedItemsSlice';
-import { saveOutfit } from '../features/savedOutfitSlice';
+import { saveOutfitAsync } from '../features/savedOutfitSlice';
 import { selectUser } from '../features/userSlice';
 
 function SlideUpTab() {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const selectedItemsData = useSelector(selectedItems);
+
 
 
   const toggleTab = () => {
@@ -20,7 +22,7 @@ function SlideUpTab() {
 
   const handleSaveOutfit = () => {
     // Get the selected items from your state
-    const selectedItemsData = selectedItems;
+    console.log("click");
 
     // Additional data needed for your outfit
     const outfitData = {
@@ -32,7 +34,10 @@ function SlideUpTab() {
       selectedItems: selectedItemsData,
       ...outfitData,
     };
-      dispatch(saveOutfit(outfit));
+
+    console.log(outfit)
+
+    dispatch(saveOutfitAsync(outfit));
   }
 
   return (

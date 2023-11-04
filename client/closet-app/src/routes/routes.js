@@ -38,7 +38,7 @@ router.post('/loginAnonymous', loginAnonymous);
 router.get('/current', verifyToken, getCurrentUserData);
 
 // Saved Outfits routes
-router.post('/outfits', verifyToken, saveOutfit);
+router.post('/outfits', saveOutfit);
 router.put('/outfits/:id', verifyToken, updateOutfit);
 router.delete('/outfits/:id', verifyToken, deleteOutfit);
 

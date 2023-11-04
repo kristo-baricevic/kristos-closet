@@ -1,26 +1,51 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
 
 const initialState = {
-outfits: [],
+  outfits: [],
   loading: false,
   error: null,
 };
 
+// Define an async thunk for saving an outfit
+export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData, thunkAPI) => {
+  try {
+    // Make an API request to save the outfit data
+    const response = await axios.post(
+      'https://kristobaricevic.com/api/outfit', 
+      outfitData
+    );
+
+    console.log("outfit data posted", response.data);
+
+    // Return the saved outfit data in the response
+    return response.data;
+  } catch (error) {
+    // Handle errors and reject the promise with the error message
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+
 export const savedOutfitSlice = createSlice({
   name: 'savedOutfit',
   initialState,
-  reducers: {
-    saveOutfit: (state, action) => {
-      const savedOutfit = action.payload; 
-
-      state.outfits.push(savedOutfit);
-    },
-    deleteOutfit: (state, action) => {
-      const outfitIdToDelete = action.payload;
-
-      // Filter out the outfit to delete from the state
-      state.savedOutfit = state.savedOutfit.filter((outfit) => outfit._id !== outfitIdToDelete);
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(saveOutfitAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(saveOutfitAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.outfits.push(action.payload);
+      })
+      .addCase(saveOutfitAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
@@ -30,3 +55,5 @@ export const selectedOutfitError = (state) => state.savedOutfit.error;
 
 export const { saveOutfit, deleteOutfit } = savedOutfitSlice.actions;
 export const savedOutfitSliceReducer = savedOutfitSlice.reducer;
+
+export default saveOutfitAsync; 
