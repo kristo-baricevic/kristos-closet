@@ -11,9 +11,7 @@ export const savedOutfitSlice = createSlice({
   initialState,
   reducers: {
     saveOutfit: (state, action) => {
-      const savedOutfit = action.payload; // This should be the entire saved outfit object
-
-      // You may want to validate the savedOutfit here before adding it to the state
+      const savedOutfit = action.payload; 
 
       state.outfits.push(savedOutfit);
     },

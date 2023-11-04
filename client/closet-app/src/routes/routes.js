@@ -19,6 +19,7 @@ const {
   loginAnonymous,
   getCurrentUserData,
 } = require('../controllers/userController');
+const { addToWardrobe, removeFromWardrobe } = require('../controllers/wardrobeController');
 
 // Image routes
 router.get('/images', verifyToken, getImages);
@@ -34,5 +35,11 @@ router.post('/login', userController.loginUser);
 router.post('/logout', verifyToken, logoutUser);
 router.post('/loginAnonymous', loginAnonymous);
 router.get('/current', verifyToken, getCurrentUserData);
+
+// Wardrobe routes
+router.post('/wardrobe', verifyToken, addToWardrobe);
+router.delete('/wardrobe/:id', verifyToken, removeFromWardrobe);
+
+
 
 module.exports = router;
