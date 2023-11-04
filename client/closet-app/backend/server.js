@@ -27,8 +27,12 @@ const cors = require('cors');
 
 // Middleware and configurations
 app.use(express.json()); 
-app.use(cors()); 
+app.use(cors({
+  origin: 'http://localhost:3000', // or specify an array of allowed origins
+}));
 app.use('/static', express.static('build'));
+
+
 
 
 // Use routes with a base URL of '/api'
