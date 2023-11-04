@@ -27,7 +27,7 @@ async (outfitData) => {
       'https://kristobaricevic.com/api/outfit', 
       outfitData
     );
-    console.log("outfit data posted", response.data);
+    console.log("outfit data posted", response);
 
     // Return the saved outfit data in the response
     return response.data;

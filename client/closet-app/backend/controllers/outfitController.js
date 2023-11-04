@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 exports.saveOutfit = async (req, res) => {
   console.log("saved outfit controller");
   try {
-    const outfitData = req.body; // You can now access the entire outfit data
+    const {outfitData} = req.body; // You can now access the entire outfit data
 
     console.log("controller outfit test", outfitData);
 
