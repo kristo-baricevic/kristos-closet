@@ -3,9 +3,11 @@ const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
     console.log("saved outfit");
+    const { outfit, userId } = req.body;
+    console.log("test outfit", outfit);
+
     try {
-      const { outfit, userId } = req.body;
-      console.log("test outfit", outfit);
+      // const { outfit, userId } = req.body;
   
       // Create a new SavedOutfit document
       const savedOutfitDoc = new SavedOutfit({
