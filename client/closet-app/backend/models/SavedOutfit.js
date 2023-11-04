@@ -13,7 +13,7 @@ const savedOutfitSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', 
   },
-  clothingItems: [ClothingItem],
+  clothingItems: [ClothingItem.schema],
 
   imageUrl: String, 
 });
