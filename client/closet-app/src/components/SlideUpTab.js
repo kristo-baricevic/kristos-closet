@@ -27,9 +27,12 @@ function SlideUpTab() {
       name: 'Outfit1', 
       description: 'My first outfit',
       user: user,
-      clothingItems: [selectedItems],
+      clothingItems: selectedItemsData,
       imageUrl: 'URL to image',
     };
+    console.log("test the outfit", outfitData.clothingItems);
+    console.log("test the outfit", selectedItemsData);
+
 
     // Create an outfit object that includes the selected items and other data
     dispatch(saveOutfitAsync(outfitData));
