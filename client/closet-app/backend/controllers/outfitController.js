@@ -4,12 +4,16 @@ const AWS = require('aws-sdk');
 exports.saveOutfit = async (req, res) => {
     console.log("saved outfit");
     try {
-      const response = req.body;
-
-      console.log("testing testing", response)
+      const { outfit, userId } = req.body;
   
       // Create a new SavedOutfit document
-      const savedOutfitDoc = new SavedOutfit(response);
+      const savedOutfitDoc = new SavedOutfit({
+        name: 'Outfit1', 
+        description: 'My first',
+        user: userId, 
+        clothingItems: outfit,
+        imageUrl: 'URL to image',
+      });
   
       // Save the outfit to the database
       await savedOutfitDoc.save();

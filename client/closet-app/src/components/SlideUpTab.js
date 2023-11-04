@@ -27,7 +27,7 @@ function SlideUpTab() {
       name: 'Outfit1', 
       description: 'My first outfit',
       user: user,
-      clothingItems: [selectedItemsData],
+      clothingItems: selectedItemsData,
       imageUrl: 'URL to image',
     };
 
