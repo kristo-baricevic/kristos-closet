@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeItem } from '../features/selectedItemsSlice';
+import { useDispatch } from 'react-redux';
+import { removeItem, selectedItems } from '../features/selectedItemsSlice';
+import { saveOutfit } from '../features/savedOutfitSlice';
 
 const SavedOutfitView = () => {
-  const outfit = useSelector((state) => state.savedOutfit.outfits); // Assuming this is where your outfits are stored
   const dispatch = useDispatch();
 
   const handleRemoveItem = (itemId) => {
@@ -16,33 +16,52 @@ const SavedOutfitView = () => {
     dispatch(removeItem(itemId));
   };
 
+  const handleSaveOutfit = async (selectedItems, user) => {
+    const dbFormData = new FormData();
+    
+    dbFormData.append('selectedItems', selectedItems);
+    dbFormData.append('user', user);
+
+    console.log("params before await in front", selectedItems, dbFormData);
+    
+    try{
+      const res =  await dispatch(saveOutfit()); 
+      console.log("after fetchItems", res);
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }  
+  }
+
   return (
     <div className="outfit-view-container">
       <h2>Saved Outfit</h2>
-      <div className="outfit-view-main">
-        {outfit.map((item) => (
-          <div className="outfit-item-card" key={item._id}>
-            <div className="outfit-item-category-title">{item.category}</div>
-            <div className="outfit-image-wrapper">
-              {item.imageUrl ? (
-                <img className="outfit-image" src={item.imageUrl} alt={item.category} />
-              ) : (
-                <p>No {item.category} selected</p>
-              )}
+        
+      <div className="outfit-view-container">
+            <div className="outfit-view-main">
+                {Object.entries(selectedItems).map(([category, item]) => (
+                <div className="outfit-item-card" key={category} >
+                    <div className="outfit-item-category-title">{category}</div>
+                    {item ? (
+                    <div className="outfit-image-wrapper">
+                        <img class="outfit-image" src={item.imageUrl} alt={category} />
+                    </div>
+                    ) : (
+                    <p>No {category} selected</p>
+                    )}
+                    <div>
+                        <button class="remove-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
+                    </div>
+                </div>
+                ))}
             </div>
-            <div>
-              <button className="remove-outfit-button" onClick={() => handleRemoveItem(item._id)}>
-                Remove
-              </button>
-            </div>
-          </div>
-        ))}
+        </div>
+
+        <button className="save-outfit" onClick={handleSaveOutfit}>
+          Save Outfit
+        </button>
       </div>
-      <div className="outfit-notes">
-        <h3>Notes</h3>
-        {/* Add a text area for notes here */}
-      </div>
-    </div>
+      
+
   );
 };
 

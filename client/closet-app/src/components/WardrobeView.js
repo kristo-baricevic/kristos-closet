@@ -19,7 +19,7 @@ const Wardrobe = () => {
   return (
     <div className="wardrobe-view-container">
       <h2>Wardrobe</h2>
-      {/* <div className="wardrobe-view-main">
+      <div className="wardrobe-view-main">
         {wardrobe.map((outfit) => (
           <div className="outfit-item-card" key={outfit._id}>
             <div className="outfit-item-category-title">{outfit.name}</div>
@@ -37,7 +37,7 @@ const Wardrobe = () => {
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };

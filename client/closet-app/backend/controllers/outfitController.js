@@ -1,19 +1,23 @@
-const savedOutfit = require('../models/SavedOutfit');
+const SavedOutfit = require('../models/SavedOutfit');
 const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
+    console.log("saved outfit");
     try {
-      const { outfit, userId } = req.body;
+      const { outfit, userId, imageFileId, imageUrl, filename } = req.body;
   
       // Create a new SavedOutfit document
-      const savedOutfitDoc = new savedOutfit({
+      const savedOutfitDoc = new SavedOutfit({
         outfit,
         userId,
+        imageFileId,
+        imageUrl,
+        filename,
       });
   
       // Save the outfit to the database
       await savedOutfitDoc.save();
-  
+      console.log("outfit potentially saved");
       res.status(201).json(savedOutfitDoc);
     } catch (error) {
       console.error(error);
@@ -26,7 +30,7 @@ exports.saveOutfit = async (req, res) => {
       const outfitId = req.params.id;
   
       // Delete the outfit from the database
-      await savedOutfit.findOneAndDelete({ _id: outfitId });
+      await SavedOutfit.findOneAndDelete({ _id: outfitId });
   
       res.json({ message: 'Outfit deleted successfully' });
     } catch (error) {
@@ -41,7 +45,7 @@ exports.saveOutfit = async (req, res) => {
     const updatedOutfit = req.body;
 
     // Find and update the outfit by its ID
-    const outfit = await savedOutfit.findOneAndUpdate({ _id: outfitId }, updatedOutfit, {
+    const outfit = await SavedOutfit.findOneAndUpdate({ _id: outfitId }, updatedOutfit, {
       new: true,
     });
 

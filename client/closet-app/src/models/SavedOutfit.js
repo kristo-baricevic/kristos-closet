@@ -1,19 +1,24 @@
 const mongoose = require('mongoose');
 
 const savedOutfitSchema = new mongoose.Schema({
-  outfit: [
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', 
+  },
+  clothingItems: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'ClothingItem',
+      ref: 'ClothingItem', 
     },
   ],
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-  },
-  imageFileId: mongoose.Schema.Types.ObjectId,
-  imageUrl: String,
-  filename: String,
+  imageUrl: String, 
 });
 
 const SavedOutfit = mongoose.model('SavedOutfit', savedOutfitSchema);

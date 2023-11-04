@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  outfits: [],
+outfits: [],
   loading: false,
   error: null,
 };
@@ -19,7 +19,7 @@ export const savedOutfitSlice = createSlice({
       const outfitIdToDelete = action.payload;
 
       // Filter out the outfit to delete from the state
-      state.outfits = state.outfits.filter((outfit) => outfit._id !== outfitIdToDelete);
+      state.savedOutfit = state.savedOutfit.filter((outfit) => outfit._id !== outfitIdToDelete);
     },
   },
 });

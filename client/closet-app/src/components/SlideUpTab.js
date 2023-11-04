@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import OutfitView from './OutfitView';
 import { toggleTabStyle } from '../features/closetSlice';
 import { selectedItems, removeItem } from '../features/selectedItemsSlice';
 import { saveOutfit } from '../features/savedOutfitSlice';
-
-
+import { selectUser } from '../features/userSlice';
 
 function SlideUpTab() {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
-  
+  const user = useSelector(selectUser);
+
 
   const toggleTab = () => {
     setIsOpen(!isOpen);
@@ -18,20 +18,22 @@ function SlideUpTab() {
     console.log("toggle tab");
   };
 
-  const handleSaveOutfit = async (selectedItems, user) => {
-    const dbFormData = new FormData();
-    
-    dbFormData.append('selectedItems', selectedItems);
-    dbFormData.append('user', user);
+  const handleSaveOutfit = () => {
+    // Get the selected items from your state
+    const selectedItemsData = selectedItems;
 
-    console.log("params before await in front", selectedItems, dbFormData);
-    
-    try{
-      const res =  await dispatch(saveOutfit()); 
-      console.log("after fetchItems", res);
-    } catch (error) {
-      console.error('Error uploading image:', error);
-    }  }
+    // Additional data needed for your outfit
+    const outfitData = {
+      user: user,
+    };
+
+    // Create an outfit object that includes the selected items and other data
+    const outfit = {
+      selectedItems: selectedItemsData,
+      ...outfitData,
+    };
+      dispatch(saveOutfit(outfit));
+  }
 
   return (
     <div className={`slide-up-tab ${isOpen ? 'open' : ''}`}>

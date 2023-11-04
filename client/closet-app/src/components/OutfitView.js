@@ -41,8 +41,7 @@ const OutfitView = () => {
                 ))}
             </div>
         </div>
-      );
-      
+    );
 };
     
 export default OutfitView;
