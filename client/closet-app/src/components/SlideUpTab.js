@@ -24,20 +24,15 @@ function SlideUpTab() {
 
     // Additional data needed for your outfit
     const outfitData = {
+      name: 'Outfit1', 
+      description: 'My first outfit',
       user: user,
-      imageFileId: null,
-      imageUrl: null,
-      filename: null,
+      clothingItems: [selectedItems],
+      imageUrl: 'URL to image',
     };
 
     // Create an outfit object that includes the selected items and other data
-    const outfit = {
-      selectedItems: selectedItemsData,
-      ...outfitData,
-    };
-
-    console.log(outfit)
-    dispatch(saveOutfitAsync(outfit));
+    dispatch(saveOutfitAsync(outfitData));
   }
 
   return (

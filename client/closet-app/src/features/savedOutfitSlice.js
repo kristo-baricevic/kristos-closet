@@ -2,28 +2,37 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 
+
 const initialState = {
-  outfits: [],
+  outfits: [
+    {
+      name: 'Outfit1',
+      description: 'My first outfit',
+      user: null,
+      clothingItems: [], 
+      imageUrl: 'URL to image',
+    },
+  ],
   loading: false,
   error: null,
 };
 
 // Define an async thunk for saving an outfit
-export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData, thunkAPI) => {
+export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', 
+async (outfitData) => {
   try {
     // Make an API request to save the outfit data
     const response = await axios.post(
       'https://kristobaricevic.com/api/outfit', 
       outfitData
     );
-
     console.log("outfit data posted", response.data);
 
     // Return the saved outfit data in the response
     return response.data;
   } catch (error) {
     // Handle errors and reject the promise with the error message
-    return thunkAPI.rejectWithValue(error.message);
+    throw error;
   }
 });
 
