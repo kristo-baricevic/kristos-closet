@@ -5,6 +5,7 @@ exports.saveOutfit = async (req, res) => {
     console.log("saved outfit");
     try {
       const { outfit, userId } = req.body;
+      console.log("test outfit", outfit);
   
       // Create a new SavedOutfit document
       const savedOutfitDoc = new SavedOutfit({
