@@ -8,11 +8,11 @@ exports.saveOutfit = async (req, res) => {
   
       // Create a new SavedOutfit document
       const savedOutfitDoc = new SavedOutfit({
-        outfit,
-        userId,
-        imageFileId,
-        imageUrl,
-        filename,
+        name: 'Outfit1', 
+        description: 'My first outfit',
+        user: userId, 
+        clothingItems: outfit,
+        imageUrl: 'URL to image',
       });
   
       // Save the outfit to the database

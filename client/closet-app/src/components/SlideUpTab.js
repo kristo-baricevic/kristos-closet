@@ -12,8 +12,6 @@ function SlideUpTab() {
   const user = useSelector(selectUser);
   const selectedItemsData = useSelector(selectedItems);
 
-
-
   const toggleTab = () => {
     setIsOpen(!isOpen);
     dispatch(toggleTabStyle());
@@ -27,6 +25,9 @@ function SlideUpTab() {
     // Additional data needed for your outfit
     const outfitData = {
       user: user,
+      imageFileId: null,
+      imageUrl: null,
+      filename: null,
     };
 
     // Create an outfit object that includes the selected items and other data
@@ -36,7 +37,6 @@ function SlideUpTab() {
     };
 
     console.log(outfit)
-
     dispatch(saveOutfitAsync(outfit));
   }
 
