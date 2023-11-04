@@ -2,23 +2,25 @@ const SavedOutfit = require('../models/SavedOutfit');
 const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
-    console.log("saved outfit controller");
-    try {
-      const response = req.body;
-  
-      console.log("response is in controller", response);
-      // Create a new SavedOutfit document
-      const savedOutfitDoc = new SavedOutfit(response);
-  
-      // Save the outfit to the database
-      await savedOutfitDoc.save();
-      console.log("outfit potentially saved");
-      res.status(201).json(savedOutfitDoc);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred while saving the outfit' });
-    }
-  };
+  console.log("saved outfit controller");
+  try {
+    const outfitData = req.body; // You can now access the entire outfit data
+
+    // Create a new SavedOutfit document
+    const savedOutfitDoc = new SavedOutfit({
+      ...outfitData,
+    });
+
+    // Save the outfit to the database
+    await savedOutfitDoc.save();
+    console.log("outfit potentially saved");
+    res.status(201).json(savedOutfitDoc);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while saving the outfit' });
+  }
+};
+
   
   exports.deleteOutfit = async (req, res) => {
     try {

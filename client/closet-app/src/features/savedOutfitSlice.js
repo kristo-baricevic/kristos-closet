@@ -20,6 +20,7 @@ const initialState = {
 // Define an async thunk for saving an outfit
 export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', 
 async (outfitData) => {
+  console.log("outfit data async", outfitData);
   try {
     // Make an API request to save the outfit data
     const response = await axios.post(
