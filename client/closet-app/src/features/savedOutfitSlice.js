@@ -102,7 +102,7 @@ export const savedOutfitSlice = createSlice({
     },
 });
 
-export const selectedOutfits = (state) => state.savedOutfit.outfits;
+export const selectedOutfit = (state) => state.savedOutfit.outfits;
 export const selectedOutfitLoading = (state) => state.savedOutfit.loading;
 export const selectedOutfitError = (state) => state.savedOutfit.error;
 

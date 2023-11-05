@@ -1,10 +1,16 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, selectedItems } from '../features/selectedItemsSlice';
-import { saveOutfit } from '../features/savedOutfitSlice';
+import { selectedOutfit, saveOutfit } from '../features/savedOutfitSlice';
+import { selectUser } from '../features/userSlice';
 
 const SavedOutfitView = () => {
   const dispatch = useDispatch();
+  const currentOutfit = useSelector(selectedOutfit);
+  const user = useSelector(selectUser);
+
+
+  console.log("current outfit test", currentOutfit[0].name);
 
   const handleRemoveItem = (itemId) => {
     // Check to see if there is an item
@@ -35,33 +41,32 @@ const SavedOutfitView = () => {
   return (
     <div className="outfit-view-container">
       <h2>Saved Outfit</h2>
-        
-      <div className="outfit-view-container">
-            <div className="outfit-view-main">
-                {Object.entries(selectedItems).map(([category, item]) => (
-                <div className="outfit-item-card" key={category} >
-                    <div className="outfit-item-category-title">{category}</div>
-                    {item ? (
-                    <div className="outfit-image-wrapper">
-                        <img class="outfit-image" src={item.imageUrl} alt={category} />
-                    </div>
-                    ) : (
-                    <p>No {category} selected</p>
-                    )}
-                    <div>
-                        <button class="remove-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
-                    </div>
+  
+      <div className="outfit-view-main">
+        {currentOutfit.map((outfit, index) => (
+          <div className="outfit-item-card" key={index}>
+            <div className="outfit-item-category-title">{outfit.selectedItems?.category}</div>
+            {outfit ? (
+              <div className="outfit-image-wrapper">
+                <img className="outfit-image" src={outfit.imageUrl} alt={outfit.selectedItems?.category} />
+                <div>
+                  <p>{outfit.name}</p>
                 </div>
-                ))}
+              </div>
+            ) : (
+              <p>No {outfit.selectedItems?.category} selected</p>
+            )}
+            <div>
+              <button className="remove-outfit-button" onClick={() => handleRemoveItem(index)}>Remove</button>
             </div>
-        </div>
-
-        <button className="save-outfit" onClick={handleSaveOutfit}>
-          Save Outfit
-        </button>
+          </div>
+        ))}
       </div>
-      
-
+  
+      <button className="save-outfit" onClick={() => handleSaveOutfit(currentOutfit, user)}>
+        Save Outfit
+      </button>
+    </div>
   );
 };
 
