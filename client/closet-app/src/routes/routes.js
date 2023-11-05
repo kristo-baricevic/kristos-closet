@@ -21,6 +21,7 @@ const {
 } = require('../controllers/userController');
 const { addToWardrobe, removeFromWardrobe } = require('../controllers/wardrobeController');
 const { saveOutfit, updateOutfit, deleteOutfit } = require('../../backend/controllers/outfitController');
+const SavedOutfit = require('../../backend/models/SavedOutfit');
 
 // Image routes
 router.get('/images', verifyToken, getImages);
@@ -46,6 +47,16 @@ router.delete('/outfits/:id', verifyToken, deleteOutfit);
 router.post('/wardrobe', verifyToken, addToWardrobe);
 router.delete('/wardrobe/:id', verifyToken, removeFromWardrobe);
 
+router.get('/savedOutfits', async (req, res) => {
+  try {
+    // Fetch saved outfits from the database
+    const savedOutfits = await SavedOutfit.find().populate('clothingItems'); 
 
+    res.json(savedOutfits);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
 module.exports = router;

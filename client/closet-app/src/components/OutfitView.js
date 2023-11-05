@@ -5,6 +5,7 @@ import { selectedItems, removeItem } from '../features/selectedItemsSlice';
 
 const OutfitView = () => {
     const outfit = useSelector(selectedItems);
+
     // console.log("outfit", outfit);
     const dispatch = useDispatch();
      
@@ -15,7 +16,6 @@ const OutfitView = () => {
                 alert('This is what it sounds like when doves cry :,(');
                 return;            
             }
-
         dispatch(removeItem(item));
         console.log("Handle Remove Item", item);
     };

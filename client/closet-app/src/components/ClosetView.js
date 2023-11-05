@@ -28,7 +28,6 @@ const ClosetView = () => {
     console.log(tabToggle, "truth is out there?");
   }, []);
 
-
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 
   const filteredImages = selectedCategory

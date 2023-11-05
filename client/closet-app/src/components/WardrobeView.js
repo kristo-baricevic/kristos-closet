@@ -1,10 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromWardrobe } from '../features/wardrobeSlice';
+import { selectUser } from '../features/userSlice';
+
 
 const Wardrobe = () => {
   const wardrobe = useSelector((state) => state.wardrobe.wardrobe); // Assuming this is where your wardrobe outfits are stored
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  
+
 
   const handleRemoveItem = (outfitId) => {
     // Check to see if there is an outfit
