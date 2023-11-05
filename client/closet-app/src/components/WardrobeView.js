@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromWardrobe } from '../features/wardrobeSlice';
+import { getWardrobe, removeFromWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
 import { selectUser } from '../features/userSlice';
+import { fetchItems } from '../features/closetSlice';
+
 
 
 const Wardrobe = () => {
-  const wardrobe = useSelector((state) => state.wardrobe.wardrobe); // Assuming this is where your wardrobe outfits are stored
+  const wardrobe = useSelector(selectedWardrobe);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   
+  useEffect(() => {
+    console.log('useEffect is running');
+    dispatch(getWardrobe(user));
+  }, []);
+  
+
 
 
   const handleRemoveItem = (outfitId) => {
@@ -22,27 +30,17 @@ const Wardrobe = () => {
   };
 
   return (
-    <div className="wardrobe-view-container">
-      <h2>Wardrobe</h2>
-      <div className="wardrobe-view-main">
-        {wardrobe.map((outfit) => (
-          <div className="outfit-item-card" key={outfit._id}>
-            <div className="outfit-item-category-title">{outfit.name}</div>
-            <div className="outfit-image-wrapper">
-              {outfit.imageUrl ? (
-                <img className="outfit-image" src={outfit.imageUrl} alt={outfit.name} />
-              ) : (
-                <p>No {outfit.name} selected</p>
-              )}
-            </div>
-            <div>
-              <button className="remove-outfit-button" onClick={() => handleRemoveItem(outfit._id)}>
-                Remove
-              </button>
-            </div>
-          </div>
+    <div>
+      <h2>My Wardrobe</h2>
+      <ul>
+        {wardrobe.map((outfit, index) => (
+          <li key={index}>
+            <h3>{outfit.name}</h3>
+            <p>blank outfit</p>
+            <button onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

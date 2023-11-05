@@ -46,17 +46,16 @@ router.delete('/outfits/:id', verifyToken, deleteOutfit);
 // Wardrobe routes
 router.post('/wardrobe', verifyToken, addToWardrobe);
 router.delete('/wardrobe/:id', verifyToken, removeFromWardrobe);
-
-router.get('/savedOutfits', async (req, res) => {
+router.get('/wardrobe/:user', async (req, res) => {
   try {
-    // Fetch saved outfits from the database
-    const savedOutfits = await SavedOutfit.find().populate('clothingItems'); 
-
-    res.json(savedOutfits);
+    const userId = req.params.user; // Get user ID from the URL parameter
+    const wardrobeOutfits = await SavedOutfit.find({ userId });
+    res.json(wardrobeOutfits);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: 'An error occurred while fetching wardrobe outfits' });
   }
 });
+
 
 module.exports = router;

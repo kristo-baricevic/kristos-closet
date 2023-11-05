@@ -1,4 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
+import { selectUser } from './userSlice';
+import axios from 'axios';
+
+
 
 const initialState = {
   wardrobe: [],
@@ -6,14 +11,26 @@ const initialState = {
   error: null,
 };
 
+export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) => {
+  try {
+    const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user}`);
+    const wardrobeData = response.data;
+    console.log("wardrobe data", wardrobeData)
+    return wardrobeData;
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
+
 export const wardrobeSlice = createSlice({
   name: 'wardrobe',
   initialState,
   reducers: {
     addToWardrobe: (state, action) => {
-      const outfit = action.payload; // This should be the entire outfit object
+      const outfit = action.payload; 
 
-      // You may want to validate the outfit here before adding it to the state
 
       state.wardrobe.push(outfit);
     },
@@ -30,5 +47,5 @@ export const selectedWardrobe = (state) => state.wardrobe.wardrobe;
 export const wardrobeLoading = (state) => state.wardrobe.loading;
 export const wardrobeError = (state) => state.wardrobe.error;
 
-export const { addToWardrobe, removeFromWardrobe } = wardrobeSlice.actions;
+export const { addToWardrobe, removeFromWardrobe, get } = wardrobeSlice.actions;
 export const wardrobeSliceReducer = wardrobeSlice.reducer;
