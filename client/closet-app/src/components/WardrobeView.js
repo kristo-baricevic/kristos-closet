@@ -33,24 +33,31 @@ const Wardrobe = () => {
   };
 
   return (
-    <div>
-    <h2>My Wardrobe</h2>
+    <div className="wardrobe-view-main">
+    <h2 className="wardrobe-heading">My Wardrobe</h2>
     {wardrobe.map((outfit, index) => (
-  <li key={index}>
-    <h3>{outfit.name}</h3>
-    <p>{outfit.description}</p>
-    <ul>
-      {outfit.clothingItems.map((clothingItem, itemIndex) => (
-        <li key={itemIndex}>
-          <p>{clothingItem.category}</p>
-          <p>{clothingItem._id}</p>
-          <img src={clothingItem.category.imageUrl} alt="Clothing item" />
+    <div 
+      key={index} 
+      className="wardrobe-view-body"
+    >
+      <li className="wardrobe-item-card-container" key={index}>
+          <div className="wardrobe-item-card">
+            <p classNAme="wardrobe-outfit-name">{outfit.description}</p>
+            <ul className="wardrobe-list-container">
+              {outfit.clothingItems.map((clothingItem, itemIndex) => (
+                <div className="wardrobe-outfit-item-contanter">
+                <li className="wardrobe-list-itemIndex" key={itemIndex}>
+                  <p className="wardrobe-list-category">{clothingItem.category}</p>
+                  <img src={clothingItem.category.imageUrl} alt="Clothing item" />
+                </li>
+                </div>
+              ))}
+            </ul>
+            <button onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
+          </div>
         </li>
-      ))}
-    </ul>
-    <button onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
-  </li>
-))}
+    </div>
+  ))}
   </div>
   );
 };

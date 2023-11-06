@@ -1002,6 +1002,100 @@ button {
   padding: 6px;
 }
 
+/* Wardrobe */
+.wardrobe-view-main {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.wardrobe-outfit-name {
+  display: flex;
+}
+
+.wardrobe-view-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.wardrobe-heading {
+  display: flex;
+}
+
+
+
+.wardrobe-list-container {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.wardrobe-outfit-item-container {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-bottom: 2px;
+  border-color: black;
+  padding: 8px;
+}
+
+.wardrobe-item-card-container {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-bottom: 2px;
+  border-color: black;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+
+.wardrobe-list-itemIndex {
+  background-color: rgb(255, 246, 246);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  margin-right: 6px;
+}
+
+.wardrobe-item-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 20px;
+  height: 300;
+  width: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.wardrobe-item-card img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.wardrobe-item-card button {
+  background-color: #009744;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.wardrobe-item-card button:hover {
+  background-color: #51d28b;
+  color: #000000;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+
+
 /* SlideUpTab */
 
 .slide-up-tab {
