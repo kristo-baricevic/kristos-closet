@@ -8,7 +8,7 @@ const initialState = {
       Hat: null,
       onePiece: null,
       Accessory: null,
-  },
+    },
   loading: false,
   error: null,
 };
@@ -19,9 +19,11 @@ export const selectedItemsSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
         
-        const { category, item } = action.payload;
+        const { category, item, imageUrl } = action.payload;
         console.log("category", category);
         console.log("item check", item);
+        console.log("url check", imageUrl);
+
 
         // If item is a 'onePiece', remove 'top' and 'bottom' from the state
         if (item.category === 'onePiece') {

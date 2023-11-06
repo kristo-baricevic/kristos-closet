@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import OutfitView from './OutfitView';
 import { toggleTabStyle } from '../features/closetSlice';
 import { selectedItems, removeItem } from '../features/selectedItemsSlice';
-import { saveOutfitAsync } from '../features/savedOutfitSlice';
+import { saveOutfitAsync, addItem } from '../features/savedOutfitSlice';
 import { selectUser } from '../features/userSlice';
 
-function SlideUpTab() {
+function SlideUpTab({item}) {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -18,9 +18,13 @@ function SlideUpTab() {
     console.log("toggle tab");
   };
 
-  const handleSaveOutfit = () => {
+  const handleSaveOutfit = (item) => {
+
     // Get the selected items from your state
     console.log("click");
+    console.log(item);
+
+
 
     // Additional data needed for your outfit
     const outfitData = {
@@ -31,12 +35,13 @@ function SlideUpTab() {
       imageUrl: 'URL to image',
     };
 
+
     console.log("test the outfit", outfitData.clothingItems);
     console.log("test the outfit", selectedItemsData);
 
     // Create an outfit object that includes the selected items and other data
     dispatch(saveOutfitAsync(outfitData));
-  }
+  };
 
   return (
     <div className={`slide-up-tab ${isOpen ? 'open' : ''}`}>
@@ -44,12 +49,13 @@ function SlideUpTab() {
       <button className="tab-button" onClick={toggleTab}>
         Selected Items View
       </button>
-      <button className="save-outfit" onClick={handleSaveOutfit}>
+      <button className="save-outfit" onClick={handleSaveOutfit(item)}>
         Save Outfit
       </button>
+
       </div>
       <div className="tab-content">
-        <OutfitView />
+        <OutfitView item={item}/>
       </div>
     </div>
   );

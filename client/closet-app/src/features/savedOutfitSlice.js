@@ -39,6 +39,8 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
 
   console.log("clothing Items",clothingItemsForNewOutfit);
 
+  addItem(clothingItemsForNewOutfit);
+
 
   try {
     const outfitToSave = {
@@ -49,7 +51,7 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
       imageUrl: outfitData.imageUrl,
     };
 
-    console.log("outfit to save",outfitToSave);
+    console.log("outfit to save", outfitToSave);
 
     const response = await axios.post(
       'https://kristobaricevic.com/api/outfit',
@@ -71,7 +73,7 @@ export const savedOutfitSlice = createSlice({
     reducers: {
       reducers: {
         addItem: (state, action) => {
-          const { category, objectId } = action.payload;
+          const { category, objectId, imageUr } = action.payload;
           
           // If item is a 'onePiece', remove 'top' and 'bottom' from the state
           if (category === 'onePiece') {
@@ -80,7 +82,6 @@ export const savedOutfitSlice = createSlice({
             // If item is 'top' or 'bottom', remove 'onePiece' from the state
             state.outfits[0].clothingItems = state.outfits[0].clothingItems.filter(item => item.category !== 'onePiece');
           }
-      
           // Add the new item to the outfit's clothingItems array
           state.outfits[0].clothingItems.push({ category, item: objectId });
         },
@@ -108,7 +109,7 @@ export const selectedOutfit = (state) => state.savedOutfit.outfits;
 export const selectedOutfitLoading = (state) => state.savedOutfit.loading;
 export const selectedOutfitError = (state) => state.savedOutfit.error;
 
-export const { saveOutfit, deleteOutfit } = savedOutfitSlice.actions;
+export const { saveOutfit, deleteOutfit, addItem } = savedOutfitSlice.actions;
 export const savedOutfitSliceReducer = savedOutfitSlice.reducer;
 
 export default saveOutfitAsync; 

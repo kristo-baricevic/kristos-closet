@@ -74,8 +74,8 @@ const ClosetView = () => {
     dispatch(setEditModalVisibility(true));
   };
 
-  const handleSelectImage = (image, category) => {
-    dispatch(addItem({ category, item: image }));
+  const handleSelectImage = (image, category, imageUrl) => {
+    dispatch(addItem({ category, item: image, imageUrl }));
   };
 
   const handleCategorySelect = (category) => {
@@ -95,7 +95,7 @@ const ClosetView = () => {
               <div className="card-info">
                 <div className={tabToggle ? "card-buttons-container-tab-open" : "card-buttons-container"} >
                   <button className="delete-button" onClick={() => deleteImageHandler(image)}>Delete</button>
-                  <button className="select-button" onClick={() => handleSelectImage(image, image.category)}>Select</button>
+                  <button className="select-button" onClick={() => handleSelectImage(image, image.category, image.imageUrl)}>Select</button>
                   <button className="edit-button" onClick={() => handleEditImage(image)}>Edit</button>
                 </div>
               </div>
