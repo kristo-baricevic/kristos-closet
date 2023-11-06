@@ -1045,10 +1045,27 @@ button {
 
 
 .wardrobe-list-itemIndex {
-  background-color: rgb(255, 238, 130);
+  background-color: rgb(204, 255, 200);
   display: flex;
   flex-direction: column;
   padding: 20px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #1a6902;
+  border-radius: 20px;
+  margin-right: 6px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3); 
+}
+
+.wardrobe-list-itemIndex:hover {
+  cursor: pointer;
+  background-color: rgb(119, 236, 111);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #1a6902;
   border-radius: 20px;
   margin-right: 6px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3); 
