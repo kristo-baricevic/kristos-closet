@@ -13,7 +13,6 @@ const initialState = {
 
 export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) => {
   try {
-    console.log("inside getWardrobe");
     const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user}`);
     console.log("response is", response);
     const wardrobeData = response.data;
@@ -26,14 +25,14 @@ export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) =>
 
 
 
+
+
 export const wardrobeSlice = createSlice({
   name: 'wardrobe',
   initialState,
   reducers: {
     addToWardrobe: (state, action) => {
       const outfit = action.payload; 
-
-
       state.wardrobe.push(outfit);
     },
     removeFromWardrobe: (state, action) => {

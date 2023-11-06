@@ -45,15 +45,16 @@ const Wardrobe = () => {
             <p classNAme="wardrobe-outfit-name">{outfit.description}</p>
             <ul className="wardrobe-list-container">
               {outfit.clothingItems.map((clothingItem, itemIndex) => (
-                <div className="wardrobe-outfit-item-contanter">
+                <div className="wardrobe-outfit-item-container">
                 <li className="wardrobe-list-itemIndex" key={itemIndex}>
                   <p className="wardrobe-list-category">{clothingItem.category}</p>
-                  <img src={clothingItem.category.imageUrl} alt="Clothing item" />
+                  <img src={clothingItem[itemIndex]?.imageUrl} alt="Clothing item" />
                 </li>
                 </div>
               ))}
             </ul>
-            <button onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
+            <button onClick={() => handleRemoveItem(outfit._id)}>Remove From Wardrobe</button>
+            <button onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
           </div>
         </li>
     </div>
