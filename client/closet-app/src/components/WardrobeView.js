@@ -18,7 +18,8 @@ const Wardrobe = () => {
     console.log(user);
   }, [user]);
   
-
+//the line below is a remove button i was using earlier
+//<button onClick={() => handleRemoveItem(wardrobe[0]?.clothingItems[index]?.objectId)}>Remove</button>
 
 
   const handleRemoveItem = (outfitId) => {
@@ -33,21 +34,21 @@ const Wardrobe = () => {
 
   return (
     <div>
-      <h2>My Wardrobe</h2>
-      {wardrobe.length > 0 ? (
-        <ul>
-          {wardrobe[0]?.clothingItems?.map((clothingItem, index) => (
-            <li key={index}>
-              <h3>{clothingItem.category}</h3>
-              <p>{clothingItem.objectId}</p>
-              <button onClick={() => handleRemoveItem(wardrobe[0]?.clothingItems[index]?.objectId)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No outfits in your wardrobe.</p>
-      )}
-    </div>
+    <h2>My Wardrobe</h2>
+    {wardrobe.length > 0 ? (
+      <ul>
+        {wardrobe.map((outfit, index) => (
+          <li key={index}>
+            <h3>{outfit.name}</h3>
+            <p>{outfit.description}</p>
+            <button onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>No outfits in your wardrobe.</p>
+    )}
+  </div>
   );
 };
 
