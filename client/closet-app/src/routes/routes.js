@@ -48,8 +48,9 @@ router.post('/wardrobe', verifyToken, addToWardrobe);
 router.delete('/wardrobe/:id', verifyToken, removeFromWardrobe);
 router.get('/wardrobe/:user', async (req, res) => {
   try {
-    const userId = req.params.user; // Get user ID from the URL parameter
+    const userId = req.params.user;
     const wardrobeOutfits = await SavedOutfit.find({ userId });
+    console.log("retrieved outfits from wardrobe", wardrobeOutfits);
     res.json(wardrobeOutfits);
   } catch (error) {
     console.error(error);
