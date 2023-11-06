@@ -13,7 +13,9 @@ const initialState = {
 
 export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) => {
   try {
+    console.log("inside getWardrobe");
     const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user}`);
+    console.log("response is", response);
     const wardrobeData = response.data;
     console.log("wardrobe data", wardrobeData)
     return wardrobeData;
@@ -40,6 +42,22 @@ export const wardrobeSlice = createSlice({
       // Filter out the outfit to remove from the state
       state.wardrobe = state.wardrobe.filter((outfit) => outfit._id !== outfitIdToRemove);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getWardrobe.fulfilled, (state, action) => {
+        // This is where you update the state with the wardrobe data from the async request
+        state.wardrobe = action.payload;
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(getWardrobe.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getWardrobe.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 

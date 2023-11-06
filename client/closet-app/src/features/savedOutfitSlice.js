@@ -56,6 +56,8 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
       outfitToSave
     );
 
+    console.log("the response is", response);
+
     return response.data;
   } catch (error) {
     throw error;

@@ -19,7 +19,7 @@ const {
   loginAnonymous,
   getCurrentUserData,
 } = require('../controllers/userController');
-const { addToWardrobe, removeFromWardrobe } = require('../controllers/wardrobeController');
+const { addToWardrobe, removeFromWardrobe, getWardrobeOutfits } = require('../controllers/wardrobeController');
 const { saveOutfit, updateOutfit, deleteOutfit } = require('../../backend/controllers/outfitController');
 const SavedOutfit = require('../../backend/models/SavedOutfit');
 
@@ -46,17 +46,7 @@ router.delete('/outfits/:id', verifyToken, deleteOutfit);
 // Wardrobe routes
 router.post('/wardrobe', verifyToken, addToWardrobe);
 router.delete('/wardrobe/:id', verifyToken, removeFromWardrobe);
-router.get('/wardrobe/:user', async (req, res) => {
-  try {
-    const userId = req.params.user;
-    const wardrobeOutfits = await SavedOutfit.find({ userId });
-    console.log("retrieved outfits from wardrobe", wardrobeOutfits);
-    res.json(wardrobeOutfits);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching wardrobe outfits' });
-  }
-});
+router.get('/wardrobe/:user', getWardrobeOutfits);
 
 
 module.exports = router;

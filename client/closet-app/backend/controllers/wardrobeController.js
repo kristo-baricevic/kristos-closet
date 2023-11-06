@@ -48,3 +48,4 @@ exports.getWardrobeOutfits = async (req, res) => {
     res.status(500).json({ error: 'An error occurred while fetching wardrobe outfits' });
   }
 };
+

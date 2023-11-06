@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getWardrobe, removeFromWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
+import { getWardrobe, removeFromWardrobe, addToWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
 import { selectUser } from '../features/userSlice';
 import { fetchItems } from '../features/closetSlice';
 
@@ -10,11 +10,13 @@ const Wardrobe = () => {
   const wardrobe = useSelector(selectedWardrobe);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  
+
+
   useEffect(() => {
     console.log('useEffect is running');
     dispatch(getWardrobe(user));
-  }, []);
+    console.log(user);
+  }, [user]);
   
 
 
@@ -32,17 +34,22 @@ const Wardrobe = () => {
   return (
     <div>
       <h2>My Wardrobe</h2>
-      <ul>
-        {wardrobe.map((outfit, index) => (
-          <li key={index}>
-            <h3>{outfit.name}</h3>
-            <p>blank outfit</p>
-            <button onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+      {wardrobe.length > 0 ? (
+        <ul>
+          {wardrobe[0]?.clothingItems?.map((clothingItem, index) => (
+            <li key={index}>
+              <h3>{clothingItem.category}</h3>
+              <p>{clothingItem.objectId}</p>
+              <button onClick={() => handleRemoveItem(wardrobe[0]?.clothingItems[index]?.objectId)}>Remove</button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No outfits in your wardrobe.</p>
+      )}
     </div>
   );
 };
+
 
 export default Wardrobe;
