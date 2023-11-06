@@ -35,19 +35,22 @@ const Wardrobe = () => {
   return (
     <div>
     <h2>My Wardrobe</h2>
-    {wardrobe.length > 0 ? (
-      <ul>
-        {wardrobe.map((outfit, index) => (
-          <li key={index}>
-            <h3>{outfit.name}</h3>
-            <p>{outfit.description}</p>
-            <button onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p>No outfits in your wardrobe.</p>
-    )}
+    {wardrobe.map((outfit, index) => (
+  <li key={index}>
+    <h3>{outfit.name}</h3>
+    <p>{outfit.description}</p>
+    <ul>
+      {outfit.clothingItems.map((clothingItem, itemIndex) => (
+        <li key={itemIndex}>
+          <p>{clothingItem.category}</p>
+          <p>{clothingItem._id}</p>
+          <img src={clothingItem.category.imageUrl} alt="Clothing item" />
+        </li>
+      ))}
+    </ul>
+    <button onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
+  </li>
+))}
   </div>
   );
 };
