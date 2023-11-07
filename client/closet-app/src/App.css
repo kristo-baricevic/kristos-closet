@@ -4,17 +4,27 @@
   font-family: 'Varela Round', sans-serif;
 }
 
+.main-column-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .clothing-components-layout {
   max-width: 90%;
 }
 
 /* Navbar Design */
 
-
-.main-column-layout {
+.navbar {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
+  flex-direction: row;
+  justify-content: center;
+  background-color: hsl(105, 67%, 67%);
+  width: 100%;
+  height: 120px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+  border-radius: 8px; 
 }
 
 .navbar-container {
@@ -28,15 +38,6 @@
   left: 0;
 }
 
-.navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: hsl(105, 67%, 67%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
-  border-radius: 8px; 
-}
-
 .navbar-menu {
   display: flex;
   flex-direction: row;
@@ -47,6 +48,7 @@
   display: flex;
   color: #333;
   font-weight: 700;
+  line-height: 40px;
   text-decoration: none;
 }
 
@@ -593,25 +595,23 @@ button {
 /* SavedOutfit Component */
 
 .saved-outfit-view-container {
-  display: flex;
   flex-direction: column;
-  align-items: middle;
+  align-items: center;
   justify-content: center;
   height: 160px;
-  max-width: 340px;
-  justify-content: flex-start;
 }
 
 
 .saved-outfit-view-main {
   display: flex;
-  flex-direction: column;
+  flex-direction: flex≈;
+  justify-content: flex-start;
 }
 
 
 .saved-outfit-item-card {
-  width: 200px;
-  height: 240px;
+  width: 100px;
+  height: 170px;
   margin: 5px;
   padding: 10px;
   border-radius: 14px;
@@ -1082,7 +1082,11 @@ button {
 .wardrobe-view-main {
   display: flex;
   flex-direction: column;
-  align-items: middle;
+  margin-bottom: 60px;
+}
+
+.wardrobe-outfit-name {
+  display: flex;
 }
 
 .wardrobe-view-body {
@@ -1090,30 +1094,11 @@ button {
   flex-direction: column;
 }
 
-.wardrobe-item-card-container {
-  display: flex;
-  flex-direction: wrap;
-  padding: 8px;
-  margin-bottom: 10px;
-}
-
-.wardrobe-item-card {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 16px;
-  border-radius: 20px;
-  height: 300;
-  width: auto;
-  position: relative;
-  z-index: 1;
-}
-
-
 .wardrobe-heading {
   display: flex;
 }
+
+
 
 .wardrobe-list-container {
   display: flex;
@@ -1127,6 +1112,12 @@ button {
   padding: 8px;
 }
 
+.wardrobe-item-card-container {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  margin-bottom: 10px;
+}
 
 
 .wardrobe-list-itemIndex {
@@ -1156,6 +1147,18 @@ button {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3); 
 }
 
+.wardrobe-item-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 20px;
+  height: 300;
+  width: auto;
+  position: relative;
+  z-index: 1;
+}
 
 .wardrobe-item-card img {
   max-width: 100%;

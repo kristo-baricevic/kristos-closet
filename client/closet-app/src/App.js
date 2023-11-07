@@ -22,12 +22,12 @@ import './App.css';
     return (
       <Router>
         <div className="main-column-layout">
-          <div className="navbar-container">
-            <NavBar />
+        <div className="navbar-container">
+          <NavBar />
+        </div>
               {isRegistrationModalVisible && <RegistrationModal />}
               {isLoginModalVisible && <LoginModal />}
               {isPreviewVisible && <PreviewModal />}
-          </div>
           <Routes>
             <Route path="/outfit-view" element={<SavedOutfitView />} /> 
             <Route path="/wardrobe" element={<WardrobeView />} /> 
