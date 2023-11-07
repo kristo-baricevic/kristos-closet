@@ -91,20 +91,20 @@ const SavedOutfitView = () => {
     };
 
     return (
-        <div className="outfit-view-container">
-            <div className="outfit-view-main">
+        <div className="saved-outfit-view-container">
+            <div className="saved-outfit-view-main">
                 {Object.entries(outfit).map(([category, item]) => (
-                <div className="outfit-item-card" key={category} >
-                    <div className="outfit-item-category-title">{category}</div>
+                <div className="saved-outfit-item-card" key={category} >
+                    <div className="saved-outfit-item-category-title">{category}</div>
                     {item ? (
-                    <div className="outfit-image-wrapper">
-                        <img class="outfit-image" src={item.imageUrl} alt={category} />
+                    <div className="saved-outfit-image-wrapper">
+                        <img class="saved-outfit-image" src={item.imageUrl} alt={category} />
                     </div>
                     ) : (
                     <p>No {category} selected</p>
                     )}
                     <div>
-                        <button class="remove-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
+                        <button class="remove-saved-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
                     </div>
                 </div>
                 ))}

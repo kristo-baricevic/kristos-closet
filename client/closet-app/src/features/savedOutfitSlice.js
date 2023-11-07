@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-
+import { addToWardrobe } from './wardrobeSlice';
 
 const initialState = {
   outfits: [
@@ -39,7 +38,6 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
 
   console.log("clothing Items",clothingItemsForNewOutfit);
 
-  addItem(clothingItemsForNewOutfit);
 
 
   try {
@@ -52,6 +50,12 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
     };
 
     console.log("outfit to save", outfitToSave);
+    console.log("clothingItems to save", outfitToSave.clothingItems);
+
+
+
+
+    addToWardrobe(outfitToSave);
 
     const response = await axios.post(
       'https://kristobaricevic.com/api/outfit',
@@ -73,7 +77,7 @@ export const savedOutfitSlice = createSlice({
     reducers: {
       reducers: {
         addItem: (state, action) => {
-          const { category, objectId, imageUr } = action.payload;
+          const { category, objectId, imageUrl } = action.payload;
           
           // If item is a 'onePiece', remove 'top' and 'bottom' from the state
           if (category === 'onePiece') {

@@ -25,8 +25,6 @@ export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) =>
 
 
 
-
-
 export const wardrobeSlice = createSlice({
   name: 'wardrobe',
   initialState,

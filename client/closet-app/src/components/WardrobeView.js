@@ -42,13 +42,13 @@ const Wardrobe = () => {
     >
       <li className="wardrobe-item-card-container" key={index}>
           <div className="wardrobe-item-card">
-            <p classNAme="wardrobe-outfit-name">{outfit.description}</p>
+            <p className="wardrobe-outfit-name">{outfit.description}</p>
             <ul className="wardrobe-list-container">
               {outfit.clothingItems.map((clothingItem, itemIndex) => (
                 <div className="wardrobe-outfit-item-container">
                 <li className="wardrobe-list-itemIndex" key={itemIndex}>
                   <p className="wardrobe-list-category">{clothingItem.category}</p>
-                  <img src={clothingItem[itemIndex]?.imageUrl} alt="Clothing item" />
+                  <img src={clothingItem.imageUrl} alt="Clothing item" />
                 </li>
                 </div>
               ))}
