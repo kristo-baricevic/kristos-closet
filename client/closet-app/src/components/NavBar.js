@@ -41,6 +41,7 @@ const NavBar = () => {
     }
 
     return (
+        <div className="navbar-element-container">
         <nav className="navbar">
             <div className="navbar-menu">
                 <div className="navbar-buttons-container">
@@ -99,6 +100,7 @@ const NavBar = () => {
                 </div>
             </div>
         </nav>
+        </div>
     );
 };
 
