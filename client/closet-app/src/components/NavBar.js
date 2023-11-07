@@ -43,7 +43,6 @@ const NavBar = () => {
     return (
         <div className="navbar-element-container">
         <nav className="navbar">
-            <div className="navbar-menu">
                 <div className="navbar-buttons-container">
                     {isUserMenuOpen ? (
                         <>
@@ -98,7 +97,6 @@ const NavBar = () => {
                         </button>
                     )}
                 </div>
-            </div>
         </nav>
         </div>
     );

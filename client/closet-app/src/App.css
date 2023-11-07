@@ -319,8 +319,39 @@ width: 20px;
 
 .image-uploader-navbar-container {
   display: flex;
-  flex-direction: column;
-  padding: 5px;
+}
+
+.upload-component-container {
+  display: flex;
+}
+
+.upload-container {
+  display: flex;
+  height: 50px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #fbfbfb;
+}
+
+.choose-file {
+  display: flex;
+  justify-content: center;
+  align-items: middle;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 14px;
+  width: 80px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+.choose-file:hover {
+  background-color: #228B22;
+  color: black;
 }
 
 .upload-heading{
@@ -331,49 +362,13 @@ width: 20px;
   margin-left:20px;
 }
 
-.upload-component-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: .5px;
-}
 
-.upload-container {
-  display: flex;
-  height: 90px;
-  width: 150px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  background-color: #fbfbfb;
-}
-
-.upload-buttons-container {
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-}
 
 .select-options-bar {
   margin-left: 10px;
 }
 
-.choose-file {
-  margin-bottom: 10px;
-  font-size: 14px;
-  padding: 5px 16px;
-  background-color: #50C878;
-  color: black;
-  border: 1px solid black;
-  border-radius: 14px;
-  width: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-}
-.choose-file:hover {
-  background-color: #228B22;
-  color: black;
-}
+
 
 input[type="file"] {
     display: none;
@@ -1155,8 +1150,6 @@ button {
   cursor: pointer;
 }
 
-
-
 /* SlideUpTab */
 
 .slide-up-tab {
@@ -1204,7 +1197,6 @@ button {
 
 .save-outfit:hover {
   background-color: hsl(304, 54%, 80%);
-
 }
 
 .tab-content {
@@ -1214,13 +1206,4 @@ button {
 
 .slide-up-tab.open {
   transform: translateY(10%); 
-}
-
-
-@media screen and (max-width: 600px) {
-
-  .logo-sizing {
-    height: 80px;
-    padding: 0px;
-  }
 }
