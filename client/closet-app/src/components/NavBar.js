@@ -46,7 +46,7 @@ const NavBar = () => {
                                 <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/master/client/closet-app/src/icons/UserImage.png" alt="User" />
                             </button>
                             <button className="navbar-button" onClick={showRegistrationModal}>
-                            Register
+                                Register
                             </button>
                             {!isAuthenticated ? (
                             <button className="navbar-button" onClick={showLoginModal}>
@@ -65,17 +65,17 @@ const NavBar = () => {
                         </button>
                     )}
                 </div>
+
                 <div className="image-uploader-navbar-container">
                     <ImageUploader />
                 </div>
-                <div className="logo-menu-box">
 
+                <div className="navbar-buttons-container">
                     {isWardrobeOpen ? (
                         <>
-                            <button className="navbar-button-open" onClick={handleWardrobeIconClick}>
-                                <img className="navbar-open-icon" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
+                            <button className="navbar-button-user-open-icon" onClick={handleWardrobeIconClick}>
+                                <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="User" />
                             </button>
-                            <div className="menu-open-container">
                             <Link to="/" className="navbar-button">
                                 Closet
                             </Link>
@@ -85,14 +85,15 @@ const NavBar = () => {
                             <Link to="/wardrobe" className="navbar-button">
                                 Wardrobe
                             </Link>
-                            </div>
                         </>
                     ) : (
-                        <button className="logo-closed-container" onClick={handleWardrobeIconClick}>
-                            <img className="logo-sizing" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="nav logo" />
+                        <button className="navbar-button" onClick={handleWardrobeIconClick}>
+                            <img className="user-open-icon-closed" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/33c8e3961e096dbe555cf03f576f8c4ea28848cd/client/closet-app/src/wardrobe-modified.png" alt="User" />
                         </button>
                     )}
                 </div>
+
+
         </nav>
         </div>
     );
