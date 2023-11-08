@@ -9,7 +9,6 @@ const EditModal = () => {
   const uniqueCategories = useSelector(categories);
   const dispatch = useDispatch();
 
-
   const saveImageEdit = async (image) => {
     console.log("image test", image);
     console.log("test category", editedCategory);

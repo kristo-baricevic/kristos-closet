@@ -6,7 +6,6 @@ const CategoriesView = ({categories, onCategorySelect}) => {
     console.log("Categories, categories", categories);
     console.log("Categories, Selected categories", selectedCategory);
 
-
     const handleCategoriesClick = () => {
         setIsCategoriesExpanded(!isCategoriesExpanded);
     }

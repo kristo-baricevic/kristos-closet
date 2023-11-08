@@ -9,10 +9,6 @@ import ImageUploader from './ImageUploader.js';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-
-
-// import ImageUploader from './ImageUploader.js';
-
 const NavBar = () => {
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const [isWardrobeOpen, setIsWardrobeOpen] = useState(false);

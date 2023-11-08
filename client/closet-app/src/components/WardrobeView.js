@@ -2,15 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWardrobe, removeFromWardrobe, addToWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
 import { selectUser } from '../features/userSlice';
-import { fetchItems } from '../features/closetSlice';
-
-
 
 const Wardrobe = () => {
   const wardrobe = useSelector(selectedWardrobe);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-
 
   useEffect(() => {
     console.log('useEffect is running');

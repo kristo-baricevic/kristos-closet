@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { modalImage, closeImageModal, imageModalVisibility } from '../features/imageModalSlice';
+import { modalImage, closeImageModal } from '../features/imageModalSlice';
 
 const ImageModal = () => {
   const [detailVisibility, setDetailVisibility] = useState(false);
   const image = useSelector(modalImage);
   const dispatch = useDispatch();
-
 
   const handleCloseModal = () => {
     dispatch(closeImageModal());
@@ -21,7 +20,6 @@ const ImageModal = () => {
       console.error('Invalid image URL:', image);
       return null;
     }
-
 
     return image.imageUrl;
   };

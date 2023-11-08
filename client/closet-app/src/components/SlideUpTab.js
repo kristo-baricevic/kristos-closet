@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OutfitView from './OutfitView';
 import { toggleTabStyle } from '../features/closetSlice';
-import { selectedItems, removeItem } from '../features/selectedItemsSlice';
-import { saveOutfitAsync, addItem } from '../features/savedOutfitSlice';
+import { selectedItems } from '../features/selectedItemsSlice';
+import { saveOutfitAsync } from '../features/savedOutfitSlice';
 import { selectUser } from '../features/userSlice';
-import { addToWardrobe } from '../features/wardrobeSlice';
 
 function SlideUpTab({item}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +24,6 @@ function SlideUpTab({item}) {
     console.log("click");
     console.log(item);
 
-
-
     // Additional data needed for your outfit
     const outfitData = {
       name: 'Outfit1', 
@@ -35,7 +32,6 @@ function SlideUpTab({item}) {
       clothingItems: selectedItemsData,
       imageUrl: 'URL to image',
     };
-
 
     console.log("test the outfit", outfitData.clothingItems);
     console.log("test the outfit", selectedItemsData);

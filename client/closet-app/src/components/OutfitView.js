@@ -2,11 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedItems, removeItem } from '../features/selectedItemsSlice';
 
-
 const OutfitView = () => {
     const outfit = useSelector(selectedItems);
 
-    // console.log("outfit", outfit);
     const dispatch = useDispatch();
      
     const handleRemoveItem = (item) => {

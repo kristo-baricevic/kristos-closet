@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(cors({
   origin: 'http://localhost:3000', // or specify an array of allowed origins
 }));
-app.use('/static', express.static('build'));
+app.use('/static', express.static('build', { maxAge: 0 }));
 
 
 

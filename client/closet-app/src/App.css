@@ -26,20 +26,25 @@
 
 .navbar-element-container {
   display: flex;
-  align-items: middle;
+  align-items: center;
+  flex-direction: space-evenly;
   width: 100%;
 }
 
 .navbar {
   display: flex;
-  align-items: middle;
+  justify-content: space-evenly;
   background-color: hsl(105, 67%, 67%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
-  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  height: 100px;
+  padding: 10px;
 }
 
 .navbar-buttons-container {
-  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .navbar-menu {
@@ -84,15 +89,13 @@ width: 20px;
 }
 
 .logo-menu-box {
-  
-}
-
-.logo-container {
-
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-open-container {
-
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-closed-container {

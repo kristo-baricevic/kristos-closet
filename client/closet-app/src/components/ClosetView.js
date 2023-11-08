@@ -9,7 +9,6 @@ import { editModalVisibility, setEditImage, setEditModalVisibility, setUniqueCat
 import EditModal from './EditModal';
 import CategoriesView from './CategoriesView';
 
-
 const ClosetView = () => {
   const isEditModalVisible = useSelector(editModalVisibility);
   const images = useSelector(selectInitialClosetItems);
