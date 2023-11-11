@@ -18,7 +18,7 @@ exports.saveOutfit = async (req, res) => {
         clothingItems: clothingItems,
       });
 
-      console.log("savedOutfitDoc", savedOutfitDoc);
+      console.log("savedOutfitDoc URL", savedOutfitDoc.imageUrl);
   
       // Save the outfit to the database
       await savedOutfitDoc.save();
