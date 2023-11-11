@@ -13,10 +13,10 @@ const initialState = {
 
 export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user, wardrobe) => {
   try {
-    // const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user}`);
+    const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user}`);
     console.log("user?", user);
     console.log("response is", wardrobe);
-    // console.log("wardrobe data", wardrobeData)
+    console.log("wardrobe data", response)
     return user;
   } catch (error) {
     console.error(error);

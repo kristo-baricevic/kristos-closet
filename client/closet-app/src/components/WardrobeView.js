@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getWardrobe, removeFromWardrobe, addToWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
+import { getWardrobe, removeFromWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
 import { selectUser } from '../features/userSlice';
 
 const Wardrobe = () => {
@@ -34,7 +34,7 @@ const Wardrobe = () => {
         <h2 className="wardrobe-heading-text">My Wardrobe</h2>
       </div>
       <div className="wardrobe-container">
-        {wardrobe.map((outfit, index) => (
+      {wardrobe && wardrobe.map((outfit, index) => (
           <div 
             key={index} 
             className="wardrobe-view-body"
