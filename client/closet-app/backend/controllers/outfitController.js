@@ -18,7 +18,7 @@ exports.saveOutfit = async (req, res) => {
         name: name, 
         description: description,
         user: user, 
-        outfit: {
+        clothingItems: {
           Top: Top || null,
           Bottom: Bottom || null,
           Shoes: Shoes || null,
