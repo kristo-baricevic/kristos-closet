@@ -12,6 +12,7 @@ exports.addToWardrobe = async (req, res) => {
 
     // Save the wardrobe outfit to the database
     await wardrobeOutfit.save();
+    console.log("wardrobe pot. saved", wardrobeOutfit);
 
     res.status(201).json(wardrobeOutfit);
   } catch (error) {

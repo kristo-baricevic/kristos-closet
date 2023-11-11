@@ -5,6 +5,7 @@ import { toggleTabStyle } from '../features/closetSlice';
 import { selectedItems } from '../features/selectedItemsSlice';
 import { saveOutfitAsync } from '../features/savedOutfitSlice';
 import { selectUser } from '../features/userSlice';
+import { addToWardrobeAsync } from '../features/wardrobeSlice';
 
 function SlideUpTab({item}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,8 @@ function SlideUpTab({item}) {
     console.log("test the outfit", outfit);
 
     // Create an outfit object that includes the selected items and other data
-    dispatch(saveOutfitAsync(outfitData));
+    const newOutfit = dispatch(saveOutfitAsync(outfitData));
+    dispatch(addToWardrobeAsync(newOutfit));
   };
 
   return (

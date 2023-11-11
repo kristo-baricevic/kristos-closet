@@ -23,6 +23,16 @@ export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user, wa
   }
 });
 
+export const addToWardrobeAsync = createAsyncThunk('wardrobe/wardrobe', async (user, outfit) => {
+  try {
+    const response = await axios.post(`https://kristobaricevic.com/api/wardrobe/${user}`, outfit);
+    console.log("wardrobe data", response)
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 
 
 export const wardrobeSlice = createSlice({
