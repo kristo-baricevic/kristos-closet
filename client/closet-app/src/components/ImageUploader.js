@@ -18,9 +18,8 @@ const ImageUploader = () => {
   };
 
   return (
-    <div className="upload-component-container">
-      <div className="upload-container">
-            <label className="choose-file">
+      <div className="navbar-buttons-container">
+            <label className="navbar-button">
               <input
                 type="file"
                 ref={fileInputRef}
@@ -29,11 +28,9 @@ const ImageUploader = () => {
                 accept=".jpg,.jpeg,.png,.gif"
                 onChange={handleFileUpload}
               />
-              Upload Item
+              Upload<br /> Item
             </label>
         </div>             
-      </div>
-
   );
 };
 

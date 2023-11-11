@@ -85,6 +85,7 @@ const NavBar = () => {
                             <Link to="/wardrobe" className="navbar-button">
                                 Wardrobe
                             </Link>
+                            
                         </>
                     ) : (
                         <button className="navbar-button" onClick={handleWardrobeIconClick}>
