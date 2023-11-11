@@ -18,38 +18,40 @@ const initialState = {
 };
 
 export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData) => {
-  const clothingItemsForNewOutfit = [];
+  // const clothingItemsForNewOutfit = [];
+
+  console.log("data to save", outfitData)
 
   // Iterate through the outfitData.clothingItems object and build an array of clothing items
-  for (const category in outfitData.outfit) {
-    if (outfitData.outfit.hasOwnProperty(category)) {
-      clothingItemsForNewOutfit.push({
-        category,
-        item: outfitData.clothingItems[category],
-      });
-    }
-  }
+  // for (const category in outfitData) {
+  //   if (outfitData.hasOwnProperty(category)) {
+  //     clothingItemsForNewOutfit.push({
+  //       category,
+  //       item: outfitData.category,
+  //     });
+  //   }
+  // }
 
-  console.log("clothing Items",clothingItemsForNewOutfit);
+  // console.log("clothing Items",clothingItemsForNewOutfit);
 
-  try {
-    const outfitToSave = {
-      name: outfitData.name,
-      description: outfitData.description,
-      user: outfitData.user,
-      clothingItems: clothingItemsForNewOutfit,
-      imageUrl: outfitData.imageUrl,
-    };
+  // try {
+  //   const outfitToSave = {
+  //     name: outfitData.name,
+  //     description: outfitData.description,
+  //     user: outfitData.user,
+  //     clothingItems: clothingItemsForNewOutfit,
+  //     imageUrl: outfitData.imageUrl,
+  //   };
 
-    console.log("outfit to save", outfitToSave);
-    console.log("clothingItems to save", outfitToSave.clothingItems);
+    console.log("outfit to save", outfitData);
 
+    try {
     const response = await axios.post(
       'https://kristobaricevic.com/api/outfit',
-      outfitToSave
+      outfitData
     );
-
     console.log("the response is", response);
+
   } catch (error) {
     throw error;
   }
@@ -85,7 +87,7 @@ export const savedOutfitSlice = createSlice({
     },
 });
 
-export const selectedOutfit = (state) => state.savedOutfit.outfits;
+export const selectedOutfit = (state) => state.savedOutfit.outfit;
 export const selectedOutfitLoading = (state) => state.savedOutfit.loading;
 export const selectedOutfitError = (state) => state.savedOutfit.error;
 

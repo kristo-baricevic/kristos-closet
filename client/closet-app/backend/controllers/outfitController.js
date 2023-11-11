@@ -5,6 +5,7 @@ exports.saveOutfit = async (req, res) => {
     console.log("save outfit controller", req.body);
     console.log("request body", )
     const { name, description, user, clothingItems } = req.body;
+    console.log("clothing items received", clothingItems);
 
     try {
       // const { outfit, userId } = req.body;
