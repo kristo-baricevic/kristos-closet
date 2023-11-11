@@ -24,7 +24,7 @@ const savedOutfitSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  items: {
+  outfit: {
     Top: { type: clothingItemSchema, default: null },
     Bottom: { type: clothingItemSchema, default: null },
     Shoes: { type: clothingItemSchema, default: null },

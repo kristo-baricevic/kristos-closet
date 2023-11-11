@@ -8,14 +8,19 @@ exports.saveOutfit = async (req, res) => {
     console.log("clothing items received", clothingItems);
 
     try {
-      // const { outfit, userId } = req.body;
-  
       // Create a new SavedOutfit document
       const savedOutfitDoc = new SavedOutfit({
         name: name, 
         description: description,
         user: user, 
-        clothingItems: clothingItems,
+        outfit: {
+          Top: clothingItems.Top || null,
+          Bottom: clothingItems.Bottom || null,
+          Shoes: clothingItems.Shoes || null,
+          Hat: clothingItems.Hat || null,
+          onePiece: clothingItems.onePiece || null,
+          Accessory: clothingItems.Accessory || null,
+        },
       });
 
       console.log("savedOutfitDoc URL", savedOutfitDoc.imageUrl);
