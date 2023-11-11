@@ -18,7 +18,6 @@ const savedOutfitSchema = new mongoose.Schema({
       ref: 'ClothingItem', 
     },
   ],
-  imageUrl: String, 
 });
 
 const SavedOutfit = mongoose.model('SavedOutfit', savedOutfitSchema);

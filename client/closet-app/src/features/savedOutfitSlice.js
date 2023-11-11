@@ -1,14 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { addToWardrobe } from './wardrobeSlice';
 
 const initialState = {
-  outfits: [
-    {
-      name: 'Outfit1',
-      description: 'My first outfit',
+      name: 'New Outfit',
+      description: 'My outfit is cool',
       user: null,
-      clothingItems: [ {items: {
+      outfit: [ {items: {
         Top: null,
         Bottom: null,
         Shoes: null,
@@ -16,9 +13,6 @@ const initialState = {
         onePiece: null,
         Accessory: null,
     }}], 
-      imageUrl: 'URL to image',
-    },
-  ],
   loading: false,
   error: null,
 };
@@ -27,8 +21,8 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
   const clothingItemsForNewOutfit = [];
 
   // Iterate through the outfitData.clothingItems object and build an array of clothing items
-  for (const category in outfitData.clothingItems) {
-    if (outfitData.clothingItems.hasOwnProperty(category)) {
+  for (const category in outfitData.outfit) {
+    if (outfitData.outfit.hasOwnProperty(category)) {
       clothingItemsForNewOutfit.push({
         category,
         item: outfitData.clothingItems[category],
@@ -69,7 +63,7 @@ export const savedOutfitSlice = createSlice({
       reducers: {
         addItem: (state, action) => {
           
-          state.outfits[0].clothingItems.push(action.payload);
+          state.outfits[0].outfit.push(action.payload);
         },
       },      
       },

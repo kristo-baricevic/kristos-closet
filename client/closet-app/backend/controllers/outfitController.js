@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 exports.saveOutfit = async (req, res) => {
     console.log("save outfit controller", req.body);
     console.log("request body", )
-    const { name, description, user, clothingItems, imageUrl } = req.body;
+    const { name, description, user, clothingItems } = req.body;
 
     try {
       // const { outfit, userId } = req.body;
@@ -15,7 +15,6 @@ exports.saveOutfit = async (req, res) => {
         description: description,
         user: user, 
         clothingItems: clothingItems,
-        imageUrl: imageUrl,
       });
 
       console.log("savedOutfitDoc", savedOutfitDoc);
