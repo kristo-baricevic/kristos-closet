@@ -1,13 +1,13 @@
-const SavedOutfit = require("../models/SavedOutfit");
+const Wardrobe = require("../models/Wardrobe");
 
 exports.addToWardrobe = async (req, res) => {
   try {
     const { outfit, userId } = req.body;
 
     // Create a new SavedOutfit document for the wardrobe
-    const wardrobeOutfit = new SavedOutfit({
-      outfit,
-      userId,
+    const wardrobeOutfit = new Wardrobe({
+      outfit: outfit,
+      userId: userId,
     });
 
     // Save the wardrobe outfit to the database
@@ -25,7 +25,7 @@ exports.removeFromWardrobe = async (req, res) => {
     const wardrobeOutfitId = req.params.id;
 
     // Delete the outfit from the wardrobe in the database
-    await SavedOutfit.findOneAndDelete({ _id: wardrobeOutfitId });
+    await Wardrobe.findOneAndDelete({ _id: wardrobeOutfitId });
 
     res.json({ message: 'Outfit removed from the wardrobe successfully' });
   } catch (error) {
@@ -40,7 +40,7 @@ exports.getWardrobeOutfits = async (req, res) => {
     const userId = req.params.user; // Assuming you pass the user's ID as a parameter
 
     // Retrieve all outfits in the wardrobe for the given user
-    const wardrobeOutfits = await SavedOutfit.find({ userId });
+    const wardrobeOutfits = await Wardrobe.find({ userId });
 
     res.json(wardrobeOutfits);
   } catch (error) {

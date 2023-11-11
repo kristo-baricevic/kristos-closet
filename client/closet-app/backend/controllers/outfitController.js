@@ -3,11 +3,13 @@ const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
     console.log("save outfit controller", req.body);
-    console.log("request body", )
+    console.log("request body")
+    
+    // Destructure parameters to set up data in the same format as the mongoose model
     const { name, description, user, clothingItems } = req.body;
-    console.log("clothing items received", clothingItems);
     const { Top, Bottom, Shoes, Hat, onePiece, Accessory } = clothingItems;
 
+    console.log("clothing items received", clothingItems);
     console.log(Top, Bottom, Shoes, Hat, onePiece, Accessory);
 
 
@@ -18,14 +20,14 @@ exports.saveOutfit = async (req, res) => {
         name: name, 
         description: description,
         user: user, 
-        clothingItems: {
-          Top: Top || null,
-          Bottom: Bottom || null,
-          Shoes: Shoes || null,
-          Hat: Hat || null,
-          onePiece: onePiece || null,
-          Accessory: Accessory || null,
-        },
+        outfit: [
+          Top || null,
+          Bottom || null,
+          Shoes || null,
+          Hat || null,
+          onePiece || null,
+          Accessory || null,
+        ],
       });
 
       console.log("savedOutfitDoc URL", savedOutfitDoc);
