@@ -13,14 +13,7 @@ exports.saveOutfit = async (req, res) => {
         name: name, 
         description: description,
         user: user, 
-        outfit: {
-          Top: clothingItems.Top || null,
-          Bottom: clothingItems.Bottom || null,
-          Shoes: clothingItems.Shoes || null,
-          Hat: clothingItems.Hat || null,
-          onePiece: clothingItems.onePiece || null,
-          Accessory: clothingItems.Accessory || null,
-        },
+        savedOutfit: clothingItems,
       });
 
       console.log("savedOutfitDoc URL", savedOutfitDoc);
