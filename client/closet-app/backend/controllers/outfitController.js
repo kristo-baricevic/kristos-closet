@@ -6,6 +6,11 @@ exports.saveOutfit = async (req, res) => {
     console.log("request body", )
     const { name, description, user, clothingItems } = req.body;
     console.log("clothing items received", clothingItems);
+    const { Top, Bottom, Shoes, Hat, onePiece, Accessory } = clothingItems;
+
+    console.log(Top, Bottom, Shoes, Hat, onePiece, Accessory);
+
+
 
     try {
       // Create a new SavedOutfit document
@@ -13,7 +18,14 @@ exports.saveOutfit = async (req, res) => {
         name: name, 
         description: description,
         user: user, 
-        savedOutfit: clothingItems,
+        outfit: {
+          Top: Top || null,
+          Bottom: Bottom || null,
+          Shoes: Shoes || null,
+          Hat: Hat || null,
+          onePiece: onePiece || null,
+          Accessory: Accessory || null,
+        },
       });
 
       console.log("savedOutfitDoc URL", savedOutfitDoc);
