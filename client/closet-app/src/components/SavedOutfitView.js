@@ -24,19 +24,21 @@ const SavedOutfitView = () => {
         <div className="saved-outfit-view-container">
             <div className="saved-outfit-view-main">
                 {Object.entries(outfit).map(([category, item]) => (
-                <div className="saved-outfit-item-card" key={category} >
-                    <div className="saved-outfit-item-category-title">{category}</div>
-                    {item ? (
-                    <div className="saved-outfit-image-wrapper">
-                        <img class="saved-outfit-image" src={item.imageUrl} alt={category} />
+                    <div className="saved-outfit-item-card" key={category} >
+                        <div className="saved-outfit-item-card-border">
+                            <div className="saved-outfit-item-category-title">{category}</div>
+                            {item ? (
+                            <div className="saved-outfit-image-wrapper">
+                                <img class="saved-outfit-image" src={item.imageUrl} alt={category} />
+                            </div>
+                            ) : (
+                            <p>No {category} selected</p>
+                            )}
+                            <div>
+                                <button class="remove-saved-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
+                            </div>
+                        </div>
                     </div>
-                    ) : (
-                    <p>No {category} selected</p>
-                    )}
-                    <div>
-                        <button class="remove-saved-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
-                    </div>
-                </div>
                 ))}
             </div>
         </div>

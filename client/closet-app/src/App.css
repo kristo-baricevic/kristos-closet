@@ -533,26 +533,33 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 160px;
+  padding: 20px;
 }
 
 
 .saved-outfit-view-main {
   display: flex;
-  flex-direction: flex≈;
+  flex-direction: column;
   justify-content: flex-start;
 }
 
 
 .saved-outfit-item-card {
-  width: 100px;
-  height: 170px;
+  width: 300px;
+  height: 510px;
   margin: 5px;
   padding: 10px;
   border-radius: 14px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
+}
+
+.saved-outfit-item-card-border {
+  height: 91%;
+  border: 2px dotted rgba(0, 203, 115, 0.3);
+  padding: 20px;
+  border-radius: 20px;
 }
 
 
@@ -593,14 +600,17 @@ button {
 
 
 .saved-outfit-image-wrapper {
-  width: 100%;
-  height: 100px;
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.saved-outfit-image {
+  height: 100%;
 }
 
 
@@ -1078,6 +1088,11 @@ button {
 .wardrobe-ul-container {
   display: flex;
   flex-direction: column;
+  margin: 0;
+  margin-inline-start: -60px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  list-style-type: none;
 }
 
 .wardrobe-ul {
