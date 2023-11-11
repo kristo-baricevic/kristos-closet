@@ -17,7 +17,7 @@ exports.saveOutfit = async (req, res) => {
         name: name, 
         description: description,
         user: user, 
-        clothingItems: clothingItems.map(item => item._id),
+        clothingItems: clothingItems,
       });
 
       console.log("savedOutfitDoc URL", savedOutfitDoc);
