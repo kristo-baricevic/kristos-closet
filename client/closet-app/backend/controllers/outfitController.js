@@ -31,9 +31,9 @@ exports.saveOutfit = async (req, res) => {
       console.log("savedOutfitDoc URL", savedOutfitDoc);
   
       // Save the outfit to the database
-      await savedOutfitDoc.save();
-      console.log("outfit potentially saved");
-      res.status(201).json(savedOutfitDoc);
+      const result = await savedOutfitDoc.save();
+      console.log("outfit potentially saved", result);
+      res.status(201).json(result);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'An error occurred while saving the outfit' });
