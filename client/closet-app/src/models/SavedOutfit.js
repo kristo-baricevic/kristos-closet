@@ -13,7 +13,7 @@ const savedOutfitSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  outfit: [{
+  clothingItems: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ClothingItem',
   }],

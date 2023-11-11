@@ -7,11 +7,8 @@ exports.saveOutfit = async (req, res) => {
     
     // Destructure parameters to set up data in the same format as the mongoose model
     const { name, description, user, clothingItems } = req.body;
-    const { Top, Bottom, Shoes, Hat, onePiece, Accessory } = clothingItems;
 
     console.log("clothing items received", clothingItems);
-    console.log(Top, Bottom, Shoes, Hat, onePiece, Accessory);
-
 
 
     try {
@@ -20,14 +17,7 @@ exports.saveOutfit = async (req, res) => {
         name: name, 
         description: description,
         user: user, 
-        outfit: [
-          Top || null,
-          Bottom || null,
-          Shoes || null,
-          Hat || null,
-          onePiece || null,
-          Accessory || null,
-        ],
+        clothingItems: clothingItems.map(item => item._id),
       });
 
       console.log("savedOutfitDoc URL", savedOutfitDoc);
