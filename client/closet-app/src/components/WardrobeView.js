@@ -58,7 +58,7 @@ const Wardrobe = () => {
                     <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
                     <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
                   </div>
-                </div> 
+                 </div> 
               </div>
           </div>
         ))}

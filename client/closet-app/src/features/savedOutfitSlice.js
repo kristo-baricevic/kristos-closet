@@ -50,14 +50,12 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
     console.log("outfit to save", outfitToSave);
     console.log("clothingItems to save", outfitToSave.clothingItems);
 
-    addToWardrobe(outfitToSave);
+    const response = await axios.post(
+      'https://kristobaricevic.com/api/outfit',
+      outfitToSave
+    );
 
-    // const response = await axios.post(
-    //   'https://kristobaricevic.com/api/outfit',
-    //   outfitToSave
-    // );
-
-    console.log("the response is", outfitToSave);
+    console.log("the response is", response);
   } catch (error) {
     throw error;
   }

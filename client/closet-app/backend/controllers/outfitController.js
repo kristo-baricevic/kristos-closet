@@ -2,9 +2,9 @@ const SavedOutfit = require('../models/SavedOutfit');
 const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
-    console.log("save outfit controller");
+    console.log("save outfit controller", req.body);
+    console.log("request body", )
     const { name, description, user, clothingItems, imageUrl } = req.body;
-      console.log("test outfit", clothingItems);
 
     try {
       // const { outfit, userId } = req.body;
