@@ -31,6 +31,7 @@ export const wardrobeSlice = createSlice({
   reducers: {
     addToWardrobe: (state, action) => {
       const outfit = action.payload; 
+      console.log("outfit in slice", outfit);
       state.wardrobe.push(outfit);
     },
     removeFromWardrobe: (state, action) => {
