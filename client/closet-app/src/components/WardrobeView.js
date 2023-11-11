@@ -11,7 +11,7 @@ const Wardrobe = () => {
   useEffect(() => {
     console.log('useEffect is running');
     dispatch(getWardrobe(user));
-    console.log(user);
+    console.log(wardrobe);
   }, [user]);
   
 //the line below is a remove button i was using earlier
@@ -30,32 +30,36 @@ const Wardrobe = () => {
 
   return (
     <div className="wardrobe-view-main">
-    <h2 className="wardrobe-heading">My Wardrobe</h2>
-    {wardrobe.map((outfit, index) => (
-    <div 
-      key={index} 
-      className="wardrobe-view-body"
-    >
-      <li className="wardrobe-item-card-container" key={index}>
-          <div className="wardrobe-item-card">
-            <p className="wardrobe-outfit-name">{outfit.description}</p>
-            <ul className="wardrobe-list-container">
-              {outfit.clothingItems.map((clothingItem, itemIndex) => (
-                <div className="wardrobe-outfit-item-container">
-                <li className="wardrobe-list-itemIndex" key={itemIndex}>
-                  <p className="wardrobe-list-category">{clothingItem.category}</p>
-                  <img src={clothingItem.imageUrl} alt="Clothing item" />
-                </li>
-                </div>
-              ))}
-            </ul>
-            <button onClick={() => handleRemoveItem(outfit._id)}>Remove From Wardrobe</button>
-            <button onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
+      <div className="wardrobe-heading">
+        <h2 className="wardrobe-heading-text">My Wardrobe</h2>
+      </div>
+      <div className="wardrobe-container">
+        {wardrobe.map((outfit, index) => (
+          <div 
+            key={index} 
+            className="wardrobe-view-body"
+          >
+              <div className="wardrobe-item-card">
+                <p className="wardrobe-outfit-name">{outfit.description}</p>
+                  <div className="wardrobe-ul-container">
+                    <ul className="wardrobe-ul">
+                      {outfit.clothingItems.map((clothingItem, itemIndex) => (
+                        <div className="wardrobe-outfit-item-container" key={itemIndex}>
+                          <li className="wardrobe-list-itemIndex" key={itemIndex}>
+                            <p className="wardrobe-list-category">{clothingItem.category}</p>
+                            <img src={clothingItem.imageUrl} alt="Clothing item" />
+                          </li>
+                        </div>
+                      ))}
+                    </ul>
+                  </div>
+                <button className="navbar-button" onClick={() => handleRemoveItem(outfit._id)}>Remove From Wardrobe</button>
+                <button className="navbar-button" onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
+              </div>
           </div>
-        </li>
+        ))}
+      </div>
     </div>
-  ))}
-  </div>
   );
 };
 

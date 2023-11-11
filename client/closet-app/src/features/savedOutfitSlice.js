@@ -53,8 +53,6 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
     console.log("clothingItems to save", outfitToSave.clothingItems);
 
 
-
-
     addToWardrobe(outfitToSave);
 
     const response = await axios.post(
@@ -77,17 +75,8 @@ export const savedOutfitSlice = createSlice({
     reducers: {
       reducers: {
         addItem: (state, action) => {
-          const { category, objectId, imageUrl } = action.payload;
           
-          // If item is a 'onePiece', remove 'top' and 'bottom' from the state
-          if (category === 'onePiece') {
-            state.outfits[0].clothingItems = state.outfits[0].clothingItems.filter(item => item.category !== 'Top' && item.category !== 'Bottom');
-          } else if (category === 'Top' || category === 'Bottom') {
-            // If item is 'top' or 'bottom', remove 'onePiece' from the state
-            state.outfits[0].clothingItems = state.outfits[0].clothingItems.filter(item => item.category !== 'onePiece');
-          }
-          // Add the new item to the outfit's clothingItems array
-          state.outfits[0].clothingItems.push({ category, item: objectId });
+          state.outfits[0].clothingItems.push(action.payload);
         },
       },      
       },
