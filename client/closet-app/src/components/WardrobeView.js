@@ -40,21 +40,25 @@ const Wardrobe = () => {
             className="wardrobe-view-body"
           >
               <div className="wardrobe-item-card">
-                <p className="wardrobe-outfit-name">{outfit.description}</p>
-                  <div className="wardrobe-ul-container">
-                    <ul className="wardrobe-ul">
-                      {outfit.clothingItems.map((clothingItem, itemIndex) => (
-                        <div className="wardrobe-outfit-item-container" key={itemIndex}>
-                          <li className="wardrobe-list-itemIndex" key={itemIndex}>
-                            <p className="wardrobe-list-category">{clothingItem.category}</p>
-                            <img src={clothingItem.imageUrl} alt="Clothing item" />
-                          </li>
-                        </div>
-                      ))}
-                    </ul>
+                <div className="wardrobe-card-solid-border">
+                  <p className="wardrobe-outfit-name">{outfit.description}</p>
+                    <div className="wardrobe-ul-container">
+                      <ul className="wardrobe-ul">
+                        {outfit.clothingItems.map((clothingItem, itemIndex) => (
+                          <div className="wardrobe-outfit-item-container" key={itemIndex}>
+                            <li className="wardrobe-list-itemIndex" key={itemIndex}>
+                              <p className="wardrobe-list-category">{clothingItem.category}</p>
+                              <img src={clothingItem.imageUrl} alt="Clothing item" />
+                            </li>
+                          </div>
+                        ))}
+                      </ul>
+                    </div>
+                  <div className="wardrobe-card-button-container">
+                    <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
+                    <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
                   </div>
-                <button className="navbar-button" onClick={() => handleRemoveItem(outfit._id)}>Remove From Wardrobe</button>
-                <button className="navbar-button" onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
+                </div> 
               </div>
           </div>
         ))}
@@ -62,6 +66,5 @@ const Wardrobe = () => {
     </div>
   );
 };
-
 
 export default Wardrobe;

@@ -1023,10 +1023,13 @@ button {
 
 .wardrobe-heading {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wardrobe-heading-text {
   display: flex;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 .wardrobe-container {
@@ -1034,32 +1037,41 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .wardrobe-view-body {
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 6px;
 }
 
 .wardrobe-card-container {
   display: flex;
-  flex-direction: row;
 }
 
 .wardrobe-item-card {
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
+  padding: 4px;
   border-radius: 20px;
   position: relative;
   z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.wardrobe-card-solid-border {
+  border: 2px dashed rgba(0, 203, 115, 0.3);
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .wardrobe-outfit-name {
   display: flex;
+  align-items: center;
+  justify-content: center;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
@@ -1069,11 +1081,13 @@ button {
 }
 
 .wardrobe-ul {
-  display: flex;
-  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .wardrobe-outfit-item-container {
+  align-items: center;
+  justify-content: center;
   display: flex;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
@@ -1105,25 +1119,26 @@ button {
 }
 
 .wardrobe-item-card img {
-  max-width: 100%;
+  width: 100%;
   display: block;
   margin: 0 auto;
 }
 
-.wardrobe-item-card button {
-  background-color: #009744;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
+.wardrobe-card-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.wardrobe-item-card button:hover {
-  background-color: #51d28b;
-  color: #000000;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
+.wardrobe-button {
+    background-color: #50C878;
+    color: black;
+    border: 1px solid black;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 /* SlideUpTab */
