@@ -34,7 +34,9 @@ const Wardrobe = () => {
         <h2 className="wardrobe-heading-text">My Wardrobe</h2>
       </div>
       <div className="wardrobe-container">
-      {wardrobe && wardrobe.map((outfit, index) => (
+      {console.log('wardrobe:', wardrobe)};
+
+      {wardrobe.outfit && wardrobe.outfit.map((outfit, index) => (
           <div 
             key={index} 
             className="wardrobe-view-body"
