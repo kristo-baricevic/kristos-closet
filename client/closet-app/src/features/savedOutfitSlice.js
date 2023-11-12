@@ -44,6 +44,7 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
   //   };
 
     console.log("outfit to save", outfitData);
+    addItem(outfitData);
 
     try {
     const response = await axios.post(
@@ -64,8 +65,7 @@ export const savedOutfitSlice = createSlice({
     reducers: {
       reducers: {
         addItem: (state, action) => {
-          
-          state.outfits[0].outfit.push(action.payload);
+          state.outfit.push(action.payload);
         },
       },      
       },
