@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import { selectUser } from './userSlice';
 import axios from 'axios';
 
-
-
 const initialState = {
   wardrobe: [],
   loading: false,
@@ -17,7 +15,7 @@ export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user, wa
     console.log("user?", user);
     console.log("response is", wardrobe);
     console.log("wardrobe data", response)
-    return user;
+    addToWardrobe(wardrobe);
   } catch (error) {
     console.error(error);
   }
@@ -25,15 +23,15 @@ export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user, wa
 
 export const addToWardrobeAsync = createAsyncThunk('wardrobe/wardrobe', async (user, outfit) => {
   try {
+    console.log("add to w user", user);
+    console.log("add to w outfit", outfit);
     const response = await axios.post(`https://kristobaricevic.com/api/wardrobe/${user}`, outfit);
-    console.log("wardrobe data", response)
-    return user;
+    console.log("wardrobe data", response);
+    addToWardrobe(response);
   } catch (error) {
     console.error(error);
   }
 });
-
-
 
 export const wardrobeSlice = createSlice({
   name: 'wardrobe',

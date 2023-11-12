@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { tabStyle, toggleTabStyle, fetchItems, deleteImage, deleteItems, selectInitialClosetItems, updateItem } from '../features/closetSlice';
+import { tabStyle, toggleTabStyle, fetchItems, deleteImage, deleteItems, closetItems } from '../features/closetSlice';
 import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
@@ -11,7 +11,7 @@ import CategoriesView from './CategoriesView';
 
 const ClosetView = () => {
   const isEditModalVisible = useSelector(editModalVisibility);
-  const images = useSelector(selectInitialClosetItems);
+  const images = useSelector(closetItems);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const isAuthenticated = useSelector(userIsAuthenticated);
   const isImageModalVisible = useSelector(imageModalVisibility);

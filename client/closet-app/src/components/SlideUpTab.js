@@ -39,20 +39,19 @@ function SlideUpTab({item}) {
     console.log("test the outfit", outfit);
 
     // Create an outfit object that includes the selected items and other data
-    dispatch(saveOutfitAsync(outfitData));
-    dispatch(addToWardrobeAsync(outfitData));
+    const result = dispatch(saveOutfitAsync(outfitData));
+    console.log("end of save outfit", result);
   };
 
   return (
     <div className={`slide-up-tab ${isOpen ? 'open' : ''}`}>
       <div className="tab-view-buttons-container">
-      <button className="tab-button" onClick={toggleTab}>
-        Selected Items View
-      </button>
-      <button className="save-outfit" onClick={handleSaveOutfit}>
-        Save Outfit
-      </button>
-
+        <button className="tab-button" onClick={toggleTab}>
+          Selected Items View
+        </button>
+        <button className="save-outfit" onClick={handleSaveOutfit}>
+          Save Outfit
+        </button>
       </div>
       <div className="tab-content">
         <OutfitView item={item}/>

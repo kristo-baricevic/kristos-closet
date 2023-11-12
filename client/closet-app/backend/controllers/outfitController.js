@@ -67,4 +67,29 @@ exports.saveOutfit = async (req, res) => {
   }
 };
 
+exports.getOutfitById = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const outfit = await SavedOutfit.findById(_id);
+
+    return outfit;
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
   
+exports.getOutfit = async (req, res) => {
+  try {
+    const { user } = req.body;
+
+    console.log("inside get images");
+
+    const outfit = await SavedOutfit.findOne({ $or: [{ user }] });
+
+    return outfit;
+    } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};

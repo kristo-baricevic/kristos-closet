@@ -145,9 +145,9 @@ export const {
   deleteImage,
 } = closetSlice.actions;
 
-export const selectInitialClosetItems = (state) => state.closet.images;
-export const selectInitialClosetLoading = (state) => state.closet.loading;
-export const selectInitialClosetError = (state) => state.closet.error;
+export const closetItems = (state) => state.closet.images;
+export const closetLoading = (state) => state.closet.loading;
+export const closetError = (state) => state.closet.error;
 export const tabStyle = (state) => state.closet.tabOpen;
 
 export const closetSliceReducer = closetSlice.reducer;

@@ -36,32 +36,32 @@ const Wardrobe = () => {
       <div className="wardrobe-container">
       {console.log('wardrobe:', wardrobe)}
 
-      {wardrobe.data && wardrobe.data.map((outfit, index) => (
+      {wardrobe && wardrobe.map((outfit, index) => (
           <div 
             key={index} 
             className="wardrobe-view-body"
           >
-              <div className="wardrobe-item-card">
-                <div className="wardrobe-card-solid-border">
-                  <p className="wardrobe-outfit-name">{outfit.description}</p>
-                    <div className="wardrobe-ul-container">
-                      <ul className="wardrobe-ul">
-                        {outfit.clothingItems.map((clothingItem, itemIndex) => (
-                          <div className="wardrobe-outfit-item-container" key={itemIndex}>
-                            <li className="wardrobe-list-itemIndex" key={itemIndex}>
-                              <p className="wardrobe-list-category">{clothingItem.category}</p>
-                              <img src={clothingItem.imageUrl} alt="Clothing item" />
-                            </li>
-                          </div>
-                        ))}
-                      </ul>
-                    </div>
-                  <div className="wardrobe-card-button-container">
-                    <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
-                    <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
+            <div className="wardrobe-item-card">
+              <div className="wardrobe-card-solid-border">
+                <p className="wardrobe-outfit-name">{outfit.description}</p>
+                  <div className="wardrobe-ul-container">
+                    <ul className="wardrobe-ul">
+                      {outfit.clothingItems.map((clothingItem, itemIndex) => (
+                        <div className="wardrobe-outfit-item-container" key={itemIndex}>
+                          <li className="wardrobe-list-itemIndex" key={itemIndex}>
+                            <p className="wardrobe-list-category">{clothingItem.category}</p>
+                            <img src={clothingItem.imageUrl} alt="Clothing item" />
+                          </li>
+                        </div>
+                      ))}
+                    </ul>
                   </div>
-                 </div> 
-              </div>
+                <div className="wardrobe-card-button-container">
+                  <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
+                  <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
+                </div>
+              </div> 
+            </div>
           </div>
         ))}
       </div>

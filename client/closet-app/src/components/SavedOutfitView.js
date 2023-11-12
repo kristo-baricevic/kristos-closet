@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedItems, removeItem } from '../features/selectedItemsSlice';
-
+import { addToWardrobeAsync } from '../features/wardrobeSlice';
 
 const SavedOutfitView = () => {
     const outfit = useSelector(selectedItems);
 
     // console.log("outfit", outfit);
     const dispatch = useDispatch();
-     
+
     const handleRemoveItem = (item) => {
         //check to see if there is an item
         if (!item) 
@@ -19,6 +19,15 @@ const SavedOutfitView = () => {
         dispatch(removeItem(item));
         console.log("Handle Remove Item", item);
     };
+ 
+    const handleAddToWardrobe = (item) => {
+        if (!item)
+            {
+                alert('This is what it sounds like when doves cry :,(');
+                return;            
+            }
+        dispatch(addToWardrobeAsync(outfit));
+    }
 
     return (
         <div className="saved-outfit-view-container">
@@ -36,6 +45,11 @@ const SavedOutfitView = () => {
                     <div>
                         <button class="remove-saved-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
                     </div>
+                    
+                    <div>
+                        <button class="remove-saved-outfit-button" onClick={() => handleAddToWardrobe(item)}>Add to Wardrobe</button>
+                    </div>
+
                 </div>
                 ))}
             </div>

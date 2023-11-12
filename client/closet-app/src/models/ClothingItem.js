@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
 const clothingItemSchema = new Schema({
   category: String,
   isUserImage: Boolean,

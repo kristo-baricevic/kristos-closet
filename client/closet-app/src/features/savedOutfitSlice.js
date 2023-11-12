@@ -51,6 +51,7 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
       'https://kristobaricevic.com/api/outfit',
       outfitData
     );
+    
     console.log("the response is", response);
 
   } catch (error) {

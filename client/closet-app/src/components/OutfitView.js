@@ -1,15 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedItems, removeItem } from '../features/selectedItemsSlice';
-import { selectedOutfit } from '../features/savedOutfitSlice';
 
 const OutfitView = () => {
     const outfit = useSelector(selectedItems);
-    const currentOutfit = useSelector(selectedOutfit);
-
 
     const dispatch = useDispatch();
-    console.log("current outfit in OutfitView", currentOutfit);
      
     const handleRemoveItem = (item) => {
         //check to see if there is an item
