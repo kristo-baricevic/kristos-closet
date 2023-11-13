@@ -9,14 +9,14 @@ const Wardrobe = () => {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    dispatch(getWardrobe(user)).then((result) => {
+    console.log("if logged in?", user?._id);
+    dispatch(getWardrobe(user?._id)).then((result) => {
       dispatch(addToWardrobe(result));
     });
   }, [user, dispatch]);
   
-//the line below is a remove button i was using earlier
-//<button onClick={() => handleRemoveItem(wardrobe[0]?.clothingItems[index]?.objectId)}>Remove</button>
-
+  //the line below is a remove button i was using earlier
+  //<button onClick={() => handleRemoveItem(wardrobe[0]?.clothingItems[index]?.objectId)}>Remove</button>
 
   const handleRemoveItem = (outfitId) => {
     // Check to see if there is an outfit
