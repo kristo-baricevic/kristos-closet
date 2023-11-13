@@ -46,7 +46,9 @@ exports.getWardrobeOutfits = async (req, res) => {
   try {
     console.log("user in get wardrobe controller");
     console.log("request body", req.params);
-    console.log("request body", userId);
+    console.log("request body", userId.user);
+    console.log("request body", userId.userId);
+
 
     // Retrieve all outfits in the wardrobe for the given user
     const wardrobe = await SavedOutfit.find(req.params.userId);
