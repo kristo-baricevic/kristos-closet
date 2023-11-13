@@ -40,7 +40,7 @@ exports.removeFromWardrobe = async (req, res) => {
 exports.getWardrobeOutfits = async (req, res) => {
 
   console.log("*****", req);
-  const userId = req.params.userId._id;
+  const userId = req.params.userId;
 
 
   try {
