@@ -9,9 +9,6 @@ const Wardrobe = () => {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    console.log('useEffect is running');    
-    console.log("user in useeffect", user);
-
     dispatch(getWardrobe(user)).then((result) => {
       dispatch(addToWardrobe(result));
     });
