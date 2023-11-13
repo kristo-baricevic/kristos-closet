@@ -48,7 +48,7 @@ const Wardrobe = () => {
                 <p className="wardrobe-outfit-name">{outfit.description}</p>
                   <div className="wardrobe-ul-container">
                     <ul className="wardrobe-ul">
-                      {outfit.clothingItems.map((clothingItem) => (
+                      {outfit.clothingItems && outfit.clothingItems.map((clothingItem) => (
                         <div className="wardrobe-outfit-item-container" key={clothingItem?._id}>
                           <li className="wardrobe-list-itemIndex" key={clothingItem?._id}>
                             <p className="wardrobe-list-category">{clothingItem?.category}</p>
