@@ -37,7 +37,7 @@ exports.uploadImageAndMetaData = async (req, res) => {
 
     console.log("upload backend passed checks");
 
-    // Save metadata in the database
+    // Save in the database
     const clothingItem = new ClothingItem({
       category: category,
       isUserImage: false,

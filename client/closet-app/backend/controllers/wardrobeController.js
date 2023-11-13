@@ -1,4 +1,6 @@
+const SavedOutfit = require("../models/SavedOutfit");
 const Wardrobe = require("../models/Wardrobe");
+
 
 exports.addToWardrobe = async (req, res) => {
   try {
@@ -41,9 +43,14 @@ exports.getWardrobeOutfits = async (req, res) => {
     const userId = req.params.user; // Assuming you pass the user's ID as a parameter
 
     // Retrieve all outfits in the wardrobe for the given user
-    const wardrobeOutfits = await Wardrobe.find({ userId });
+    const wardrobe = await SavedOutfit.find({ userId });
+    
+    if (wardrobe.length === 0) {
+      return res.status(404).json({ error: 'No outfits found for the given user ID' });
+    }
 
-    res.json(wardrobeOutfits);
+    res.status(200).json(wardrobe);
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while fetching wardrobe outfits' });

@@ -16,17 +16,20 @@ const SavedOutfitView = () => {
                 alert('This is what it sounds like when doves cry :,(');
                 return;            
             }
+
         dispatch(removeItem(item));
         console.log("Handle Remove Item", item);
     };
  
-    const handleAddToWardrobe = (item) => {
-        if (!item)
+    const handleAddToWardrobe = (outfit) => {
+        if (!outfit)
             {
                 alert('This is what it sounds like when doves cry :,(');
                 return;            
             }
+
         dispatch(addToWardrobeAsync(outfit));
+        console.log("Handle Add Wardrobe", outfit);
     }
 
     return (
@@ -42,16 +45,11 @@ const SavedOutfitView = () => {
                     ) : (
                     <p>No {category} selected</p>
                     )}
-                    <div>
-                        <button class="remove-saved-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
-                    </div>
-                    
-                    <div>
-                        <button class="remove-saved-outfit-button" onClick={() => handleAddToWardrobe(item)}>Add to Wardrobe</button>
-                    </div>
-
                 </div>
                 ))}
+                <div>
+                    <button className="remove-saved-outfit-button" onClick={() => handleAddToWardrobe(outfit)}>Add to Wardrobe</button>
+                </div>
             </div>
         </div>
     );
