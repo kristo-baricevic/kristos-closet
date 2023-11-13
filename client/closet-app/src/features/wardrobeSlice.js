@@ -9,13 +9,12 @@ const initialState = {
   error: null,
 };
 
-export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user, wardrobe) => {
+export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) => {
   try {
     const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user}`);
     console.log("user?", user);
-    console.log("response is", wardrobe);
-    console.log("wardrobe data", response)
-    addToWardrobe(wardrobe);
+    console.log("wardrobe data", response.data)
+    addToWardrobe(response.data);
   } catch (error) {
     console.error(error);
   }

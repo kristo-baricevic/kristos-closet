@@ -4,7 +4,7 @@ import { getWardrobe, removeFromWardrobe, selectedWardrobe } from '../features/w
 import { selectUser } from '../features/userSlice';
 
 const Wardrobe = () => {
-  const [wardrobe, setWardrobe] = useState(null);
+  const wardrobe = useSelector(selectedWardrobe);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
@@ -12,7 +12,6 @@ const Wardrobe = () => {
     console.log('useEffect is running');
     const result = dispatch(getWardrobe(user));
     console.log("useEffect result", result);
-    setWardrobe(result);
     console.log("wardrobe is", wardrobe)
   }, [user, wardrobe, dispatch]);
   
@@ -36,7 +35,6 @@ const Wardrobe = () => {
         <h2 className="wardrobe-heading-text">My Wardrobe</h2>
       </div>
       <div className="wardrobe-container">
-      {console.log('wardrobe:', wardrobe)}
 
       {wardrobe && wardrobe.map((outfit, index) => (
           <div 
@@ -48,10 +46,10 @@ const Wardrobe = () => {
                 <p className="wardrobe-outfit-name">{outfit.description}</p>
                   <div className="wardrobe-ul-container">
                     <ul className="wardrobe-ul">
-                      {outfit.clothingItems.map((clothingItem, itemIndex) => (
+                      {outfit.map((clothingItem, itemIndex) => (
                         <div className="wardrobe-outfit-item-container" key={itemIndex}>
                           <li className="wardrobe-list-itemIndex" key={itemIndex}>
-                            <p className="wardrobe-list-category">{clothingItem.category}</p>
+                            <p className="wardrobe-list-category">{clothingItem?.category}</p>
                             <img src={clothingItem.imageUrl} alt="Clothing item" />
                           </li>
                         </div>
