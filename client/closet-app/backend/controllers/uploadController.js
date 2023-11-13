@@ -18,7 +18,7 @@ exports.uploadImageAndMetaData = async (req, res) => {
     const user = req.body.user;
     console.log("testing backend upload");
     console.log("category", category);
-    console.log("user in the backend", user.user); //undefined
+    console.log("user in the backend", user); 
 
     const timestampPrefix = Date.now();
 
