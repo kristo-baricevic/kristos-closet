@@ -37,7 +37,12 @@ exports.removeFromWardrobe = async (req, res) => {
   }
 };
 
-exports.getWardrobeOutfits = async (userId, res) => {
+exports.getWardrobeOutfits = async (req, res) => {
+
+  console.log("*****", req);
+  const userId = req.body.user;
+
+
   try {
     console.log("user in get wardrobe controller", userId);
     console.log("request body", userId);
