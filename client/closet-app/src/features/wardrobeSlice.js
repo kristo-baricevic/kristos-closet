@@ -14,7 +14,7 @@ export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) =>
     const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user}`);
     console.log("user?", user);
     console.log("wardrobe data", response.data)
-    addToWardrobe(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
   }
@@ -38,7 +38,6 @@ export const wardrobeSlice = createSlice({
   reducers: {
     addToWardrobe: (state, action) => {
       const outfit = action.payload; 
-      console.log("outfit in slice", outfit);
       state.wardrobe.push(outfit);
     },
     removeFromWardrobe: (state, action) => {

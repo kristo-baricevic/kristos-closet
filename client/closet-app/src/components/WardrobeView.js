@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getWardrobe, removeFromWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
+import { getWardrobe, addToWardrobe, removeFromWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
 import { selectUser } from '../features/userSlice';
 
 const Wardrobe = () => {
@@ -9,11 +9,13 @@ const Wardrobe = () => {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    console.log('useEffect is running');
-    const result = dispatch(getWardrobe(user));
-    console.log("useEffect result", result);
-    console.log("wardrobe is", wardrobe)
-  }, [user, wardrobe, dispatch]);
+    console.log('useEffect is running');    
+    console.log("user in useeffect", user);
+
+    dispatch(getWardrobe(user)).then((result) => {
+      dispatch(addToWardrobe(result));
+    });
+  }, [user, dispatch]);
   
 //the line below is a remove button i was using earlier
 //<button onClick={() => handleRemoveItem(wardrobe[0]?.clothingItems[index]?.objectId)}>Remove</button>
@@ -36,9 +38,9 @@ const Wardrobe = () => {
       </div>
       <div className="wardrobe-container">
 
-      {wardrobe && wardrobe.map((outfit, index) => (
+      {wardrobe && wardrobe.map((outfit) => (
           <div 
-            key={index} 
+            key={outfit._id} 
             className="wardrobe-view-body"
           >
             <div className="wardrobe-item-card">
@@ -46,11 +48,11 @@ const Wardrobe = () => {
                 <p className="wardrobe-outfit-name">{outfit.description}</p>
                   <div className="wardrobe-ul-container">
                     <ul className="wardrobe-ul">
-                      {outfit.map((clothingItem, itemIndex) => (
-                        <div className="wardrobe-outfit-item-container" key={itemIndex}>
-                          <li className="wardrobe-list-itemIndex" key={itemIndex}>
+                      {outfit.clothingItems.map((clothingItem) => (
+                        <div className="wardrobe-outfit-item-container" key={clothingItem?._id}>
+                          <li className="wardrobe-list-itemIndex" key={clothingItem?._id}>
                             <p className="wardrobe-list-category">{clothingItem?.category}</p>
-                            <img src={clothingItem.imageUrl} alt="Clothing item" />
+                            <img src={clothingItem?.imageUrl} alt="Clothing item" />
                           </li>
                         </div>
                       ))}
