@@ -13,7 +13,7 @@ export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) =>
   try {
     console.log("get wardrobe test", user._id);
     const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user._id}`);
-    console.log("user?", user);
+    console.log("response?", response);
     console.log("wardrobe data", response.data)
     return response.data;
   } catch (error) {
