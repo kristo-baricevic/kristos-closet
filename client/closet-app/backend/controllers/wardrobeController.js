@@ -39,12 +39,14 @@ exports.removeFromWardrobe = async (req, res) => {
 
 exports.getWardrobeOutfits = async (req, res) => {
   try {
-    console.log("in get wardrobe controller");
-    const userId = req.params.user; // Assuming you pass the user's ID as a parameter
+    console.log("in get wardrobe controller", req);
+    const { id } = req.body;
+    console.log("in get wardrobe controller", id);
 
     // Retrieve all outfits in the wardrobe for the given user
-    const wardrobe = await SavedOutfit.find({ userId });
-    
+    const wardrobe = await SavedOutfit.find({ id });
+    console.log("in get wardrobe controller", wardrobe);
+
     if (wardrobe.length === 0) {
       return res.status(404).json({ error: 'No outfits found for the given user ID' });
     }

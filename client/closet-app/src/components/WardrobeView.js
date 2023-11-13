@@ -1,18 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWardrobe, removeFromWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
 import { selectUser } from '../features/userSlice';
 
 const Wardrobe = () => {
-  const wardrobe = useSelector(selectedWardrobe);
+  const [wardrobe, setWardrobe] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   useEffect(() => {
     console.log('useEffect is running');
-    dispatch(getWardrobe(user));
-    console.log(wardrobe);
-  }, [user]);
+    const result = dispatch(getWardrobe(user));
+    console.log("useEffect result", result);
+    setWardrobe(result);
+    console.log("wardrobe is", wardrobe)
+  }, [user, wardrobe, dispatch]);
   
 //the line below is a remove button i was using earlier
 //<button onClick={() => handleRemoveItem(wardrobe[0]?.clothingItems[index]?.objectId)}>Remove</button>
