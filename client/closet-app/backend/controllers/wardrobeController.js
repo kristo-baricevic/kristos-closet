@@ -47,8 +47,7 @@ exports.getWardrobeOutfits = async (req, res) => {
     console.log("user in get wardrobe controller");
     console.log("request body", req.params);
     console.log("request body", req.params.userId);
-    console.log("request body", req.params.userId.object);
-    console.log("request body", req.params.userId.userId);
+    console.log("request body", req.params.userId[0]);
 
 
 
