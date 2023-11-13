@@ -9,8 +9,8 @@ const Wardrobe = () => {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    console.log("if logged in?", user?._id);
-    dispatch(getWardrobe(user?._id)).then((result) => {
+    console.log("if logged in?", user);
+    dispatch(getWardrobe(user)).then((result) => {
       dispatch(addToWardrobe(result));
     });
   }, [user, dispatch]);

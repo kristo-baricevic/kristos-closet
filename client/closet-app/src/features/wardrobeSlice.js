@@ -9,10 +9,10 @@ const initialState = {
   error: null,
 };
 
-export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (userId) => {
+export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) => {
   try {
-    const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${userId}`);
-    console.log("user?", userId);
+    const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user}`);
+    console.log("user?", user);
     console.log("wardrobe data", response.data)
     return response.data;
   } catch (error) {
