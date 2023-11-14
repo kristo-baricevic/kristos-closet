@@ -8,7 +8,7 @@ exports.saveOutfit = async (req, res) => {
     // Destructure parameters to set up data in the same format as the mongoose model
     const { name, description, user, clothingItems } = req.body;
 
-    console.log("clothing items received", clothingItems);
+    console.log("clothing items received", user);
 
 
     try {

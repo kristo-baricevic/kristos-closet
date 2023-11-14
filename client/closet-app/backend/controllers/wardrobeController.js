@@ -50,6 +50,8 @@ exports.getWardrobeOutfits = async (req, res) => {
       .populate('outfit')
       .exec();
 
+      console.log("request body", outfits);
+
     res.status(200).json(outfits);
   } catch (error) {
     console.error(error);
