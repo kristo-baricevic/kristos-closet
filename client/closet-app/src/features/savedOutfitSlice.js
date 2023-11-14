@@ -18,40 +18,19 @@ const initialState = {
 };
 
 export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData) => {
-  // const clothingItemsForNewOutfit = [];
 
   console.log("data to save", outfitData)
 
-  // Iterate through the outfitData.clothingItems object and build an array of clothing items
-  // for (const category in outfitData) {
-  //   if (outfitData.hasOwnProperty(category)) {
-  //     clothingItemsForNewOutfit.push({
-  //       category,
-  //       item: outfitData.category,
-  //     });
-  //   }
-  // }
 
-  // console.log("clothing Items",clothingItemsForNewOutfit);
+  console.log("outfit to save", outfitData);
+  addItem(outfitData);
 
-  // try {
-  //   const outfitToSave = {
-  //     name: outfitData.name,
-  //     description: outfitData.description,
-  //     user: outfitData.user,
-  //     clothingItems: clothingItemsForNewOutfit,
-  //     imageUrl: outfitData.imageUrl,
-  //   };
-
-    console.log("outfit to save", outfitData);
-    addItem(outfitData);
-
-    try {
+  try {
     const response = await axios.post(
       'https://kristobaricevic.com/api/outfit',
       outfitData
     );
-    
+  
     console.log("the response is", response);
 
   } catch (error) {
@@ -63,27 +42,24 @@ export const savedOutfitSlice = createSlice({
   name: 'savedOutfit',
   initialState,
   reducers: {
-    reducers: {
-      reducers: {
-        addItem: (state, action) => {
-          state.outfit.push(action.payload);
-        },
-      },      
-      },
-      extraReducers: (builder) => {
-        builder
-          .addCase(saveOutfitAsync.pending, (state) => {
-            state.loading = true;
-            state.error = null;
-          })
-          .addCase(saveOutfitAsync.fulfilled, (state, action) => {
-            state.loading = false;
-            state.outfits.push(action.payload);
-          })
-          .addCase(saveOutfitAsync.rejected, (state, action) => {
-            state.loading = false;
-            state.error = action.payload;
-          });
+    addItem: (state, action) => {
+      state.outfit.push(action.payload);
+    },
+  },
+    extraReducers: (builder) => {
+      builder
+        .addCase(saveOutfitAsync.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(saveOutfitAsync.fulfilled, (state, action) => {
+          state.loading = false;
+          state.outfits.push(action.payload);
+        })
+        .addCase(saveOutfitAsync.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        });
       }
     },
 });

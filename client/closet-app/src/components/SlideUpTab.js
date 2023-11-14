@@ -39,8 +39,7 @@ function SlideUpTab({item}) {
     console.log("test the outfit", outfit);
 
     // Create an outfit object that includes the selected items and other data
-    const result = dispatch(saveOutfitAsync(outfitData));
-    console.log("end of save outfit", result);
+    dispatch(saveOutfitAsync(outfitData));
   };
 
   return (
