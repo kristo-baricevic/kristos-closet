@@ -21,9 +21,7 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
 
   console.log("data to save", outfitData)
 
-
   console.log("outfit to save", outfitData);
-  addItem(outfitData);
 
   try {
     const response = await axios.post(
@@ -54,7 +52,6 @@ export const savedOutfitSlice = createSlice({
         })
         .addCase(saveOutfitAsync.fulfilled, (state, action) => {
           state.loading = false;
-          state.outfits.push(action.payload);
         })
         .addCase(saveOutfitAsync.rejected, (state, action) => {
           state.loading = false;
@@ -62,7 +59,7 @@ export const savedOutfitSlice = createSlice({
         });
       }
     },
-});
+);
 
 export const selectedOutfit = (state) => state.savedOutfit.outfit;
 export const selectedOutfitLoading = (state) => state.savedOutfit.loading;

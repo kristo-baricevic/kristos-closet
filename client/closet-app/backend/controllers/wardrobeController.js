@@ -47,12 +47,18 @@ exports.getWardrobeOutfits = async (req, res) => {
 
     // Retrieve all outfits in the wardrobe for the given user
     const outfits = await SavedOutfit.find({ user: userId })
-      .populate('outfit')
-      .exec();
+     
+    // Populate each 'outfit' reference in the array
+    const populatedOutfits = await Promise.all(
+      outfits.map(async (outfit) => {
+        await outfit.populate('outfit').execPopulate();
+        return outfit;
+      })
+    );
 
-      console.log("request body", outfits);
+      console.log("request body", populatedOutfits);
 
-    res.status(200).json(outfits);
+    res.status(200).json(populatedOutfits);
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
