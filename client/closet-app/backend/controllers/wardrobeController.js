@@ -42,27 +42,20 @@ exports.getWardrobeOutfits = async (req, res) => {
   console.log("*****", req);
   const userId = req.params.userId;
 
-
-  try {
     console.log("user in get wardrobe controller");
     console.log("request body", userId);
     console.log("request body", req.params.userId);
 
-
-
     // Retrieve all outfits in the wardrobe for the given user
-    const wardrobe = await SavedOutfit.find(userId);
-    console.log("in get wardrobe controller", wardrobe);
+    SavedOutfit.find({user: userId})
+      .populate('outfit')
+      .exec((err, outfits) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send('Internal Server Error');
+        }
 
-    if (wardrobe.length === 0) {
-      return res.status(404).json({ error: 'No outfits found for the given user ID' });
-    }
-
-    res.status(200).json(wardrobe);
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching wardrobe outfits' });
-  }
+        res.status(200).json(outfits);
+      });
 };
 
