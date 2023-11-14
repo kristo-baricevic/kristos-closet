@@ -38,24 +38,22 @@ exports.removeFromWardrobe = async (req, res) => {
 };
 
 exports.getWardrobeOutfits = async (req, res) => {
-
-  console.log("*****", req);
-  const userId = req.params.userId;
+  try {
+    const userId = req.params.userId;
 
     console.log("user in get wardrobe controller");
     console.log("request body", userId);
     console.log("request body", req.params.userId);
 
     // Retrieve all outfits in the wardrobe for the given user
-    SavedOutfit.find({user: userId})
+    const outfits = await SavedOutfit.find({ user: userId })
       .populate('outfit')
-      .exec((err, outfits) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).send('Internal Server Error');
-        }
+      .exec();
 
-        res.status(200).json(outfits);
-      });
+    res.status(200).json(outfits);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
 };
 
