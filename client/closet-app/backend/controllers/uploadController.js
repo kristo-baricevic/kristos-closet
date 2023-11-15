@@ -13,19 +13,13 @@ exports.uploadImageAndMetaData = async (req, res) => {
     const s3 = new AWS.S3();
     const bucketName = 'closet-app';
     const file = req.file; 
-    console.log("backend upload file check", req.file);
     const { category } = req.body;
     const user = req.body.user;
-    console.log("testing backend upload");
-    console.log("category", category);
-    console.log("user in the backend", user); 
 
     const timestampPrefix = Date.now();
 
     const imageFile = `images/${timestampPrefix}-${file.originalname}`;
-    
-    console.log("imageFile in the backend", imageFile);
-     
+         
     const uploadParams = {
       Bucket: bucketName,
       Key: imageFile,
@@ -34,8 +28,6 @@ exports.uploadImageAndMetaData = async (req, res) => {
 
     // Upload the image to AWS S3
     await s3.upload(uploadParams).promise();
-
-    console.log("upload backend passed checks");
 
     // Save in the database
     const clothingItem = new ClothingItem({

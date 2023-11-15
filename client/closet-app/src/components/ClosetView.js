@@ -53,7 +53,6 @@ const ClosetView = () => {
       return;
     }
 
-    console.log("image.userId", image.id)
     const imageId = image.id;
 
     dispatch(deleteItems(imageId));

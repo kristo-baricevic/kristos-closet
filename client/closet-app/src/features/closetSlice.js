@@ -11,7 +11,9 @@ const initialState = {
 // Thunk action to fetch items
 export const fetchItems = () => async (dispatch) => {
     dispatch(fetchItemsStart());
-    console.log("fetch running");
+
+    console.log("fetch test");
+
     try {
       const response = await axios.get(`https://kristobaricevic.com/api/images`);
       const data = response.data;
@@ -21,12 +23,14 @@ export const fetchItems = () => async (dispatch) => {
         imageUrl: `https://kristobaricevic.com/api/images/${image.id}`,
       }));
   
+      console.log("fetch items logger", updatedImages);
+
       dispatch(fetchItemsSuccess(updatedImages));
     } catch (error) {
       dispatch(fetchItemsFailure(error));
+      console.log("there is an error!!!", error);
     }
   };
-
 
 // Thunk action to delete items
 export const deleteItems = (imageId) => async (dispatch) => {
@@ -42,7 +46,6 @@ export const deleteItems = (imageId) => async (dispatch) => {
     dispatch(deleteItemsFailure(error));
   }
 };
-
 
 // Thunk action to delete items
 export const editCategory = (imageId, category) => async (dispatch) => {
@@ -63,12 +66,10 @@ export const editCategory = (imageId, category) => async (dispatch) => {
   }
 };
 
-
 export const toggleTabState = () => async (dispatch) => {
   console.log("toggle tab style");
   dispatch(toggleTabState());
   }
-
 
 const closetSlice = createSlice({
   name: 'initialCloset',

@@ -13,15 +13,12 @@ const {
   handleUpload,
 } = require('../controllers/uploadController');
 const {
-  registerUser,
-  loginUser,
   logoutUser,
   loginAnonymous,
   getCurrentUserData,
 } = require('../controllers/userController');
 const { addToWardrobe, removeFromWardrobe, getWardrobeOutfits } = require('../controllers/wardrobeController');
 const { saveOutfit, updateOutfit, deleteOutfit } = require('../../backend/controllers/outfitController');
-const SavedOutfit = require('../../backend/models/SavedOutfit');
 
 // Image routes
 router.get('/images', verifyToken, getImages);

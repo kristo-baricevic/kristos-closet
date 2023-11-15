@@ -2,6 +2,9 @@ const ClothingItem = require('../models/ClothingItem');
 const AWS = require('aws-sdk');
 
 exports.getImages = async (req, res) => {
+
+  console.log("controller req test", req.body);
+
   try {
     const { user } = req.body;
 
@@ -17,12 +20,9 @@ exports.getImages = async (req, res) => {
         Key: imageKey,
       }).promise();
 
-      console.log("getImages running in imagesController", imageObject);
+      console.log(imageObject);
 
       const imageUrl = `https://kristobaricevic.com/api/images/${item._id}`;
-
-      console.log("image URL in imagesController", imageUrl);
-
 
       return {
         id: item._id,
