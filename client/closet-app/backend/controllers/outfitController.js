@@ -8,12 +8,12 @@ exports.saveOutfit = async (req, res) => {
     // Destructure parameters to set up data in the same format as the mongoose model
     const { name, description, user, clothingItems } = req.body;
 
-    const clothingItemIds = Object.values(clothingItems).map(item => item._id);
+    const clothingItemIds = Object.values(clothingItems).map(item => item.id);
 
     console.log("clothing items received", clothingItemIds);
 
     try {
-      // Create a new SavedOutfit document
+      // Create a new SavedOutfit doc
       const savedOutfitDoc = new SavedOutfit({
         name: name, 
         description: description,
