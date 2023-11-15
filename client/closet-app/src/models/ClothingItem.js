@@ -13,25 +13,6 @@ const clothingItemSchema = new Schema({
   filename: String,
 });
 
-const outfitSchema = new Schema({
-  outfit: [clothingItemSchema],
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', 
-  },
-});
-
-const wardrobeSchema = new Schema({
-  wardrobe: [outfitSchema],
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', 
-  },
-});
-
-
 const ClothingItem = mongoose.model('ClothingItem', clothingItemSchema);
-const Outfit = mongoose.model('Outfit', outfitSchema);
-const Wardrobe = mongoose.model('Wardrobe', wardrobeSchema);
 
-module.exports = { ClothingItem, Outfit, Wardrobe };
+module.exports = ClothingItem;
