@@ -5,11 +5,7 @@ exports.getImages = async (req, res) => {
   try {
     const { user } = req.body;
 
-    console.log("inside get images");
-
     const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
-
-    // console.log("clothing items", clothingItems);
 
     const images = await Promise.all(clothingItems.map(async item => {
       const s3 = new AWS.S3();
@@ -21,10 +17,12 @@ exports.getImages = async (req, res) => {
         Key: imageKey,
       }).promise();
 
-      console.log("getImages running in imagesController")
-      console.log(imageObject);
+      console.log("getImages running in imagesController", imageObject);
 
       const imageUrl = `https://kristobaricevic.com/api/images/${item._id}`;
+
+      console.log("image URL in imagesController", imageUrl);
+
 
       return {
         id: item._id,
