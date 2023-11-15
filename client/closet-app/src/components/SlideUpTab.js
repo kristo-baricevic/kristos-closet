@@ -5,7 +5,6 @@ import { toggleTabStyle } from '../features/closetSlice';
 import { selectedItems } from '../features/selectedItemsSlice';
 import { saveOutfitAsync } from '../features/savedOutfitSlice';
 import { selectUser } from '../features/userSlice';
-import { addToWardrobeAsync } from '../features/wardrobeSlice';
 
 function SlideUpTab({item}) {
   const [isOpen, setIsOpen] = useState(false);

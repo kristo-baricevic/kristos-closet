@@ -20,6 +20,7 @@ const ClosetView = () => {
   const dispatch = useDispatch();
   
   console.log(user);
+  
   dispatch(toggleTabStyle);
   
   useEffect(() => {
