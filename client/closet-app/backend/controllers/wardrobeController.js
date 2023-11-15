@@ -58,7 +58,7 @@ exports.getWardrobeOutfits = async (req, res) => {
     }));
 
     console.log("request body", populatedOutfits);
-
+    
     res.status(200).json(populatedOutfits);
   } catch (error) {
     console.error(error);
