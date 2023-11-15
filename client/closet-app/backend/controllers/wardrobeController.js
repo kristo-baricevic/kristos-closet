@@ -1,7 +1,4 @@
-const SavedOutfit = require("../models/SavedOutfit");
-const Wardrobe = require("../models/Wardrobe");
-const ClothingItem = require("../models/ClothingItem");
-
+const { ClothingItem, Outfit, Wardrobe } = require("../models/ClothingItem");
 
 exports.addToWardrobe = async (req, res) => {
   try {
@@ -42,14 +39,13 @@ exports.getWardrobeOutfits = async (req, res) => {
   try {
     const userId = req.params.userId;
 
-    console.log("user in get wardrobe controller");
     console.log("request body", userId);
     console.log("request body", req.params.userId);
 
     // Retrieve all outfits in the wardrobe for the given user
-    const outfits = await SavedOutfit.find({ user: userId });
+    const outfits = await Outfit.find({ user: userId });
 
-    await SavedOutfit.populate(outfits, { path: 'outfit' });
+    await Outfit.populate(outfits, { path: 'outfit' });
 
     // Map over each outfit and populate the 'outfit' field in each ClothingItem
     const populatedOutfits = await Promise.all(outfits.map(async (outfit) => {

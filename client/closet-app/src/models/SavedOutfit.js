@@ -9,10 +9,10 @@ const savedOutfitSchema = new Schema({
   description: {
     type: String,
   },
-  user: {
+  user: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-  },
+  }],
   clothingItems: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ClothingItem',

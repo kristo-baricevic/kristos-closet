@@ -1,30 +1,25 @@
-const SavedOutfit = require('../models/SavedOutfit');
+const Outfit = require('../models/ClothingItem');
 const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
     console.log("save outfit controller", req.body);
-    console.log("request body")
     
     // Destructure parameters to set up data in the same format as the mongoose model
     const { name, description, user, clothingItems } = req.body;
 
-    const clothingItemIds = Object.values(clothingItems).map(item => item.id);
-
-    console.log("clothing items received", clothingItemIds);
-
     try {
       // Create a new SavedOutfit doc
-      const savedOutfitDoc = new SavedOutfit({
-        name: name, 
-        description: description,
-        user: user, 
-        clothingItems: clothingItemIds,
+      const newOutfit = new Outfit({
+        name, 
+        description,
+        user, 
+        clothingItems,
       });
 
-      console.log("savedOutfitDoc URL", savedOutfitDoc);
+      console.log("savedOutfitDoc URL", newOutfit);
   
       // Save the outfit to the database
-      const result = await savedOutfitDoc.save();
+      const result = await newOutfit.save();
       console.log("outfit potentially saved", result);
       res.status(201).json(result);
     } catch (error) {
@@ -38,7 +33,7 @@ exports.saveOutfit = async (req, res) => {
       const outfitId = req.params.id;
   
       // Delete the outfit from the database
-      await SavedOutfit.findOneAndDelete({ _id: outfitId });
+      await Outfit.findOneAndDelete({ _id: outfitId });
   
       res.json({ message: 'Outfit deleted successfully' });
     } catch (error) {
@@ -53,7 +48,7 @@ exports.saveOutfit = async (req, res) => {
     const updatedOutfit = req.body;
 
     // Find and update the outfit by its ID
-    const outfit = await SavedOutfit.findOneAndUpdate({ _id: outfitId }, updatedOutfit, {
+    const outfit = await Outfit.findOneAndUpdate({ _id: outfitId }, updatedOutfit, {
       new: true,
     });
 
@@ -71,7 +66,7 @@ exports.saveOutfit = async (req, res) => {
 exports.getOutfitById = async (req, res) => {
   try {
     const { _id } = req.params;
-    const outfit = await SavedOutfit.findById(_id);
+    const outfit = await Outfit.findById(_id);
 
     return outfit;
   } catch (error) {
@@ -86,7 +81,7 @@ exports.getOutfit = async (req, res) => {
 
     console.log("inside get images");
 
-    const outfit = await SavedOutfit.findOne({ $or: [{ user }] });
+    const outfit = await Outfit.findOne({ $or: [{ user }] });
 
     return outfit;
     } catch (error) {
