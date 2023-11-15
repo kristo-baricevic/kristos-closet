@@ -3,14 +3,17 @@ const AWS = require('aws-sdk');
 
 exports.getImages = async (req, res) => {
 
-  console.log("controller req test", req.body);
-
   try {
     const { user } = req.body;
 
     const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
 
+    console.log("clothingItems test", clothingItems);
+
     const images = await Promise.all(clothingItems.map(async item => {
+      console.log("item test", item);
+      console.log("url test", item.imageUrl);
+
       const s3 = new AWS.S3();
       const bucketName = 'closet-app';
       const imageKey = `${item.imageUrl}`; 
