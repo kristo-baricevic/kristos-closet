@@ -25,7 +25,7 @@ exports.getImages = async (req, res) => {
         Key: imageKey,
       }).promise();
 
-      console.log("imageObject test", imageObject.Key);
+      console.log("imageObject test", imageObject.ey);
 
       const imageUrl = `https://kristobaricevic.com/api/images/${item._id}`;
 
