@@ -23,7 +23,6 @@ export const fetchItems = () => async (dispatch) => {
         imageUrl: `https://kristobaricevic.com/api/images/${image.id}`,
       }));
   
-      console.log("fetch items logger", updatedImages);
 
       dispatch(fetchItemsSuccess(updatedImages));
     } catch (error) {
