@@ -1,5 +1,6 @@
 const SavedOutfit = require("../models/SavedOutfit");
 const Wardrobe = require("../models/Wardrobe");
+const ClothingItem = require("../models/ClothingItem");
 
 
 exports.addToWardrobe = async (req, res) => {
@@ -50,9 +51,15 @@ exports.getWardrobeOutfits = async (req, res) => {
 
     await SavedOutfit.populate(outfits, { path: 'outfit' });
 
-    console.log("request body", outfits);
+    // Map over each outfit and populate the 'outfit' field in each ClothingItem
+    const populatedOutfits = await Promise.all(outfits.map(async (outfit) => {
+      await ClothingItem.populate(outfit.clothingItems, { path: 'userId' }); 
+      return outfit;
+    }));
 
-    res.status(200).json(outfits);
+    console.log("request body", populatedOutfits);
+
+    res.status(200).json(populatedOutfits);
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');

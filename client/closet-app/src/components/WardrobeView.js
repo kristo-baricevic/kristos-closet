@@ -16,9 +16,6 @@ const Wardrobe = () => {
     });
   }, [user, dispatch]);
   
-  //the line below is a remove button i was using earlier
-  //<button onClick={() => handleRemoveItem(wardrobe[0]?.clothingItems[index]?.objectId)}>Remove</button>
-
   const handleRemoveItem = (outfitId) => {
     // Check to see if there is an outfit
     if (!outfitId) {
