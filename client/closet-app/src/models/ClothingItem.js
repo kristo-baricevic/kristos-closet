@@ -8,7 +8,7 @@ const clothingItemSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', 
   },
-  imageFileId: mongoose.Schema.Types.ObjectId, 
+  type: mongoose.Schema.Types.ObjectId, 
   imageUrl: String, 
   filename: String,
 });

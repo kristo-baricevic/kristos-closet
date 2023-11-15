@@ -4,36 +4,41 @@ const AWS = require('aws-sdk');
 exports.getImages = async (req, res) => {
 
   try {
+
+    // Get user data from request body
     const { user } = req.body;
 
+    // Find clothing from Mongo associated with user or the default data (default data = isUserImage: False)  
     const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
 
     console.log("clothingItems test", clothingItems);
 
-    const images = await Promise.all(clothingItems.map(async item => {
-      console.log("item test", item);
-      console.log("url test", item.imageUrl);
+    // Find clothing images from Image Hosting
+    const images = await Promise.all(clothingItems.map(async clothingItem => {
+      console.log("item test", clothingItem);
+      console.log("url test", clothingItem.imageUrl);
 
       const s3 = new AWS.S3();
       const bucketName = 'closet-app';
-      const imageKey = `${item.imageUrl}`; 
+      const imageKey = `${clothingItem.imageUrl}`; 
 
       const imageObject = await s3.getObject({
         Bucket: bucketName,
         Key: imageKey,
       }).promise();
 
-      console.log(imageObject);
+      console.log(clothingItem._id);
 
-      const imageUrl = `https://kristobaricevic.com/api/images/${item._id}`;
+      const imageUrl = `https://kristobaricevic.com/api/images/${clothingItem._id}`;
 
+      //return data to be used in clothingItem cards
       return {
-        id: item._id,
+        id: clothingItem._id,
         imageUrl: imageUrl, 
-        category: item.category,
-        userId: item.userId,
-        filename: item.filename,
-        contentType: item.contentType
+        category: clothingItem.category,
+        userId: clothingItem.userId,
+        filename: clothingItem.filename,
+        contentType: clothingItem.contentType
       };
     }));
 
@@ -47,15 +52,15 @@ exports.getImages = async (req, res) => {
 exports.getImageById = async (req, res) => {
   try {
     const { id } = req.params;
-    const item = await ClothingItem.findById(id);
+    const clothingItem = await ClothingItem.findById(id);
 
-    if (!item) {
+    if (!clothingItem) {
       return res.status(404).json({ error: 'Image not found' });
     }
 
     const s3 = new AWS.S3();
     const bucketName = 'closet-app';
-    const imageKey = `${item.imageUrl}`; 
+    const imageKey = `${clothingItem.imageUrl}`; 
 
     const imageObject = await s3.getObject({
       Bucket: bucketName,
@@ -63,7 +68,7 @@ exports.getImageById = async (req, res) => {
     }).promise();
 
     // Send the image as a response
-    res.set('Content-Type', item.contentType);
+    res.set('Content-Type', clothingItem.contentType);
     res.send(imageObject.Body);
   } catch (error) {
     console.error(error);
