@@ -44,7 +44,7 @@ const CategoriesView = ({categories, onCategorySelect}) => {
         ) : (
             <div>
                 <button className="closet-categories-button"> 
-                    <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/OnePiece.png" onClick={handleCategoriesClick} />
+                    <img className="user-open-icon-open" src="https://raw.githubusercontent.com/kristo-baricevic/kristos-closet/wardrobe-branch/client/closet-app/src/icons/OnePiece.png" onClick={handleCategoriesClick} alt="icon for categories view"/>
                 </button>
             </div>
         )}

@@ -8,16 +8,16 @@ const Wardrobe = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
-  // useEffect(() => {
-  //   console.log("if logged in?", user);
+  useEffect(() => {
+    console.log("if logged in?", user);
 
-  //   dispatch(getWardrobe(user)).then((result) => {
-  //     dispatch(addToWardrobe(result));
-  //   });
-  // }, [user, dispatch]);
+    dispatch(getWardrobe(user)).then((result) => {
+      dispatch(addToWardrobe(result));
+    });
+  }, [user, dispatch]);
   
   const handleRemoveItem = (outfitId) => {
-    // Check to see if there is an outfitId
+    // Check to see if there is an outfit
     if (!outfitId) {
       alert('This is what it sounds like when doves cry :,(');
       return;

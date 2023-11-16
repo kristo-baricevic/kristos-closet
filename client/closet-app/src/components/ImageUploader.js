@@ -1,11 +1,9 @@
 import React, { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { userIsAuthenticated } from '../features/userSlice';
+import { useDispatch } from 'react-redux';
 import { setPreviewImage, setPreviewModalVisibility } from '../features/previewModalSlice'
 
 const ImageUploader = () => {
   const dispatch = useDispatch();
-  const userAuthenticated = useSelector(userIsAuthenticated);
   const fileInputRef = useRef(null);
 
 

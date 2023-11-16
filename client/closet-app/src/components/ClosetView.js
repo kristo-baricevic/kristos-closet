@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { tabStyle, toggleTabStyle, fetchItems, deleteImage, deleteItems, closetItems } from '../features/closetSlice';
+import { tabStyle, toggleTabStyle, fetchItems, deleteItems, closetItems } from '../features/closetSlice';
 import { addItem } from '../features/selectedItemsSlice';
 import { userIsAuthenticated, selectUser } from '../features/userSlice';
 import ImageModal from './ImageModal';
@@ -26,7 +26,7 @@ const ClosetView = () => {
   useEffect(() => {
     dispatch(fetchItems());
     console.log(tabToggle, "truth is out there?");
-  }, []);
+  });
 
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 

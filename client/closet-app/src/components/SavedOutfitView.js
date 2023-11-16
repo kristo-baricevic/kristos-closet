@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectedItems, removeItem } from '../features/selectedItemsSlice';
+import { selectedItems } from '../features/selectedItemsSlice';
 import { addToWardrobeAsync } from '../features/wardrobeSlice';
 
 const SavedOutfitView = () => {
@@ -8,18 +8,6 @@ const SavedOutfitView = () => {
 
     // console.log("outfit", outfit);
     const dispatch = useDispatch();
-
-    const handleRemoveItem = (item) => {
-        //check to see if there is an item
-        if (!item) 
-            {
-                alert('This is what it sounds like when doves cry :,(');
-                return;            
-            }
-
-        dispatch(removeItem(item));
-        console.log("Handle Remove Item", item);
-    };
  
     const handleAddToWardrobe = (outfit) => {
         if (!outfit)
