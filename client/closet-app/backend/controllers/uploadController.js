@@ -1,5 +1,5 @@
 const multer = require('multer');
-const ClothingItem = require('../models/ClothingItem');
+const { ClothingItem } = require('../models/ClothingItem');
 const AWS = require('../config/aws-config');
 const fs = require('fs');
 
