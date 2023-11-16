@@ -32,12 +32,12 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
     console.log("the response is", response);
 
     // Dispatch an action indicating a successful outfit save
-    dispatch(saveOutfitSuccess(response.data));
+    dispatch(savedOutfitSlice.actions.saveOutfitSuccess(response.data));
 
     // Return the response data
     return response.data;
   } catch (error) {
-    dispatch(saveOutfitFailure(error));
+    dispatch(savedOutfitSlice.actions.saveOutfitFailure(error));
     throw error;
   }
 });
@@ -74,7 +74,6 @@ export const selectedOutfit = (state) => state.savedOutfit.outfit;
 export const selectedOutfitLoading = (state) => state.savedOutfit.loading;
 export const selectedOutfitError = (state) => state.savedOutfit.error;
 
-export const { saveOutfit, deleteOutfit, addItem } = savedOutfitSlice.actions;
 export const savedOutfitSliceReducer = savedOutfitSlice.reducer;
 
 export default saveOutfitAsync; 
