@@ -1,17 +1,37 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const clothingItemSchema = new mongoose.Schema({
+const clothingItemSchema = new Schema({
   category: String,
   isUserImage: Boolean,
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', 
   },
-  imageFileId: mongoose.Schema.Types.ObjectId, 
+  type: mongoose.Schema.Types.ObjectId, 
   imageUrl: String, 
   filename: String,
 });
 
-const ClothingItem = mongoose.model('ClothingItem', clothingItemSchema);
+const outfitSchema = new Schema({
+  outfit: [clothingItemSchema],
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', 
+  },
+});
 
-module.exports = ClothingItem;
+const wardrobeSchema = new Schema({
+  wardrobe: [outfitSchema],
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', 
+  },
+});
+
+
+const ClothingItem = mongoose.model('ClothingItem', clothingItemSchema);
+const Outfit = mongoose.model('Outfit', outfitSchema);
+const Wardrobe = mongoose.model('Wardrobe', wardrobeSchema);
+
+module.exports = { ClothingItem, Outfit, Wardrobe };
