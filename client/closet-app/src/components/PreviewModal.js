@@ -54,7 +54,6 @@ const PreviewModal = () => {
     }
   }
 
-
   return (
     <div className="preview-modal-background">
       <div className="preview-image-modal">
