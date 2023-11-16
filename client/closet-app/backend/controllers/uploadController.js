@@ -37,6 +37,7 @@ exports.uploadImageAndMetaData = async (req, res) => {
     };
 
     try {
+
       // Save in the database
       const clothingItem = new ClothingItem({
         category: category,
@@ -46,11 +47,11 @@ exports.uploadImageAndMetaData = async (req, res) => {
         filename: file.originalname,
       });
     
-    await clothingItem.save();
+      await clothingItem.save();
 
-    // Handle the response and send a success message
-    res.json({ message: 'Image and metadata uploaded successfully' });
-    fs.unlinkSync(file.path);
+      // Handle the response and send a success message
+      res.json({ message: 'Image and metadata uploaded successfully' });
+      fs.unlinkSync(file.path);
     } catch (error) {
       console.error(error);
       
