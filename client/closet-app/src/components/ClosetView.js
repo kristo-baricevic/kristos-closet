@@ -10,6 +10,7 @@ import EditModal from './EditModal';
 import CategoriesView from './CategoriesView';
 
 const ClosetView = () => {
+  
   const isEditModalVisible = useSelector(editModalVisibility);
   const images = useSelector(closetItems);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -26,7 +27,7 @@ const ClosetView = () => {
   useEffect(() => {
     dispatch(fetchItems());
     console.log(tabToggle, "truth is out there?");
-  });
+  }, []);
 
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 

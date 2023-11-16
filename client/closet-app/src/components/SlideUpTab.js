@@ -21,8 +21,6 @@ function SlideUpTab({item}) {
 
   const handleSaveOutfit = () => {
 
-   
-
     // Additional data needed for your outfit
     const outfitData = {
       name: 'Outfit1', 
@@ -32,17 +30,17 @@ function SlideUpTab({item}) {
       imageUrl: 'URL to image',
     };
 
-     // Get the selected items from your state
-     console.log("click handle save");
-     console.log("item is", outfit);
+     console.log('handleSaveOutfit called');
 
     if (!outfit || outfit.length === 0) {
       alert("oh no! you are trying to submit an empty outfit :(");
     } else {
       try {
         // Create an outfit object that includes the selected items and other data
-        dispatch(saveOutfitAsync(outfitData));
-      } catch (error) {
+        dispatch(saveOutfitAsync(outfitData)).then((response) => {
+
+          })
+        } catch (error) {
         console.log("there is an error!!!", error);
         alert("oh no! there was an error saving the outfit :(");
       }
