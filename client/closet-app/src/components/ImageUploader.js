@@ -9,7 +9,7 @@ const ImageUploader = () => {
 
   const handleFileUpload = (event) => {
     try {
-      
+      console.log("ImageUploader method");
       const image = event.target.files[0];
       dispatch(setPreviewImage(image));
       dispatch(setPreviewModalVisibility(true));

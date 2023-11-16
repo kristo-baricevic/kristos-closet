@@ -22,7 +22,7 @@ router.get('/images/:id', getImageById);
 router.delete('/images/:id', deleteImage);
 
 // Upload route
-router.post('/upload', upload.single('imageFile'), uploadController.uploadImageAndMetaData);
+// router.post('/upload', upload.single('imageFile'), uploadController.uploadImageAndMetaData);
 
 // User routes
 router.post('/register', userController.registerUser);
@@ -32,12 +32,12 @@ router.post('/loginAnonymous', userController.loginAnonymous);
 router.get('/current', verifyToken, userController.getCurrentUserData);
 
 // Outfit routes
-// router.post('/outfit', outfitController.saveOutfit);
+router.post('/outfit', outfitController.saveOutfit);
 router.delete('/outfit/:id', outfitController.deleteOutfit);
 router.put('/outfit/:id', outfitController.updateOutfit);
 
 // Wardrobe routes
-// router.post('/wardrobe', wardrobeController.addToWardrobe);
+router.post('/wardrobe', wardrobeController.addToWardrobe);
 router.delete('/wardrobe/:id', wardrobeController.removeFromWardrobe);
 router.get('/wardrobe/:userId', wardrobeController.getWardrobeOutfits);
 
