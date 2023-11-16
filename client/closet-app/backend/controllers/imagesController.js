@@ -1,4 +1,4 @@
-const ClothingItem = require('../models/ClothingItem');
+const { ClothingItem } = require('../models/ClothingItem');
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
