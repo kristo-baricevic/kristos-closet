@@ -12,14 +12,14 @@ const initialState = {
         Hat: null,
         onePiece: null,
         Accessory: null,
-    }}], 
+      },
+    },
+  ], 
   loading: false,
   error: null,
 };
 
-export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData) => {
-
-  console.log("data to save", outfitData)
+export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData, { dispatch }) => {
 
   console.log("outfit to save", outfitData);
 
@@ -31,7 +31,13 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
   
     console.log("the response is", response);
 
+    // Dispatch an action indicating a successful outfit save
+    dispatch(saveOutfitSuccess(response.data));
+
+    // Return the response data
+    return response.data;
   } catch (error) {
+    dispatch(saveOutfitFailure(error));
     throw error;
   }
 });
@@ -40,8 +46,11 @@ export const savedOutfitSlice = createSlice({
   name: 'savedOutfit',
   initialState,
   reducers: {
-    addItem: (state, action) => {
+    saveOutfitSuccess: (state, action) => {
       state.outfit.push(action.payload);
+    },
+    saveOutfitFailure: (state, action) => {
+      state.error = action.payload;
     },
   },
     extraReducers: (builder) => {
