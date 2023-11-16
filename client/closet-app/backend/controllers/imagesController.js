@@ -13,21 +13,18 @@ exports.getImages = async (req, res) => {
 
     console.log("clothingItems test", clothingItems);
 
-    // Find clothing images from Image Hosting
-    const images = await Promise.all(clothingItems.map(async clothingItem => {
-      console.log("item test", clothingItem);
-      console.log("url test", clothingItem.imageUrl);
+    const images = await Promise.all(clothingItems.map(async item => {
 
       const s3 = new AWS.S3();
       const bucketName = 'closet-app';
-      const imageKey = `${clothingItem.imageUrl}`; 
+      const imageKey = `${item.imageUrl}`; 
 
       const imageObject = await s3.getObject({
         Bucket: bucketName,
         Key: imageKey,
       }).promise();
 
-      console.log(clothingItem._id);
+      console.log(imageObject);
 
       const imageUrl = `https://kristobaricevic.com/api/images/${clothingItem._id}`;
 

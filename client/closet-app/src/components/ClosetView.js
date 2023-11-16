@@ -26,7 +26,7 @@ const ClosetView = () => {
   useEffect(() => {
     dispatch(fetchItems());
     console.log(tabToggle, "truth is out there?");
-  });
+  }, []);
 
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 
@@ -57,7 +57,6 @@ const ClosetView = () => {
     const imageId = image.id;
 
     dispatch(deleteItems(imageId));
-    dispatch(deleteImage(imageId));
     return;
   };
 
