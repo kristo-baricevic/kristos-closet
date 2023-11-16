@@ -45,5 +45,4 @@ router.post('/wardrobe', verifyToken, addToWardrobe);
 router.delete('/wardrobe/:id', verifyToken, removeFromWardrobe);
 router.get('/wardrobe/:user', getWardrobeOutfits);
 
-
 module.exports = router;

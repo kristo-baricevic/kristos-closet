@@ -5,11 +5,11 @@ import { userSliceReducer } from '../features/userSlice';
 import { selectedItemsSliceReducer } from '../features/selectedItemsSlice';
 import { closetSliceReducer } from '../features/closetSlice';
 import { imageModalSliceReducer } from '../features/imageModalSlice';
-import thunkMiddleware from 'redux-thunk';
 import { previewModalReducer } from '../features/previewModalSlice.js';
 import { editModalSliceReducer } from '../features/editModalSlice';
 import { savedOutfitSliceReducer } from '../features/savedOutfitSlice';
 import { wardrobeSliceReducer } from '../features/wardrobeSlice';
+import thunkMiddleware from 'redux-thunk';
 
 
 const middleware = [thunkMiddleware];
