@@ -55,8 +55,13 @@
 
 .navbar-buttons-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+}
+
+.navbar-menu-open-container{
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar-button {

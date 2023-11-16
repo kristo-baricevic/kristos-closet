@@ -31,7 +31,6 @@ const PreviewModal = () => {
       return;
     }
 
-
     // declare formData and append event
     const dbFormData = new FormData();
     
@@ -49,6 +48,7 @@ const PreviewModal = () => {
       setPreviewImage(null);
       setCategory('');
       setIsUserImage(false);
+      dispatch(closePreviewModal(false));
     } catch (error) {
       console.error('Error uploading image:', error);
     }

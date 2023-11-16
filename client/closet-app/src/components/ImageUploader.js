@@ -10,11 +10,16 @@ const ImageUploader = () => {
 
 
   const handleFileUpload = (event) => {
-    const image = event.target.files[0];
-    console.log("image file", image);
-    dispatch(setPreviewImage(image));
-    dispatch(setPreviewModalVisibility(true));
-    fileInputRef.current.value = null;
+    try {
+      
+      const image = event.target.files[0];
+      dispatch(setPreviewImage(image));
+      dispatch(setPreviewModalVisibility(true));
+      fileInputRef.current.value = null;
+
+    } catch (error) {
+      console.log(error, "ERROR UPLOADING FILE");
+    };
   };
 
   return (
