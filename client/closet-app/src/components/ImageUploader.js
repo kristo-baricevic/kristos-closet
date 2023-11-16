@@ -8,15 +8,19 @@ const ImageUploader = () => {
 
 
   const handleFileUpload = (event) => {
-    try {
-      console.log("ImageUploader method");
-      const image = event.target.files[0];
-      dispatch(setPreviewImage(image));
-      dispatch(setPreviewModalVisibility(true));
-      fileInputRef.current.value = null;
 
-    } catch (error) {
-      console.log(error, "ERROR UPLOADING FILE");
+    if (fileInputRef === null) {
+      alert("File input reference not found. Please check your file input element.");
+    } else {
+      try {
+        console.log("ImageUploader method");
+        const image = event.target.files[0];
+        dispatch(setPreviewImage(image));
+        dispatch(setPreviewModalVisibility(true));
+        fileInputRef.current.value = null;
+      } catch (error) {
+        console.log(error, "ERROR UPLOADING FILE");
+      };
     };
   };
 

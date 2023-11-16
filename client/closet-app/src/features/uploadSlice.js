@@ -6,36 +6,38 @@ const initialState = {
   uploadError: null,
 };
 
-
 export const uploadImageAndMetaData = createAsyncThunk(
   "user/uploadImageAndMetaData",
   async ( {imageFile, dbFormData} ) => {
 
-    console.log("inside upload action");
-    
-    try {
-      const token = localStorage.getItem("token");
-      const headers = {
-        Authorization: `Bearer ${token}`,
-      };
-      
-      console.log("uploadSlice formData", dbFormData);
+    if (imageFile === null || dbFormData === null) {
+      alert("You need to add a file!");
+    } else {
+      try {
+        const token = localStorage.getItem("token");
+        const headers = {
+          Authorization: `Bearer ${token}`,
+        };
+        
+        const combinedFormData = new FormData();
+        combinedFormData.append("imageFile", imageFile);
 
-      const combinedFormData = new FormData();
+        for (const [key, value] of dbFormData.entries()) {
+          combinedFormData.append(key, value);
+        }
 
-      combinedFormData.append("imageFile", imageFile);
+        if (combinedFormData === null) {
+          alert("No form data has been attached");
+        } else {
+            await axios.post(`https://kristobaricevic.com/api/upload`, combinedFormData, {
+              headers,
+            });
+          };
 
-      for (const [key, value] of dbFormData.entries()) {
-        combinedFormData.append(key, value);
+        return combinedFormData;
+      } catch (error) {
+        throw error;
       }
-
-      await axios.post(`https://kristobaricevic.com/api/upload`, combinedFormData, {
-        headers,
-      });
-
-      return combinedFormData;
-    } catch (error) {
-      throw error;
     }
   }
 );

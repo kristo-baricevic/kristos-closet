@@ -13,7 +13,6 @@ const PreviewModal = () => {
   const image = useSelector(previewModalImage);
 
   const imageURL = URL.createObjectURL(image);
-  console.log("preview modal", image);
 
   const handleCancelModal = () => {
     dispatch(closePreviewModal(false));
@@ -22,12 +21,12 @@ const PreviewModal = () => {
   const handleUpload = async() => {
 
     if (!user) {
-      alert("You must be logged in to do that! Press the DEMO button or register to continue.");
+      alert("You must be logged in to do that! Press the DEMO button to log in anonymously or register to continue.");
       return;
     }
 
     if (!category) {
-      alert("You need to assign a category to your item!")
+      alert("Woah, there! You need to assign a category to your item in order to upload!")
       return;
     }
 
@@ -41,16 +40,21 @@ const PreviewModal = () => {
 
     console.log("params before await in front", image, dbFormData);
     
-    try{
-      await dispatch(uploadImageAndMetaData({ image, dbFormData})); 
-      console.log("after fetchItems");
-      // Clear the selected file and other inputs
-      setPreviewImage(null);
-      setCategory('');
-      setIsUserImage(false);
-      dispatch(closePreviewModal(false));
-    } catch (error) {
-      console.error('Error uploading image:', error);
+    if (image === null || dbFormData === null) {
+      alert("You need to add a file!");
+    } else {
+      try{
+        const result = await dispatch(uploadImageAndMetaData({ image, dbFormData})); 
+        console.log("result after fetchItems", result);
+
+        // Clear the selected file and other inputs
+        setPreviewImage(null);
+        setCategory('');
+        setIsUserImage(false);
+        dispatch(closePreviewModal(false));
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
     }
   }
 
