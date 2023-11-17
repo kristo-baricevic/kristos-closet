@@ -1,4 +1,4 @@
-const ClothingItem = require('../models/ClothingItem');
+const { ClothingItem } = require('../models/Closet');
 const AWS = require('aws-sdk');
 
 exports.getImages = async (req, res) => {

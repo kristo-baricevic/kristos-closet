@@ -1,4 +1,4 @@
-const { ClothingItem, Outfit, Wardrobe } = require("../models/ClothingItem");
+const { ClothingItem, Outfit, Wardrobe } = require("../models/Closet");
 
 exports.addToWardrobe = async (req, res) => {
   try {
