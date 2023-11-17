@@ -21,25 +21,29 @@ const initialState = {
 
 export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData, { dispatch }) => {
 
-  console.log("outfit to save", outfitData);
+  console.log("saveOutfitAsync running");
 
-  try {
-    const response = await axios.post(
-      'https://kristobaricevic.com/api/outfit',
-      outfitData
-    );
-  
-    console.log("the response is", response);
+  if (!outfitData || outfitData === null ) {
+    console.log("there is no outfit!");
+  } else {
+    try {
+      const response = await axios.post(
+        'https://kristobaricevic.com/api/outfit',
+        outfitData
+      );
+    
+      console.log("the response is", response);
 
-    // Dispatch an action indicating a successful outfit save
-    dispatch(savedOutfitSlice.actions.saveOutfitSuccess(response.data));
+      // Dispatch an action indicating a successful outfit save
+      dispatch(savedOutfitSlice.actions.saveOutfitSuccess(response.data));
 
-    // Return the response data
-    return response.data;
-  } catch (error) {
-    dispatch(savedOutfitSlice.actions.saveOutfitFailure(error));
-    throw error;
-  }
+      // Return the response data
+      return response.data;
+    } catch (error) {
+      dispatch(savedOutfitSlice.actions.saveOutfitFailure(error));
+      throw error;
+    }
+  };
 });
 
 export const savedOutfitSlice = createSlice({
@@ -47,7 +51,7 @@ export const savedOutfitSlice = createSlice({
   initialState,
   reducers: {
     saveOutfitSuccess: (state, action) => {
-      state.outfit.push(action.payload);
+      state.outfit = [...state.outfit, action.payload];
     },
     saveOutfitFailure: (state, action) => {
       state.error = action.payload;

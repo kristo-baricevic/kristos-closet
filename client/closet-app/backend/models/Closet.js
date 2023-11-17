@@ -21,6 +21,7 @@ const clothingItemSchema = new Schema({
 });
 
 const outfitSchema = new Schema({
+  name: String,
   clothingItems: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ClothingItem', 

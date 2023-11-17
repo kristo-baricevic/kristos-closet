@@ -136,7 +136,6 @@ exports.loginAnonymous = async (req, res, next) => {
   }
 };
 
-
 function generateUniqueUsername() {
   // Implement a function to generate a unique username 
   const prefix = 'anonymous';

@@ -3,31 +3,38 @@ const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
 
-  console.log("save outfit controller", req.body);
+  const request = req.body;
+  console.log("save outfit controller", response);
   
   // Destructure parameters to set up data in the same format as the mongoose model
-  const { name, description, user, clothingItems } = req.body;
+  const { name, description, user, clothingItems } = request;
 
 
-  try {
-    // Create a new SavedOutfit doc
-    const newOutfit = new Outfit({
-      name, 
-      description,
-      user, 
-      clothingItems,
-    });
+    if ( name === null || description === null || user === null || clothingItems === null ) {
+      alert("your outfit is incomplete!");
+      return;
+    } else {
+      try {
 
-    console.log("savedOutfitDoc URL", newOutfit);
+      // Create a new SavedOutfit doc
+      const newOutfit = new Outfit({
+        name, 
+        description,
+        user, 
+        clothingItems,
+      });
 
-    // Save the outfit to the database
-    const result = await newOutfit.save();
-    console.log("outfit potentially saved", result);
-    res.status(201).json(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while saving the outfit' });
-  }
+      console.log("savedOutfitDoc URL", newOutfit);
+
+      // Save the outfit to the database
+      const result = await newOutfit.save();
+      console.log("outfit potentially saved", result);
+      res.status(201).json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred while saving the outfit' });
+    }
+  };
 };
   
   exports.deleteOutfit = async (req, res) => {
