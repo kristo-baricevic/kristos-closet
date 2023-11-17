@@ -16,11 +16,8 @@ schema
   .has().not().spaces()
 
 exports.registerUser = async (req, res) => {
-  console.log("registerUser in controller hit");
   try {
-    console.log("inside the try catch of registerUser");
     const { username, email, password } = req.body;
-    console.log("username", username);
 
     // Check if required fields are provided
     if (!username || !email || !password) {
@@ -31,16 +28,12 @@ exports.registerUser = async (req, res) => {
     if (!validator.isEmail(email)) {
       return res.status(400).json({ error: 'Invalid email format' });
     }
-    console.log("email", email);
 
-    console.log("password", password);
     const validationResult = schema.validate(password);
-    console.log("Validation Result:", validationResult);
     // Validate password complexity
     if (!schema.validate(password)) {
       return res.status(400).json({ error: 'Password does not meet complexity requirements' });
     }
-    console.log("password", password);
 
     // Check if username or email already exists in the database
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
@@ -53,19 +46,15 @@ exports.registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10); 
     console.log("hash", hashedPassword);
 
-
     // Create a new user in the database
     const newUser = await User.create({
       username,
       email,
       password, 
     });
-    console.log("newUser", newUser);
 
-    console.log("about to save")
     // Save the new user to the database
     await newUser.save();
-    console.log("new user saved");
     // Send a success response
     res.status(201).json({ message: 'User registered successfully', user: newUser });
 
@@ -96,7 +85,6 @@ exports.loginUser = async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid Password' });
     }
-    console.log("after password match attempt");
 
     const token = authService.generateToken(user);
 
@@ -119,10 +107,7 @@ exports.logoutUser = async (req, res) => {
 
 exports.loginAnonymous = async (req, res, next) => {
   try {
-    console.log("server hit @ loginAnon");
     const responseMessage = "server hit @ loginAnon";
-
-    console.log("mongo test 2/2 ");
 
     // Create an anonymous user (or find if already exists)
     const anonymousUsername = generateUniqueUsername();

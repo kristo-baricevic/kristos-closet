@@ -8,13 +8,27 @@ const clothingItemSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', 
   },
-  type: mongoose.Schema.Types.ObjectId, 
   imageUrl: String, 
   filename: String,
+  outfits: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Outfit', 
+  }],
+  wardrobe: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Wardrobe', 
+  },
 });
 
 const outfitSchema = new Schema({
-  outfit: [clothingItemSchema],
+  clothingItems: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'ClothingItem', 
+  }],
+  wardrobe: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Wardrobe',
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', 
@@ -22,7 +36,10 @@ const outfitSchema = new Schema({
 });
 
 const wardrobeSchema = new Schema({
-  wardrobe: [outfitSchema],
+  outfits: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Outfit', 
+  }],
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', 

@@ -30,64 +30,64 @@ exports.saveOutfit = async (req, res) => {
   }
 };
   
-//   exports.deleteOutfit = async (req, res) => {
-//     try {
-//       const outfitId = req.params.id;
+  exports.deleteOutfit = async (req, res) => {
+    try {
+      const outfitId = req.params.id;
   
-//       // Delete the outfit from the database
-//       await Outfit.findOneAndDelete({ _id: outfitId });
+      // Delete the outfit from the database
+      await Outfit.findOneAndDelete({ _id: outfitId });
   
-//       res.json({ message: 'Outfit deleted successfully' });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ error: 'An error occurred while deleting the outfit' });
-//     }
-//   };
+      res.json({ message: 'Outfit deleted successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred while deleting the outfit' });
+    }
+  };
 
-//   exports.updateOutfit = async (req, res) => {
-//   try {
-//     const outfitId = req.params.id;
-//     const updatedOutfit = req.body;
+  exports.updateOutfit = async (req, res) => {
+  try {
+    const outfitId = req.params.id;
+    const updatedOutfit = req.body;
 
-//     // Find and update the outfit by its ID
-//     const outfit = await Outfit.findOneAndUpdate({ _id: outfitId }, updatedOutfit, {
-//       new: true,
-//     });
+    // Find and update the outfit by its ID
+    const outfit = await Outfit.findOneAndUpdate({ _id: outfitId }, updatedOutfit, {
+      new: true,
+    });
 
-//     if (!outfit) {
-//       return res.status(404).json({ error: 'Outfit not found' });
-//     }
+    if (!outfit) {
+      return res.status(404).json({ error: 'Outfit not found' });
+    }
 
-//     res.json(outfit);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'An error occurred while updating the outfit' });
-//   }
-// };
+    res.json(outfit);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while updating the outfit' });
+  }
+};
 
-// exports.getOutfitById = async (req, res) => {
-//   try {
-//     const { _id } = req.params;
-//     const outfit = await Outfit.findById(_id);
+exports.getOutfitById = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const outfit = await Outfit.findById(_id);
 
-//     return outfit;
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'An error occurred' });
-//   }
-// };
+    return outfit;
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
   
-// exports.getOutfit = async (req, res) => {
-//   try {
-//     const { user } = req.body;
+exports.getOutfit = async (req, res) => {
+  try {
+    const { user } = req.body;
 
-//     console.log("inside get images");
+    console.log("inside get images");
 
-//     const outfit = await Outfit.findOne({ $or: [{ user }] });
+    const outfit = await Outfit.findOne({ $or: [{ user }] });
 
-//     return outfit;
-//     } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'An error occurred' });
-//   }
-// };
+    return outfit;
+    } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
