@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
 
  console.log("schema loading page");
 
-// Hash the user's password before saving it to the databasee
+// Hash the user's password before saving it to the database
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
