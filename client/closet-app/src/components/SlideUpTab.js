@@ -3,42 +3,46 @@ import { useDispatch, useSelector } from 'react-redux';
 import OutfitView from './OutfitView';
 import { toggleTabStyle } from '../features/closetSlice';
 import { selectedItems } from '../features/selectedItemsSlice';
-import { saveOutfitAsync } from '../features/savedOutfitSlice';
+import { saveOutfitAsync, selectedOutfit } from '../features/savedOutfitSlice';
 import { selectUser } from '../features/userSlice';
 
 function SlideUpTab({item}) {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const outfit = useSelector(selectedItems);
+  const currentItems = useSelector(selectedItems);
+  const outfit = useSelector(selectedOutfit);
+  
 
   const toggleTab = () => {
     setIsOpen(!isOpen);
-    console.log("selectedItemsData", outfit);
+    console.log("selectedItemsData", currentItems);
     dispatch(toggleTabStyle());
     console.log("toggle tab");
   };
 
   const handleSaveOutfit = () => {
 
-    // Additional data needed for your outfit
-    const outfitData = {
-      name: 'Outfit1', 
-      description: 'My first outfit',
-      user: user,
-      clothingItems: outfit,
-      imageUrl: 'URL to image',
-    };
+   
 
-     console.log('handleSaveOutfit called');
+     // Get the selected items from your state
+     console.log("click handle save");
 
     if (!outfit || outfit.length === 0) {
       alert("oh no! you are trying to submit an empty outfit :(");
     } else {
       try {
+         // Additional data needed for your outfit
+        const outfitData = {
+          name: 'Outfit1', 
+          description: 'My first outfit',
+          user: user,
+          clothingItems: outfit,
+          imageUrl: 'URL to image',
+        };
         // Create an outfit object that includes the selected items and other data
         dispatch(saveOutfitAsync(outfitData)).then((response) => {
-
+          console.log(response);
           })
         } catch (error) {
         console.log("there is an error!!!", error);

@@ -6,7 +6,6 @@ const ImageUploader = () => {
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
 
-
   const handleFileUpload = (event) => {
 
     if (fileInputRef === null) {

@@ -24,7 +24,6 @@ export const selectedItemsSlice = createSlice({
         console.log("item check", item);
         console.log("url check", imageUrl);
 
-
         // If item is a 'onePiece', remove 'top' and 'bottom' from the state
         if (item.category === 'onePiece') {
             console.log("onePiece selected");
