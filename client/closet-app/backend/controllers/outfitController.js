@@ -19,9 +19,9 @@ exports.saveOutfit = async (req, res) => {
       // Create a new SavedOutfit doc
       const newOutfit = new Outfit({
         name, 
-        description,
-        user, 
         clothingItems,
+        wardrobe: [],
+        user
       });
 
       console.log("savedOutfitDoc URL", newOutfit);

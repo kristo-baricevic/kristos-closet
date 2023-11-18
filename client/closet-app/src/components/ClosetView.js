@@ -60,7 +60,6 @@ const ClosetView = () => {
     return;
   };
 
- 
   const handleEditImage = (image) => {
     if (!isAuthenticated) {
       alert('You must be logged in to edit items.');
