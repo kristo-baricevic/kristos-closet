@@ -11,7 +11,7 @@ exports.saveOutfit = async (req, res) => {
 
 
     if ( name === null || description === null || user === null || clothingItems === null ) {
-      alert("your outfit is incomplete!");
+      console.log("your outfit is incomplete!");
       return;
     } else {
       try {

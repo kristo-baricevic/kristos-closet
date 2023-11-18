@@ -6,7 +6,7 @@ const cors = require('cors');
 // Middleware and configurations
 app.use(express.json()); 
 app.use(cors({
-  origin: 'http://localhost:3000', // or specify an array of allowed origins
+  origin: 'http://localhost:3000',
 }));
 app.use('/static', express.static('build', { maxAge: 0 }));
 

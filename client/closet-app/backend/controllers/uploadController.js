@@ -33,7 +33,7 @@ exports.uploadImageAndMetaData = async (req, res) => {
       console.log(result);
     } catch (error) {
       console.error(error);
-      alert("there has been an error");
+      console.log("there has been an error");
     };
 
     try {
