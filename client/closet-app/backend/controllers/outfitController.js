@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 exports.saveOutfit = async (req, res) => {
 
   const request = req.body;
-  console.log("save outfit controller", response);
+  console.log("save outfit controller", request);
   
   // Destructure parameters to set up data in the same format as the mongoose model
   const { name, description, user, clothingItems } = request;

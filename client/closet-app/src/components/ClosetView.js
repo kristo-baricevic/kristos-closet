@@ -24,7 +24,7 @@ const ClosetView = () => {
   
   useEffect(() => {
     dispatch(fetchItems(user));
-  }, [user, dispatch]);
+  }, [user]);
 
   const uniqueCategories = [...new Set(images.map(image => image.category))];
 
