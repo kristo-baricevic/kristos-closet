@@ -12,35 +12,45 @@ const initialState = {
         Hat: null,
         onePiece: null,
         Accessory: null,
-      },
-    },
-  ], 
+      }}],
   loading: false,
   error: null,
 };
 
-export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData, { dispatch }) => {
+export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData) => {
 
-  console.log("saveOutfitAsync running");
+  const clothingItemsForNewOutfit = [];
+
+  for (const category in outfitData.clothingItems) {
+    if (outfitData.clothingItems.hasOwnProperty(category)) {
+      clothingItemsForNewOutfit.push({
+        category,
+        item: outfitData.clothingItems[category],
+      });
+    }
+  }
 
   if (!outfitData || outfitData === null ) {
     console.log("there is no outfit!");
   } else {
     try {
+
+      const outfitToSave = {
+        name: outfitData.name,
+        description: outfitData.description,
+        user: outfitData.user,
+        clothingItems: clothingItemsForNewOutfit,
+        imageUrl: outfitData.imageUrl,
+      };
+
       const response = await axios.post(
         'https://kristobaricevic.com/api/outfit',
-        outfitData
+        outfitToSave
       );
     
-      console.log("the response is", response);
-
-      // Dispatch an action indicating a successful outfit save
-      dispatch(savedOutfitSlice.actions.saveOutfitSuccess(response.data));
-
       // Return the response data
       return response.data;
     } catch (error) {
-      dispatch(savedOutfitSlice.actions.saveOutfitFailure(error));
       throw error;
     }
   };

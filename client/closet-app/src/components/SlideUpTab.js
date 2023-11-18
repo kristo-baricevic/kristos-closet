@@ -12,7 +12,6 @@ function SlideUpTab({item}) {
   const user = useSelector(selectUser);
   const currentItems = useSelector(selectedItems);
   const outfit = useSelector(selectedOutfit);
-  
 
   const toggleTab = () => {
     setIsOpen(!isOpen);
@@ -22,8 +21,6 @@ function SlideUpTab({item}) {
   };
 
   const handleSaveOutfit = () => {
-
-   
 
      // Get the selected items from your state
      console.log("click handle save");
