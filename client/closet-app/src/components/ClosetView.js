@@ -20,7 +20,6 @@ const ClosetView = () => {
   const dispatch = useDispatch();
   
   console.log(user);
-
   dispatch(toggleTabStyle);
   
   useEffect(() => {
@@ -57,7 +56,6 @@ const ClosetView = () => {
     const imageId = image.id;
 
     dispatch(deleteItems(imageId));
-    dispatch(deleteImage(imageId));
     return;
   };
 
