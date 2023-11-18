@@ -12,21 +12,26 @@ const initialState = {
 export const fetchItems = () => async (dispatch) => {
   dispatch(fetchItemsStart());
 
-  console.log("fetch test");
+  console.log("running fetchItems");
 
   try {
+    console.log("inside the try");
     const response = await axios.get(`https://kristobaricevic.com/api/images`);
+    console.log("fetchItems axios response", response);
     const data = response.data;
+
     const updatedImages = data.map((image) => ({
       ...image,
       isUserImage: image.userId !== null,
       imageUrl: `https://kristobaricevic.com/api/images/${image.id}`,
     }));
 
-    dispatch(fetchItemsSuccess(updatedImages));
+    const dispatchResult = dispatch(fetchItemsSuccess(updatedImages));
+    console.log("dispatchResult", dispatchResult);
   } catch (error) {
     dispatch(fetchItemsFailure(error));
     console.log("there is an error!!!", error);
+    throw(error);
   }
 };
 
@@ -42,6 +47,7 @@ export const deleteItems = (imageId) => async (dispatch) => {
     dispatch(deleteItemsSuccess(imageId));
   } catch (error) {
     dispatch(deleteItemsFailure(error));
+    throw(error);
   }
 };
 
@@ -61,6 +67,7 @@ export const editCategory = (imageId, category) => async (dispatch) => {
     dispatch(editItemsSuccess());
   } catch (error) {
     dispatch(editItemsFailure(error));
+    throw(error);
   }
 };
 

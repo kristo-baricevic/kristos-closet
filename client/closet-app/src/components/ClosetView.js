@@ -19,7 +19,7 @@ const ClosetView = () => {
   const tabToggle = useSelector(tabStyle);
   const dispatch = useDispatch();
   
-  console.log(user);
+  console.log("closetItems", images);
   dispatch(toggleTabStyle);
   
   useEffect(() => {
