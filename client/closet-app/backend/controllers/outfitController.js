@@ -7,12 +7,8 @@ exports.saveOutfit = async (req, res) => {
   console.log("save outfit controller", request);
   
   // Destructure parameters to set up data in the same format as the mongoose model
-  const { name, description, user, clothingItems } = request;
+  const { name, user, clothingItems } = request;
 
-    if ( name === null || description === null || user === null || clothingItems === null ) {
-      console.log("your outfit is incomplete!");
-      return;
-    } else {
       try {
 
       // Create a new SavedOutfit doc
@@ -33,7 +29,6 @@ exports.saveOutfit = async (req, res) => {
       console.error(error);
       res.status(500).json({ error: 'An error occurred while saving the outfit' });
     }
-  };
 };
   
   exports.deleteOutfit = async (req, res) => {

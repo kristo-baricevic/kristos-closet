@@ -10,25 +10,25 @@ const initialState = {
 
 // Thunk action to fetch items
 export const fetchItems = () => async (dispatch) => {
-    dispatch(fetchItemsStart());
+  dispatch(fetchItemsStart());
 
-    console.log("fetch test");
+  console.log("fetch test");
 
-    try {
-      const response = await axios.get(`https://kristobaricevic.com/api/images`);
-      const data = response.data;
-      const updatedImages = data.map((image) => ({
-        ...image,
-        isUserImage: image.userId !== null,
-        imageUrl: `https://kristobaricevic.com/api/images/${image.id}`,
-      }));
+  try {
+    const response = await axios.get(`https://kristobaricevic.com/api/images`);
+    const data = response.data;
+    const updatedImages = data.map((image) => ({
+      ...image,
+      isUserImage: image.userId !== null,
+      imageUrl: `https://kristobaricevic.com/api/images/${image.id}`,
+    }));
 
-      dispatch(fetchItemsSuccess(updatedImages));
-    } catch (error) {
-      dispatch(fetchItemsFailure(error));
-      console.log("there is an error!!!", error);
-    }
-  };
+    dispatch(fetchItemsSuccess(updatedImages));
+  } catch (error) {
+    dispatch(fetchItemsFailure(error));
+    console.log("there is an error!!!", error);
+  }
+};
 
 // Thunk action to delete items
 export const deleteItems = (imageId) => async (dispatch) => {
