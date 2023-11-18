@@ -20,11 +20,8 @@ const NavBar = () => {
     // Close menus on component unmount
     useEffect(() => {
         console.log("useEffect in NavBar");
-
-        return () => {
-            setIsUserMenuOpen(false);
-            setIsWardrobeOpen(false);
-        };
+        setIsUserMenuOpen(false);
+        setIsWardrobeOpen(false);
     }, []);
 
     const showRegistrationModal = () => {

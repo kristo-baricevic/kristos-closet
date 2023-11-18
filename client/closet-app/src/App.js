@@ -9,7 +9,7 @@ import LoginModal from './components/LoginModal';
 import PreviewModal from './components/PreviewModal';
 import { uploadPreviewVisibility } from './features/previewModalSlice';
 import { RegistrationModalVisibility, LoginModalVisibility } from './features/modalSlice';
-import SavedOutfitView from './components/SavedOutfitView'; // 
+import SavedOutfitView from './components/SavedOutfitView';
 import WardrobeView from './components/WardrobeView';
 import './App.css';
 

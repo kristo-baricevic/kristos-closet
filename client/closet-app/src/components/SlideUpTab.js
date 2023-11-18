@@ -17,7 +17,6 @@ function SlideUpTab({item}) {
     setIsOpen(!isOpen);
     console.log("selectedItemsData", currentItems);
     dispatch(toggleTabStyle());
-    console.log("toggle tab");
   };
 
   const handleSaveOutfit = () => {
