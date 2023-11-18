@@ -26,8 +26,7 @@ export const fetchItems = () => async (dispatch) => {
       imageUrl: `https://kristobaricevic.com/api/images/${image.id}`,
     }));
 
-    const dispatchResult = dispatch(fetchItemsSuccess(updatedImages));
-    console.log("dispatchResult", dispatchResult);
+    dispatch(fetchItemsSuccess(updatedImages));
   } catch (error) {
     dispatch(fetchItemsFailure(error));
     console.log("there is an error!!!", error);
