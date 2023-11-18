@@ -9,7 +9,6 @@ exports.saveOutfit = async (req, res) => {
   // Destructure parameters to set up data in the same format as the mongoose model
   const { name, description, user, clothingItems } = request;
 
-
     if ( name === null || description === null || user === null || clothingItems === null ) {
       console.log("your outfit is incomplete!");
       return;

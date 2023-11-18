@@ -38,9 +38,9 @@ function SlideUpTab({item}) {
           imageUrl: 'URL to image',
         };
         // Create an outfit object that includes the selected items and other data
-        dispatch(saveOutfitAsync(outfitData)).then((response) => {
-          console.log(response);
-          })
+        // dispatch(saveOutfitAsync(outfitData)).then((response) => {
+        //   console.log(response);
+        //   })
         } catch (error) {
         console.log("there is an error!!!", error);
         alert("oh no! there was an error saving the outfit :(");
@@ -65,4 +65,4 @@ function SlideUpTab({item}) {
   );
 }
 
-export default SlideUpTab;
+export default React.memo(SlideUpTab);

@@ -17,7 +17,9 @@ const initialState = {
   error: null,
 };
 
-export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async (outfitData) => {
+export const saveOutfitAsync = createAsyncThunk(
+  'savedOutfit/saveOutfit', 
+  async (outfitData) => {
 
   const clothingItemsForNewOutfit = [];
 
@@ -51,6 +53,7 @@ export const saveOutfitAsync = createAsyncThunk('savedOutfit/saveOutfit', async 
       // Return the response data
       return response.data;
     } catch (error) {
+      console.error("Error saving outfit in savedOutfitSlice:", error);
       throw error;
     }
   };
