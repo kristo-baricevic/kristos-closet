@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors({
   origin: 'http://localhost:3000',
 }));
-// app.use('/static', express.static('build'));
+app.use('/static', express.static('build'));
 
 // Use routes with a base URL of '/api'
 app.use('/api', routes);
