@@ -80,7 +80,7 @@ const ClosetView = () => {
  
   return (
     <div className="closet-inner-container">
-      {/* <CategoriesView categories={uniqueCategories} onCategorySelect={handleCategorySelect} selectedCategory={selectedCategory}/>
+      <CategoriesView categories={uniqueCategories} onCategorySelect={handleCategorySelect} selectedCategory={selectedCategory}/>
         {isImageModalVisible && <ImageModal />}
         {isEditModalVisible && <EditModal />}
       <div className="closet-large-column">
@@ -98,7 +98,7 @@ const ClosetView = () => {
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

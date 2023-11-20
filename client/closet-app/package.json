@@ -72,5 +72,9 @@
   "main": "config-overrides.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-manifest": "^1.0.8"
+  }
 }
