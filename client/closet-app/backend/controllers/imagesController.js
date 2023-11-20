@@ -7,9 +7,10 @@ exports.getImages = async (req, res) => {
     const { user } = req.body;
 
     const clothingItems = await ClothingItem.find({ $or: [{ user }, { isUserImage: false }] });
+    
+    console.log("clothing items from Mongo", clothingItems);
 
     const images = await Promise.all(clothingItems.map(async item => {
-
       const s3 = new AWS.S3();
       const bucketName = 'closet-app';
       const imageKey = `${item.imageUrl}`; 
@@ -18,8 +19,6 @@ exports.getImages = async (req, res) => {
         Bucket: bucketName,
         Key: imageKey,
       }).promise();
-
-      console.log("image object is", imageObject);
 
       const imageUrl = `https://kristobaricevic.com/api/images/${item._id}`;
 

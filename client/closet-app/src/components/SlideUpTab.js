@@ -64,4 +64,4 @@ function SlideUpTab({item}) {
   );
 }
 
-export default SlideUpTab;
+export default React.memo(SlideUpTab);

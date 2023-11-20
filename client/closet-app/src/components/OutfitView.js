@@ -26,13 +26,13 @@ const OutfitView = () => {
                     <div className="outfit-item-category-title">{category}</div>
                     {item ? (
                     <div className="outfit-image-wrapper">
-                        <img class="outfit-image" src={item.imageUrl} alt={category} />
+                        <img className="outfit-image" src={item.imageUrl} alt={category} />
                     </div>
                     ) : (
                     <p>No {category} selected</p>
                     )}
                     <div>
-                        <button class="remove-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
+                        <button className="remove-outfit-button" onClick={() => handleRemoveItem(item)}>Remove</button>
                     </div>
                 </div>
                 ))}

@@ -46,8 +46,8 @@ const EditModal = () => {
                     ))}
                 </select>
                 <div className="edit-modal-button-container">
-                    <button class="edit-modal-button" onClick={() => saveImageEdit(image)}>Save</button>
-                    <button class="edit-modal-button" onClick={() => cancelImageEdit()}>Cancel</button>
+                    <button className="edit-modal-button" onClick={() => saveImageEdit(image)}>Save</button>
+                    <button className="edit-modal-button" onClick={() => cancelImageEdit()}>Cancel</button>
                 </div>
             </div>
         </div>

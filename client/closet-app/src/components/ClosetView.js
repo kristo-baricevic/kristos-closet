@@ -23,7 +23,7 @@ const ClosetView = () => {
   dispatch(toggleTabStyle);
   
   useEffect(() => {
-    // dispatch(fetchItems());
+    dispatch(fetchItems());
     console.log(tabToggle, "truth is out there?");
   }, []);
 
