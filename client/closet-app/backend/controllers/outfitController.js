@@ -1,4 +1,4 @@
-const { Outfit } = require('../models/Closet');
+const { Outfit, Wardrobe } = require('../models/Closet');
 const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
