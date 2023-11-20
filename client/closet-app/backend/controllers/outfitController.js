@@ -15,7 +15,7 @@ exports.saveOutfit = async (req, res) => {
       const newOutfit = new Outfit({
         name, 
         clothingItems,
-        wardrobe: [],
+        wardrobe: {},
         user
       });
 

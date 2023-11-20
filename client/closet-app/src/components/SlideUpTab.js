@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OutfitView from './OutfitView';
 import { toggleTabStyle } from '../features/closetSlice';
 import { selectedItems } from '../features/selectedItemsSlice';
-import { saveOutfitAsync, selectedOutfit } from '../features/savedOutfitSlice';
+import { handleSetOutfit, saveOutfitAsync, selectedOutfit } from '../features/savedOutfitSlice';
 import { selectUser } from '../features/userSlice';
 
 function SlideUpTab({item}) {
@@ -11,6 +11,7 @@ function SlideUpTab({item}) {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const currentItems = useSelector(selectedItems);
+  const [outfitHandler, setOutfitHandler] = useState();
   const outfit = useSelector(selectedOutfit);
 
   const toggleTab = () => {
@@ -20,9 +21,11 @@ function SlideUpTab({item}) {
   };
 
   const handleSaveOutfit = () => {
+    setOutfitHandler(currentItems);
+    dispatch(handleSetOutfit(outfitHandler));
 
-     // Get the selected items from your state
-     console.log("click handle save");
+    // Get the selected items from your state
+    console.log("click handle save", outfitHandler);
 
     if (!outfit || outfit.length === 0) {
       alert("oh no! you are trying to submit an empty outfit :(");

@@ -2,20 +2,26 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-      name: 'New Outfit',
-      description: 'My outfit is cool',
-      user: null,
-      outfit: [ {items: {
-        Top: null,
-        Bottom: null,
-        Shoes: null,
-        Hat: null,
-        onePiece: null,
-        Accessory: null,
-      }}],
+    name: 'New Outfit',
+    description: 'My outfit is cool',
+    user: null,
+    outfit: [ {items: {
+      Top: null,
+      Bottom: null,
+      Shoes: null,
+      Hat: null,
+      onePiece: null,
+      Accessory: null,
+    }}],
   loading: false,
   error: null,
 };
+
+export const handleSetOutfit = (outfitHandler) => async (dispatch) => {
+  console.log("handle selected Items", outfitHandler);
+  dispatch(saveOutfitSuccess(outfitHandler));
+};
+
 
 export const saveOutfitAsync = createAsyncThunk(
   'savedOutfit/saveOutfit', 
@@ -90,6 +96,8 @@ export const savedOutfitSlice = createSlice({
 export const selectedOutfit = (state) => state.savedOutfit.outfit;
 export const selectedOutfitLoading = (state) => state.savedOutfit.loading;
 export const selectedOutfitError = (state) => state.savedOutfit.error;
+
+export const { saveOutfitSuccess, saveOutfitFailure } = savedOutfitSlice.actions;
 
 export const savedOutfitSliceReducer = savedOutfitSlice.reducer;
 
