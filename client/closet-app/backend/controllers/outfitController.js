@@ -5,30 +5,37 @@ exports.saveOutfit = async (req, res) => {
 
   const request = req.body;
   console.log("save outfit controller", request);
-  
-  // Destructure parameters to set up data in the same format as the mongoose model
   const { name, user, clothingItems } = request;
 
-      try {
 
-      // Create a new SavedOutfit doc
-      const newOutfit = new Outfit({
-        name, 
-        clothingItems,
-        wardrobe: {},
-        user
-      });
-
-      console.log("savedOutfitDoc URL", newOutfit);
-
-      // Save the outfit to the database
-      const result = await newOutfit.save();
-      console.log("outfit potentially saved", result);
-      res.status(201).json(result);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred while saving the outfit' });
+  try {
+    let userWardrobe = await Wardrobe.findOne({ userId: user });
+    
+    if (!userWardrobe) {
+      userWardrobe = new Wardrobe({ userId: user });
+      await userWardrobe.save();
     }
+  
+    // Destructure parameters to set up data in the same format as the mongoose model
+
+    // Create a new SavedOutfit doc
+    const newOutfit = new Outfit({
+      name, 
+      clothingItems,
+      wardrobe: userWardrobe._id,
+      user
+    });
+
+    console.log("savedOutfitDoc URL", newOutfit);
+
+    // Save the outfit to the database
+    const result = await newOutfit.save();
+    console.log("outfit potentially saved", result);
+    res.status(201).json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while saving the outfit' });
+  }
 };
   
   exports.deleteOutfit = async (req, res) => {
