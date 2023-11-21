@@ -7,10 +7,9 @@ exports.saveOutfit = async (req, res) => {
   console.log("save outfit controller", request);
   const { name, user, clothingItems } = request;
 
-
   try {
     let userWardrobe = await Wardrobe.findOne({ userId: user });
-    
+
     if (!userWardrobe) {
       userWardrobe = new Wardrobe({ userId: user });
       await userWardrobe.save();

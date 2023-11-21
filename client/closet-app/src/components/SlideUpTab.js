@@ -21,6 +21,11 @@ function SlideUpTab({item}) {
   };
 
   const handleSaveOutfit = () => {
+    if (!user) {
+      console.log("You need to sign in to do that!");
+      alert("You need to sign in to do that!");
+    };
+
     setOutfitHandler(currentItems);
     dispatch(handleSetOutfit(outfitHandler));
 
