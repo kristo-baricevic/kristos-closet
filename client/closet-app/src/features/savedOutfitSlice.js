@@ -2,17 +2,34 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-    name: 'New Outfit',
-    description: 'My outfit is cool',
-    user: null,
-    outfit: [ {items: {
-      Top: null,
-      Bottom: null,
-      Shoes: null,
-      Hat: null,
-      onePiece: null,
-      Accessory: null,
-    }}],
+  name: 'New Outfit',
+  user: null,
+  outfit: [
+    {
+      category: 'Top',
+      item: null,
+    },
+    {
+      category: 'Bottom',
+      item: null,
+    },
+    {
+      category: 'Shoes',
+      item: null,
+    },
+    {
+      category: 'Hat',
+      item: null,
+    },
+    {
+      category: 'onePiece',
+      item: null,
+    },
+    {
+      category: 'Accessory',
+      item: null,
+    },
+  ],
   loading: false,
   error: null,
 };
@@ -22,33 +39,19 @@ export const handleSetOutfit = (outfitHandler) => async (dispatch) => {
   dispatch(saveOutfitSuccess(outfitHandler));
 };
 
-
 export const saveOutfitAsync = createAsyncThunk(
   'savedOutfit/saveOutfit', 
   async (outfitData) => {
+    const clothingItemsForNewOutfit = outfitData.outfit.map((item) => ({
+      category: item.category,
+      item: item.item,
+    }));
 
-  const clothingItemsForNewOutfit = [];
-
-  for (const category in outfitData.clothingItems) {
-    if (outfitData.clothingItems.hasOwnProperty(category)) {
-      clothingItemsForNewOutfit.push({
-        category,
-        item: outfitData.clothingItems[category],
-      });
-    }
-  }
-
-  if (!outfitData || outfitData === null ) {
-    console.log("there is no outfit!");
-  } else {
     try {
-
       const outfitToSave = {
         name: outfitData.name,
-        description: outfitData.description,
         user: outfitData.user,
         clothingItems: clothingItemsForNewOutfit,
-        imageUrl: outfitData.imageUrl,
       };
 
       const response = await axios.post(
