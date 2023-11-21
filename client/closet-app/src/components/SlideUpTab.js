@@ -32,15 +32,17 @@ function SlideUpTab({item}) {
     // Get the selected items from your state
     console.log("click handle save", outfitHandler);
 
+    const clothingItemsForNewOutfit = Object.keys(outfitHandler).map((category) => ({
+      category,
+      item: currentItems[category],
+    }));
+
       try {
          // Additional data needed for your outfit
         const outfitData = {
           name: 'Outfit1', 
           user: user,
-          clothingItems: currentItems.map((item) => ({
-            category: item.category,
-            item: item.item,
-          })),
+          clothingItems: clothingItemsForNewOutfit,
         };
 
         console.log("outfitData check", outfitData);
