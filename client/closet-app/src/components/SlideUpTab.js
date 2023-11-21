@@ -32,19 +32,19 @@ function SlideUpTab({item}) {
     // Get the selected items from your state
     console.log("click handle save", outfitHandler);
 
-    if (!outfit || outfit.length === 0) {
-      alert("oh no! you are trying to submit an empty outfit :(");
-    } else {
       try {
          // Additional data needed for your outfit
         const outfitData = {
           name: 'Outfit1', 
-          description: 'My first outfit',
           user: user,
-          clothingItems: currentItems,
-          imageUrl: 'URL to image',
+          clothingItems: currentItems.map((item) => ({
+            category: item.category,
+            item: item.item,
+          })),
         };
-        // Create an outfit object that includes the selected items and other data
+
+        console.log("outfitData check", outfitData);
+
         dispatch(saveOutfitAsync(outfitData)).then((response) => {
           console.log(response);
           })
@@ -52,7 +52,6 @@ function SlideUpTab({item}) {
         console.log("there is an error!!!", error);
         alert("oh no! there was an error saving the outfit :(");
       }
-    };
   };
 
   return (

@@ -47,6 +47,8 @@ export const saveOutfitAsync = createAsyncThunk(
       item: item.item,
     }));
 
+    console.log("outfitData test", outfitData);
+
     try {
       const outfitToSave = {
         name: outfitData.name,
