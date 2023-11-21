@@ -65,10 +65,8 @@ export const saveOutfitAsync = createAsyncThunk(
       console.error("Error saving outfit in savedOutfitSlice:", error);
       throw error;
     }
-  };
-});
-
-
+  }
+);
 
 export const savedOutfitSlice = createSlice({
   name: 'savedOutfit',
