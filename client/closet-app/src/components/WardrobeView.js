@@ -1,29 +1,37 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getWardrobe, addToWardrobe, removeFromWardrobe, selectedWardrobe } from '../features/wardrobeSlice';
 import { selectUser } from '../features/userSlice';
+import { fetchOutfits, userWardrobe } from '../features/wardrobeSlice';
+
 
 const Wardrobe = () => {
-  const wardrobe = useSelector(selectedWardrobe);
+
+  // const wardrobe = useSelector(selectedWardrobe);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const wardrobe = useSelector(userWardrobe);
 
   useEffect(() => {
-    console.log("if logged in?", user);
-
-    dispatch(getWardrobe(user)).then((result) => {
-      dispatch(addToWardrobe(result));
-    });
-  }, [user, dispatch]);
+    dispatch(fetchOutfits());
+  },[]);
   
-  const handleRemoveItem = (outfitId) => {
+  const handleDeleteOutfit = (outfitId) => {
     // Check to see if there is an outfitId
     if (!outfitId) {
       alert('This is what it sounds like when doves cry :,(');
       return;
     }
     // Dispatch the action to remove the outfit from the wardrobe
-    dispatch(removeFromWardrobe(outfitId));
+    // dispatch(removeFromWardrobe(outfitId));
+  };
+
+  const handleSelectOutfit = (outfitId) => {
+    // Check to see if there is an outfitId
+    if (!outfitId) {
+      alert('This is what it sounds like when doves cry :,(');
+      return;
+    }
+    // Dispatch the action to "put on" the outfit
   };
 
   return (
@@ -54,8 +62,8 @@ const Wardrobe = () => {
                     </ul>
                   </div>
                 <div className="wardrobe-card-button-container">
-                  <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Remove</button>
-                  <button className="wardrobe-button" onClick={() => handleRemoveItem(outfit._id)}>Make Current Outfit</button>
+                  <button className="wardrobe-button" onClick={() => handleDeleteOutfit(outfit._id)}>Delete</button>
+                  <button className="wardrobe-button" onClick={() => handleSelectOutfit(outfit._id)}>Select</button>
                 </div>
               </div> 
             </div>

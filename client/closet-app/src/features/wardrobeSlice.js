@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
@@ -7,64 +7,53 @@ const initialState = {
   error: null,
 };
 
-export const getWardrobe = createAsyncThunk('wardrobe/wardrobe', async (user) => {
-  try {
-    console.log("get wardrobe test", user._id);
-    const response = await axios.get(`https://kristobaricevic.com/api/wardrobe/${user._id}`);
-    console.log("response?", response);
-    console.log("wardrobe data", response?.data)
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-});
+export const fetchOutfits = () => async (dispatch) => {
+  // dispatch(fetchOutfitsStart());
 
-export const addToWardrobeAsync = createAsyncThunk('wardrobe/wardrobe', async (user, outfit) => {
+  console.log("running fetchOutfits");
+
   try {
-    console.log("add to w user", user);
-    console.log("add to w outfit", outfit);
-    const response = await axios.post(`https://kristobaricevic.com/api/wardrobe/${user}`, outfit);
-    console.log("wardrobe data", response);
-    addToWardrobe(response);
+    console.log("inside the fetchOutfit try");
+    const response = await axios.get(`https://kristobaricevic.com/api/outfits`);
+    console.log("fetchItems axios response", response);
+    const data = response.data;
+
+    // const updatedImages = data.map((image) => ({
+    //   ...image,
+    //   isUserImage: image.userId !== null,
+    //   imageUrl: `https://kristobaricevic.com/api/images/${image.id}`,
+    // }));
+
+    // dispatch(fetchOutfitsSuccess(data));
   } catch (error) {
-    console.error(error);
+    // dispatch(fetchOutfitsFailure(error));
+    console.log("there is an error!!!", error);
+    throw(error);
   }
-});
+};
+
+
 
 export const wardrobeSlice = createSlice({
   name: 'wardrobe',
   initialState,
   reducers: {
-    addToWardrobe: (state, action) => {
-      const outfit = action.payload; 
-      state.wardrobe?.push(outfit);
+    fetchOutfitsStart: (state, action) => {
+      state.loading = true;
+      state.error = null;
     },
-    removeFromWardrobe: (state, action) => {
-      const outfitIdToRemove = action.payload;
-
-      // Filter out the outfit to remove from the state
-      state.wardrobe = state.wardrobe.filter((outfit) => outfit._id !== outfitIdToRemove);
+    fetchOutfitsSuccess: (state, action) => {
+      state.loading = false;
+      state.outfit = [...state.outfit, action.payload];
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(getWardrobe.fulfilled, (state, action) => {
-        // This is where you update the state with the wardrobe data from the async request
-        state.wardrobe = action.payload;
-        state.loading = false;
-        state.error = null;
-      })
-      .addCase(getWardrobe.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(getWardrobe.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
+    fetchOutfitsFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    }
   },
 });
 
-export const selectedWardrobe = (state) => state.wardrobe.wardrobe;
+export const userWardrobe = (state) => state.wardrobe.wardrobe;
 export const wardrobeLoading = (state) => state.wardrobe.loading;
 export const wardrobeError = (state) => state.wardrobe.error;
 

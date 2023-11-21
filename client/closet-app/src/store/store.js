@@ -8,6 +8,7 @@ import { imageModalSliceReducer } from '../features/imageModalSlice';
 import { previewModalReducer } from '../features/previewModalSlice.js';
 import { editModalSliceReducer } from '../features/editModalSlice';
 import { savedOutfitSliceReducer } from '../features/savedOutfitSlice';
+import { wardrobeSliceReducer } from '../features/wardrobeSlice';
 import thunkMiddleware from 'redux-thunk';
 
 
@@ -24,6 +25,7 @@ const store = configureStore({
     imageModal: imageModalSliceReducer,
     previewModal: previewModalReducer,
     savedOutfit: savedOutfitSliceReducer,
+    wardrobe: wardrobeSliceReducer,
   },
   middleware: middleware,
   devTools: process.env.NODE_ENV !== 'production',

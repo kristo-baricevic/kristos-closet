@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedItems } from '../features/selectedItemsSlice';
-import { addToWardrobeAsync } from '../features/wardrobeSlice';
 
 const SavedOutfitView = () => {
     const outfit = useSelector(selectedItems);
@@ -16,7 +15,6 @@ const SavedOutfitView = () => {
                 return;            
             }
 
-        dispatch(addToWardrobeAsync(outfit));
         console.log("Handle Add Wardrobe", outfit);
     }
 

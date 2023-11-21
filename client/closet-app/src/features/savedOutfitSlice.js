@@ -65,6 +65,8 @@ export const saveOutfitAsync = createAsyncThunk(
   };
 });
 
+
+
 export const savedOutfitSlice = createSlice({
   name: 'savedOutfit',
   initialState,
@@ -74,7 +76,7 @@ export const savedOutfitSlice = createSlice({
     },
     saveOutfitFailure: (state, action) => {
       state.error = action.payload;
-    },
+    }
   },
     extraReducers: (builder) => {
       builder
