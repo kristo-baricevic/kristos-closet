@@ -13,7 +13,6 @@ const {
   deleteImage,
 } = require('../controllers/imagesController');
 const outfitController = require('../controllers/outfitController');
-const wardrobeController = require('../controllers/wardrobeController');
 
 
 // Image routes

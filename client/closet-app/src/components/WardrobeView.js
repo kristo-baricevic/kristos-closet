@@ -17,7 +17,7 @@ const Wardrobe = () => {
   }, [user, dispatch]);
   
   const handleRemoveItem = (outfitId) => {
-    // Check to see if there is an outfit
+    // Check to see if there is an outfitId
     if (!outfitId) {
       alert('This is what it sounds like when doves cry :,(');
       return;
