@@ -1,27 +1,17 @@
-const { Outfit, Wardrobe } = require('../models/Closet');
+const { Outfit } = require('../models/Closet');
 const AWS = require('aws-sdk');
 
 exports.saveOutfit = async (req, res) => {
-
-  const request = req.body;
-  console.log("save outfit controller", request);
-  const { name, user, clothingItems } = request;
-
   try {
-    let userWardrobe = await Wardrobe.findOne({ userId: user });
 
-    if (!userWardrobe) {
-      userWardrobe = new Wardrobe({ userId: user });
-      await userWardrobe.save();
-    }
-  
-    // Destructure parameters to set up data in the same format as the mongoose model
+    const request = req.body;
+    console.log("save outfit controller", request);
+    const { name, user, clothingItems } = request;
 
     // Create a new SavedOutfit doc
     const newOutfit = new Outfit({
       name, 
       clothingItems,
-      wardrobe: userWardrobe._id,
       user
     });
 
@@ -84,15 +74,15 @@ exports.getOutfitById = async (req, res) => {
   }
 };
   
-exports.getOutfit = async (req, res) => {
+exports.getUserOutfits = async (req, res) => {
   try {
     const { user } = req.body;
 
     console.log("inside get images");
 
-    const outfit = await Outfit.findOne({ $or: [{ user }] });
+    const userOutfits = await Outfit.find({ user }).populate('clothingItems');
 
-    return outfit;
+    res.status(200).json(userOutfits);
     } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred' });

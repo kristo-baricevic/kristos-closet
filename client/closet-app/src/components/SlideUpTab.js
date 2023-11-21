@@ -41,7 +41,7 @@ function SlideUpTab({item}) {
           name: 'Outfit1', 
           description: 'My first outfit',
           user: user,
-          clothingItems: outfit,
+          clothingItems: currentItems,
           imageUrl: 'URL to image',
         };
         // Create an outfit object that includes the selected items and other data

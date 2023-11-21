@@ -14,10 +14,6 @@ const clothingItemSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Outfit', 
   }],
-  wardrobe: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Wardrobe', 
-  },
 });
 
 const outfitSchema = new Schema({
@@ -25,21 +21,6 @@ const outfitSchema = new Schema({
   clothingItems: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ClothingItem', 
-  }],
-  wardrobe: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Wardrobe',
-  },
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', 
-  },
-});
-
-const wardrobeSchema = new Schema({
-  outfits: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Outfit', 
   }],
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -50,6 +31,5 @@ const wardrobeSchema = new Schema({
 
 const ClothingItem = mongoose.model('ClothingItem', clothingItemSchema);
 const Outfit = mongoose.model('Outfit', outfitSchema);
-const Wardrobe = mongoose.model('Wardrobe', wardrobeSchema);
 
-module.exports = { ClothingItem, Outfit, Wardrobe };
+module.exports = { ClothingItem, Outfit };
