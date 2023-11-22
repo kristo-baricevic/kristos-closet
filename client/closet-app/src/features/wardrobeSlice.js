@@ -7,14 +7,14 @@ const initialState = {
   error: null,
 };
 
-export const fetchOutfits = () => async (dispatch) => {
+export const fetchOutfits = (userId) => async (dispatch) => {
   // dispatch(fetchOutfitsStart());
 
   console.log("running fetchOutfits");
 
   try {
     console.log("inside the fetchOutfit try");
-    const response = await axios.get(`https://kristobaricevic.com/api/outfits`);
+    const response = await axios.get(`https://kristobaricevic.com/api/outfit/${userId}`);
     console.log("fetchItems axios response", response);
     const data = response.data;
 

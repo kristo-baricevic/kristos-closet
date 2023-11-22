@@ -9,10 +9,11 @@ const Wardrobe = () => {
   // const wardrobe = useSelector(selectedWardrobe);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const userId = user?._id;
   const wardrobe = useSelector(userWardrobe);
 
   useEffect(() => {
-    dispatch(fetchOutfits());
+    dispatch(fetchOutfits(userId));
   },[]);
   
   const handleDeleteOutfit = (outfitId) => {
