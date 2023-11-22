@@ -43,7 +43,7 @@ const ClosetView = () => {
       console.error('Invalid image URL:', image);
       return null;
     }
-
+    console.log("url", image.imageUrl);
     return image.imageUrl;
   };
 

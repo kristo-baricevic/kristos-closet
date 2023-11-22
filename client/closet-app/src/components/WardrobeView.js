@@ -57,7 +57,7 @@ const Wardrobe = () => {
                         <div className="wardrobe-outfit-item-container" key={clothingItem?._id}>
                           <li className="wardrobe-list-itemIndex" key={clothingItem?._id}>
                             <p className="wardrobe-list-category">{clothingItem?.category}</p>
-                            <img src={clothingItem?.imageUrl} alt="Clothing item" />
+                            <img src={`https://kristobaricevic.com/api/${clothingItem?.imageUrl}`} alt="Clothing item" />
                           </li>
                         </div>
                       ))}
