@@ -22,12 +22,10 @@ function SlideUpTab({item}) {
 
   const handleSaveOutfit = () => {
     if (!user) {
-      console.log("You need to sign in to do that!");
       alert("You need to sign in to do that!");
     };
 
     if (currentItems === null || currentItems === undefined) {
-      console.log("You have no items!");
       alert("You haven't selected any items!");
     };
 
