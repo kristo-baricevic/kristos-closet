@@ -26,23 +26,23 @@ function SlideUpTab({item}) {
       alert("You need to sign in to do that!");
     };
 
+    if (currentItems === null || currentItems === undefined) {
+      console.log("You have no items!");
+      alert("You haven't selected any items!");
+    };
+
     setOutfitHandler(currentItems);
     dispatch(handleSetOutfit(outfitHandler));
 
     // Get the selected items from your state
     console.log("click handle save", outfitHandler);
 
-    const clothingItemsForNewOutfit = Object.keys(outfitHandler).map((category) => ({
-      category,
-      item: currentItems[category],
-    }));
-
       try {
          // Additional data needed for your outfit
         const outfitData = {
           name: 'Outfit1', 
-          user: user,
-          clothingItems: clothingItemsForNewOutfit,
+          userId: user._id,
+          clothingItems: currentItems,
         };
 
         console.log("outfitData check", outfitData);

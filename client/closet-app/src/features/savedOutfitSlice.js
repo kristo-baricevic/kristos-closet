@@ -3,32 +3,14 @@ import axios from 'axios';
 
 const initialState = {
   name: 'New Outfit',
-  user: null,
+  userId: null,
   outfit: [
-    {
-      category: 'Top',
-      item: null,
-    },
-    {
-      category: 'Bottom',
-      item: null,
-    },
-    {
-      category: 'Shoes',
-      item: null,
-    },
-    {
-      category: 'Hat',
-      item: null,
-    },
-    {
-      category: 'onePiece',
-      item: null,
-    },
-    {
-      category: 'Accessory',
-      item: null,
-    },
+    { Accessory: null },
+    { Bottom: null },
+    { Hat: null },
+    { Shoes: null },
+    { Top: null },
+    {onePiece: null } 
   ],
   loading: false,
   error: null,
@@ -42,18 +24,22 @@ export const handleSetOutfit = (outfitHandler) => async (dispatch) => {
 export const saveOutfitAsync = createAsyncThunk(
   'savedOutfit/saveOutfit', 
   async (outfitData) => {
-    const clothingItemsForNewOutfit = outfitData.outfit.map((item) => ({
-      category: item.category,
-      item: item.item,
-    }));
+  
 
     console.log("outfitData test", outfitData);
 
     try {
       const outfitToSave = {
         name: outfitData.name,
-        user: outfitData.user,
-        clothingItems: clothingItemsForNewOutfit,
+        userId : outfitData.user,
+        clothingItems: [
+          outfitData.clothingItems.Accessory?.id, 
+          outfitData.clothingItems.Top?.id, 
+          outfitData.clothingItems.Bottom?.id, 
+          outfitData.clothingItems.Hat?.id, 
+          outfitData.clothingItems.Shoes?.id, 
+          outfitData.clothingItems.onePiece?.id, 
+        ]
       };
 
       const response = await axios.post(
@@ -75,7 +61,7 @@ export const savedOutfitSlice = createSlice({
   initialState,
   reducers: {
     saveOutfitSuccess: (state, action) => {
-      state.outfit = [...state.outfit, action.payload];
+      state.outfit = action.payload;
     },
     saveOutfitFailure: (state, action) => {
       state.error = action.payload;

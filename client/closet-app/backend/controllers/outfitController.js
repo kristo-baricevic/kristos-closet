@@ -27,21 +27,21 @@ exports.saveOutfit = async (req, res) => {
   }
 };
   
-  exports.deleteOutfit = async (req, res) => {
-    try {
-      const outfitId = req.params.id;
-  
-      // Delete the outfit from the database
-      await Outfit.findOneAndDelete({ _id: outfitId });
-  
-      res.json({ message: 'Outfit deleted successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred while deleting the outfit' });
-    }
-  };
+exports.deleteOutfit = async (req, res) => {
+  try {
+    const outfitId = req.params.id;
 
-  exports.updateOutfit = async (req, res) => {
+    // Delete the outfit from the database
+    await Outfit.findOneAndDelete({ _id: outfitId });
+
+    res.json({ message: 'Outfit deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while deleting the outfit' });
+  }
+};
+
+exports.updateOutfit = async (req, res) => {
   try {
     const outfitId = req.params.id;
     const updatedOutfit = req.body;
