@@ -15,7 +15,8 @@ const Wardrobe = () => {
   useEffect(() => {
     dispatch(fetchOutfits(userId));
   },[]);
-  
+
+
   const handleDeleteOutfit = (outfitId) => {
     // Check to see if there is an outfitId
     if (!outfitId) {
