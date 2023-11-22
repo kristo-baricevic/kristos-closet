@@ -15,8 +15,9 @@ const initialState = {
 };
 
 export const selectOutfit = (objectId) => async (dispatch) => {
-  const response = axios.get(`https://kristobaricevic.com/api/outfit/${objectId}`);
-  console.log("outfit response", response);
+  const response = await axios.get(`https://kristobaricevic.com/api/outfit/${objectId}`);
+  console.log("outfit response", response.data);
+  dispatch(addOutfit(response.data));
 };
 
 export const selectedItemsSlice = createSlice({
@@ -65,9 +66,16 @@ export const selectedItemsSlice = createSlice({
       }   
     },
     addOutfit: (state, action) => {
-      const { clothingItems } = action.payload;
-      console.log("addOutfit", clothingItems);
-      state.items = clothingItems;
+      const outfit = action.payload; // Assuming the payload is the outfit object
+      console.log("addOutfit", outfit);
+    
+      // Update each category in state.items with the corresponding item from the outfit
+      state.items.Top = outfit.Top || null;
+      state.items.Bottom = outfit.Bottom || null;
+      state.items.Shoes = outfit.Shoes || null;
+      state.items.Hat = outfit.Hat || null;
+      state.items.onePiece = outfit.onePiece || null;
+      state.items.Accessory = outfit.Accessory || null;
     },
   },
 });

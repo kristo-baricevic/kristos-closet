@@ -62,31 +62,52 @@ exports.updateOutfit = async (req, res) => {
   }
 };
 
-exports.getOutfitById = async (req, res) => {
+exports.getOutfit = async (req, res) => {
   try {
-    const { _id } = req.params;
-    const outfit = await Outfit.findById(_id);
-    console.log("outfitById controller", outfit);
-    return outfit;
+    const { id, outfitId } = req.params;
+
+    if (outfitId) {
+      // If outfitId is present, get outfit by ID
+      const outfit = await Outfit.findById(outfitId);
+      console.log("Outfit by ID:", outfit);
+      res.status(200).json(outfit);
+    } else {
+      // If outfitId is not present, get user outfits
+      const userOutfits = await Outfit.find({ user: id }).populate('clothingItems');
+      console.log("User outfits:", userOutfits);
+      res.status(200).json(userOutfits);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred' });
   }
 };
+
+// exports.getOutfitById = async (req, res) => {
+//   try {
+//     const { _id } = req.params;
+//     const outfit = await Outfit.findById(_id);
+//     console.log("outfitById controller", outfit);
+//     return outfit;
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'An error occurred' });
+//   }
+// };
   
-exports.getUserOutfits = async (req, res) => {
-  try {
-    const { user } = req.body;
+// exports.getUserOutfits = async (req, res) => {
+//   try {
+//     const { user } = req.body;
 
-    console.log("inside get images");
+//     console.log("inside get images");
 
-    const userOutfits = await Outfit.find({ user }).populate('clothingItems');
+//     const userOutfits = await Outfit.find({ user }).populate('clothingItems');
 
-    console.log("userOutfits", userOutfits);
+//     console.log("userOutfits", userOutfits);
 
-    res.status(200).json(userOutfits);
-    } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred' });
-  }
-};
+//     res.status(200).json(userOutfits);
+//     } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'An error occurred' });
+//   }
+// };
