@@ -620,9 +620,6 @@ button {
   height: 100%;
 }
 
-
-
-
 /* ClosetView Component */
 
 .closet-inner-container {
@@ -635,16 +632,9 @@ button {
   height: 100%;
 }
 
-.small-column {
-  background-color: #a4e333;
+.closet-large-column {
   padding: 10px; 
 }
-
-.large-column {
-  background-color: #f0f0f0; 
-  padding: 10px; 
-}
-
 
 .sticky-container {
   display: flex;
@@ -965,6 +955,7 @@ button {
 }
 
 .image-modal-content {
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -975,11 +966,14 @@ button {
 }
 
 .image-modal-content-container {
+  height: 250px;
   display: flex;
   justify-content: center;
 }
 
 .image-modal-image {
+  height: 200px;
+  width: auto;
   display: flex;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1139,10 +1133,12 @@ button {
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-.wardrobe-item-card img {
+.wardrobe-list-images {
   width: 100%;
   display: block;
   margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3); 
 }
 
 .wardrobe-card-button-container {
