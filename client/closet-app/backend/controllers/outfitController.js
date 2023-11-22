@@ -82,6 +82,8 @@ exports.getUserOutfits = async (req, res) => {
 
     const userOutfits = await Outfit.find({ user }).populate('clothingItems');
 
+    console.log("userOutfits", userOutfits);
+
     res.status(200).json(userOutfits);
     } catch (error) {
     console.error(error);

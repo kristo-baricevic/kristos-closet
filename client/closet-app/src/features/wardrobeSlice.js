@@ -18,15 +18,7 @@ export const fetchOutfits = () => async (dispatch) => {
     console.log("fetchItems axios response", response);
     const data = response.data;
 
-    // const updatedImages = data.map((image) => ({
-    //   ...image,
-    //   isUserImage: image.userId !== null,
-    //   imageUrl: `https://kristobaricevic.com/api/images/${image.id}`,
-    // }));
-
-    // dispatch(fetchOutfitsSuccess(data));
   } catch (error) {
-    // dispatch(fetchOutfitsFailure(error));
     console.log("there is an error!!!", error);
     throw(error);
   }
