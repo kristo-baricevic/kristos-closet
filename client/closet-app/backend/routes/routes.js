@@ -34,6 +34,7 @@ router.get('/current', verifyToken, userController.getCurrentUserData);
 // Outfit routes
 router.post('/outfit', outfitController.saveOutfit);
 router.get('/outfit/:id', outfitController.getUserOutfits);
+router.get('/outfit/:outfitId', outfitController.getOutfitById);
 router.delete('/outfit/:id', outfitController.deleteOutfit);
 router.put('/outfit/:id', outfitController.updateOutfit);
 

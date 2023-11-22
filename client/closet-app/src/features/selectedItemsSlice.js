@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
     items: {
@@ -11,6 +12,12 @@ const initialState = {
     },
   loading: false,
   error: null,
+};
+
+export const selectOutfit = (objectId) => async (dispatch) => {
+  const response = axios.get(`https://kristobaricevic.com/api/outfit/${objectId}`);
+  addOutfit(response);
+  console.log("outfit response");
 };
 
 export const selectedItemsSlice = createSlice({
@@ -58,6 +65,10 @@ export const selectedItemsSlice = createSlice({
         state.items[category] = null;
       }   
     },
+    addOutfit: (state, action) => {
+      console.log("addOutfit", action.payload);
+      state.items = action.payload;
+    },
   },
 });
 
@@ -65,5 +76,5 @@ export const selectedItems = (state) => state.selectedItems.items;
 export const selectedItemsLoading = (state) => state.selectedItems.loading;
 export const selectedItemsError = (state) => state.selectedItems.error;
 
-export const { addItem, removeItem } = selectedItemsSlice.actions;
+export const { addItem, removeItem, addOutfit } = selectedItemsSlice.actions;
 export const selectedItemsSliceReducer = selectedItemsSlice.reducer;

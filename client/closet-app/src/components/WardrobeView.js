@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../features/userSlice';
 import { fetchOutfits, userWardrobe, removeFromWardrobe } from '../features/wardrobeSlice';
-
+import { selectedItems, selectOutfit } from '../features/selectedItemsSlice';
 
 const Wardrobe = () => {
 
@@ -11,11 +11,11 @@ const Wardrobe = () => {
   const user = useSelector(selectUser);
   const userId = user?._id;
   const wardrobe = useSelector(userWardrobe);
+  const currentItems = useSelector(selectedItems);
 
   useEffect(() => {
     dispatch(fetchOutfits(userId));
   },[]);
-
 
   const handleDeleteOutfit = (outfitId) => {
     // Check to see if there is an outfitId
@@ -29,12 +29,9 @@ const Wardrobe = () => {
   };
 
   const handleSelectOutfit = (outfitId) => {
-    // Check to see if there is an outfitId
-    if (!outfitId) {
-      alert('This is what it sounds like when doves cry :,(');
-      return;
-    }
+    console.log("current");
     // Dispatch the action to "put on" the outfit
+    dispatch(selectOutfit(outfitId));
   };
 
   return (

@@ -10,7 +10,7 @@ const initialState = {
     { Hat: null },
     { Shoes: null },
     { Top: null },
-    {onePiece: null } 
+    { onePiece: null } 
   ],
   loading: false,
   error: null,
@@ -65,7 +65,7 @@ export const savedOutfitSlice = createSlice({
     },
     saveOutfitFailure: (state, action) => {
       state.error = action.payload;
-    }
+    },
   },
     extraReducers: (builder) => {
       builder
