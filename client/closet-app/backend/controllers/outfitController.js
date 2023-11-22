@@ -66,7 +66,7 @@ exports.getOutfitById = async (req, res) => {
   try {
     const { _id } = req.params;
     const outfit = await Outfit.findById(_id);
-
+    console.log("outfitById controller", outfit);
     return outfit;
   } catch (error) {
     console.error(error);

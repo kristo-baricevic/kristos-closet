@@ -16,8 +16,7 @@ const initialState = {
 
 export const selectOutfit = (objectId) => async (dispatch) => {
   const response = axios.get(`https://kristobaricevic.com/api/outfit/${objectId}`);
-  addOutfit(response);
-  console.log("outfit response");
+  console.log("outfit response", response);
 };
 
 export const selectedItemsSlice = createSlice({
@@ -66,8 +65,9 @@ export const selectedItemsSlice = createSlice({
       }   
     },
     addOutfit: (state, action) => {
-      console.log("addOutfit", action.payload);
-      state.items = action.payload;
+      const { clothingItems } = action.payload;
+      console.log("addOutfit", clothingItems);
+      state.items = clothingItems;
     },
   },
 });
