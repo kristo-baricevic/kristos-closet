@@ -23,6 +23,7 @@ const Wardrobe = () => {
       alert('This is what it sounds like when doves cry :,(');
       return;
     }
+    console.log("delete");
     // Dispatch the action to remove the outfit from the wardrobe
     dispatch(removeFromWardrobe(outfitId));
   };
