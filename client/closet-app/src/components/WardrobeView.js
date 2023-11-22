@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../features/userSlice';
-import { fetchOutfits, userWardrobe } from '../features/wardrobeSlice';
+import { fetchOutfits, userWardrobe, removeFromWardrobe } from '../features/wardrobeSlice';
 
 
 const Wardrobe = () => {
@@ -24,7 +24,7 @@ const Wardrobe = () => {
       return;
     }
     // Dispatch the action to remove the outfit from the wardrobe
-    // dispatch(removeFromWardrobe(outfitId));
+    dispatch(removeFromWardrobe(outfitId));
   };
 
   const handleSelectOutfit = (outfitId) => {

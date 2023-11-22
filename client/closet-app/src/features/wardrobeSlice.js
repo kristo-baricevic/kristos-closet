@@ -19,8 +19,22 @@ export const fetchOutfits = (userId) => async (dispatch) => {
     const data = response.data;
     dispatch(fetchOutfitsSuccess(data));
   } catch (error) {
-    console.log("there is an error!!!", error);
     fetchOutfitsFailure(error);
+    throw(error);
+  }
+};
+
+export const removeFromWardrobe = (objectId) => async (dispatch) => {
+  dispatch(deleteOutfitStart());
+  console.log("running delete Outfits");
+
+  try {
+    const response = await axios.delete(`https://kristobaricevic.com/api/outfit/${objectId}`);
+    
+    console.log(response);
+    dispatch(deleteOutfitSuccess());
+  } catch (error) {
+    deleteOutfitFailure(error);
     throw(error);
   }
 };
@@ -48,6 +62,17 @@ export const wardrobeSlice = createSlice({
     fetchOutfitsFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
+    },
+    deleteOutfitStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    deleteOutfitSuccess: (state) => {
+      state.loading = false;
+    },
+    deleteOutfitFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     }
   },
 });
@@ -56,5 +81,5 @@ export const userWardrobe = (state) => state.wardrobe.wardrobe;
 export const wardrobeLoading = (state) => state.wardrobe.loading;
 export const wardrobeError = (state) => state.wardrobe.error;
 
-export const { fetchOutfitsStart, fetchOutfitsSuccess, fetchOutfitsFailure } = wardrobeSlice.actions;
+export const { fetchOutfitsStart, fetchOutfitsSuccess, fetchOutfitsFailure, deleteOutfitFailure, deleteOutfitStart, deleteOutfitSuccess } = wardrobeSlice.actions;
 export const wardrobeSliceReducer = wardrobeSlice.reducer;
