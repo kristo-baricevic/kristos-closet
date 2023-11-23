@@ -104,13 +104,13 @@ const NavBar = () => {
                                     alt="User"
                                 />
                             </button>
-                            <Link to="/" className="navbar-button">
+                            <Link to="/" className="navbar-button-menu2">
                                 Closet
                             </Link>
-                            <Link to="/outfit-view" className="navbar-button">
+                            <Link to="/outfit-view" className="navbar-button-menu2">
                                 Outfit
                             </Link>
-                            <Link to="/wardrobe" className="navbar-button">
+                            <Link to="/wardrobe" className="navbar-button-menu2">
                                 Wardrobe
                             </Link>
                         </div>

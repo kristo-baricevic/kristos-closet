@@ -49,6 +49,7 @@
   border: 1px solid black;
   border-radius: 14px;
   cursor: pointer;
+  padding: 4px;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
@@ -67,14 +68,35 @@
 .navbar-button {
   background-color: #50C878;
   color: black;
+  font-size: 14px;
   border: 1px solid black;
   border-radius: 14px;
+  padding: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .navbar-button:hover {
+  background-color: #228B22;
+  color: black;
+}
+
+.navbar-button-menu2 {
+  text-decoration: none;
+  font-size: 14px;
+  background-color: #50C878;
+  color: black;
+  border: 1px solid black;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-top: 4px;
+  padding: 8px;
+}
+
+.navbar-button-menu2:hover {
   background-color: #228B22;
   color: black;
 }
@@ -600,11 +622,9 @@ button {
   color: black;
 }
 
-
 .saved-outfit-item-card:hover {
   transform: translateY(-5px);
 }
-
 
 .saved-outfit-image-wrapper {
   height: 80%;

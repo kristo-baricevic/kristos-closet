@@ -29,7 +29,7 @@ const Wardrobe = () => {
   };
 
   const handleSelectOutfit = (outfitId) => {
-    console.log("current");
+    console.log("current", outfitId);
     // Dispatch the action to "put on" the outfit
     dispatch(selectOutfit(outfitId));
   };

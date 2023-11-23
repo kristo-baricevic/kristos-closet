@@ -14,8 +14,9 @@ const initialState = {
   error: null,
 };
 
-export const selectOutfit = (objectId) => async (dispatch) => {
-  const response = await axios.get(`https://kristobaricevic.com/api/outfit/${objectId}`);
+export const selectOutfit = (outfitId) => async (dispatch) => {
+  console.log("outfitId", outfitId);
+  const response = await axios.get(`https://kristobaricevic.com/api/outfit/${outfitId}`);
   console.log("outfit response", response.data);
   dispatch(addOutfit(response.data));
 };
