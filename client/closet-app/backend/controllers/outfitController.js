@@ -65,6 +65,7 @@ exports.updateOutfit = async (req, res) => {
 exports.getOutfit = async (req, res) => {
   try {
     const { user, outfitId } = req.params;
+    console.log("outfitId", outfitId);
 
     if (outfitId) {
       // If outfitId is present, get outfit by ID
