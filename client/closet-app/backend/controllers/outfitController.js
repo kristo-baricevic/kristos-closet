@@ -64,7 +64,7 @@ exports.updateOutfit = async (req, res) => {
 
 exports.getOutfit = async (req, res) => {
   try {
-    const { id, outfitId } = req.params;
+    const { user, outfitId } = req.params;
 
     if (outfitId) {
       // If outfitId is present, get outfit by ID
@@ -73,7 +73,7 @@ exports.getOutfit = async (req, res) => {
       res.status(200).json(outfit);
     } else {
       // If outfitId is not present, get user outfits
-      const userOutfits = await Outfit.find({ user: id }).populate('clothingItems');
+      const userOutfits = await Outfit.find({ user }).populate('clothingItems');
       console.log("User outfits:", userOutfits);
       res.status(200).json(userOutfits);
     }
